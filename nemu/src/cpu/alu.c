@@ -224,7 +224,7 @@ void set_OF_add(uint32_t res, uint32_t src, uint32_t dest, size_t data_size) {
 				break;
 		default: break;
 	}
-	if(sign(src)==sign(dest) {
+	if(sign(src)==sign(dest)) {
 		if(sign(src) != sign(res))
 			cpu.eflags.OF = 1;
 		else
