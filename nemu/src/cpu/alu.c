@@ -181,7 +181,9 @@ uint32_t alu_sal(uint32_t src, uint32_t dest, size_t data_size) {
 }
 
 void set_CF_add(uint32_t res, uint32_t src, size_t data_size) {
-	
+	res = sign_ext(res & (0xFFFFFFFF >> (32 - data_size)), data_size);
+	src = sign_ext(src & (0xFFFFFFFF >> (32 - data_size)), data_size);
+	cpu.eflags.CF = res < src;
 }
 
 void set_PF(uint32_t res) {
@@ -191,18 +193,44 @@ void set_PF(uint32_t res) {
 			num_of_1++;
 		res >>= 1;
 	}
-	cpu.PF = ((num_of_1%2 == 0)? 1:0);
+	cpu.eflags.PF = ((num_of_1%2 == 0)? 1:0);
 }
 
 void set_ZF(uint32_t res, size_t data_size) {
-	uint32_t if_Zero = res&(0xFFFFFFFF >> (32 - data_size));
-	cpu.ZF = (if_Zero == 0);
+	res = res&(0xFFFFFFFF >> (32 - data_size));
+	cpu.eflags.ZF = (res == 0);
 }
 
 void set_SF(uint32_t res, size_t data_size) {
-	uint32_t judge = 1 << (data_size - 1);
-	cpu.SF = ((judge&res) == 0)? 0:1;
+	/*my version*/
+	//uint32_t judge = 1 << (data_size - 1);
+	//cpu.eflags.SF = ((judge&res) == 0)? 0:1;
+	/*pdf version*/
+	res = sign_ext(res & (0xFFFFFFFF >> (32 - data_size)), data_size);
+	cpu.eflags.SF = sign(result);
 }
 
-void set_OF_add(uint32_t res, uint32_t src, size_t data_size);
+void set_OF_add(uint32_t res, uint32_t src, uint32_t dest, size_t data_size) {
+	switch(data_size) {
+		case 8:
+				res = sign_ext(res & 0xFF, 8);
+				src = sign_ext(src & 0xFF, 8);
+				dest = sign_ext(dest & 0xFF, 8);
+				break;
+		case 16:
+				res = sign_ext(res & 0xFFFF, 16);
+				src = sign_ext(src & 0xFFFF, 16);
+				dest = sign_ext(dest & 0xFFFF, 16);
+				break;
+		default: break;
+	}
+	if(sign(src)==sign(dest) {
+		if(sign(src) != sign(res))
+			cpu.eflags.OF = 1;
+		else
+			cpu.eflags.OF = 0;
+	}else {
+		cpu.eflags.OF = 0;
+	}
+}
 
