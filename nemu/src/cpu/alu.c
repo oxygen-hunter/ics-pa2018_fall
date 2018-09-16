@@ -78,9 +78,16 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size) {
 #ifdef NEMU_REF_ALU
 	return __ref_alu_mul(src, dest, data_size);
 #else
-	printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
-	assert(0);
-	return 0;
+	uint32_t res = 0;
+	res = dest * src;
+		
+	set_CF_OF_mul(src, dest, data_size);
+	set_PF(res);
+	//set_AF(); we don't simulate AF
+	set_ZF(res, data_size);
+	set_SF(res, data_size);
+	
+	return res&(0xFFFFFFFF >> (32 - data_size));
 #endif
 }
 
@@ -332,4 +339,35 @@ void set_CF_sbb(uint32_t src, uint32_t dest, size_t data_size) {
 void set_OF_sbb(uint32_t res, uint32_t src, uint32_t dest, size_t data_size) {
 	/*same as sub*/
 	set_OF_sub(res, src, dest, data_size);
+}
+
+// mul
+void set_CF_OF_mul(uint32_t src, uint32_t dest, size_t data_size) {
+	/*CF = 0 when high data_size bits of res == 0*/
+	uint64_t res = src * dest;
+	uint64_t res64_high32 = res & 0xFFFFFFFF00000000;
+	uint64_t res32_high16 = res & 0x00000000FFFF0000;
+	uint64_t res16_high8 = res & 0x000000000000FF00;
+	switch(data_size) {
+		case 8: 
+				if(res16_high8 == 0)
+					cpu.eflags.CF = 0;
+				else
+					cpu.eflags.CF = 1;
+				break;
+		case 16:
+				if(res32_high16 == 0)
+					cpu.eflags.CF = 0;
+				else
+					cpu.eflags.CF = 1;
+				break;
+		default:
+				if(res64_high32 == 0)
+					cpu.eflags.CF = 0;
+				else
+					cpu.eflags.CF = 1;
+				break;
+
+	}
+	cpu.eflags.OF = cpu.eflags.CF;
 }
