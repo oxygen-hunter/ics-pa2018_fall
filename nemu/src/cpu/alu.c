@@ -59,9 +59,17 @@ uint32_t alu_sbb(uint32_t src, uint32_t dest, size_t data_size) {
 #ifdef NEMU_REF_ALU
 	return __ref_alu_sbb(src, dest, data_size);
 #else
-	printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
-	assert(0);
-	return 0;
+	uint32_t res = 0;
+	res = dest - src - cpu.eflags.CF;
+
+	set_CF_sbb(src, dest, data_size);
+	set_PF(res);
+	//set_AF(); we don't simulate AF
+	set_ZF(res, data_size);
+	set_SF(res, data_size);
+	set_OF_sbb(res, src, dest, data_size);
+
+	return res&(0xFFFFFFFF >> (32 - data_size));
 #endif
 }
 
@@ -260,8 +268,8 @@ void set_OF_add(uint32_t res, uint32_t src, uint32_t dest, size_t data_size) {
 
 // adc
 void set_CF_adc(uint32_t res, uint32_t src, size_t data_size) {
-	/*CF = 1 when 1.CF == 0 And ext_res < ext_src*/
-	/*			  2.CF == 1 And ext_res <= ext_src*/
+	/*CF = 1 when 1.old CF == 0 And ext_res < ext_src*/
+	/*			  2.old CF == 1 And ext_res <= ext_src*/
 	res = sign_ext(res & (0xFFFFFFFF >> (32 - data_size)), data_size);
 	src = sign_ext(src & (0xFFFFFFFF >> (32 - data_size)), data_size);
 	if(cpu.eflags.CF == 1)
@@ -271,17 +279,7 @@ void set_CF_adc(uint32_t res, uint32_t src, size_t data_size) {
 }
 
 void set_OF_adc(uint32_t res, uint32_t src, uint32_t dest, size_t data_size) {
-	/*if CF = 0, same as add*/
-	/*if CF = 1, CF = 0 when src + 1, dest + 1, src + dest all don't overflow*/
-	if(CF = 0)
-		set_OF_add(res, src, dest, data_size);
-	else {
-		set_OF_add(res, src, 1, data_size);
-		if(cpu.eflags.OF == 1) return;
-		set_OF_add(res, 1, dest, data_size);
-		if(cpu.eflags.OF == 1) return;
-		set_OF_add(res, src, dest, data_size);
-	}
+	set_OF_add(res, src, dest, data_size);
 }
 
 // sub
@@ -315,5 +313,29 @@ void set_OF_sub(uint32_t res, uint32_t src, uint32_t dest, size_t data_size) {
 			cpu.eflags.OF = 0;
 	}else {
 		cpu.eflags.OF = 0;
+	}
+}
+
+// sbb
+void set_CF_sbb(uint32_t src, uint32_t dest, size_t data_size) {
+	/*if old CF = 0, same as sub*/
+	/*if old CF = 1, CF = 1 when ext_dest <= ext_src*/
+	src = sign_ext(src & (0xFFFFFFFF >> (32 - data_size)), data_size);
+	dest = sign_ext(dest & (0xFFFFFFFF >> (32 - data_size)), data_size);
+	if(cpu.eflags.CF == 0)
+		cpu.eflags.CF = dest < src;
+	else
+		cpu.eflags.CF = dest <= src;
+}
+
+void set_OF_sbb(uint32_t res, uint32_t src, uint32_t dest, size_t data_size) {
+	/*if old CF = 0, same as sub*/
+	/*if old CF = 1, */
+	if(cpu.eflags.CF == 0)
+		set_OF_sub(res, src, dest, data_size);
+	else{
+		set_OF_sub(res, src, dest, data_size);
+		if(cpu.eflags.CF == 1) return;
+		res
 	}
 }
