@@ -199,12 +199,15 @@ uint32_t alu_sal(uint32_t src, uint32_t dest, size_t data_size) {
 
 // add
 void set_CF_add(uint32_t res, uint32_t src, size_t data_size) {
+	/*CF = 1 when res < src*/
 	res = sign_ext(res & (0xFFFFFFFF >> (32 - data_size)), data_size);
 	src = sign_ext(src & (0xFFFFFFFF >> (32 - data_size)), data_size);
 	cpu.eflags.CF = res < src;
 }
 
 void set_PF(uint32_t res) {
+	/*count the number of 1 in low 8 bits of res*/
+	/*PF = 1 when the number is odd*/
 	int num_of_1 = 0;
 	for(int i = 0; i < 8; i++){
 		if((res&1) == 1)
@@ -215,11 +218,13 @@ void set_PF(uint32_t res) {
 }
 
 void set_ZF(uint32_t res, size_t data_size) {
+	/*ZF = 1 when data_size bits of res == 0*/
 	res = res&(0xFFFFFFFF >> (32 - data_size));
 	cpu.eflags.ZF = (res == 0);
 }
 
 void set_SF(uint32_t res, size_t data_size) {
+	/*SF = 1 when res[data_size - 1] == 1*/
 	/*my version*/
 	//uint32_t judge = 1 << (data_size - 1);
 	//cpu.eflags.SF = ((judge&res) == 0)? 0:1;
@@ -229,6 +234,7 @@ void set_SF(uint32_t res, size_t data_size) {
 }
 
 void set_OF_add(uint32_t res, uint32_t src, uint32_t dest, size_t data_size) {
+	/*OF = 1 when pos + pos = neg Or neg + neg = pos*/
 	switch(data_size) {
 		case 8:
 				res = sign_ext(res & 0xFF, 8);
@@ -254,6 +260,8 @@ void set_OF_add(uint32_t res, uint32_t src, uint32_t dest, size_t data_size) {
 
 // adc
 void set_CF_adc(uint32_t res, uint32_t src, size_t data_size) {
+	/*CF = 1 when 1.CF == 0 And ext_res < ext_src*/
+	/*			  2.CF == 1 And ext_res <= ext_src*/
 	res = sign_ext(res & (0xFFFFFFFF >> (32 - data_size)), data_size);
 	src = sign_ext(src & (0xFFFFFFFF >> (32 - data_size)), data_size);
 	if(cpu.eflags.CF == 1)
@@ -263,7 +271,17 @@ void set_CF_adc(uint32_t res, uint32_t src, size_t data_size) {
 }
 
 void set_OF_adc(uint32_t res, uint32_t src, uint32_t dest, size_t data_size) {
-	set_OF_add(res, src, dest, data_size);
+	/*if CF = 0, same as add*/
+	/*if CF = 1, */
+	if(CF = 0)
+		set_OF_add(res, src, dest, data_size);
+	else {
+		set_OF_add(res, src, 1, data_size);
+		if(cpu.eflags.OF == 1) return;
+		set_OF_add(res, 1, dest, data_size);
+		if(cpu.eflags.OF == 1) return;
+		set_OF_add(res, src, dest, data_size);
+	}
 }
 
 // sub
