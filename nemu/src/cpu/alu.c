@@ -23,7 +23,7 @@ uint32_t alu_adc(uint32_t src, uint32_t dest, size_t data_size) {
 	return __ref_alu_adc(src, dest, data_size);
 #else
 	uint_32 res = 0;
-	res = dest + src + cpu.eflags;
+	res = dest + src + cpu.eflags.CF;
 	
 	set_CF_adc(res, src, data_size);
 	set_PF(res);
