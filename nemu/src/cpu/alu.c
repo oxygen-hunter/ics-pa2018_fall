@@ -9,7 +9,7 @@ uint32_t alu_add(uint32_t src, uint32_t dest, size_t data_size) {
 
 	set_CF_add(res, src, data_size);
 	set_PF(res);
-	//set_AF();
+	//set_AF(); we don't simulate AF
 	set_ZF(res, data_size);
 	set_SF(res, data_size);
 	set_OF_add(res, src, dest, data_size);
@@ -179,3 +179,30 @@ uint32_t alu_sal(uint32_t src, uint32_t dest, size_t data_size) {
 	return 0;
 #endif
 }
+
+void set_CF_add(uint32_t res, uint32_t src, size_t data_size) {
+	
+}
+
+void set_PF(uint32_t res) {
+	int num_of_1 = 0;
+	for(int i = 0; i < 8; i++)
+		if(res&1 == 1)
+			num_of_1++;
+		res >>= 1;
+	}
+	cpu.PF = ((num_of_1%2 == 0)? 1:0);
+}
+
+void set_ZF(uint32_t res, size_t data_size) {
+	uint32_t if_Zero = res&(0xFFFFFFFF >> (32 - data_size));
+	cpu.ZF = (if_Zero == 0);
+}
+
+void set_SF(uint32_t res, size_t data_size) {
+	uint32_t judge = 1 << (data_size - 1);
+	cpu.SF = ((judge&res) == 0)? 0:1;
+}
+
+void set_OF_add(uint32_t res, uint32_t src, size_t data_size);
+
