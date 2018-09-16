@@ -272,7 +272,7 @@ void set_CF_adc(uint32_t res, uint32_t src, size_t data_size) {
 
 void set_OF_adc(uint32_t res, uint32_t src, uint32_t dest, size_t data_size) {
 	/*if CF = 0, same as add*/
-	/*if CF = 1, */
+	/*if CF = 1, CF = 0 when src + 1, dest + 1, src + dest all don't overflow*/
 	if(CF = 0)
 		set_OF_add(res, src, dest, data_size);
 	else {
@@ -286,12 +286,15 @@ void set_OF_adc(uint32_t res, uint32_t src, uint32_t dest, size_t data_size) {
 
 // sub
 void set_CF_sub(uint32_t src, uint32_t dest, size_t data_size) {
+	/*CF = 1 when ext_dest < ext_src*/
 	src = sign_ext(src & (0xFFFFFFFF >> (32 - data_size)), data_size);
 	dest = sign_ext(dest & (0xFFFFFFFF >> (32 - data_size)), data_size);
 	cpu.eflags.CF = dest < src;
 }
 
 void set_OF_sub(uint32_t res, uint32_t src, uint32_t dest, size_t data_size) {
+	/*CF = 1 when 1.neg - pos = pos*/
+	/*			  2.pos - neg = neg*/
 	switch(data_size) {
 		case 8:
 				res = sign_ext(res & 0xFF, 8);
