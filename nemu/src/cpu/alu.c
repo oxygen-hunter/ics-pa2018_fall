@@ -189,7 +189,7 @@ void set_CF_add(uint32_t res, uint32_t src, size_t data_size) {
 void set_PF(uint32_t res) {
 	int num_of_1 = 0;
 	for(int i = 0; i < 8; i++){
-		if(res&1 == 1)
+		if((res&1) == 1)
 			num_of_1++;
 		res >>= 1;
 	}
