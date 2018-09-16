@@ -30,7 +30,7 @@ uint32_t alu_adc(uint32_t src, uint32_t dest, size_t data_size) {
 	//set_AF(); we don't simulate AF
 	set_ZF(res, data_size);
 	set_SF(res, data_size);
-	set_OF_add(res, src, dest, data_size);
+	set_OF_add(res, src, data_size);
 
 	return res&(0xFFFFFFFF >> (32 - data_size));
 #endif
@@ -242,11 +242,9 @@ void set_OF_add(uint32_t res, uint32_t src, uint32_t dest, size_t data_size) {
 	}
 }
 
-void set_CF_adc(uint32_t res, uint32_t src, uint32_t dest, size_t data_size) {
-
+void set_CF_adc(uint32_t res, uint32_t src, size_t data_size) {
 	res = sign_ext(res & (0xFFFFFFFF >> (32 - data_size)), data_size);
 	src = sign_ext(src & (0xFFFFFFFF >> (32 - data_size)), data_size);
-	dest = sign_ext(dest & (0xFFFFFFFF >> (32 - data_size)), data_size);
 	if(cpu.eflags.CF == 1)
 		cpu.eflags.CF = (res <= src);
 	else
