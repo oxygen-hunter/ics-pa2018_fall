@@ -77,6 +77,8 @@ void set_OF_sub(uint32_t res, uint32_t src, uint32_t dest, size_t data_size);
 void set_CF_sbb(uint32_t src, uint32_t dest, size_t data_size);
 void set_OF_sbb(uint32_t res, uint32_t src, uint32_t dest, size_t data_size);
 
+// mul
+void set_CF_OF_mul(uint32_t src, uint32_t dest, size_t data_size);
 
 
 
