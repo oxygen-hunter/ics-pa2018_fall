@@ -207,7 +207,7 @@ void set_SF(uint32_t res, size_t data_size) {
 	//cpu.eflags.SF = ((judge&res) == 0)? 0:1;
 	/*pdf version*/
 	res = sign_ext(res & (0xFFFFFFFF >> (32 - data_size)), data_size);
-	cpu.eflags.SF = sign(result);
+	cpu.eflags.SF = sign(re);
 }
 
 void set_OF_add(uint32_t res, uint32_t src, uint32_t dest, size_t data_size) {
