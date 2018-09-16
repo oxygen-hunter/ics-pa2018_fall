@@ -331,11 +331,11 @@ void set_CF_sbb(uint32_t src, uint32_t dest, size_t data_size) {
 void set_OF_sbb(uint32_t res, uint32_t src, uint32_t dest, size_t data_size) {
 	/*if old CF = 0, same as sub*/
 	/*if old CF = 1, */
-	if(cpu.eflags.CF == 0)
+	/*if(cpu.eflags.CF == 0)*/
 		set_OF_sub(res, src, dest, data_size);
-	else{
-		set_OF_sub(res, src, dest, data_size);
-		if(cpu.eflags.CF == 1) return;
-		res
-	}
+	//else{
+	//	set_OF_sub(res, src, dest, data_size);
+	//	if(cpu.eflags.CF == 1) return;
+	//	res
+	//}
 }
