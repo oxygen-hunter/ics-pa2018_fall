@@ -44,7 +44,7 @@ uint32_t alu_sub(uint32_t src, uint32_t dest, size_t data_size) {
 	uint32_t res = 0;
 	res = dest - src;
 
-	set_CF_sub(res, src, data_size);
+	set_CF_sub(src, dest, data_size);
 	set_PF(res);
 	//set_AF(); we don't simulate AF
 	set_ZF(res, data_size);
@@ -267,13 +267,11 @@ void set_OF_adc(uint32_t res, uint32_t src, uint32_t dest, size_t data_size) {
 }
 
 // sub
-void set_CF_sub(uint32_t res, uint32_t src, size_t data_size) {
-	//res = sign_ext(res & (0xFFFFFFFF >> (32 - data_size)), data_size);
-	src = (src^0xFFFFFFFF) + 1;
-	set_CF_add(res, src, data_size);
+void set_CF_sub(uint32_t src, uint32_t dest, size_t data_size) {
+	cpu.eflags.CF = dest < src;
 }
 
 void set_OF_sub(uint32_t res, uint32_t src, uint32_t dest, size_t data_size) {
-	res = sign_ext(res & (0xFFFFFFFF >> (32 - data_size)), data_size);
+	src = (src^0xFFFFFFFF) + 1;
 	set_OF_add(res, src, dest, data_size);
 }
