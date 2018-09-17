@@ -425,7 +425,7 @@ void set_CF_shl(uint32_t dest, uint32_t src, size_t data_size) {
 }
 
 // shr
-void set_CF_shl(uint32_t dest, uint32_t src, size_t data_size) {
+void set_CF_shr(uint32_t dest, uint32_t src, size_t data_size) {
 	/*00001111>>5, 10000 */
 	if(src != 0){
 		if(src > data_size)
