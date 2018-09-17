@@ -218,17 +218,15 @@ uint32_t alu_shr(uint32_t src, uint32_t dest, size_t data_size) {
 	return __ref_alu_shr(src, dest, data_size);
 #else
 	uint32_t res = 0;
-	uint32_t dest_low = dest&(0xFFFFFFFF >> (32 - data_size)); // restore low data_size bits
-	uint32_t dest_high = dest ^ dest_low; //restore high 32-data_size bits
-	res = dest_high | (dest_low >> src);
+	res = dest >> src;
 
-	cpu.eflags.CF = 0;
+	set_CF_shr(dest, src, data_size);
 	set_PF(res);
 	//set_AF(); we don't simulate AF
 	set_ZF(res, data_size);
 	set_SF(res, data_size);
 	//set_OF_shl; we don't simulate OF
-	return res;
+	return res&(0xFFFFFFFF >> (32 - data_size));
 #endif
 }
 
@@ -421,6 +419,19 @@ void set_CF_shl(uint32_t dest, uint32_t src, size_t data_size) {
 			cpu.eflags.CF = 0;
 		else {
 			uint32_t judge = 1 << (data_size - src);
+			cpu.eflags.CF = ((dest & judge) != 0);
+		}
+	}
+}
+
+// shr
+void set_CF_shl(uint32_t dest, uint32_t src, size_t data_size) {
+	/*00001111>>5, 10000 */
+	if(src != 0){
+		if(src > data_size)
+			cpu.eflags.CF = 0;
+		else {
+			uint32_t judge = 1 << (src - 1);
 			cpu.eflags.CF = ((dest & judge) != 0);
 		}
 	}
