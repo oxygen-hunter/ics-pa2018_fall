@@ -83,6 +83,9 @@ void set_CF_OF_mul(uint32_t src, uint32_t dest, size_t data_size);
 // shl
 void set_CF_shl(uint32_t dest, uint32_t src, size_t data_size);
 
+// shr
+void set_CF_shl(uint32_t dest, uint32_t src, size_t data_size);
+
 
 
 
