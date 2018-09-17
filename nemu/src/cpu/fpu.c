@@ -20,9 +20,9 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 			) {
 
 			/* TODO: shift right, pay attention to sticky bit*/
-			uint64_t sticky_bit = sig_grs & 0xFFFFFFFFFFFFFFFE;
+			uint64_t sticky_bit = sig_grs & 0x1;
 			sig_grs >>= 1;
-			sig_grs = sig_grs & sticky_bit;
+			sig_grs = sig_grs | sticky_bit;
 			exp ++;
 		}
 
@@ -37,9 +37,9 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 			// we have a denormal here, the exponent is 0, but means 2^-126, 
 			// as a result, the significand should shift right once more
 			/* TODO: shift right, pay attention to sticky bit*/
-			uint64_t sticky_bit = sig_grs & 0xFFFFFFFFFFFFFFFE;
+			uint64_t sticky_bit = sig_grs & 0x1;
 			sig_grs >>= 1;
-			sig_grs = sig_grs & sticky_bit;
+			sig_grs = sig_grs | sticky_bit;
 			exp ++;
 		}
 		if(exp < 0) { 
@@ -59,9 +59,9 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 		if(exp == 0) {
 			// denormal
 			/* TODO: shift right, pay attention to sticky bit*/
-			uint64_t sticky_bit = sig_grs & 0xFFFFFFFFFFFFFFFE;
+			uint64_t sticky_bit = sig_grs & 0x1;
 			sig_grs >>= 1;
-			sig_grs = sig_grs & sticky_bit;
+			sig_grs = sig_grs | sticky_bit;
 			exp ++;
 		}
 	} else if(exp == 0 && sig_grs >> (23 + 3) == 1) {
