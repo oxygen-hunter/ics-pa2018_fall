@@ -417,6 +417,8 @@ void set_CF_OF_mul(uint32_t src, uint32_t dest, size_t data_size) {
 void set_CF_shl(uint32_t dest, uint32_t src, size_t data_size) {
 	if(src > data_size)
 		cpu.eflags.CF = 0;
+	else if(src == data_size)
+		cpu.eflags.CF = 1 & dest;
 	else {
 		uint32_t judge = 1 << (data_size - src - 1);
 		cpu.eflags.CF = dest & judge;
