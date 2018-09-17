@@ -81,7 +81,7 @@ uint64_t alu_mul(uint32_t src, uint32_t dest, size_t data_size) {
 	uint64_t res = 0;
 	res = (uint64_t)dest * (uint64_t)src;
 		
-	set_CF_OF_mul(src, dest, data_size);
+	set_CF_OF_mul(res, src, dest, data_size);
 	set_PF(res);
 	//set_AF(); we don't simulate AF
 	set_ZF(res, data_size);
@@ -389,12 +389,11 @@ void set_OF_sbb(uint32_t res, uint32_t src, uint32_t dest, size_t data_size) {
 }
 
 // mul
-void set_CF_OF_mul(uint32_t src, uint32_t dest, size_t data_size) {
+void set_CF_OF_mul(uint64_t res, uint32_t src, uint32_t dest, size_t data_size) {
 	/*CF = 0 when high data_size bits of res == 0*/
-	uint64_t res = (uint64_t)(src * dest);
 	uint64_t res64_high32 = res & 0xFFFFFFFF00000000;
-	uint64_t res32_high16 = res & 0xFFFFFFFFFFFF0000;
-	uint64_t res16_high8 = res & 0xFFFFFFFFFFFFFF00;
+	uint64_t res32_high16 = res & 0x00000000FFFF0000;
+	uint64_t res16_high8 = res & 0x000000000000FF00;
 	switch(data_size) {
 		case 8: 
 				if(res16_high8 == 0)
