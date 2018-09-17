@@ -80,6 +80,9 @@ void set_OF_sbb(uint32_t res, uint32_t src, uint32_t dest, size_t data_size);
 // mul
 void set_CF_OF_mul(uint32_t src, uint32_t dest, size_t data_size);
 
+// shl
+void set_CF_shl(uint32_t dest_low, size_t data_size);
+
 
 
 
