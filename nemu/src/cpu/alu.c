@@ -346,8 +346,8 @@ void set_CF_OF_mul(uint32_t src, uint32_t dest, size_t data_size) {
 	/*CF = 0 when high data_size bits of res == 0*/
 	uint64_t res = (uint64_t)(src * dest);
 	uint64_t res64_high32 = res & 0xFFFFFFFF00000000;
-	uint64_t res32_high16 = res & 0x00000000FFFF0000;
-	uint64_t res16_high8 = res & 0x000000000000FF00;
+	uint64_t res32_high16 = res & 0xFFFFFFFFFFFF0000;
+	uint64_t res16_high8 = res & 0xFFFFFFFFFFFFFF00;
 	switch(data_size) {
 		case 8: 
 				if(res16_high8 == 0)
