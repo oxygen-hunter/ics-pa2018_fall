@@ -105,7 +105,8 @@ uint32_t alu_div(uint64_t src, uint64_t dest, size_t data_size) {
 	return __ref_alu_div(src, dest, data_size);
 #else
 	uint32_t res = 0;
-	assert(src != 0);
+	if(src == 0)
+		assert(0);
 	res = (uint32_t)(dest / src);
 	return res;
 #endif
