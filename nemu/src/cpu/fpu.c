@@ -26,8 +26,9 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 
 		if(exp >= 0xff) {
 			/* TODO: assign the number to infinity */
-			printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
-			assert(0);
+			sig_grs = 0;
+			exp = 0xFF;
+
 			overflow = true;
 		}
 		if(exp == 0) {
