@@ -124,8 +124,7 @@ uint32_t internal_float_add(uint32_t b, uint32_t a) {
 	uint32_t shift = 0;
 
 	/* TODO: shift = ? */
-	printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
-	assert(0);
+	shift = fa.exponent > fb.exponent ? (fa.exponent - fb.exponent):(fb.exponent - fb.exponent);
 	assert(shift >= 0);
 
 	sig_a = (sig_a << 3); // guard, round, sticky
