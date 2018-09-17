@@ -144,7 +144,7 @@ CORNER_CASE_RULE corner_add[] = {
 
 // a + b
 uint32_t internal_float_add(uint32_t b, uint32_t a) {
-
+	
 	// corner cases
 	int i = 0;
 	for(; i < sizeof(corner_add) / sizeof(CORNER_CASE_RULE); i++) {
@@ -166,7 +166,7 @@ uint32_t internal_float_add(uint32_t b, uint32_t a) {
 		fa.val = b;
 		fb.val = a;
 	}
-
+printf("fb.exponent = %x\n", fb.exponent);
 	uint32_t sig_a, sig_b, sig_res;
 	sig_a = fa.fraction;
 	if(fa.exponent != 0) sig_a |= 0x800000; // the hidden 1
@@ -202,7 +202,8 @@ uint32_t internal_float_add(uint32_t b, uint32_t a) {
 	else { f.sign = 0; }
 
 	uint32_t exp_res = fb.exponent;
-	printf("before internal_nomalize, f.sign = %x, exp_res = %x, sig_res = %x\n", f.sign, exp_res, sig_res);
+printf("fb.exponent = %x\n", fb.exponent);
+printf("before internal_nomalize, f.sign = %x, exp_res = %x, sig_res = %x\n", f.sign, exp_res, sig_res);
 	return internal_normalize(f.sign, exp_res, sig_res);
 }
 
