@@ -206,7 +206,7 @@ uint32_t alu_shl(uint32_t src, uint32_t dest, size_t data_size) {
 	//res = dest_high | dest_low_shl_cut;
 	res = dest_low_shl_cut;
 
-	set_CF_shl(dest_low, data_size);
+	set_CF_shl(dest, data_size);
 	set_PF(res);
 	//set_AF(); we don't simulate AF
 	set_ZF(res, data_size);
