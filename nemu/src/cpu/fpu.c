@@ -53,14 +53,16 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 		// normalize toward left
 		while(((sig_grs >> (23 + 3)) == 0) && exp > 0) {
 			/* TODO: shift left */
-			printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
-			assert(0);
+			sig_grs <<= 1;
+			exp --;
 		}
 		if(exp == 0) {
 			// denormal
 			/* TODO: shift right, pay attention to sticky bit*/
-			printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
-			assert(0);
+			uint64_t sticky_bit = sig_grs & 0xFFFFFFFFFFFFFFFE;
+			sig_grs >>= 1;
+			sig_grs = sig_grs & sticky_bit;
+			exp ++;
 		}
 	} else if(exp == 0 && sig_grs >> (23 + 3) == 1) {
 		// two denormals result in a normal
