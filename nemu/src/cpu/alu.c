@@ -116,9 +116,11 @@ int32_t alu_idiv(int64_t src, int64_t dest, size_t data_size) {
 #ifdef NEMU_REF_ALU
 	return __ref_alu_idiv(src, dest, data_size);
 #else
-	printf("\e[0;31mPlease implement me at alu.c\e[0m\n");
-	assert(0);
-	return 0;
+	int32_t res = 0;
+	if(src == 0)
+		assert(0);
+	res = (int32_t)(dest / src);
+	return res;
 #endif
 }
 
