@@ -71,8 +71,41 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 
 	if(!overflow) {
 		/* TODO: round up and remove the GRS bits */
-		printf("\e[0;31mPlease implement me at fpu.c\e[0m\n");
-		assert(0);
+		uint32_t grs = sig_grs & 0x7;
+		sig_grs = sig_grs & 0xFFFFFFF8; // lose grs
+		if(grs > 0x4) {
+			sig_grs += 0x8; //add 1
+		}
+		else if(grs == 0x4) {
+			if(((sig_grs >> 3) & 0x1) == 1)
+				sig_grs += 8; //if grs is odd, add 1
+		}
+		else
+			;//do nothing
+		
+		while((((sig_grs >> (23 + 3)) > 1) && exp < 0xff) // condition 1
+			|| // or
+			(sig_grs > 0x04 && exp < 0) // condition 2
+			) {
+
+			/* TODO: shift right, pay attention to sticky bit*/
+			uint64_t sticky_bit = sig_grs & 0x1;
+			sig_grs >>= 1;
+			sig_grs = sig_grs | sticky_bit;
+			exp ++;
+		}
+
+		if(exp >= 0xff) {
+			/* TODO: assign the number to infinity */
+			sig_grs = 0;
+			exp = 0xFF;
+
+			overflow = true;
+		}
+		
+		sig_grs >>= 3; // lose grs to a real sig
+		if(exp > 0) // if normal, lose hidden 1
+			sig_grs = sig_grs & (1 << 23);
 	}
 
 
@@ -132,7 +165,7 @@ uint32_t internal_float_add(uint32_t b, uint32_t a) {
 	uint32_t shift = 0;
 
 	/* TODO: shift = ? */
-	shift = fa.exponent > fb.exponent ? (fa.exponent - fb.exponent):(fb.exponent - fb.exponent);
+	shift = (fb.exponent == 0 ? fb.exponent + 1 : fb.exponent) - (fa.exponent == 0 ? fa.exponent + 1 : fa.exponent);
 	assert(shift >= 0);
 
 	sig_a = (sig_a << 3); // guard, round, sticky
