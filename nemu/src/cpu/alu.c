@@ -201,9 +201,10 @@ uint32_t alu_shl(uint32_t src, uint32_t dest, size_t data_size) {
 #else
 	uint32_t res = 0;
 	uint32_t dest_low = dest&(0xFFFFFFFF >> (32 - data_size)); // restore low data_size bits
-	uint32_t dest_high = dest ^ dest_low; //restore high 32-data_size bits
+	//uint32_t dest_high = dest ^ dest_low; //restore high 32-data_size bits
 	uint32_t dest_low_shl_cut = (dest_low << src) & (0xFFFFFFFF >> (32 - data_size)); // get low data_size bits after shl
-	res = dest_high | dest_low_shl_cut;
+	//res = dest_high | dest_low_shl_cut;
+	res = dest_low_shl_cut;
 
 	set_CF_shl(dest_low, data_size);
 	set_PF(res);
