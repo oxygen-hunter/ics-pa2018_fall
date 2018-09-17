@@ -415,12 +415,13 @@ void set_CF_OF_mul(uint32_t src, uint32_t dest, size_t data_size) {
 
 // shl
 void set_CF_shl(uint32_t dest, uint32_t src, size_t data_size) {
+	/*CF = the last bit that shift out*/
 	if(src != 0){
 		if(src > data_size)
 			cpu.eflags.CF = 0;
 		else {
 			uint32_t judge = 1 << (data_size - src);
-			cpu.eflags.CF = dest & judge;
+			cpu.eflags.CF = ((dest & judge) != 0);
 		}
 	}
 }
