@@ -92,6 +92,10 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 		else
 			;//do nothing
 		
+		sig_grs >>= 3; // lose grs to a real sig
+		if(exp > 0) // if normal, lose hidden 1
+			sig_grs = sig_grs & (0x7FFFFF);
+
 		if((sig_grs >> (23 + 3)) > 1 || exp < 0) {
 		// normalize toward right
 		while((((sig_grs >> (23 + 3)) > 1) && exp < 0xff) // condition 1
@@ -137,9 +141,6 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 		}
 	}
 		
-		sig_grs >>= 3; // lose grs to a real sig
-		if(exp > 0) // if normal, lose hidden 1
-			sig_grs = sig_grs & (0x7FFFFF);
 	}
 
 
