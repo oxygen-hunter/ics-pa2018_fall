@@ -71,7 +71,7 @@ inline uint32_t internal_normalize(uint32_t sign, int32_t exp, uint64_t sig_grs)
 			sig_grs = sig_grs >> 1;
 			sig_grs |= sticky;
 			
-			exp ++;
+
 		}
 	} else if(exp == 0 && sig_grs >> (23 + 3) == 1) {
 		// two denormals result in a normal
@@ -166,8 +166,6 @@ uint32_t internal_float_add(uint32_t b, uint32_t a) {
 		fa.val = b;
 		fb.val = a;
 	}
-printf("b = %x\n", b);
-printf("b.exponent = %x\n", fb.exponent);
 	uint32_t sig_a, sig_b, sig_res;
 	sig_a = fa.fraction;
 	if(fa.exponent != 0) sig_a |= 0x800000; // the hidden 1
@@ -203,7 +201,6 @@ printf("b.exponent = %x\n", fb.exponent);
 	else { f.sign = 0; }
 
 	uint32_t exp_res = fb.exponent;
-printf("fb.exponent = %x\n", fb.exponent);
 printf("before internal_nomalize, f.sign = %x, exp_res = %x, sig_res = %x\n", f.sign, exp_res, sig_res);
 	return internal_normalize(f.sign, exp_res, sig_res);
 }
