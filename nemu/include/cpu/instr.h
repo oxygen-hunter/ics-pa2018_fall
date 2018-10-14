@@ -23,6 +23,7 @@ extern uint8_t data_size;
 #include "cpu/instr/x87.h"
 
 #include "cpu/instr/add.h"
+#include "cpu/instr/or.h"
 
 /* TODO: add more instructions here */
 
