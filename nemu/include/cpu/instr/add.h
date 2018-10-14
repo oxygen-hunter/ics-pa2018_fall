@@ -5,4 +5,6 @@ make_instr_func(__add_r2rm_b); //0x00
 make_instr_func(__add_r2rm_v); //0x01
 make_instr_func(__add_rm2r_b); //0x02
 make_instr_func(__add_rm2r_v); //0x03
+make_instr_func(__add_i2a_b); //0x04
+make_instr_func(__add_i2a_v); //0x05
 #endif
