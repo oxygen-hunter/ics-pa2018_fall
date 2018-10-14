@@ -3,6 +3,7 @@
 
 #include "nemu.h"
 #include "device/i8259_pic.h"
+#include "cpu/instr/mov.h"
 #include "cpu/instr/add.h"
 
 typedef union GateDescriptor {
