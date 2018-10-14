@@ -9,7 +9,7 @@ make_instr_func(__push_r_v) { //0x50-0x57
 
 	esp.type = OPR_REG;
 	esp.data_size = data_size;
-	esp.addr = 4;
+	esp.addr = 4; //esp = grp[4]
 
 	operand_read(&r); 
 printf("r.val:%x\n",r.val);
