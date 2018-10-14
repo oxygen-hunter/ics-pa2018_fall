@@ -1,7 +1,7 @@
 #include "cpu/instr.h"
 
 make_instr_func(__push_r_v) { //0x50-0x57
-	OPERAND r, esp;
+	OPERAND r, esp, mem;
 
 	r.type = OPR_REG;
 	r.data_size = data_size;
@@ -19,9 +19,11 @@ make_instr_func(__push_r_v) { //0x50-0x57
 	operand_write(&esp);
 //printf("esp.val:%x\n",esp.val);
 
-	r.type = OPR_MEM; //movl (esp), r
-	r.addr = esp.val;
-	operand_write(&r);
+	mem.type = OPR_MEM; //movl (esp), r
+	mem.data_size = data_size;
+	mem.val = r.val;
+	mem.addr = esp.val;
+	operand_write(&mem);
 print_asm_1("push", "", 1, &r);
 	return 1;
 }
