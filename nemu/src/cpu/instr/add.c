@@ -74,9 +74,22 @@ make_instr_func(__add_i2a_b) { //0x04
 	
 	return len + 1; //opcode + imm
 }
-make_instr_func(__add_i2a_v); //0x05
+make_instr_func(__add_i2a_v) { //0x05
+	OPERAND imm, a;
+	
+	int len = 1; //opcode length = 1
+	imm.type = OPR_IMM;
+	imm.data_size = data_size;
+	imm.addr = eip + len;
 
-
-
-
-
+	a.type = OPR_REG;
+	a.data_size = data_size;
+	a.addr = 0; //EAX
+	
+	operand_read(&a); //get AL
+	operand_read(&imm); //get imm
+	a.val += imm.val;
+	operand_write(&a);
+	
+	return len + data_size/8; //opcode + imm
+}
