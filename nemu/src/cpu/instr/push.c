@@ -8,7 +8,7 @@ make_instr_func(__push_r_v) { //0x50-0x57
 	r.addr = opcode & 0x7;
 
 	esp.type = OPR_REG;
-	esp.daya_size = data_size;
+	esp.data_size = data_size;
 	esp.addr = 4;
 
 	operand_read(&r);
