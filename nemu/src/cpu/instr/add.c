@@ -61,7 +61,8 @@ make_instr_func(__add_rm2r_v) { //0x03
 	len += modrm_r_rm(eip + 1, &r, &rm);
 
 	operand_read(&rm);
-	r.val += rm.val;
+	//r.val += rm.val;
+	r.val = alu_add(rm.val, r.val, data_size);
 	operand_write(&r);
 
 	return len;
@@ -80,7 +81,8 @@ make_instr_func(__add_i2a_b) { //0x04
 	
 	operand_read(&a); //get AL
 	operand_read(&imm); //get imm
-	a.val += imm.val;
+	//a.val += imm.val;
+	a.val = alu_add(imm.val, a.val, 8);
 	operand_write(&a);
 	
 	return len + 1; //opcode + imm_b
@@ -99,7 +101,8 @@ make_instr_func(__add_i2a_v) { //0x05
 	
 	operand_read(&a); //get AL
 	operand_read(&imm); //get imm
-	a.val += imm.val;
+	//a.val += imm.val;
+	a.val = alu_add(imm.val, a.val, data_size);
 	operand_write(&a);
 	
 	return len + data_size/8; //opcode + imm_v
