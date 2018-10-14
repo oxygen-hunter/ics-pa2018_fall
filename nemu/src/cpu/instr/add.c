@@ -42,4 +42,16 @@ make_instr_func(__add_rm2r_b) { //0x02
 	return len;
 }
 
-make_instr_func(__add_rm2r_v); //0x03
+make_instr_func(__add_rm2r_v) { //0x03
+	OPERAND rm, r;
+
+	r.data_size = data_size;
+	rm.data_size = data_size;
+	int len = 1;
+	// read ModR/M for src and dest
+	len += modrm_r_rm(eip + 1, &r, &rm);
+	operand_read(&rm);
+	r.val += rm.val;
+	operand_write(&r);
+	return len;
+}
