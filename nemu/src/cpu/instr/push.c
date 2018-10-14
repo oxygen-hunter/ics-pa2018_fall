@@ -22,5 +22,6 @@ make_instr_func(__push_r_v) { //0x50-0x57
 	r.type = OPR_MEM; //movl (esp), r
 	r.addr = esp.val;
 	operand_write(&r);
+print_asm_1("push", "", 1, &r);
 	return 1;
 }
