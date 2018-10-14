@@ -11,7 +11,7 @@ make_instr_func(__push_r_v) { //0x50-0x57
 	esp.daya_size = data_size;
 	esp.addr = 4;
 
-	operand_read(&r);
+	operand_read(&r); printf("r.val%u
 	operand_read(&esp);
 	esp.val = alu_sub(0x4, esp.val, data_size); //esp -= 4
 	operand_write(&esp);
@@ -19,5 +19,5 @@ make_instr_func(__push_r_v) { //0x50-0x57
 	r.type = OPR_MEM; //movl r, (esp)
 	r.addr = esp.val;
 	operand_write(&r);
-	
+	return 1;
 }
