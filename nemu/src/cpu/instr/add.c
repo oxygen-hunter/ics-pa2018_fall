@@ -8,9 +8,11 @@ make_instr_func(__add_r2rm_b) { //0x00
 	int len = 1;
 	// read ModR/M for src and dest
 	len += modrm_r_rm(eip + 1, &r, &rm);
+
 	operand_read(&r);
 	rm.val += r.val;
 	operand_write(&rm);
+
 	return len;
 }
 
@@ -22,9 +24,11 @@ make_instr_func(__add_r2rm_v) { //0x01
 	int len = 1;
 	// read ModR/M for src and dest
 	len += modrm_r_rm(eip + 1, &r, &rm);
+
 	operand_read(&r);
 	rm.val += r.val;
 	operand_write(&rm);
+
 	return len;
 }
 
@@ -36,9 +40,11 @@ make_instr_func(__add_rm2r_b) { //0x02
 	int len = 1;
 	// read ModR/M for src and dest
 	len += modrm_r_rm(eip + 1, &r, &rm);
+
 	operand_read(&rm);
 	r.val += rm.val;
 	operand_write(&r);
+
 	return len;
 }
 
@@ -50,9 +56,11 @@ make_instr_func(__add_rm2r_v) { //0x03
 	int len = 1;
 	// read ModR/M for src and dest
 	len += modrm_r_rm(eip + 1, &r, &rm);
+
 	operand_read(&rm);
 	r.val += rm.val;
 	operand_write(&r);
+
 	return len;
 }
 make_instr_func(__add_i2a_b) { //0x04
@@ -72,7 +80,7 @@ make_instr_func(__add_i2a_b) { //0x04
 	a.val += imm.val;
 	operand_write(&a);
 	
-	return len + 1; //opcode + imm
+	return len + 1; //opcode + imm_b
 }
 make_instr_func(__add_i2a_v) { //0x05
 	OPERAND imm, a;
@@ -91,5 +99,27 @@ make_instr_func(__add_i2a_v) { //0x05
 	a.val += imm.val;
 	operand_write(&a);
 	
-	return len + data_size/8; //opcode + imm
+	return len + data_size/8; //opcode + imm_v
 }
+
+make_instr_func(__add_i2rm_bv) { //0x83[0]
+	OPERAND imm, rm;
+	
+	int len = 1; //opcode len = 1
+	rm.data_size = data_size;
+	len += modrm_rm(eip + 1, &rm);
+	
+	imm.type = OPR_IMM;
+	imm.data_size = 8;
+	imm.addr = eip + len;
+
+	operand_read(&imm); //get imm
+	rm.val += imm.val;
+	operand_write(&rm);
+
+	return len + 1; //opcode + modrm + imm_b
+}
+
+
+
+
