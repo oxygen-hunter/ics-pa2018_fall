@@ -120,7 +120,8 @@ make_instr_func(__add_i2rm_bv) { //0x83[0]
 	imm.addr = eip + len;
 
 	operand_read(&imm); //get imm
-	rm.val += imm.val;
+	//rm.val += imm.val;
+	rm.val = alu_add(imm.val, rm.val, data_size);
 	operand_write(&rm);
 
 	return len + 1; //opcode + modrm + imm_b
@@ -138,7 +139,8 @@ make_instr_func(__adc_i2rm_bv) { //0x83[2]
 	imm.addr = eip + len;
 
 	operand_read(&imm); //get imm
-	rm.val += imm.val + cpu.CF;
+	//rm.val += imm.val + cpu.CF;
+	rm.val = alu_adc(imm.val, rm.val, data_size);
 	operand_write(&rm);
 
 	return len + 1; //opcode + modrm + imm_b
