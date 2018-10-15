@@ -17,7 +17,7 @@ make_instr_func(call_near) {
 		esp.val = alu_sub(0x4, esp.val, data_size); //esp -= 4;
 		operand_write(&esp);
 		
-		mem.type = OPR_MEM; //movl (esp), r
+		mem.type = OPR_MEM; //push ret address
 		mem.data_size = data_size;
 		mem.val = eip + 1 + data_size / 8;
 		mem.addr = esp.val;
