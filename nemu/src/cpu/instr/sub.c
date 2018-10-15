@@ -8,7 +8,7 @@ static void instr_execute_2op() {
 
 make_instr_impl_2op(sub, i, rm, bv);
 
-/*
+/* stupid version...
 make_instr_func(__sub_i2rm_bv) { //0x83[5]
 	OPERAND imm, rm;
 	
