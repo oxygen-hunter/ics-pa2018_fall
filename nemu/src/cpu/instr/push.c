@@ -1,6 +1,6 @@
 #include "cpu/instr.h"
 
-make_instr_func(__push_r_v) { //0x50-0x57
+make_instr_func(push_r_v) { //0x50-0x57
 	OPERAND r, esp, mem;
 
 	r.type = OPR_REG;
