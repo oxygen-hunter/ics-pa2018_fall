@@ -6,6 +6,9 @@ static void instr_execute_2op() {
 	operand_write(&opr_dest);
 }
 
+make_instr_impl_2op(sub, i, rm, bv);
+
+/*
 make_instr_func(__sub_i2rm_bv) { //0x83[5]
 	OPERAND imm, rm;
 	
@@ -43,3 +46,4 @@ make_instr_func(__sbb_i2rm_bv) { //0x83[3]
 print_asm_2("sbb", "bv", len + 1, &imm, &rm);
 	return len + 1; //opcode + modrm + imm_b
 }
+*/
