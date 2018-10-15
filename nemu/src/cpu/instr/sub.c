@@ -15,7 +15,7 @@ make_instr_func(__sub_i2rm_bv) { //0x83[5]
 	//rm.val -= imm.val;
 	rm.val = alu_sub(imm.val, rm.val, data_size);
 	operand_write(&rm);
-
+print_asm_2("sub", "bv", &i, &rm);
 	return len + 1; //opcode + modrm + imm_b
 }
 
@@ -34,6 +34,6 @@ make_instr_func(__sbb_i2rm_bv) { //0x83[3]
 	//rm.val -= imm.val + cpu.CF;
 	rm.val = alu_sbb(imm.val, rm.val, data_size);
 	operand_write(&rm);
-
+print_asm_2("sbb", "bv", &i, &rm);
 	return len + 1; //opcode + modrm + imm_b
 }
