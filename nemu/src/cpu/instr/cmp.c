@@ -11,7 +11,7 @@ make_instr_impl_2op(cmp, r, rm, v); //0x39
 make_instr_impl_2op(cmp, rm, r, b); //0x3a
 make_instr_impl_2op(cmp, rm, r, v); //0x3b
 make_instr_impl_2op(cmp, i, a, b); //0x3c
-make_instr_impl_2op(cmp, r, a, v); //0x3d
+make_instr_impl_2op(cmp, i, a, v); //0x3d
 
 
 
