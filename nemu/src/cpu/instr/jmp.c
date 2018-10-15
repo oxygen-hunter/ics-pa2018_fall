@@ -37,7 +37,7 @@ print_asm_1("jmp", "b", 2, &imm);
 	cpu.eip += imm.val;
 	return 2;
 }
-/* seems useless...
+/* seems useless... no, truly useless...
 make_instr_func(jna_short_) { //0x76
 	OPERAND rel;
 	rel.type = OPR_IMM;
