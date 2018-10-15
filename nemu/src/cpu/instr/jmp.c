@@ -26,5 +26,14 @@ make_instr_func(jmp_near) {
 
 make_instr_func(jmp_short) {
 	OPERAND imm;
+	
+	int len = 1;
+	imm.type = OPR_IMM;
+	imm.data_size = 8;
+	imm.addr = eip + len;
+	operand_read(&imm);
+
+	cpu.eip = imm;
+	return 0;
 }
 
