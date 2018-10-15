@@ -8,4 +8,6 @@ make_instr_func(__or_rm2r_v); //0x0b
 make_instr_func(__or_i2a_b); //0x0c
 make_instr_func(__or_i2a_v); //0x0d
 
+make_instr_func(__or_i2rm_bv); //0x83[1]
+
 #endif
