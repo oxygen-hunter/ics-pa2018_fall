@@ -1,5 +1,11 @@
 #include "cpu/instr.h"
 
+static void instr_execute_2op() {
+	operand_read(&opr_src);
+	opr_dest.val = alu_add(opr_src.val, opr_src.val, data_size);
+	operand_write(&opr_dest);
+}
+
 make_instr_func(__add_r2rm_b) { //0x00
 	OPERAND r, rm;
 
