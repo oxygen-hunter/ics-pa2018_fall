@@ -19,7 +19,7 @@ make_instr_func(__sub_i2rm_bv) { //0x83[5]
 	return len + 1; //opcode + modrm + imm_b
 }
 
-make_instr_func(__adc_i2rm_bv) { //0x83[3]
+make_instr_func(__sbb_i2rm_bv) { //0x83[3]
 	OPERAND imm, rm;
 	
 	int len = 1; //opcode len = 1
