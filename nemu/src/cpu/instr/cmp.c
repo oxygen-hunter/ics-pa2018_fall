@@ -5,7 +5,7 @@ static void instr_execute_2op() {
 	opr_dest.val = alu_sub(opr_src.val, opr_src.val, data_size);
 }
 
-make_instr_impl_2op(cmp, i, rm, bv);
+make_instr_impl_2op(cmp, i, rm, bv); //0x83[7]
 
 
 
