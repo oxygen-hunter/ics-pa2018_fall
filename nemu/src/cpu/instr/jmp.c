@@ -1,5 +1,12 @@
 #include "cpu/instr.h"
 
+/* error: jmp short means len = 0, buf marco's len = 1
+static void make_instr_impl_1op() {
+	operand_read(&src);
+	eip = src.val;
+	operand_write(&src);
+}*/
+
 make_instr_func(jmp_near) {
         OPERAND rel;
         rel.type = OPR_IMM;
