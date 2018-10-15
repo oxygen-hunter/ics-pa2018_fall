@@ -15,7 +15,8 @@ make_instr_func(push_r_v) { //0x50-0x57
 //printf("r.val:%x\n",r.val);
 	operand_read(&esp); 
 //printf("esp.val:%x\n",esp.val);
-	esp.val = alu_sub(0x4, esp.val, data_size); //esp -= 4
+	//esp.val = alu_sub(0x4, esp.val, data_size); 
+	esp.val -= 4;
 	operand_write(&esp);
 //printf("esp.val:%x\n",esp.val);
 
