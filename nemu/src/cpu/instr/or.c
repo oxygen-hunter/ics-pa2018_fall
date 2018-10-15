@@ -23,6 +23,6 @@ make_instr_func(__or_i2rm_bv) { //0x83[1]
 	//rm.val = imm.val | rm.val;
 	rm.val = alu_or(imm.val, rm.val, data_size);
 	operand_write(&rm);
-print_asm_2("or", "bv", &i, &rm);
+print_asm_2("or", "bv", len + 1, &i, &rm);
 	return len + 1; //opcode + modrm + imm_b
 }

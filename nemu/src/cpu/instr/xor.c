@@ -15,6 +15,6 @@ make_instr_func(__xor_i2rm_bv) { //0x83[6]
 	//rm.val = imm.val ^ rm.val;
 	rm.val = alu_xor(imm.val, rm.val, data_size);
 	operand_write(&rm);
-print_asm_2("xor", "bv", &i, &rm);
+print_asm_2("xor", "bv", len + 1, &i, &rm);
 	return len + 1; //opcode + modrm + imm_b
 }

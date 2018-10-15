@@ -15,6 +15,6 @@ make_instr_func(__cmp_i2rm_bv) { //0x83[7]
 	//rm.val - imm.val;
 	alu_sub(imm.val, rm.val, data_size);
 	//operand_write(&rm);
-print_asm_2("cmp", "bv", &i, &rm);
+print_asm_2("cmp", "bv", len + 1, &i, &rm);
 	return len + 1; //opcode + modrm + imm_b
 }
