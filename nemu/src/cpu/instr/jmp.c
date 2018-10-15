@@ -1,6 +1,6 @@
 #include "cpu/instr.h"
 
-/* error: jmp short means len = 0, buf marco's len = 1
+/* error: jmp short means len = 0, buf marco's len = 1, modify marco is too hard
 static void make_instr_impl_1op() {
 	operand_read(&src);
 	eip = src.val;
@@ -22,5 +22,9 @@ make_instr_func(jmp_near) {
 	cpu.eip += offset;
 
         return 1 + data_size / 8;
+}
+
+make_instr_func(jmp_short) {
+	OPERAND imm;
 }
 
