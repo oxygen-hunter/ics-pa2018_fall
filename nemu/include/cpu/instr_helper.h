@@ -45,6 +45,8 @@ void print_asm_3(char * instr, char * suffix, uint8_t len, OPERAND * opr_1, OPER
 		int len = 1; \
 		concat(decode_data_size_, suffix) \
 		concat3(decode_operand, _, concat3(src_type, 2, dest_type)) \
+printf("opr_src.data_size:%u\nopr_dest.data_size:%u\n", opr_src.data_size, opr_dest.data_size);\
+if(opr_src.data_size < opr_dest.data_size) opr_src.val = sign_ext(opr_src.val, opr_dest.data_size);\
 		print_asm_2(#inst_name, opr_dest.data_size == 8 ? "b" : (opr_dest.data_size == 16 ? "w" : "l"), len, &opr_src, &opr_dest); \
 		instr_execute_2op(); \
 		return len; \
