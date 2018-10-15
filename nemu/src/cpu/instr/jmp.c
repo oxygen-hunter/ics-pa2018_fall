@@ -37,7 +37,7 @@ print_asm_1("jmp", "b", 2, &imm);
 	cpu.eip += imm.val;
 	return 2;
 }
-
+/*
 make_instr_func(jna_short_) { //0x76
 	OPERAND rel;
 	rel.type = OPR_IMM;
@@ -55,5 +55,5 @@ print_asm_1("jbe", "", 2, &rel);
 
 	return 1 + data_size / 8;
 
-}
+}*/
 
