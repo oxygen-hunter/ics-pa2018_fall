@@ -1,8 +1,8 @@
 #include "cpu/instr.h"
 
 instr_func opcode_entry[256] = {
-/* 0x00 - 0x03*/	__add_r2rm_b, __add_r2rm_v, __add_rm2r_b, __add_rm2r_v,
-/* 0x04 - 0x07*/	__add_i2a_b, __add_i2a_v, inv, inv,
+/* 0x00 - 0x03*/	add_r2rm_b, add_r2rm_v, add_rm2r_b, add_rm2r_v,
+/* 0x04 - 0x07*/	add_i2a_b, add_i2a_v, inv, inv,
 /* 0x08 - 0x0b*/	inv, inv, inv, inv,
 /* 0x0c - 0x0f*/	inv, inv, inv, opcode_2_byte,
 /* 0x10 - 0x13*/	inv, inv, inv, inv,
@@ -77,7 +77,7 @@ instr_func group_1_v_entry[8] =
 
 /* 0x83 */
 instr_func group_1_bv_entry[8] =
-{__add_i2rm_bv, __or_i2rm_bv, __adc_i2rm_bv, sbb_i2rm_bv, and_i2rm_bv, sub_i2rm_bv, __xor_i2rm_bv, cmp_i2rm_bv};
+{add_i2rm_bv, __or_i2rm_bv, adc_i2rm_bv, sbb_i2rm_bv, and_i2rm_bv, sub_i2rm_bv, __xor_i2rm_bv, cmp_i2rm_bv};
 
 /* 0xc0 */
 instr_func group_2_b_entry[8] =
