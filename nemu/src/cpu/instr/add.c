@@ -123,7 +123,7 @@ make_instr_func(__add_i2rm_bv) { //0x83[0]
 	//rm.val += imm.val;
 	rm.val = alu_add(imm.val, rm.val, data_size);
 	operand_write(&rm);
-print_asm_2("add", "bv", len + 1, &i, &rm);
+print_asm_2("add", "bv", len + 1, &imm, &rm);
 	return len + 1; //opcode + modrm + imm_b
 }
 
@@ -142,7 +142,7 @@ make_instr_func(__adc_i2rm_bv) { //0x83[2]
 	//rm.val += imm.val + cpu.CF;
 	rm.val = alu_adc(imm.val, rm.val, data_size);
 	operand_write(&rm);
-print_asm_2("adc", "bv", len + 1, &i, &rm);
+print_asm_2("adc", "bv", len + 1, &imm, &rm);
 	return len + 1; //opcode + modrm + imm_b
 }
 
