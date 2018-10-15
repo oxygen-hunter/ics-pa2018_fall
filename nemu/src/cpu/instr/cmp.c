@@ -1,5 +1,17 @@
 #include "cpu/instr.h"
 
+static void instr_execute_2op() {
+	operand_read(&opr_src);
+	opr_dest.val = alu_sub(opr_src.val, opr_src.val, data_size);
+}
+
+make_instr_impl_2op(cmp, i, rm, bv);
+
+
+
+
+
+/* stupid version
 make_instr_func(__cmp_i2rm_bv) { //0x83[7]
 	OPERAND imm, rm;
 	
@@ -17,4 +29,4 @@ make_instr_func(__cmp_i2rm_bv) { //0x83[7]
 	//operand_write(&rm);
 print_asm_2("cmp", "bv", len + 1, &imm, &rm);
 	return len + 1; //opcode + modrm + imm_b
-}
+}*/
