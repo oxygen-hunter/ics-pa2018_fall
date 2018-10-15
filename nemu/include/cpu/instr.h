@@ -28,6 +28,7 @@ extern uint8_t data_size;
 #include "cpu/instr/sub.h"
 #include "cpu/instr/and.h"
 #include "cpu/instr/xor.h"
+#include "cpu/instr/cmp.h"
 
 /* TODO: add more instructions here */
 
