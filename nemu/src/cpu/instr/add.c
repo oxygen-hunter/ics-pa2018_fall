@@ -8,6 +8,7 @@ static void instr_execute_2op() {
 
 make_instr_impl_2op(add, i, rm, v);
 
+/* stupid version...
 make_instr_func(__add_r2rm_b) { //0x00
 	OPERAND r, rm;
 
@@ -152,7 +153,7 @@ make_instr_func(__adc_i2rm_bv) { //0x83[2]
 	operand_write(&rm);
 print_asm_2("adc", "bv", len + 1, &imm, &rm);
 	return len + 1; //opcode + modrm + imm_b
-}
+}*/
 
 
 
