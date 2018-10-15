@@ -33,8 +33,8 @@ make_instr_func(jmp_short) {
 	imm.addr = eip + len;
 	operand_read(&imm);
 
-	cpu.eip = imm;
 print_asm_1("jmp", "b", 2, &imm);
+	cpu.eip = imm;
 	return 0;
 }
 
