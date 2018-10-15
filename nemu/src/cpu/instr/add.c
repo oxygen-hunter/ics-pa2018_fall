@@ -6,7 +6,16 @@ static void instr_execute_2op() {
 	operand_write(&opr_dest);
 }
 
+make_instr_impl_2op(add, r, rm, b); //0x00
+make_instr_impl_2op(add, r, rm, v); //0x01
+make_instr_impl_2op(add, rm, r, b); //0x02
+make_instr_impl_2op(add, rm, r, v); //0x03
+make_instr_impl_2op(add, i, a, b); //0x04
+make_instr_impl_2op(add, i, a, v); //0x05
+
+make_instr_func(add, i, rm, bv); //0x83[0]
 make_instr_impl_2op(add, i, rm, v);
+
 
 /* stupid version...
 make_instr_func(__add_r2rm_b) { //0x00
