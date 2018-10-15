@@ -22,6 +22,7 @@ extern uint8_t data_size;
 #include "cpu/instr/special.h"
 #include "cpu/instr/x87.h"
 
+/* TODO: add more instructions here */
 #include "cpu/instr/add.h"
 #include "cpu/instr/or.h"
 #include "cpu/instr/push.h"
@@ -30,6 +31,8 @@ extern uint8_t data_size;
 #include "cpu/instr/xor.h"
 #include "cpu/instr/cmp.h"
 
-/* TODO: add more instructions here */
+
+
+
 
 #endif
