@@ -38,7 +38,7 @@ print_asm_1("jmp", "b", 2, &imm);
 	return 2;
 }
 
-make_instr_func(jbe_short) { 0x76
+make_instr_func(jna_short_) { 0x76
 	OPERAND rel;
 	rel.type = OPR_IMM;
 	rel.sreg = SREG_CS;
