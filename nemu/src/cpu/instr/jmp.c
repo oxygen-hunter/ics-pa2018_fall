@@ -38,7 +38,7 @@ print_asm_1("jmp", "b", 2, &imm);
 	return 2;
 }
 
-make_instr_func(jna_short_) { 0x76
+make_instr_func(jna_short_) { //0x76
 	OPERAND rel;
 	rel.type = OPR_IMM;
 	rel.sreg = SREG_CS;
@@ -50,7 +50,7 @@ make_instr_func(jna_short_) { 0x76
 	int offset = sign_ext(rel.val, data_size);
 print_asm_1("jbe", "", 2, &rel);
 
-	if(cpu.CF == 1 || cpu.OF == 1)
+	if(eflags.CF == 1 || eflags.OF == 1)
 		cpu.eip += offset;
 
 	return 1 + data_size / 8;
