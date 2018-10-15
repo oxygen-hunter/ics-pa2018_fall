@@ -50,7 +50,7 @@ make_instr_func(jna_short_) { //0x76
 	int offset = sign_ext(rel.val, data_size);
 print_asm_1("jbe", "", 2, &rel);
 
-	if(eflags.CF == 1 || eflags.OF == 1)
+	if(cpu.eflags.CF == 1 || cpu.eflags.OF == 1)
 		cpu.eip += offset;
 
 	return 1 + data_size / 8;
