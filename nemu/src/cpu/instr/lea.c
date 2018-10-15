@@ -6,4 +6,8 @@ static void instr_execute_2op() {
 	operand_write(&opr_dest);
 }*/
 
-make_instr_impl_2op(lea, rm, r, v);
+make_instr_fuc(lea) {
+
+	int len = 1;
+	return len;
+}
