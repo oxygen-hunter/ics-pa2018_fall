@@ -10,4 +10,6 @@ make_instr_func(__add_i2a_v); //0x05
 
 make_instr_func(__add_i2rm_bv); //0x83[0]
 make_instr_func(__adc_i2rm_bv); //0x83[2]
+
+make_instr_func(add_i2rm_v); //0x81[0]
 #endif
