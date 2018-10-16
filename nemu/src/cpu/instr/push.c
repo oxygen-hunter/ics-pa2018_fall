@@ -17,6 +17,7 @@ make_instr_func(push_r_v) { //0x50-0x57
 	mem.addr = cpu.esp;
 	operand_write(&mem);
 printf("push's:%x\n", mem.val);
+printf("after push's esp:%x\n", cpu.esp);
 print_asm_1("push", "l", 1, &r);
 	return 1;
 }
