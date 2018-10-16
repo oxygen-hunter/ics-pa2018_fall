@@ -11,7 +11,7 @@ make_instr_func(push_r_v) { //0x50-0x57
 
 	cpu.esp -= data_size; //esp -= 4 or esp -= 2
 
-	mem.type = OPR_MEM; //movl (esp), r
+	mem.type = OPR_MEM; //mov (esp), r
 	mem.data_size = data_size;
 	mem.val = r.val;
 	mem.addr = cpu.esp;
