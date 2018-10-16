@@ -23,7 +23,7 @@ make_instr_func(call_near) {
 	mem.val = eip + 1 + data_size / 8;
 	mem.addr = esp.val;
 	operand_write(&mem);
-//printf("to ret addr:%x\n", mem.val);
+printf("call's ret addr:%x\n", mem.val);
 //printf("esp:%x\n", esp.val);
 
 	int offset = sign_ext(rel.val, data_size);
