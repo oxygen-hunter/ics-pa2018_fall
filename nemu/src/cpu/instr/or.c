@@ -17,6 +17,7 @@ make_instr_impl_2op(or, i, a, b); //0x0c
 make_instr_impl_2op(or, i, a, v); //0x0d
 
 make_instr_impl_2op(or, i, rm, bv); //0x83[1]
+make_instr_impl_2op(or, i, rm, b); //0x80[1]
 make_instr_impl_2op(or, i, rm, v); //0x81[1]
 
 /* stupid version...

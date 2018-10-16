@@ -17,7 +17,7 @@ make_instr_impl_2op(cmp, i, a, b); //0x3c
 make_instr_impl_2op(cmp, i, a, v); //0x3d
 
 make_instr_impl_2op(cmp, i, rm, bv); //0x83[7]
-make_instr_impl_2op(cmp, i, rm, bv); //0x81[7]
+make_instr_impl_2op(cmp, i, rm, v); //0x81[7]
 
 
 /* stupid version
