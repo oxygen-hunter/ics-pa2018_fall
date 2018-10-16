@@ -10,8 +10,7 @@ make_instr_func(ret_near) { //0xc3
 
 print_asm_0("ret", "", 1);
 	cpu.eip = ret_addr.val; //eip = ret address
-	esp.val -= 4; //esp -= 4
-	operand_write(&esp);
+	cpu.esp += data_size / 8; //esp += 4 or 2
 
 	return 0;
 }
