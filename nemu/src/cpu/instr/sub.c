@@ -8,7 +8,15 @@ if(opr_src.data_size < opr_dest.data_size) opr_src.val = sign_ext(opr_src.val, o
 	operand_write(&opr_dest);
 }
 
-make_instr_impl_2op(sub, i, rm, bv);
+make_instr_impl_2op(sub, r, rm, b); //0x28
+make_instr_impl_2op(sub, r, rm, v); //0x29
+make_instr_impl_2op(sub, rm, r, b); //0x2a
+make_instr_impl_2op(sub, rm, r, v); //0x2b
+make_instr_impl_2op(sub, i, a, b); //0x2c
+make_instr_impl_2op(sub, i, a, v); //0x2d
+
+make_instr_impl_2op(sub, i, rm, bv); //0x83[5]
+make_instr_impl_2op(sub, i, rm, v); //0x81[5]
 
 /* stupid version...
 make_instr_func(__sub_i2rm_bv) { //0x83[5]
