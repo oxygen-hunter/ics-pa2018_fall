@@ -2,9 +2,9 @@
 
 static void instr_execute_2op() {
 	operand_read(&opr_src);
-printf("opr_src.data_size:%u\nopr_dest.data_size:%u\n", opr_src.data_size, opr_dest.data_size);\
-if(opr_src.data_size < opr_dest.data_size) opr_src.val = sign_ext(opr_src.val, opr_src.data_size);\
-printf("opr_src.val:%x\n", opr_src.val);
+//printf("opr_src.data_size:%u\nopr_dest.data_size:%u\n", opr_src.data_size, opr_dest.data_size);
+if(opr_src.data_size < opr_dest.data_size) opr_src.val = sign_ext(opr_src.val, opr_src.data_size);
+//printf("opr_src.val:%x\n", opr_src.val);
 	opr_dest.val = alu_and(opr_src.val, opr_dest.val, data_size);
 	operand_write(&opr_dest);
 }
