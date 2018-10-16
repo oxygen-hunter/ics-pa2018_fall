@@ -44,6 +44,7 @@ extern uint8_t data_size;
 #include "cpu/instr/test.h"
 
 #include "cpu/instr/leave.h"
+#include "cpu/instr/setcc.h"
 
 
 
