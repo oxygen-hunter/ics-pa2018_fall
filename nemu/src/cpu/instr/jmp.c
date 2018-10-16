@@ -37,23 +37,16 @@ print_asm_1("jmp", "b", 2, &imm);
 	cpu.eip += imm.val;
 	return 2;
 }
-/* seems useless... no, truly useless...
-make_instr_func(jna_short_) { //0x76
-	OPERAND rel;
-	rel.type = OPR_IMM;
-	rel.sreg = SREG_CS;
-	rel.data_size = 8;
-	rel.addr = eip + 1;
 
-	operand_read(&rel);
+make_instr_func(jmp_near_indirect) { //0xff[4]
+	
 
-	int offset = sign_ext(rel.val, data_size);
-print_asm_1("jbe", "", 2, &rel);
 
-	if(cpu.eflags.CF == 1 || cpu.eflags.OF == 1)
-		cpu.eip += offset;
 
-	return 1 + data_size / 8;
 
-}*/
+}
+
+
+
+
 
