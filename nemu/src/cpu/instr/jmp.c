@@ -29,7 +29,7 @@ make_instr_func(jmp_short) {
 	
 	int len = 1;
 	imm.type = OPR_IMM;
-	imm.data_size = 8;
+	imm.data_size = data_size;
 	imm.addr = eip + len;
 	operand_read(&imm);
 
