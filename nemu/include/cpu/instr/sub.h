@@ -9,7 +9,7 @@ make_instr_func(sub_i2a_b); //0x2c
 make_instr_func(sub_i2a_v); //0x2d
 
 make_instr_func(sub_i2rm_bv); //0x83[5]
-
+make_instr_func(sub_i2rm_b); //0x80[5]
 make_instr_func(sub_i2rm_v); //0x81[5]
 
 #endif

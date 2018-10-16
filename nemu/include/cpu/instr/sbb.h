@@ -9,6 +9,6 @@ make_instr_func(sbb_i2a_b); //0x1c
 make_instr_func(sbb_i2a_v); //0x1d
 
 make_instr_func(sbb_i2rm_bv); //0x83[3]
-
+make_instr_func(sbb_i2rm_b); //0x80[3]
 make_instr_func(sbb_i2rm_v); //0x81[3]
 #endif

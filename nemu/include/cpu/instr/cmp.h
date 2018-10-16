@@ -9,7 +9,7 @@ make_instr_func(cmp_i2a_b); //0x3c
 make_instr_func(cmp_i2a_v); //0x3d
 
 make_instr_func(cmp_i2rm_bv); //0x83[7]
-
+make_instr_func(cmp_i2rm_b); //0x80[7]
 make_instr_func(cmp_i2rm_v); //0x81[7]
 
 #endif
