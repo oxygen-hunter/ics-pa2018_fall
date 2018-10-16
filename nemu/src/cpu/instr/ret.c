@@ -13,6 +13,6 @@ print_asm_0("ret", "", 1);
 	cpu.eip = ret_addr.val; //eip = ret address
 	cpu.esp += data_size / 8; //esp += 4 or 2
 printf("ret's ret address:%x\n", cpu.eip);
-printf("ret's esp:%x\n", cpu.esp);
+printf("after ret's esp:%x\n", cpu.esp);
 	return 0;
 }
