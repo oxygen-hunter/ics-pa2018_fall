@@ -9,6 +9,6 @@ make_instr_func(add_i2a_b); //0x04
 make_instr_func(add_i2a_v); //0x05
 
 make_instr_func(add_i2rm_bv); //0x83[0]
-
+make_instr_func(add_i2rm_b); //0x80[0]
 make_instr_func(add_i2rm_v); //0x81[0]
 #endif
