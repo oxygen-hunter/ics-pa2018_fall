@@ -1,5 +1,6 @@
 #include "cpu/instr.h"
 
+/* stupid version...
 make_instr_func(__xor_i2rm_bv) { //0x83[6]
 	OPERAND imm, rm;
 	
@@ -17,4 +18,4 @@ make_instr_func(__xor_i2rm_bv) { //0x83[6]
 	operand_write(&rm);
 print_asm_2("xor", "bv", len + 1, &imm, &rm);
 	return len + 1; //opcode + modrm + imm_b
-}
+}*/
