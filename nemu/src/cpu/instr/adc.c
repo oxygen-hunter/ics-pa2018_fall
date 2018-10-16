@@ -17,6 +17,7 @@ make_instr_impl_2op(adc, i, a, b); //0x14
 make_instr_impl_2op(adc, i, a, v); //0x15
 
 make_instr_impl_2op(adc, i, rm, bv); //0x83[2]
+make_instr_impl_2op(adc, i, rm, b); //0x80[2]
 make_instr_impl_2op(adc, i, rm, v); //0x81[2]
 
 

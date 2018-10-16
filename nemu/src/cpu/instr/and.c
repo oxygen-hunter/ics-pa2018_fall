@@ -17,6 +17,7 @@ make_instr_impl_2op(and, i, a, b); //0x24
 make_instr_impl_2op(and, i, a, v); //0x25
 
 make_instr_impl_2op(and, i, rm, bv); //0x83[4]
+make_instr_impl_2op(and, i, rm, b); //0x80[4]
 make_instr_impl_2op(and, i, rm, v); //0x81[4]
 
 /* stupid version

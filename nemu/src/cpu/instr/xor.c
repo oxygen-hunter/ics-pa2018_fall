@@ -17,6 +17,7 @@ make_instr_impl_2op(xor, i, a, b); //0x04
 make_instr_impl_2op(xor, i, a, v); //0x05
 
 make_instr_impl_2op(xor, i, rm, bv); //0x83[6]
+make_instr_impl_2op(xor, i, rm, b); //0x80[6]
 make_instr_impl_2op(xor, i, rm, v); //0x81[6]
 
 /* stupid version...
