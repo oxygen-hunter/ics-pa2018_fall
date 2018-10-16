@@ -31,7 +31,7 @@ make_instr_func(ret_near_imm16) { //0xc2
 //printf("now esp:%x\n",cpu.esp);
 	operand_read(&ret_addr);
 
-print_asm_1("ret", "w", 2, &imm);
+print_asm_1("ret", "w", 3, &imm);
 	cpu.eip = ret_addr.val; //eip = ret address
 	cpu.esp += data_size / 8; //esp += 4 or 2
 	
