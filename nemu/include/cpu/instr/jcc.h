@@ -18,4 +18,6 @@ make_instr_func(jge_short_); //0x7d
 make_instr_func(jle_short_); //0x7e
 make_instr_func(jg_short_); //0x7f
 
+make_instr_func(jna_near); //0x0f 86
+
 #endif
