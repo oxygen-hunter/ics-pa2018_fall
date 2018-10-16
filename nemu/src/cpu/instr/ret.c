@@ -1,6 +1,6 @@
 #include "cpu/instr.h"
 
-make_instr_func(ret_near) {
+make_instr_func(ret_near) { //0xc3
 	OPERAND ret_addr, esp;
 
 	esp.type = OPR_REG;
