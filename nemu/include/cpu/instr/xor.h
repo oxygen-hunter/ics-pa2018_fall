@@ -8,6 +8,6 @@ make_instr_func(xor_rm2r_v); //0x33
 make_instr_func(xor_i2a_b); //0x34
 make_instr_func(xor_i2a_v); //0x35
 
-make_instr_func(__xor_i2rm_bv); //0x83[6]
+make_instr_func(xor_i2rm_bv); //0x83[6]
 
 #endif
