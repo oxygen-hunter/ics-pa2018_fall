@@ -17,6 +17,7 @@ if(opr_src.type == OPR_IMM && opr_src.data_size == 8) opr_src.val = sign_ext(opr
 make_instr_impl_1op(push, r, v); //0x50-57
 make_instr_impl_1op(push, i, b); //0x6a
 make_instr_impl_1op(push, i, v); //0x68
+make_instr_impl_1op(push, rm, v); //0xff[6]
 
 /* stupid version...
 make_instr_func(push_r_v) { //0x50-0x57
