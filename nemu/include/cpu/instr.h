@@ -24,22 +24,25 @@ extern uint8_t data_size;
 
 /* TODO: add more instructions here */
 #include "cpu/instr/add.h"
-#include "cpu/instr/adc.h"
 #include "cpu/instr/or.h"
-#include "cpu/instr/push.h"
-#include "cpu/instr/sub.h"
+#include "cpu/instr/adc.h"
+#include "cpu/instr/sbb.h"
 #include "cpu/instr/and.h"
+#include "cpu/instr/sub.h"
 #include "cpu/instr/xor.h"
 #include "cpu/instr/cmp.h"
+
+#include "cpu/instr/push.h"
+#include "cpu/instr/pop.h"
 #include "cpu/instr/call.h"
 #include "cpu/instr/ret.h"
-#include "cpu/instr/sbb.h"
+
 #include "cpu/instr/jcc.h"
 #include "cpu/instr/lea.h"
 #include "cpu/instr/inc.h"
 #include "cpu/instr/dec.h"
 #include "cpu/instr/test.h"
-#include "cpu/instr/pop.h"
+
 
 
 
