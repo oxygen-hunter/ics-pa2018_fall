@@ -43,7 +43,7 @@ make_instr_func(jmp_near_indirect) { //0xff[4]
 
 
 
-	return 1;
+	return 0;
 }
 
 
