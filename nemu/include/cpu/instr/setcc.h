@@ -2,21 +2,20 @@
 #define __INSTR_SETCC_H__
 
 make_instr_func(setne_b);
-/*
-make_instr_func(set, rm, b, a);
-make_instr_func(set, rm, b, ae);
-make_instr_func(set, rm, b, be);
-make_instr_func(set, rm, b, c);
-make_instr_func(set, rm, b, e);
-make_instr_func(set, rm, b, g);
-make_instr_func(set, rm, b, ge);
-make_instr_func(set, rm, b, l);
-make_instr_func(set, rm, b, le);
-make_instr_func(set, rm, b, no);
-make_instr_func(set, rm, b, np);
-make_instr_func(set, rm, b, ns);
-make_instr_func(set, rm, b, o);
-make_instr_func(set, rm, b, p);
-make_instr_func(set, rm, b, s);*/
+make_instr_func(seta_b);
+make_instr_func(setae_b);
+make_instr_func(setbe_b);
+make_instr_func(setc_b);
+make_instr_func(sete_b);
+make_instr_func(setg_b);
+make_instr_func(setge_b);
+make_instr_func(setl_b);
+make_instr_func(setle_b);
+make_instr_func(setno_b);
+make_instr_func(setnp_b);
+make_instr_func(setns_b);
+make_instr_func(seto_b);
+make_instr_func(setp_b);
+make_instr_func(sets_b);
 
 #endif
