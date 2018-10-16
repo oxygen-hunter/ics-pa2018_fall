@@ -15,3 +15,4 @@ make_instr_impl_2op(sbb, i, a, b); //0x1c
 make_instr_impl_2op(sbb, i, a, v); //0x1d
 
 make_instr_impl_2op(sbb, i, rm, bv); //0x83[3]
+make_instr_impl_2op(sbb, i, rm, v); //0x81[3]
