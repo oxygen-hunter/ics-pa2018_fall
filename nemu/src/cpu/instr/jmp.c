@@ -29,11 +29,11 @@ make_instr_func(jmp_short) {
 	
 	int len = 1;
 	imm.type = OPR_IMM;
-	imm.data_size = data_size;
+	imm.data_size = 8;
 	imm.addr = eip + len;
 	operand_read(&imm);
 
-print_asm_1("jmp", "", 1 + data_size / 8, &imm);
+print_asm_1("jmp", "b", 2, &imm);
 	cpu.eip += imm.val;
 	return 2;
 }
@@ -43,7 +43,7 @@ make_instr_func(jmp_near_indirect) { //0xff[4]
 
 
 
-	return 0;
+	return 1;
 }
 
 
