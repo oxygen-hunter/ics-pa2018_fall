@@ -9,7 +9,7 @@ make_instr_func(push_r_v) { //0x50-0x57
 
 	operand_read(&r); 
 
-	cpu.esp -= data_size; //esp -= 4 or esp -= 2
+	cpu.esp -= data_size / 8; //esp -= 4 or esp -= 2
 
 	mem.type = OPR_MEM; //mov (esp), r
 	mem.data_size = data_size;
@@ -39,7 +39,7 @@ make_instr_func(pusha) { //0x60
 		else {
 			operand_read(&r);
 		}
-		cpu.esp -= data_size; //esp -= 4; or esp -= 2 
+		cpu.esp -= data_size / 8; //esp -= 4; or esp -= 2 
 		mem.val = r.val; //mov r, (%esp)
 		mem.addr = cpu.esp;
 		operand_write(&mem); 

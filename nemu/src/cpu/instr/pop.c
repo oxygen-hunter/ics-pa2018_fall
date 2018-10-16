@@ -20,7 +20,7 @@ make_instr_func(pop_r_v) { //0x58-0x5f
 	r.val = mem.val;
 	operand_write(&r);
 
-	cpu.esp += data_size;
+	cpu.esp += data_size / 8;
 
 print_asm_1("pop", "l", 1, &r);
 	return 1;
