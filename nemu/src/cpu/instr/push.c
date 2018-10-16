@@ -18,7 +18,7 @@ make_instr_func(push_r_v) { //0x50-0x57
 	operand_write(&mem);
 //printf("push's:%x\n", mem.val);
 //printf("after push's esp:%x\n", cpu.esp);
-print_asm_1("push", "l", 1, &r);
+print_asm_1("push", data_size == 8 ? "b" : (data_size == 16 ? "w" : "l"), 1, &r);
 	return 1;
 }
 
