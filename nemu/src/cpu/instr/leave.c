@@ -1,7 +1,7 @@
 #include "cpu/instr.h"
 
 make_instr_func(leave) { //0xc9
-	OPERAND esp, ebp mem;
+	OPERAND esp, ebp, mem;
 
 	esp.type = OPR_REG;
 	esp.data_size = data_size;
