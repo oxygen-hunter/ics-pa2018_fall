@@ -4,6 +4,8 @@ static void instr_execute_1op() {
 	operand_read(&opr_src);
 	cpu.esp -= opr_src.data_size / 8; //esp -= 4 or 2 or 1
 	
+if(opr_src.type == OPR_IMM && opr_src.data_size == 8) opr_src.val = sign_ext(opr_src.val, 8); //guide says
+
 	OPERAND mem;
 	mem.type = OPR_MEM; //mov r, (%esp)
 	mem.data_size = opr_src.data_size;
