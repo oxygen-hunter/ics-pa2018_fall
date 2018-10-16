@@ -42,8 +42,8 @@ make_instr_func(pusha) { //0x60
 
 	operand_read(&temp); //store old esp/sp
 
-	for(; r.addr < 8; r.addr++) {
-		if(r.addr == 4)
+	for(; r.addr < 8; r.addr++) { //ax, ec, dx, bx, sp, bp, si, di
+		if(r.addr == 4) //old sp
 			r = temp;
 		else {
 			operand_read(&r);
@@ -54,6 +54,8 @@ make_instr_func(pusha) { //0x60
 		operand_write(&mem); 
 	}
 	
+print_asm_0("pusha", "", 1);
+	return 1;
 }
 
 
