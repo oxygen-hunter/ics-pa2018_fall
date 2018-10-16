@@ -14,5 +14,6 @@ make_instr_func(leave) { //0xc9
 
 	esp.val = ebp.val; //mov %ebp, %esp
 	operand_write(&esp);
+print_asm_0("leave", "", 1);
 	return 1;
 }
