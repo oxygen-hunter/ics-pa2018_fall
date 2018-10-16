@@ -28,3 +28,40 @@ make_instr_func(push_r_v) { //0x50-0x57
 print_asm_1("push", "l", 1, &r);
 	return 1;
 }
+
+make_instr_func(pusha) { //0x60
+	OPERAND r, temp, mem;
+	
+	r.type = temp.type = OPR_REG;
+	r.data_size = temp.data_size = data_size;
+	r.addr = 0;
+	temp.addr = 4;
+
+	mem.type = OPR_MEM;
+	mem.data_size = data_size;
+
+	operand_read(&temp); //store old esp/sp
+
+	for(; r.addr < 8; r.addr++) {
+		if(r.addr == 4)
+			r = temp;
+		else {
+			operand_read(&r);
+		}
+		cpu.esp -= 4; //esp -= 4; 
+		mem.val = r.val; //mov r, (%esp)
+		mem.addr = cpu.esp;
+		operand_write(&mem); 
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
