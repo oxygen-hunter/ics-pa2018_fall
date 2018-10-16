@@ -41,7 +41,7 @@ printf("ret's ret address:%x\n", cpu.eip);
 //printf("after ret's esp:%x\n", cpu.esp);
 	
 	
-	return 1 + 16 / 8;
+	return 0;
 }
 
 
