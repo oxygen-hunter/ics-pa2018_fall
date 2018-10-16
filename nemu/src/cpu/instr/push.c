@@ -1,5 +1,17 @@
 #include "cpu/instr.h"
 
+static void instr_execute_1op() {
+	operand_read(&opr_src);
+	cpu.esp -= opr_src.data_size / 8; //esp -= 4 or 2 or 1
+	
+	OPERAND mem;
+	mem.type = OPR_MEM; //mov r, (%esp)
+	mem.data_size = opr_src.data_size;
+	mem.val = opr_src.val;
+	mem.addr = cpu.esp;
+	operand_write(&mem);
+}
+
 make_instr_func(push_r_v) { //0x50-0x57
 	OPERAND r, mem;
 
@@ -11,7 +23,7 @@ make_instr_func(push_r_v) { //0x50-0x57
 
 	cpu.esp -= data_size / 8; //esp -= 4 or esp -= 2
 
-	mem.type = OPR_MEM; //mov (esp), r
+	mem.type = OPR_MEM; //mov r, (%esp)
 	mem.data_size = data_size;
 	mem.val = r.val;
 	mem.addr = cpu.esp;
