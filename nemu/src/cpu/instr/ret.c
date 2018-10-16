@@ -17,7 +17,7 @@ print_asm_0("ret", "", 1);
 	return 0;
 }
 
-make_instr_func(ret_near_imm16) { 0xc2
+make_instr_func(ret_near_imm16) { //0xc2
 	OPERAND ret_addr, imm;
 
 	imm.type = OPR_IMM;
