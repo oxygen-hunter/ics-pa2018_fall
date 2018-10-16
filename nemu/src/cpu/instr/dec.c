@@ -7,4 +7,4 @@ static void instr_execute_1op() {
 }
 
 make_instr_impl_1op(dec, rm, v); //0xff[1]
-make_instr_impl_lop(dec, r, v); //0x48-4f
+make_instr_impl_1op(dec, r, v); //0x48-4f
