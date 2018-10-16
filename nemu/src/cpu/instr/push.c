@@ -16,8 +16,8 @@ make_instr_func(push_r_v) { //0x50-0x57
 	mem.val = r.val;
 	mem.addr = cpu.esp;
 	operand_write(&mem);
-printf("push's:%x\n", mem.val);
-printf("after push's esp:%x\n", cpu.esp);
+//printf("push's:%x\n", mem.val);
+//printf("after push's esp:%x\n", cpu.esp);
 print_asm_1("push", "l", 1, &r);
 	return 1;
 }
@@ -28,7 +28,7 @@ make_instr_func(pusha) { //0x60
 	r.type = temp.type = OPR_REG;
 	r.data_size = temp.data_size = data_size;
 	r.addr = 0;
-	temp.addr = 4;
+	temp.addr = 4; //temp = old esp
 
 	mem.type = OPR_MEM;
 	mem.data_size = data_size;

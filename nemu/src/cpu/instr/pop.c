@@ -21,8 +21,8 @@ make_instr_func(pop_r_v) { //0x58-0x5f
 	operand_write(&r);
 
 	cpu.esp += data_size / 8;
-printf("pop's:%x\n", mem.val);
-printf("after pop's esp:%x\n", cpu.esp);
+//printf("pop's:%x\n", mem.val);
+//printf("after pop's esp:%x\n", cpu.esp);
 print_asm_1("pop", "l", 1, &r);
 	return 1;
 }
