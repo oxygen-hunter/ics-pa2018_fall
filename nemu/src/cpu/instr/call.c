@@ -17,12 +17,12 @@ make_instr_func(call_near) {
 	mem.addr = cpu.esp;
 	operand_write(&mem);
 printf("call's ret addr:%x\n", mem.val);
-//printf("esp:%x\n", esp.val);
+printf("call's esp:%x\n", cpu.esp);
 
 	int offset = sign_ext(rel.val, data_size);
-	print_asm_1("call", "", 2, &rel);
+print_asm_1("call", "", 2, &rel);
 
 	cpu.eip += offset;
 
-        return 1 + data_size / 8;
+	return 1 + data_size / 8;
 }
