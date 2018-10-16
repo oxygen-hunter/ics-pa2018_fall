@@ -6,7 +6,7 @@ static void instr_execute_2op() {
 	alu_sub(opr_src.val, opr_dest.val, data_size);
 }
 
-make_instr_impl_2op(cmp, i, rm, bv); //0x83[7]
+
 make_instr_impl_2op(cmp, r, rm, b); //0x38
 make_instr_impl_2op(cmp, r, rm, v); //0x39
 make_instr_impl_2op(cmp, rm, r, b); //0x3a
@@ -14,7 +14,8 @@ make_instr_impl_2op(cmp, rm, r, v); //0x3b
 make_instr_impl_2op(cmp, i, a, b); //0x3c
 make_instr_impl_2op(cmp, i, a, v); //0x3d
 
-
+make_instr_impl_2op(cmp, i, rm, bv); //0x83[7]
+make_instr_impl_2op(cmp, i, rm, bv); //0x81[7]
 
 
 /* stupid version
