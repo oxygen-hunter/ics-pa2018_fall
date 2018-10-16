@@ -16,3 +16,7 @@ print_asm_0("ret", "", 1);
 //printf("after ret's esp:%x\n", cpu.esp);
 	return 0;
 }
+
+make_instr_func(ret_near_imm16) { 0xc2
+	
+}
