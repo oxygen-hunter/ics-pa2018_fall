@@ -43,6 +43,8 @@ extern uint8_t data_size;
 #include "cpu/instr/dec.h"
 #include "cpu/instr/test.h"
 
+#include "cpu/instr/leave.h"
+
 
 
 
