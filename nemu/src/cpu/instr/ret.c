@@ -36,6 +36,7 @@ print_asm_1("ret", "w", 2, &imm);
 	cpu.esp += data_size / 8; //esp += 4 or 2
 	
 	cpu.esp += imm.val; //esp += imm
+printf("ret near imm16's imm16:%x\n", imm.val);
 //printf("ret's ret address:%x\n", cpu.eip);
 //printf("after ret's esp:%x\n", cpu.esp);
 	
