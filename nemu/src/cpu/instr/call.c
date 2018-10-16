@@ -15,7 +15,7 @@ make_instr_func(call_near) {
 	operand_read(&esp);
 
 	//esp.val = alu_sub(0x4, esp.val, data_size); 
-	esp.val -= 4;
+	esp.val -= data_size / 8;
 	operand_write(&esp);
 		
 	mem.type = OPR_MEM; //push ret address
