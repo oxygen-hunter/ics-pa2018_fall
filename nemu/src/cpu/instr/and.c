@@ -13,7 +13,7 @@ make_instr_impl_2op(and, i, rm, bv); //0x83[4]
 make_instr_impl_2op(and, r, rm, b); //0x20
 make_instr_impl_2op(and, r, rm, v); //0x21
 make_instr_impl_2op(and, rm, r, b); //0x22
-make_instr_impl_2op(and, rm, r, b); //0x23
+make_instr_impl_2op(and, rm, r, v); //0x23
 make_instr_impl_2op(and, i, a, b); //0x24
 make_instr_impl_2op(and, i, a, v); //0x25
 
