@@ -9,7 +9,7 @@ make_instr_func(call_near) {
 
 	operand_read(&rel);
 
-	esp.val -= data_size / 8;
+	cpu.esp -= data_size / 8;
 		
 	mem.type = OPR_MEM; //push ret address
 	mem.data_size = data_size;
