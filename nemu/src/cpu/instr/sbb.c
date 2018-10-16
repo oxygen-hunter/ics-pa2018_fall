@@ -7,4 +7,11 @@ static void instr_execute_2op() {
 	operand_write(&opr_dest);
 }
 
-make_instr_impl_2op(sbb, i, rm, bv);
+make_instr_impl_2op(sbb, r, rm, b); //0x18
+make_instr_impl_2op(sbb, r, rm, v); //0x19
+make_instr_impl_2op(sbb, rm, r, b); //0x1a
+make_instr_impl_2op(sbb, rm, r, v); //0x1b
+make_instr_impl_2op(sbb, i, a, b); //0x1c
+make_instr_impl_2op(sbb, i, a, v); //0x1d
+
+make_instr_impl_2op(sbb, i, rm, bv); //0x83[3]
