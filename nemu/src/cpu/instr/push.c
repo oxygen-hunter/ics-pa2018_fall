@@ -14,6 +14,11 @@ if(opr_src.type == OPR_IMM && opr_src.data_size == 8) opr_src.val = sign_ext(opr
 	operand_write(&mem);
 }
 
+make_instr_impl_1op(push, r, v); //0x50-57
+make_instr_impl_1op(push, i, b); //0x6a
+make_instr_impl_1op(push, i, v); //0x68
+
+/* stupid version...
 make_instr_func(push_r_v) { //0x50-0x57
 	OPERAND r, mem;
 
@@ -34,7 +39,7 @@ make_instr_func(push_r_v) { //0x50-0x57
 //printf("after push's esp:%x\n", cpu.esp);
 print_asm_1("push", data_size == 8 ? "b" : (data_size == 16 ? "w" : "l"), 1, &r);
 	return 1;
-}
+}*/
 
 make_instr_func(pusha) { //0x60
 	OPERAND r, temp, mem;
