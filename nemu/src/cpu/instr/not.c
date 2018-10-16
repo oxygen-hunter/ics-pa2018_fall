@@ -5,3 +5,6 @@ static void instr_execute_1op() {
 	opr_src.val = ~opr_src.val;
 	operand_write(&opr_src);
 }
+
+make_instr_impl_1op(not, rm, b); //0xf6[3]
+make_instr_impl_1op(not, rm, v); //0xf7[3]
