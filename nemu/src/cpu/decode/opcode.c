@@ -36,7 +36,7 @@ instr_func opcode_entry[256] = {
 /* 0x80 - 0x83*/	group_1_b, group_1_v, nemu_trap, group_1_bv,
 /* 0x84 - 0x87*/	test_r2rm_b, test_r2rm_v, inv, inv,
 /* 0x88 - 0x8b*/	mov_r2rm_b, mov_r2rm_v, mov_rm2r_b, mov_rm2r_v,
-/* 0x8c - 0x8f*/	inv, __ref_lea, inv, inv,
+/* 0x8c - 0x8f*/	inv, lea_rm2r_v, inv, inv,
 /* 0x90 - 0x93*/	nop, inv, inv, inv,
 /* 0x94 - 0x97*/	inv, inv, inv, inv,
 /* 0x98 - 0x9b*/	cbw_a_v, cltd, inv, inv,
@@ -113,7 +113,7 @@ instr_func group_3_v_entry[8] =
 
 /* 0xff */
 instr_func group_5_indirect_entry[8] =
-{inc_rm_v, dec_rm_v, inv, inv, inv, inv, push_rm_v, inv};
+{inc_rm_v, dec_rm_v, inv, inv, __ref_jmp_near_indirect, inv, push_rm_v, inv};
 
 instr_func group_7_entry[8] = 
 {inv, inv, inv, inv, inv, inv, inv, inv};
