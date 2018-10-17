@@ -7,7 +7,7 @@ static void make_instr_impl_1op() {
 	operand_write(&src);
 }*/
 
-make_instr_func(jmp_near) {
+make_instr_func(jmp_near) { //0xe9
 	OPERAND rel;
 	rel.type = OPR_IMM;
 	rel.sreg = SREG_CS;
@@ -24,13 +24,12 @@ print_asm_1("jmp", "", 1 + data_size / 8, &rel);
 	return 1 + data_size / 8;
 }
 
-make_instr_func(jmp_short) {
+make_instr_func(jmp_short) { //0xeb
 	OPERAND imm;
 	
-	int len = 1;
 	imm.type = OPR_IMM;
 	imm.data_size = 8;
-	imm.addr = eip + len;
+	imm.addr = eip + 1;
 	operand_read(&imm);
 
 print_asm_1("jmp", "b", 2, &imm);
