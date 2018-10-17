@@ -33,7 +33,7 @@ imm.sreg = SREG_CS;
 	imm.addr = eip + 1;
 	operand_read(&imm);
 
-	int offset = sign_ext(imm.val, data_size);
+	int offset = sign_ext(imm.val, 8);
 print_asm_1("jmp", "b", 2, &imm);
 
 	cpu.eip += offset;
