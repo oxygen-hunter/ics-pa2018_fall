@@ -42,11 +42,19 @@ print_asm_1("jmp", "b", 2, &imm);
 }
 
 make_instr_func(jmp_near_indirect) { //0xff[4]
+	OPERND rm;
 	
+	int len = 1;
+	rm.data_size = data_size;
+	
+	len += modrm_rm(eip + 1, &rm);
 
+	operand_read(&rm);
+print_asm_1("jmp", "", len, &rm);
+printf("jmp near indirect to:%x\n", rm.val);
+	eip = rm.val;
 
-
-	return 1;
+	return 0;
 }
 
 
