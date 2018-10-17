@@ -42,7 +42,7 @@ print_asm_1("jmp", "b", 2, &imm);
 }
 
 make_instr_func(jmp_near_indirect) { //0xff[4]
-	OPERND rm;
+	OPERAND rm;
 	
 	int len = 1;
 	rm.data_size = data_size;
