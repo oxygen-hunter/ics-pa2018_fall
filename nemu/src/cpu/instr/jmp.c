@@ -51,7 +51,7 @@ make_instr_func(jmp_near_indirect) { //0xff[4]
 
 	operand_read(&rm);
 print_asm_1("jmp", "", len, &rm);
-printf("jmp near indirect to:%x\n", rm.val);
+//printf("jmp near indirect to:%x\n", rm.val);
 	eip = rm.val;
 
 	return 0;
