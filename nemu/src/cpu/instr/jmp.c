@@ -28,6 +28,7 @@ make_instr_func(jmp_short) { //0xeb
 	OPERAND imm;
 	
 	imm.type = OPR_IMM;
+imm.sreg = SREG_CS;
 	imm.data_size = 8;
 	imm.addr = eip + 1;
 	operand_read(&imm);
