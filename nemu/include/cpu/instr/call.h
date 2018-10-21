@@ -2,5 +2,6 @@
 #define __INSTR_CALL_H__
 
 make_instr_func(call_near);
+make_instr_func(call_near_indirect); //0xff[2]
 
 #endif
