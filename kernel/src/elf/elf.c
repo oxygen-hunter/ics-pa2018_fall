@@ -34,7 +34,7 @@ uint32_t loader() {
 	for(; ph < eph; ph ++) {
 		if(ph->p_type == PT_LOAD) {
 
-			panic("Please implement the loader");
+			//panic("Please implement the loader"); //annotate this sentence after finish loader()
 
 			/* TODO: copy the segment from the ELF file to its proper memory area */
 			memcpy(ph->p_vaddr, elf->p_offset, elf->p_filesz);
