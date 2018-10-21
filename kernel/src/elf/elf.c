@@ -40,7 +40,7 @@ uint32_t loader() {
 			memcpy(ph->p_vaddr, elf->p_offset, elf->p_filesz);
 			/* TODO: zeror the memory area [vaddr + file_sz, vaddr + mem_sz) */
 			if(ph->p_memsz > ph->p_filesz)
-				memset(ph->vaddr+ph->p_filesz, 0, ph->p_memsz - ph->p_filesz);
+				memset(ph->p_vaddr+ph->p_filesz, 0, ph->p_memsz - ph->p_filesz);
 #ifdef IA32_PAGE
 			/* Record the program break for future use */
 			extern uint32_t brk;
