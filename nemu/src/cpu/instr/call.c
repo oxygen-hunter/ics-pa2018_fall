@@ -41,6 +41,7 @@ make_instr_func(call_near_indirect) { //0xff[2]
 	mem.type = OPR_MEM; //push ret address
 	mem.data_size = data_size;
 	mem.val = eip + len;
+cpu.esp -= data_size / 8;
 	mem.addr = cpu.esp;
 	operand_write(&mem);
 print_asm_1("call", "", len, &rm);
