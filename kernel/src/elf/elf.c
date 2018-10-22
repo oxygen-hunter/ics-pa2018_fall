@@ -36,13 +36,13 @@ uint32_t loader() {
 			//panic("Please implement the loader"); //annotate this sentence after finish loader()
 
 			/* TODO: copy the segment from the ELF file to its proper memory area */
-//Log("mem_addr:%x\n", ph->p_vaddr);
+Log("mem_addr:%x\n", ph->p_vaddr);
 //Log("elf_addr:%x\n", elf+ph->p_offset);
 //Log("filesz:%x\n", ph->p_filesz);
-			memcpy((void*)(0x30000+ph->p_vaddr), (void*)(elf+ph->p_offset), ph->p_filesz);
+			memcpy((void*)(ph->p_vaddr), (void*)(elf+ph->p_offset), ph->p_filesz);
 			/* TODO: zeror the memory area [vaddr + file_sz, vaddr + mem_sz) */
 			if(ph->p_memsz > ph->p_filesz)
-				memset((void*)(0x30000+ph->p_vaddr+ph->p_filesz), 0, ph->p_memsz - ph->p_filesz);
+				memset((void*)(ph->p_vaddr+ph->p_filesz), 0, ph->p_memsz - ph->p_filesz);
 #ifdef IA32_PAGE
 			/* Record the program break for future use */
 			extern uint32_t brk;
