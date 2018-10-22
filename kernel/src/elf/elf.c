@@ -3,7 +3,6 @@
 #include "string.h"
 
 #include <elf.h>
-//#include <stdio.h>
 #ifdef HAS_DEVICE_IDE
 #define ELF_OFFSET_IN_DISK 0
 #endif
@@ -37,8 +36,7 @@ uint32_t loader() {
 			//panic("Please implement the loader"); //annotate this sentence after finish loader()
 
 			/* TODO: copy the segment from the ELF file to its proper memory area */
-//printf("mem_addr:%x\nelf_addr:%x\nfilesz:%x\n", (unsigned)ph->p_vaddr, (unsigned)(elf+ph->p_offset), ph->p_filesz);
-			memcpy((void*)ph->p_vaddr, (void*)(elf+ph->p_offset), ph->p_filesz);
+			memcpy((void*)ph->p_vaddr, (void*)(elf/*+ph->p_offset*/), ph->p_filesz);
 			/* TODO: zeror the memory area [vaddr + file_sz, vaddr + mem_sz) */
 			if(ph->p_memsz > ph->p_filesz)
 				memset((void*)(ph->p_vaddr+ph->p_filesz), 0, ph->p_memsz - ph->p_filesz);
