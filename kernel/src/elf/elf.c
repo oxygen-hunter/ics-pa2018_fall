@@ -36,6 +36,7 @@ uint32_t loader() {
 			//panic("Please implement the loader"); //annotate this sentence after finish loader()
 
 			/* TODO: copy the segment from the ELF file to its proper memory area */
+Log("mem_addr:%x\n", ph->p_vaddr);
 			memcpy((void*)(ph->p_vaddr), (void*)(elf+ph->p_offset), ph->p_filesz);
 			/* TODO: zeror the memory area [vaddr + file_sz, vaddr + mem_sz) */
 			if(ph->p_memsz > ph->p_filesz)
