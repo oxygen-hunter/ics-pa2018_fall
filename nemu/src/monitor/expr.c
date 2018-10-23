@@ -111,10 +111,37 @@ uint32_t expr(char *e, bool *success) {
 		*success = false;
 		return 0;
 	}
+	
+	/*TODO:Implement code to eeeeeevaluate the expression.*/
+	/*for(int i = 0; i < nr_token; i++) {
+		if(tokens[i].type == '*' &&(i == 0 || tokens[i - 1].type == certain type) {
+			tokens[i].type = DEREF;
+		}
+	}*/
+
 
 	printf("\nPlease implement expr at expr.c\n");
 	assert(0);
 
-	return 0;
+	return eval(0, nr_token - 1);
 }
+
+uint32_t eval(int p, int q) { //compute val of tokens
+	if(p > q) {
+		/*TODO:bad expression*/
+	}
+	else if(p == q) {
+		return atoi()
+	}
+}
+
+
+
+
+
+
+
+
+
+
 
