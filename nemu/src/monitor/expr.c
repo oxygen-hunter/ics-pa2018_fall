@@ -123,7 +123,7 @@ uint32_t expr(char *e, bool *success) {
 	printf("\nPlease implement expr at expr.c\n");
 	assert(0);
 
-	return eval(0, nr_token - 1);
+	return 0; //eval(0, nr_token - 1);
 }
 
 
