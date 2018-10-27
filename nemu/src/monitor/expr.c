@@ -126,15 +126,15 @@ uint32_t expr(char *e, bool *success) {
 	return eval(0, nr_token - 1);
 }
 
-/*
-uint32_t eval(int p, int q) { //compute val of tokens
-	if(p > q) {
-		/*TODO:bad expression*/
-	}
-	else if(p == q) {
-		return atoi()
-	}
-}*/
+
+//uint32_t eval(int p, int q) { //compute val of tokens
+//	if(p > q) {
+//		/*TODO:bad expression*/
+//	}
+//	else if(p == q) {
+//		return atoi()
+//	}
+//}
 
 
 
