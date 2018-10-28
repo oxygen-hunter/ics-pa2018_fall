@@ -185,12 +185,12 @@ uint32_t my_atoi(char* str) {
 	}
 //printf("val_i:%d\n", val_i);
 	return val_i;
-}
+}*/
 
 bool check_parentheses(int p, int q) {
 
 	return false;
-}*/
+}
 
 int dominant_operator_position(int p, int q) {
 	return 0;
