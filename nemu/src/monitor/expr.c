@@ -159,6 +159,7 @@ uint32_t eval(int p, int q) { //compute val of tokens
 				assert(0);
 		}
 	}
+	return -1;
 }
 
 uint32_t my_atoi(char* str) {
