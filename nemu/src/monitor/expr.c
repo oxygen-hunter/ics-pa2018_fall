@@ -133,9 +133,7 @@ uint32_t expr(char *e, bool *success) {
 			tokens[i].type = DEREF;
 		}
 	}*/
-printf("evalevaleval\n");
-printf("99999999\n");
-printf("nr_token:%d\n", nr_token);
+
 	//printf("\nPlease implement expr at expr.c\n");
 	//assert(0);
 
@@ -157,6 +155,7 @@ uint32_t eval(int p, int q) { //compute val of tokens
 		return eval(p + 1, q - 1);
 	}
 	else {
+puts("4444\n")
 		int op = dominant_operator_position(p, q); 
 		// to find the position of dominant operator in tokes[p, q]
 		uint32_t val1 = eval(p, op - 1);
