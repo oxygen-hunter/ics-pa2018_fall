@@ -31,7 +31,7 @@ static struct rule {
 	{"\\-", '-'},
 	{"==", EQ},
 	{"[0-9]+", NUM},
-	{"\$e[a,c,d,b]x", REG},
+	{"\\$e[a,c,d,b]x", REG},
 	{"$e[s,b]p", REG},
 	{"$e[s,d]i", REG},
 	{"[a-zA-Z]+[a-zA-Z0-9]*", SYMB},
