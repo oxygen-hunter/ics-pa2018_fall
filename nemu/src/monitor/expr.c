@@ -179,6 +179,7 @@ printf("to be atoi:%s\n", str);
 		val_i += str[i] * ten_exp_i;
 		ten_exp_i *= 10;
 	}
+printf("val_i:%d\n", val_i);
 	return val_i;
 }
 
