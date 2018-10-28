@@ -149,7 +149,7 @@ uint32_t eval(int p, int q) { //compute val of tokens
 			case '/': return val1 / val2;
 		
 			default: 
-				printf("\ninvalid op type at tokens[%d]: %d\n", op, tokens[op].type);
+				printf("\ninvalid op type at tokens[%d], whose type is %d.\n", op, tokens[op].type);
 				assert(0);
 		}
 	}
