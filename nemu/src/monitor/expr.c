@@ -96,14 +96,14 @@ static bool make_token(char *e) {
 
 				switch(rules[i].token_type) {
 					int reg_x;
-							  uint32_t reg_val_i;
+							  //uint32_t reg_val_i;
 							  char reg_val_s[32];
 					case REG: 
 							  reg_x = which_reg(tokens[nr_token].str); //to judge $xxx is which reg
 							  //reg_val_i = cpu.gpr[reg_x].val; //get reg's val (uint32_t)
 							  
 							  memset(reg_val_s, 0, 32);
-							  sprintf(reg_val_s, "%d", reg_val_i); //get reg's val (string)
+							  sprintf(reg_val_s, "%d", reg_x); //get reg's val (string)
 							  memcpy(tokens[nr_token].str, reg_val_s, 32); //copy reg's val (string) to token's str
 					default: tokens[nr_token].type = rules[i].token_type;
 							 nr_token ++;
@@ -214,18 +214,18 @@ int dominant_operator_position(int p, int q) {
 int which_reg(char* str) { //str format: $e??
 	char str2 = str[2], str3 = str[3];
 	if(str3 == 'x') { //e[a,c,d,b]x
-		if(str2 == 'a') return 0;
-		if(str2 == 'c') return 1;
-		if(str2 == 'd') return 2;
-		if(str2 == 'b') return 3;
+		if(str2 == 'a') return cpu.eax;
+		if(str2 == 'c') return cpu.ecx;
+		if(str2 == 'd') return cpu.edx;
+		if(str2 == 'b') return cpu.ebx;
 	}
 	else if(str3 == 'p') { //e[s,b]p
-		if(str2 == 's') return 4;
-		if(str2 == 'b') return 5;
+		if(str2 == 's') return cpu.esp;
+		if(str2 == 'b') return cpu.ebp;
 	}
 	else if(str3 == 'i') { //e[s,d]i
-		if(str2 == 's') return 6;
-		if(str2 == 'd') return 7;
+		if(str2 == 's') return cpu.esi;
+		if(str2 == 'd') return cpu.edi;
 	}
 	else {
 		printf("\nreg format error: %s\n", str);
