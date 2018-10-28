@@ -140,7 +140,7 @@ uint32_t eval(int p, int q) { //compute val of tokens
 		printf("\nInvalid expression. Please check.\n");
 	}
 	else if(p == q) {
-		return my_atoi(tokens[p].str);
+		return atoi(tokens[p].str);
 	}
 	else if(check_parentheses(p,q) == true) {
 		return eval(p + 1, q - 1);
