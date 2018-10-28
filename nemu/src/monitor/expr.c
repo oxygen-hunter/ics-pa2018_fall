@@ -130,9 +130,23 @@ uint32_t expr(char *e, bool *success) {
 uint32_t eval(int p, int q) { //compute val of tokens
 	if(p > q) {
 		/*TODO:bad expression*/
+		printf("Invalid expression:%\n")
 	}
 	else if(p == q) {
-		return atoi()
+		return my_atoi(tokens[p].str);
+	}
+	else if(check_parentheses(p,q) == true) {
+
+	}
+	else {
+		int op = dominant_operator_position(p, q); // to find the position of dominant operator in tokes[p, q]
+		uint32_t val1 = eval(p, op - 1);
+		uint32_t val2 = eval(op + 1, q);
+		switch(tokens[op].type) {
+			case 
+		
+
+		}
 	}
 }
 
