@@ -230,7 +230,7 @@ int which_reg(char* str) { //str format: $e??
 		if(str2 == 's') return cpu.esi;
 		if(str2 == 'd') return cpu.edi;
 	}
-	else {
+	else { //this situation won't happen because tokens can't match these ones.
 		printf("\nreg format error: %s\n", str);
 		assert(0);
 	}
