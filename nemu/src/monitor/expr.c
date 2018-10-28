@@ -135,7 +135,7 @@ uint32_t expr(char *e, bool *success) {
 	}*/
 printf("evalevaleval\n");
 printf("99999999\n");
-printf("nr_token:%d", nr_token);
+printf("nr_token:%d\n", nr_token);
 	//printf("\nPlease implement expr at expr.c\n");
 	//assert(0);
 
