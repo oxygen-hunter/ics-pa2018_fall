@@ -67,7 +67,7 @@ typedef struct token {
 Token tokens[32];
 int nr_token;
 
-int which_reg(char* str);
+uint32_t which_reg(char* str);
 
 static bool make_token(char *e) {
 	int position = 0;
@@ -142,7 +142,6 @@ uint32_t expr(char *e, bool *success) {
 	return eval(0, nr_token - 1);
 }
 
-//uint32_t my_atoi(char* str);
 bool check_parentheses(int p, int q);
 int dominant_operator_position(int p, int q);
 
@@ -185,7 +184,7 @@ int dominant_operator_position(int p, int q) {
 	return 4;
 }
 
-int which_reg(char* str) { //str format: $e??
+uint32_t which_reg(char* str) { //str format: $e??
 	char str2 = str[2], str3 = str[3];
 	if(str3 == 'x') { //e[a,c,d,b]x
 		if(str2 == 'a') return cpu.eax;
