@@ -129,6 +129,8 @@ uint32_t expr(char *e, bool *success) {
 }
 
 uint32_t my_atoi(char* str);
+bool check_parentheses(int p, int q);
+int dominant_operator_position(int p, int q);
 
 uint32_t eval(int p, int q) { //compute val of tokens
 	if(p > q) {
@@ -183,6 +185,9 @@ bool check_parentheses(int p, int q) {
 	return false;
 }
 
+int dominant_operator_position(int p, int q) {
+	return 0;
+}
 
 
 
