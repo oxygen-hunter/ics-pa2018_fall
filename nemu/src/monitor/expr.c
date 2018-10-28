@@ -166,11 +166,12 @@ uint32_t my_atoi(char* str) {
 	uint32_t ten_exp_i = 1; //10^i	
 
 	for(; str_len < 32; str_len++) {
-		if(str[i] == '\0')
+		if(str[str_len] == '\0')
 			break;
 	}
 	
-	for(int i = str_len - 1; i >= 0; i--) {
+	int i;
+	for(i = str_len - 1; i >= 0; i--) {
 		val_i += str[i] * ten_exp_i;
 		ten_exp_i *= 10;
 	}
@@ -178,11 +179,6 @@ uint32_t my_atoi(char* str) {
 }
 
 
-int main() {
-	uint32_t val = my_atoi("80125\0");
-	printf("%u\n", val);
-	return 0;
-}
 
 
 
