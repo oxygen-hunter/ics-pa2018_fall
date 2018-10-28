@@ -86,9 +86,8 @@ static bool make_token(char *e) {
 				/* TODO: Now a new token is recognized with rules[i]. 
 				 * Add codes to perform some actions with this token.
 				 */
-				memset(tokens[nr_token].str, 0, 32);
+				memset(tokens[nr_token].str, 0, 32); //zeror str
 				memcpy(tokens[nr_token].str, substr_start, substr_len); //to store substr
-				//memset(tokens[nr_token].str + substr_len + 1, 0, 1); 
 
 				switch(rules[i].token_type) {
 					default: tokens[nr_token].type = rules[i].token_type;
@@ -141,7 +140,6 @@ uint32_t eval(int p, int q) { //compute val of tokens
 		printf("\nInvalid expression. Please check.\n");
 	}
 	else if(p == q) {
-printf("%s\n", tokens[p].str);
 		return atoi(tokens[p].str);
 	}
 	else if(check_parentheses(p,q) == true) {
