@@ -179,7 +179,7 @@ printf("to be atoi:%s\n", str);
 		val_i += ((uint32_t)(str[i]-'0')) * ten_exp_i;
 printf("val_i:%d\n", val_i);
 		ten_exp_i *= 10;
-printf("ten_exp_i:%d", ten_exp_i);
+printf("ten_exp_i:%d\n", ten_exp_i);
 	}
 printf("val_i:%d\n", val_i);
 	return val_i;
