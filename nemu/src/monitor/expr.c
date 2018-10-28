@@ -179,6 +179,8 @@ bool check_parentheses(int p, int q) {
 	return false;
 }
 
+int oprator_precedence(int opr);
+
 int dominant_operator_position(int p, int q) {
 	int domi_opr_pos = 0;	
 	for(int i = p; i <= q; i++) {
@@ -216,7 +218,9 @@ uint32_t which_reg(char* str) { //str format: $e??
 	return -1;
 }
 
-
+int oprator_precedence(int opr) {
+	
+}
 
 
 
