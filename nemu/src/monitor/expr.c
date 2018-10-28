@@ -164,6 +164,7 @@ uint32_t eval(int p, int q) { //compute val of tokens
 	return -1;
 }
 
+/*
 uint32_t my_atoi(char* str) {
 	//default str length <= 32
 	uint32_t val_i = 0;
@@ -174,22 +175,22 @@ uint32_t my_atoi(char* str) {
 		if(str[str_len] == '\0')
 			break;
 	}
-printf("to be atoi:%s\n", str);
+//printf("to be atoi:%s\n", str);
 	int i;
 	for(i = str_len - 1; i >= 0; i--) {
 		val_i += ((uint32_t)(str[i]-'0')) * ten_exp_i;
-printf("val_i:%d\n", val_i);
+//printf("val_i:%d\n", val_i);
 		ten_exp_i *= 10;
-printf("ten_exp_i:%d\n", ten_exp_i);
+//printf("ten_exp_i:%d\n", ten_exp_i);
 	}
-printf("val_i:%d\n", val_i);
+//printf("val_i:%d\n", val_i);
 	return val_i;
 }
 
 bool check_parentheses(int p, int q) {
 
 	return false;
-}
+}*/
 
 int dominant_operator_position(int p, int q) {
 	return 0;
