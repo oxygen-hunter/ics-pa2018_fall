@@ -130,7 +130,7 @@ uint32_t expr(char *e, bool *success) {
 uint32_t eval(int p, int q) { //compute val of tokens
 	if(p > q) {
 		/*TODO:bad expression*/
-		printf("Invalid expression:%\n")
+		printf("\nInvalid expression. Please check.\n");
 	}
 	else if(p == q) {
 		return my_atoi(tokens[p].str);
@@ -156,6 +156,23 @@ uint32_t eval(int p, int q) { //compute val of tokens
 	}
 }
 
+uint32_t my_atoi(char* str) {
+	//default str length <= 32
+	uint32_t val_i = 0;
+	int str_len = 0;
+	uint32_t ten_exp_i = 1; //10^i	
+
+	for(; str_len < 32; str_len++) {
+		if(str[i] == '\0')
+			break;
+	}
+	
+	for(int i = str_len - 1; i >= 0; i--) {
+		val_i += str[i] * ten_exp_i;
+		ten_exp_i *= 10;
+	}
+	return val_i;
+}
 
 
 
