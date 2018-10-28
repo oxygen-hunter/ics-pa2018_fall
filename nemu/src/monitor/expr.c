@@ -91,7 +91,7 @@ static bool make_token(char *e) {
 				//memset(tokens[nr_token].str + substr_len + 1, 0, 1); 
 
 				switch(rules[i].token_type) {
-					default: tokens[nr_token].type = rules[i].token_type;l
+					default: tokens[nr_token].type = rules[i].token_type;
 							 nr_token ++;
 				}
 
