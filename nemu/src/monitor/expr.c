@@ -182,7 +182,7 @@ bool check_parentheses(int p, int q) {
 int oprator_precedence(int opr);
 
 int dominant_operator_position(int p, int q) {
-	int domi_opr_pos = 0;	
+	int domi_opr_pos = 0x7fffffff;	
 	for(int i = p; i <= q; i++) {
 		int domi = oprator_precedence(tokens[domi_opr_pos].type);
 		int i_domi = oprator_precedence(tokens[i].type);
