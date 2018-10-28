@@ -34,6 +34,7 @@ static struct rule {
 	{"\\$e[a,c,d,b]x", REG},
 	{"\\$e[s,b]p", REG},
 	{"\\$e[s,d]i", REG},
+	{"\\$eip", REG},
 	{"[a-zA-Z]+[a-zA-Z0-9]*", SYMB},
 };
 
