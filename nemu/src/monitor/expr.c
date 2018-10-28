@@ -175,6 +175,12 @@ uint32_t my_atoi(char* str) {
 }
 
 
+int main() {
+	uint32_t val = my_atoi("80125\0");
+	printf("%u\n", val);
+	return 0;
+}
+
 
 
 
