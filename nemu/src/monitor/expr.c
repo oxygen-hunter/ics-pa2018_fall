@@ -223,6 +223,7 @@ int oprator_precedence(int opr) {
 		return 1;
 	if(opr == '*' || opr == '/')
 		return 2;
+	else return -1; //if opr is not an operator.
 }
 
 
