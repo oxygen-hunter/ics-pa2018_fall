@@ -100,7 +100,7 @@ static bool make_token(char *e) {
 							  char reg_val_s[32];
 					case REG: 
 							  reg_x = which_reg(tokens[nr_token].str); //to judge $xxx is which reg
-							  reg_val_i = cpu.gpr[reg_x].val; //get reg's val (uint32_t)
+							  //reg_val_i = cpu.gpr[reg_x].val; //get reg's val (uint32_t)
 							  
 							  memset(reg_val_s, 0, 32);
 							  sprintf(reg_val_s, "%d", reg_val_i); //get reg's val (string)
