@@ -130,7 +130,7 @@ uint32_t expr(char *e, bool *success) {
 	return eval(0, nr_token - 1);
 }
 
-uint32_t my_atoi(char* str);
+//uint32_t my_atoi(char* str);
 bool check_parentheses(int p, int q);
 int dominant_operator_position(int p, int q);
 
