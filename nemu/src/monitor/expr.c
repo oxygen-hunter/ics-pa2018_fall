@@ -66,6 +66,8 @@ typedef struct token {
 Token tokens[32];
 int nr_token;
 
+int which_reg(char str);
+
 static bool make_token(char *e) {
 	int position = 0;
 	int i;
@@ -90,6 +92,12 @@ static bool make_token(char *e) {
 				memcpy(tokens[nr_token].str, substr_start, substr_len); //to store substr
 
 				switch(rules[i].token_type) {
+					case REG: int reg_x = which_reg(token[nr_token].str); //to judge $xxx is which reg
+							  uint32_t reg_val_i = cpu.grp[reg_x].val; //get reg's val (uint32_t)
+							  char reg_val_s[32]; //get reg's val (string)
+							  memset(reg_val_s, 0, 32);
+							  sprintf(reg_val_s, "%d", reg_val_i);
+							  memcpy(token[nr_token].str, reg_val_s, 32); //copy reg's val (string) to token's str
 					default: tokens[nr_token].type = rules[i].token_type;
 							 nr_token ++;
 				}
@@ -196,7 +204,28 @@ int dominant_operator_position(int p, int q) {
 	return 0;
 }
 
-
+int which_reg(char str) { //str format: $e??
+	char str2 = str[2], str3 = str[3];
+	if(str3 == 'x') { //e[a,c,d,b]x
+		if(str2 == 'a') return 0;
+		if(str2 == 'c') return 1;
+		if(str2 == 'd') return 2;
+		if(str2 == 'b') return 3;
+	}
+	else if(str3 == 'p') { //e[s,b]p
+		if(str2 == 's') return 4;
+		if(str2 == 'b') return 5;
+	}
+	else if(str3 == 'i') { //e[s,d]i
+		if(str2 == 's') return 6;
+		if(str2 == 'd') return 7;
+	}
+	else {
+		printf("\nreg format error: %s\n", str);
+		assert(0);
+	}
+	return -1;
+}
 
 
 
