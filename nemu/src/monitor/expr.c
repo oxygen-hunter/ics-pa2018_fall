@@ -219,7 +219,10 @@ uint32_t which_reg(char* str) { //str format: $e??
 }
 
 int oprator_precedence(int opr) {
-	
+	if(opr == '+' || opr == '-')
+		return 1;
+	if(opr == '*' || opr == '/')
+		return 2;
 }
 
 
