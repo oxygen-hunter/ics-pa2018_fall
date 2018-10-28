@@ -178,6 +178,10 @@ uint32_t my_atoi(char* str) {
 	return val_i;
 }
 
+bool check_parentheses(int p, int q) {
+
+	return false;
+}
 
 
 
