@@ -106,6 +106,8 @@ static bool make_token(char *e) {
 	return true; 
 }
 
+uint32_t eval(int p, int q);
+
 uint32_t expr(char *e, bool *success) {
 	if(!make_token(e)) {
 		*success = false;
@@ -126,6 +128,7 @@ uint32_t expr(char *e, bool *success) {
 	return eval(0, nr_token - 1);
 }
 
+uint32_t my_atoi(char* str);
 
 uint32_t eval(int p, int q) { //compute val of tokens
 	if(p > q) {
