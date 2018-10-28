@@ -115,7 +115,6 @@ static bool make_token(char *e) {
 			return false;
 		}
 	}
-printf("trueturetrue\n");
 	return true; 
 }
 
@@ -134,7 +133,7 @@ uint32_t expr(char *e, bool *success) {
 			tokens[i].type = DEREF;
 		}
 	}*/
-
+printf("evalevaleval\n");
 
 	//printf("\nPlease implement expr at expr.c\n");
 	//assert(0);
