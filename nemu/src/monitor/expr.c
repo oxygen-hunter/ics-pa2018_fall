@@ -173,7 +173,7 @@ uint32_t my_atoi(char* str) {
 		if(str[str_len] == '\0')
 			break;
 	}
-	
+printf("to be atoi:%s\n", str);
 	int i;
 	for(i = str_len - 1; i >= 0; i--) {
 		val_i += str[i] * ten_exp_i;
