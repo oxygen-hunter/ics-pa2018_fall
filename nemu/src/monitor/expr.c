@@ -99,7 +99,7 @@ static bool make_token(char *e) {
 				switch(rules[i].token_type) {
 					case REG: 
 							  reg_x = which_reg(tokens[nr_token].str); //to judge $xxx is which reg and get val
-							  memset(reg_val_s, 0, 32);
+							  memset(reg_val_s, 0, 32); //zero
 							  sprintf(reg_val_s, "%d", reg_x); //get reg's val (string)
 							  memcpy(tokens[nr_token].str, reg_val_s, 32); //copy reg's val (string) to token's str
 					default: tokens[nr_token].type = rules[i].token_type;
@@ -126,7 +126,7 @@ uint32_t expr(char *e, bool *success) {
 		*success = false;
 		return 0;
 	}
-	*success = true; //??
+	*success = true; //?? to be continued...
 
 	/*TODO:Implement code to eeeeeevaluate the expression.*/
 	/*for(int i = 0; i < nr_token; i++) {
@@ -175,29 +175,6 @@ uint32_t eval(int p, int q) { //compute val of tokens
 	}
 	return -1;
 }
-
-/*
-uint32_t my_atoi(char* str) {
-	//default str length <= 32
-	uint32_t val_i = 0;
-	int str_len = 0;
-	uint32_t ten_exp_i = 1; //10^i	
-
-	for(; str_len < 32; str_len++) {
-		if(str[str_len] == '\0')
-			break;
-	}
-//printf("to be atoi:%s\n", str);
-	int i;
-	for(i = str_len - 1; i >= 0; i--) {
-		val_i += ((uint32_t)(str[i]-'0')) * ten_exp_i;
-//printf("val_i:%d\n", val_i);
-		ten_exp_i *= 10;
-//printf("ten_exp_i:%d\n", ten_exp_i);
-	}
-//printf("val_i:%d\n", val_i);
-	return val_i;
-}*/
 
 bool check_parentheses(int p, int q) {
 
