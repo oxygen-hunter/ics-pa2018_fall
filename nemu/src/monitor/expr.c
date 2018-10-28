@@ -156,7 +156,7 @@ uint32_t eval(int p, int q) { //compute val of tokens
 	}
 	else {
 		int op = dominant_operator_position(p, q); 
-printf("domi_op is:\n", op);
+printf("domi_op is%d:\n", op);
 		// to find the position of dominant operator in tokes[p, q]
 		uint32_t val1 = eval(p, op - 1);
 		uint32_t val2 = eval(op + 1, q);
