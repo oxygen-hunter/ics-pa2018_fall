@@ -98,7 +98,7 @@ static bool make_token(char *e) {
 
 				switch(rules[i].token_type) {
 					case REG: 
-							  reg_x = which_reg(tokens[nr_token].str); //to judge $xxx is which reg
+							  reg_x = which_reg(tokens[nr_token].str); //to judge $xxx is which reg and get val
 							  memset(reg_val_s, 0, 32);
 							  sprintf(reg_val_s, "%d", reg_x); //get reg's val (string)
 							  memcpy(tokens[nr_token].str, reg_val_s, 32); //copy reg's val (string) to token's str
