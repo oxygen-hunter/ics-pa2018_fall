@@ -182,7 +182,7 @@ bool check_parentheses(int p, int q) {
 }
 
 int dominant_operator_position(int p, int q) {
-	return 0;
+	return 4;
 }
 
 int which_reg(char* str) { //str format: $e??
