@@ -97,7 +97,7 @@ static bool make_token(char *e) {
 							  char reg_val_s[32]; //get reg's val (string)
 							  memset(reg_val_s, 0, 32);
 							  sprintf(reg_val_s, "%d", reg_val_i);
-							  memcpy(token[nr_token].str, reg_val_s, 32); //copy reg's val (string) to token's str
+							  memcpy(tokens[nr_token].str, reg_val_s, 32); //copy reg's val (string) to token's str
 					default: tokens[nr_token].type = rules[i].token_type;
 							 nr_token ++;
 				}
