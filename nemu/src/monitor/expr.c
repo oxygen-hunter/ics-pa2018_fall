@@ -224,6 +224,7 @@ int which_reg(char* str) { //str format: $e??
 	else if(str3 == 'p') { //e[s,b]p
 		if(str2 == 's') return cpu.esp;
 		if(str2 == 'b') return cpu.ebp;
+		if(str2 == 'i') return cpu.eip;
 	}
 	else if(str3 == 'i') { //e[s,d]i
 		if(str2 == 's') return cpu.esi;
