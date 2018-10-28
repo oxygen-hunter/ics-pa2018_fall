@@ -180,7 +180,16 @@ bool check_parentheses(int p, int q) {
 }
 
 int dominant_operator_position(int p, int q) {
-	return 4;
+	int domi_opr_pos = 0;	
+	for(int i = p; i <= q; i++) {
+		int domi = oprator_precedence(tokens[domi_opr_pos].type);
+		int i_domi = oprator_precedence(tokens[i].type);
+		if(i_domi != -1) {
+			if(i_domi <= domi)
+				domi_opr_pos = i;
+		}
+	}
+	return domi_opr_pos;
 }
 
 uint32_t which_reg(char* str) { //str format: $e??
