@@ -91,12 +91,17 @@ static bool make_token(char *e) {
 				memset(tokens[nr_token].str, 0, 32); //zeror str
 				memcpy(tokens[nr_token].str, substr_start, substr_len); //to store substr
 
+				/* case REG's variable */
+				int reg_x;
+				uint32_t reg_val_i;
+				char reg_val_s[32];
+
 				switch(rules[i].token_type) {
-					case REG: int reg_x = which_reg(token[nr_token].str); //to judge $xxx is which reg
-							  uint32_t reg_val_i = cpu.grp[reg_x].val; //get reg's val (uint32_t)
-							  char reg_val_s[32]; //get reg's val (string)
+					case REG: reg_x = which_reg(token[nr_token].str); //to judge $xxx is which reg
+							  reg_val_i = cpu.grp[reg_x].val; //get reg's val (uint32_t)
+							  
 							  memset(reg_val_s, 0, 32);
-							  sprintf(reg_val_s, "%d", reg_val_i);
+							  sprintf(reg_val_s, "%d", reg_val_i); //get reg's val (string)
 							  memcpy(tokens[nr_token].str, reg_val_s, 32); //copy reg's val (string) to token's str
 					default: tokens[nr_token].type = rules[i].token_type;
 							 nr_token ++;
