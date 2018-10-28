@@ -32,8 +32,8 @@ static struct rule {
 	{"==", EQ},
 	{"[0-9]+", NUM},
 	{"$e[a,c,d,b]x", REG},
-	{"$esp", REG},
-	{"$esi", REG},
+	{"$e[s,b]p", REG},
+	{"$e[s,d]i", REG},
 	{"[a-zA-Z]+[a-zA-Z0-9]*", SYMB},
 };
 
@@ -143,7 +143,7 @@ uint32_t eval(int p, int q) { //compute val of tokens
 		uint32_t val1 = eval(p, op - 1);
 		uint32_t val2 = eval(op + 1, q);
 		switch(tokens[op].type) {
-			case 
+			case '+
 		
 
 		}
