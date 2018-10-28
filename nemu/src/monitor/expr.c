@@ -86,7 +86,7 @@ static bool make_token(char *e) {
 				/* TODO: Now a new token is recognized with rules[i]. 
 				 * Add codes to perform some actions with this token.
 				 */
-
+				memcpy(tokens[nr_token].str, substr_start, substr_len); //to store substr
 
 				switch(rules[i].token_type) {
 					default: tokens[nr_token].type = rules[i].token_type;
