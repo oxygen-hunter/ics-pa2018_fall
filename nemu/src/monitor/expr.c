@@ -87,6 +87,7 @@ static bool make_token(char *e) {
 				 * Add codes to perform some actions with this token.
 				 */
 				memcpy(tokens[nr_token].str, substr_start, substr_len); //to store substr
+				memset(tokens[nr_token].str + substr_len + 1, '\0', 1); 
 
 				switch(rules[i].token_type) {
 					default: tokens[nr_token].type = rules[i].token_type;
