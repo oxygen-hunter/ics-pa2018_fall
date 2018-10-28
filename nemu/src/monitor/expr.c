@@ -155,7 +155,7 @@ uint32_t eval(int p, int q) { //compute val of tokens
 		return eval(p + 1, q - 1);
 	}
 	else {
-puts("4444\n")
+puts("4444\n");
 		int op = dominant_operator_position(p, q); 
 		// to find the position of dominant operator in tokes[p, q]
 		uint32_t val1 = eval(p, op - 1);
