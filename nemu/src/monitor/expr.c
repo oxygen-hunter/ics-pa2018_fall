@@ -203,7 +203,7 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 						*success = false;
 						return -1;
 					  }
-		
+			case EQ: return val1 == val2;
 			default: 
 				printf("\ninvalid op type at tokens[%d], whose type is %d.\n", op, tokens[op].type);
 				assert(0);
@@ -327,10 +327,20 @@ uint32_t trans_hex_to_int(char* str) {
 }
 
 int oprator_precedence(int opr) {
+	if(opr == OR)
+		return -10;
+	if(opr == AND)
+		return -9;
+	if(opr == EQ || opr == NEQ)
+		return -5;
 	if(opr == '+' || opr == '-')
 		return 1;
 	if(opr == '*' || opr == '/')
 		return 2;
+	if(opr == NOT)
+		return 3;
+	if(opr == DEREF)
+		return 4;
 	if(opr == BRKT_L || opr == BRKT_R)
 		return 10;
 	else return -1; //if opr is not an operator.
