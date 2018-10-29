@@ -201,8 +201,13 @@ int check_parentheses(int p, int q) {
 			top --; //pop
 		}
 		if(top < -1) {
-			printf("\')\' more than \'(\'");
+			printf("\')\' more than \'(\' at tokens[%d]", i);
+			return -1;
 		}
+	}
+	if(top > -1) {
+		printf("\'(\' more than \')\'");
+		return -1;
 	}
 	
 	return 0;
