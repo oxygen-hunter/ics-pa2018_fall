@@ -190,7 +190,21 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 }
 
 int check_parentheses(int p, int q) {
-
+	int stack[32] = {0};
+	int top = -1;
+	for(int i = p; i <= q; i++) {
+		if(tokens[i].type == BRKT_L) {
+			top ++; //push i
+			stack[top] = i;
+		}
+		else if(tokens[i].type == BRKT_R) {
+			top --; //pop
+		}
+		if(top < -1) {
+			printf("\')\' more than \'(\'");
+		}
+	}
+	
 	return 0;
 }
 
