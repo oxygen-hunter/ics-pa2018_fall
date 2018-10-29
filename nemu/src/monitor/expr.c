@@ -201,15 +201,16 @@ int check_parentheses(int p, int q) {
 			top --; //pop
 		}
 		if(top < -1) {
-			printf("\')\' more than \'(\' at tokens[%d]", i);
+			printf("\n\')\' more than \'(\' at tokens[%d]\n", i);
 			return -1;
 		}
 	}
 	if(top > -1) {
-		printf("\'(\' more than \')\'");
+		printf("\n\'(\' more than \')\'\n");
 		return -1;
 	}
-	
+	else if(tokens[p].type == BRKT_L && tokens[q].type == BRKT_R) // (...)
+		return 1;
 	return 0;
 }
 
