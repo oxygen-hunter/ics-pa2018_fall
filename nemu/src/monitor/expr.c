@@ -26,7 +26,7 @@ static struct rule {
 	 * Pay attention to the precedence level of different rules.
 	 */
 
-	{" +",	NOTYPE},				// white space
+	{"\\ +",	NOTYPE},				// white space
 	{"\\+", '+'},
 	{"\\-", '-'},
 	{"==", EQ},
