@@ -227,10 +227,10 @@ printf("return 0");
 int oprator_precedence(int opr);
 
 int dominant_operator_position(int p, int q) {
-	int domi_opr_pos = p;	
+	int domi_opr_pos = p;
+	int domi;
+	int i_domi;	
 	for(int i = p; i <= q; i++) {
-		int domi;
-		int i_domi;
 		i_domi = oprator_precedence(tokens[i].type);
 
 		//handle (...)
@@ -241,7 +241,6 @@ int dominant_operator_position(int p, int q) {
 
 		if(domi_opr_pos == p && i_domi != -1) { //to init domi
 			domi_opr_pos = i;
-			continue;
 		}
 		else
 			domi = oprator_precedence(tokens[domi_opr_pos].type);
