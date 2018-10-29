@@ -73,6 +73,7 @@ Token tokens[32];
 int nr_token;
 
 uint32_t which_reg(char* str);
+uint32_t trans_hex_to_int(char* str);
 
 static bool make_token(char *e) {
 	int position = 0;
@@ -114,6 +115,9 @@ static bool make_token(char *e) {
 					
 					case HEX:  
 							  val_int = trans_hex_to_int(tokens[nr_token].str); //to change hex to int
+							  memset(val_int_s, 0, 32); //zero
+							  sprintf(val_int_s, "%d", val_int);
+							  memcpy(tokens[nr_token].str, val_int_s, 32);
 					default: tokens[nr_token].type = rules[i].token_type;
 							 nr_token ++;
 				}
