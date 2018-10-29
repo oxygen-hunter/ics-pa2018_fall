@@ -236,7 +236,7 @@ printf("\ndomi's p:%d, q:%d\n", p, q);
 
 		//handle (...)
 		if(i_domi == 10) {
-			int bracket_r_pos = find_bracket_r(p, q, i);
+			int bracket_r_pos = find_bracket_r(i, q, i);
 			i = bracket_r_pos;
 		}
 
