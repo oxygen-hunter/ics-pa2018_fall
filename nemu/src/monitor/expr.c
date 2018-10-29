@@ -103,6 +103,7 @@ static bool make_token(char *e) {
 
 				/* case HEX's variable */
 				uint32_t val_int = 0;
+				char val_int_s[32] = {0};
 
 				switch(rules[i].token_type) {
 					case REG: 
