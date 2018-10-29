@@ -98,8 +98,11 @@ static bool make_token(char *e) {
 				memcpy(tokens[nr_token].str, substr_start, substr_len); //to store substr
 
 				/* case REG's variable */
-				int reg_x = 0;
+				uint32_t reg_x = 0;
 				char reg_val_s[32] = {0};
+
+				/* case HEX's variable */
+				uint32_t val_int = 0;
 
 				switch(rules[i].token_type) {
 					case REG: 
@@ -108,6 +111,8 @@ static bool make_token(char *e) {
 							  sprintf(reg_val_s, "%d", reg_x); //get reg's val (string)
 							  memcpy(tokens[nr_token].str, reg_val_s, 32); //copy reg's val (string) to token's str
 					
+					case HEX:  
+							  val_int = trans_hex_to_int(tokens[nr_token].str); //to change hex to int
 					default: tokens[nr_token].type = rules[i].token_type;
 							 nr_token ++;
 				}
