@@ -190,7 +190,8 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 }
 
 int check_parentheses(int p, int q) {
-	int stack[32] = {0};
+	int stack[32];
+	memset(stack, 0, 32 * sizeof(int));
 	int top = -1;
 	for(int i = p; i <= q; i++) {
 		if(tokens[i].type == BRKT_L) {
