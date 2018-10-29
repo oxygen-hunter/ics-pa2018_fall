@@ -170,11 +170,11 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 	}
 	else {
 		int op = dominant_operator_position(p, q); 
-printf("\ndomi_op is:%d\n", op);
+//printf("\ndomi_op is:%d\n", op);
 		// to find the position of dominant operator in tokes[p, q]
 		uint32_t val1 = eval(p, op - 1, success);
 		uint32_t val2 = eval(op + 1, q, success);
-printf("\nval1:%d, val2:%d\n", val1, val2);
+//printf("\nval1:%d, val2:%d\n", val1, val2);
 		switch(tokens[op].type) {
 			case '+': return val1 + val2;
 			case '-': return val1 - val2; //to be continued...
@@ -204,20 +204,20 @@ printf("\nchecking parentheses... p:%d, q:%d\n", p, q);
 		}
 		if(top < -1) {
 			printf("\n\')\' more than \'(\' at tokens[%d]\n", i);
-printf("return -1\n");
+//printf("return -1\n");
 			return -1;
 		}
 	}
 	if(top > -1) {
 		printf("\n\'(\' more than \')\'\n");
-printf("return -1\n");		
+//printf("return -1\n");		
 		return -1;
 	}
 	else if(tokens[p].type == BRKT_L && tokens[q].type == BRKT_R) { // (...)
-printf("return 1\n");
+//printf("return 1\n");
 		return 1;
 	}
-printf("return 0");
+//printf("return 0");
 	return 0;
 }
 
