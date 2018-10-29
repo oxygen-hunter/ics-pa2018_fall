@@ -157,14 +157,14 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 		*success = false;
 	}
 	else if(check_parentheses(p,q) == 1) {
-		return eval(p + 1, q - 1);
+		return eval(p + 1, q - 1, success);
 	}
 	else {
 		int op = dominant_operator_position(p, q); 
 printf("domi_op is:%d\n", op);
 		// to find the position of dominant operator in tokes[p, q]
-		uint32_t val1 = eval(p, op - 1);
-		uint32_t val2 = eval(op + 1, q);
+		uint32_t val1 = eval(p, op - 1, success);
+		uint32_t val2 = eval(op + 1, q, success);
 printf("val1:%d, val2:%d\n", val1, val2);
 		switch(tokens[op].type) {
 			case '+': return val1 + val2;
