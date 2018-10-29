@@ -118,7 +118,7 @@ static bool make_token(char *e) {
 	return true; 
 }
 
-uint32_t eval(int p, int q);
+uint32_t eval(int p, int q, bool *success);
 
 uint32_t expr(char *e, bool *success) {
 	if(!make_token(e)) {
@@ -137,21 +137,26 @@ uint32_t expr(char *e, bool *success) {
 	//printf("\nPlease implement expr at expr.c\n");
 	//assert(0);
 
-	return eval(0, nr_token - 1);
+	return eval(0, nr_token - 1, success);
 }
 
-bool check_parentheses(int p, int q);
+int check_parentheses(int p, int q); // -1: can't match, 0: can match but not (...), 1: (...)
 int dominant_operator_position(int p, int q);
 
-uint32_t eval(int p, int q) { //compute val of tokens
+uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 	if(p > q) {
 		/*TODO:bad expression*/
 		printf("\nInvalid expression. Please check.\n");
+		*success = false;
 	}
 	else if(p == q) {
 		return atoi(tokens[p].str);
 	}
-	else if(check_parentheses(p,q) == true) {
+	else if(check_parentheses(p,q) == -1) {
+		printf("\nCan't match \"(\" and \")\". Please check.\n");
+		*success = false;
+	}
+	else if(check_parentheses(p,q) == 1) {
 		return eval(p + 1, q - 1);
 	}
 	else {
