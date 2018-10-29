@@ -204,15 +204,20 @@ printf("\nchecking parentheses... p:%d, q:%d\n", p, q);
 		}
 		if(top < -1) {
 			printf("\n\')\' more than \'(\' at tokens[%d]\n", i);
+printf("return -1\n");
 			return -1;
 		}
 	}
 	if(top > -1) {
 		printf("\n\'(\' more than \')\'\n");
+printf("return -1\n");		
 		return -1;
 	}
-	else if(tokens[p].type == BRKT_L && tokens[q].type == BRKT_R) // (...)
+	else if(tokens[p].type == BRKT_L && tokens[q].type == BRKT_R) { // (...)
+printf("return 1\n");
 		return 1;
+	}
+printf("return 0");
 	return 0;
 }
 
