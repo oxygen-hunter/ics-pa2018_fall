@@ -225,7 +225,7 @@ int oprator_precedence(int opr);
 int find_bracket_r(int p, int q, int bracket_l_pos);
 
 int dominant_operator_position(int p, int q) {
-	int domi_opr_pos = p + 1;	
+	int domi_opr_pos = p;	
 	for(int i = p; i <= q; i++) {
 		int domi;
 		int i_domi;
@@ -237,7 +237,7 @@ int dominant_operator_position(int p, int q) {
 			i = bracket_r_pos;
 		}
 
-		if(domi_opr_pos == p + 1 && i_domi != -1) { //to init domi
+		if(domi_opr_pos == p && i_domi != -1) { //to init domi
 			domi_opr_pos = i;
 			continue;
 		}
