@@ -149,6 +149,7 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 	if(p > q) {
 		/*TODO:bad expression*/
 		printf("\nInvalid expression. Please check.\n");
+		printf("p:%d, q:%d\n", p, q);
 		*success = false;
 	}
 	else if(p == q) {
