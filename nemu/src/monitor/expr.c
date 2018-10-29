@@ -300,6 +300,31 @@ uint32_t which_reg(char* str) { //str format: $e??
 	return -1;
 }
 
+uint32_t trans_hex_to_int(char* str) {
+	//str format: 0x?????
+	char* hex_start = str + 2;
+	int hex_len = 0;
+	for(int i = 0; hex_start[i] != '\0'; i++); //get hex_len
+
+	uint32_t val_int = 0;
+	uint32_t hex_exp = 1;
+	uint32_t one_bit = 0;
+	for(int i = hex_start[hex_len - 1]; i >= 0; i --) {
+		if('0' <= hex_start[i] && hex_start[i] <= '9')
+			one_bit = hex_start[i] - '0';
+		else if('a' <= hex_start[i] && hex_start[i] <= 'f')
+			one_bit = hex_start[i] - 'a' + 10; //a-10, b-11 ...
+		else if('A' <= hex_start[i] && hex_start[i] <= 'F')
+			one_bit = hex_start[i] - 'A' + 10; //A-10, B-11 ...
+		else { //won't happen because make_token has done for me
+			printf("\nHex Format Fault\n");
+		}
+		val_int += one_bit * hex_exp;
+		hex_exp *= 16;
+	}
+	return val_int;
+}
+
 int oprator_precedence(int opr) {
 	if(opr == '+' || opr == '-')
 		return 1;
