@@ -216,6 +216,7 @@ int check_parentheses(int p, int q) {
 }
 
 int oprator_precedence(int opr);
+int find_bracket_r(int p, int q, int bracket_l_pos);
 
 int dominant_operator_position(int p, int q) {
 	int domi_opr_pos = p + 1;	
@@ -223,6 +224,13 @@ int dominant_operator_position(int p, int q) {
 		int domi;
 		int i_domi;
 		i_domi = oprator_precedence(tokens[i].type);
+
+		//handle (...)
+		if(i_domi == 10) {
+			int bracket_r_pos = find_bracket_r(p, q, i);
+			i = bracket_r_pos;
+		}
+
 		if(domi_opr_pos == p + 1 && i_domi != -1) { //to init domi
 			domi_opr_pos = i;
 			continue;
@@ -272,6 +280,21 @@ int oprator_precedence(int opr) {
 	else return -1; //if opr is not an operator.
 }
 
+int find_bracket_r(int p, int q, int bracket_l_pos) {
+	int brkt_l_num = 0;
+	int brkt_r_num = 0;
+	for(int i = p; i <= q; i++) {
+		if(tokens[i].type == BRKT_L)
+			brkt_l_num ++;
+		else if(tokens[i].type == BRKT_R)
+			brkt_r_num ++;
+		if(brkt_l_num != 0 && brkt_l_num == brkt_r_num)
+			return i;
+	}
+	printf("\ncan't find tokens[%d]'s matched \')\'.\n", p);
+	assert(0);
+	return -1;
+}
 
 
 
