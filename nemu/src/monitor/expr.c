@@ -102,6 +102,8 @@ static bool make_token(char *e) {
 							  memset(reg_val_s, 0, 32); //zero
 							  sprintf(reg_val_s, "%d", reg_x); //get reg's val (string)
 							  memcpy(tokens[nr_token].str, reg_val_s, 32); //copy reg's val (string) to token's str
+					case NOTYPE: nr_token --;
+							  
 					default: tokens[nr_token].type = rules[i].token_type;
 							 nr_token ++;
 				}
