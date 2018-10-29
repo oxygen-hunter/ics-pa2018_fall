@@ -169,13 +169,13 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 		return eval(p + 1, q - 1, success);
 	}
 	else {
-printf("\nbefore op\n");
+//printf("\nbefore op\n");
 		int op = dominant_operator_position(p, q); 
-printf("\ndomi_op is:%d\n", op);
+//printf("\ndomi_op is:%d\n", op);
 		// to find the position of dominant operator in tokes[p, q]
 		uint32_t val1 = eval(p, op - 1, success);
 		uint32_t val2 = eval(op + 1, q, success);
-printf("\nval1:%d, val2:%d\n", val1, val2);
+//printf("\nval1:%d, val2:%d\n", val1, val2);
 		switch(tokens[op].type) {
 			case '+': return val1 + val2;
 			case '-': return val1 - val2; //to be continued...
@@ -193,7 +193,7 @@ printf("\nval1:%d, val2:%d\n", val1, val2);
 int find_bracket_r(int p, int q, int bracket_l_pos);
 
 int check_parentheses(int p, int q) {
-printf("\nchecking parentheses... p:%d, q:%d\n", p, q);
+//printf("\nchecking parentheses... p:%d, q:%d\n", p, q);
 	int stack[32];
 	memset(stack, 0, 32 * sizeof(int));
 	int top = -1;
@@ -207,27 +207,27 @@ printf("\nchecking parentheses... p:%d, q:%d\n", p, q);
 		}
 		if(top < -1) {
 			printf("\n\')\' more than \'(\' at tokens[%d]\n", i);
-printf("return -1\n");
+//printf("return -1\n");
 			return -1;
 		}
 	}
 	if(top > -1) {
 		printf("\n\'(\' more than \')\'\n");
-printf("return -1\n");		
+//printf("return -1\n");		
 		return -1;
 	}
 	else if(tokens[p].type == BRKT_L && q == find_bracket_r(p, q, p)) { // (...)
-printf("return 1\n");
+//printf("return 1\n");
 		return 1;
 	}
-printf("return 0");
+//printf("return 0");
 	return 0;
 }
 
 int oprator_precedence(int opr);
 
 int dominant_operator_position(int p, int q) {
-printf("\ndomi's p:%d, q:%d\n", p, q);
+//printf("\ndomi's p:%d, q:%d\n", p, q);
 	int domi_opr_pos = p;
 	int domi = 0x7fffffff;
 	int i_domi = 0x7fffffff;	
@@ -246,7 +246,7 @@ printf("\ndomi's p:%d, q:%d\n", p, q);
 		}
 		else
 			domi = oprator_precedence(tokens[domi_opr_pos].type);
-printf("domi:%d, i_domi:%d, i:%d\n", domi, i_domi, i);
+//printf("domi:%d, i_domi:%d, i:%d\n", domi, i_domi, i);
 		if(i_domi != -1) {
 			if(i_domi <= domi)
 				domi_opr_pos = i;
