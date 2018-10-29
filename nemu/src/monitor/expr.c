@@ -189,6 +189,8 @@ printf("\nval1:%d, val2:%d\n", val1, val2);
 	return -1;
 }
 
+int find_bracket_r(int p, int q, int bracket_l_pos);
+
 int check_parentheses(int p, int q) {
 printf("\nchecking parentheses... p:%d, q:%d\n", p, q);
 	int stack[32];
@@ -213,7 +215,7 @@ printf("return -1\n");
 printf("return -1\n");		
 		return -1;
 	}
-	else if(tokens[p].type == BRKT_L && tokens[q].type == BRKT_R) { // (...)
+	else if(tokens[p].type == BRKT_L && q == find_bracket_r(p, q, p)) { // (...)
 printf("return 1\n");
 		return 1;
 	}
@@ -222,7 +224,6 @@ printf("return 0");
 }
 
 int oprator_precedence(int opr);
-int find_bracket_r(int p, int q, int bracket_l_pos);
 
 int dominant_operator_position(int p, int q) {
 	int domi_opr_pos = p;	
