@@ -267,6 +267,8 @@ int oprator_precedence(int opr) {
 		return 1;
 	if(opr == '*' || opr == '/')
 		return 2;
+	if(opr == BRKT_L || opr == BRKT_R)
+		return 10;
 	else return -1; //if opr is not an operator.
 }
 
