@@ -304,12 +304,12 @@ uint32_t trans_hex_to_int(char* str) {
 	//str format: 0x?????
 	char* hex_start = str + 2;
 	int hex_len = 0;
-	for(int i = 0; hex_start[i] != '\0'; i++); //get hex_len
+	for(; hex_start[hex_len] != '\0'; hex_len ++); //get hex_len
 
 	uint32_t val_int = 0;
 	uint32_t hex_exp = 1;
 	uint32_t one_bit = 0;
-	for(int i = hex_start[hex_len - 1]; i >= 0; i --) {
+	for(int i = hex_len - 1; i >= 0; i --) {
 		if('0' <= hex_start[i] && hex_start[i] <= '9')
 			one_bit = hex_start[i] - '0';
 		else if('a' <= hex_start[i] && hex_start[i] <= 'f')
