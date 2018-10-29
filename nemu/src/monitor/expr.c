@@ -202,7 +202,7 @@ int dominant_operator_position(int p, int q) {
 		else
 			domi = oprator_precedence(tokens[domi_opr_pos].type);
 		
-		if(i_domi != p) {
+		if(i_domi != -1) {
 			if(i_domi <= domi)
 				domi_opr_pos = i;
 		}
