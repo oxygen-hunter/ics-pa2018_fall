@@ -180,9 +180,9 @@ printf("val1:%d, val2:%d\n", val1, val2);
 	return -1;
 }
 
-bool check_parentheses(int p, int q) {
+int check_parentheses(int p, int q) {
 
-	return false;
+	return -1;
 }
 
 int oprator_precedence(int opr);
