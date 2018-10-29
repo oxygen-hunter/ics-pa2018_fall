@@ -228,8 +228,8 @@ int oprator_precedence(int opr);
 
 int dominant_operator_position(int p, int q) {
 	int domi_opr_pos = p;
-	int domi;
-	int i_domi;	
+	int domi = 0x7fffffff;
+	int i_domi = 0x7fffffff;	
 	for(int i = p; i <= q; i++) {
 		i_domi = oprator_precedence(tokens[i].type);
 
