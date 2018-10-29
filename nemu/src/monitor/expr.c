@@ -184,7 +184,7 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 					  	return val1 / val2;
 					  else {
 					  	printf("\nDivide Fault: dividend can't be '0'!\n");
-						printf("Divide Fault happens at ");
+						printf("Divide Fault happens at: ");
 						for(int j = op + 1; j <= q; j++)
 							printf("%s", tokens[j].str);
 						printf("\n");
