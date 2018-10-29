@@ -169,6 +169,7 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 		return eval(p + 1, q - 1, success);
 	}
 	else {
+printf("\nbefore op\n");
 		int op = dominant_operator_position(p, q); 
 printf("\ndomi_op is:%d\n", op);
 		// to find the position of dominant operator in tokes[p, q]
