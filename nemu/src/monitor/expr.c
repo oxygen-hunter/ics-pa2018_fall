@@ -33,6 +33,8 @@ static struct rule {
 	{"\\/", '/'},
 	{"!=", NEQ},
 	{"==", EQ},
+	{"&&", AND},
+	{"||", OR},
 	{"\\(", BRKT_L},
 	{"\\)", BRKT_R},
 	{"0[Xx][0-9a-fA-F]+", HEX},
