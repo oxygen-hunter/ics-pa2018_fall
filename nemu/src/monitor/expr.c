@@ -204,6 +204,9 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 						return -1;
 					  }
 			case EQ: return val1 == val2;
+			case NEQ: return val1 != val2;
+			case AND: return val1 && val2;
+			case OR: return val1 || val2;
 			default: 
 				printf("\ninvalid op type at tokens[%d], whose type is %d.\n", op, tokens[op].type);
 				assert(0);
