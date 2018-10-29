@@ -182,7 +182,7 @@ printf("val1:%d, val2:%d\n", val1, val2);
 
 int check_parentheses(int p, int q) {
 
-	return -1;
+	return 0;
 }
 
 int oprator_precedence(int opr);
