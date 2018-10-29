@@ -190,6 +190,7 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 }
 
 int check_parentheses(int p, int q) {
+printf("\nchecking parentheses... p:%d, q:%d\n", p, q);
 	int stack[32];
 	memset(stack, 0, 32 * sizeof(int));
 	int top = -1;
