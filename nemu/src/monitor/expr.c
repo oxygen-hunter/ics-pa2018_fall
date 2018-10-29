@@ -189,6 +189,7 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 							printf("%s", tokens[j].str);
 						printf("\n");
 						*success = false;
+						return -1;
 					  }
 		
 			default: 
