@@ -11,7 +11,7 @@
 #include <regex.h>
 
 enum {
-	NOTYPE = 256, EQ, NUM, REG, SYMB, BRKT_L, BRKT_R
+	NOTYPE = 256, EQ, NUM, REG, SYMB, BRKT_L, BRKT_R, HEX, AND, OR, NEQ, NOT, DEREF
 
 	/* TODO: Add more token types */
 
@@ -35,6 +35,7 @@ static struct rule {
 	{"\\(", BRKT_L},
 	{"\\)", BRKT_R},
 	{"[0-9]+", NUM},
+	{"0[Xx][0-9a-fA-F]+", HEX},
 	{"\\$e[a,c,d,b]x", REG},
 	{"\\$e[s,b]p", REG},
 	{"\\$e[s,d]i", REG},
