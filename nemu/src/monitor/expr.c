@@ -168,11 +168,11 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 	}
 	else {
 		int op = dominant_operator_position(p, q); 
-printf("domi_op is:%d\n", op);
+//printf("domi_op is:%d\n", op);
 		// to find the position of dominant operator in tokes[p, q]
 		uint32_t val1 = eval(p, op - 1, success);
 		uint32_t val2 = eval(op + 1, q, success);
-printf("val1:%d, val2:%d\n", val1, val2);
+//printf("val1:%d, val2:%d\n", val1, val2);
 		switch(tokens[op].type) {
 			case '+': return val1 + val2;
 			case '-': return val1 - val2; //to be continued...
