@@ -227,6 +227,7 @@ printf("return 0");
 int oprator_precedence(int opr);
 
 int dominant_operator_position(int p, int q) {
+printf("\ndomi's p:%d, q:%d\n", p, q);
 	int domi_opr_pos = p;
 	int domi = 0x7fffffff;
 	int i_domi = 0x7fffffff;	
