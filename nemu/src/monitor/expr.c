@@ -291,7 +291,7 @@ int oprator_precedence(int opr) {
 int find_bracket_r(int p, int q, int bracket_l_pos) {
 	int brkt_l_num = 0;
 	int brkt_r_num = 0;
-	for(int i = p; i <= q; i++) {
+	for(int i = p; i <= q; i ++) {
 		if(tokens[i].type == BRKT_L)
 			brkt_l_num ++;
 		else if(tokens[i].type == BRKT_R)
