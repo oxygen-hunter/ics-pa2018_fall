@@ -346,6 +346,8 @@ int oprator_precedence(int opr) {
 		return -9;
 	if(opr == EQ || opr == NEQ)
 		return -5;
+	if(opr == L || opr == G || opr == LE || opr == GE)
+		return -4;
 	if(opr == '+' || opr == '-')
 		return 1;
 	if(opr == '*' || opr == '/')
