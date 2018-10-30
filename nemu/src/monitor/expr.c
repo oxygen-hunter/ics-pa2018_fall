@@ -10,6 +10,8 @@
 #include <sys/types.h>
 #include <regex.h>
 
+extern uint32_t look_up_symtab(char *sym, bool *success);
+
 enum {
 	NOTYPE = 256, EQ, NUM, REG, SYMB, BRKT_L, BRKT_R, HEX, AND, OR, NEQ, NOT, DEREF, L, LE, G, GE, NEG
 
