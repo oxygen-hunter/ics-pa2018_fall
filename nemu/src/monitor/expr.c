@@ -205,6 +205,7 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 	else {
 //printf("\nbefore op\n");
 		int op = dominant_operator_position(p, q); 
+printf("\ndomi_op is:%d\n", op);
 		//if(op == p) {
 			if(tokens[op].type == DEREF) { //5+*0x8048000+-(5) -> 5+*0x8048000 '+' -(5)
 				vaddr_t addr = eval(op + 1, q, success);
@@ -222,7 +223,7 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 				return !val;
 			}
 		//}
-//printf("\ndomi_op is:%d\n", op);
+
 		// to find the position of dominant operator in tokes[p, q]
 		uint32_t val1 = eval(p, op - 1, success);
 		uint32_t val2 = eval(op + 1, q, success);
