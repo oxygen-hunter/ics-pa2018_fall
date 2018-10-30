@@ -358,7 +358,7 @@ int oprator_precedence(int opr) {
 		return 2;
 	if(opr == NOT)
 		return 3;
-	if(opr == DEREF)
+	if(opr == DEREF || opr == NOT || opr == NEG)
 		return 4;
 	if(opr == BRKT_L || opr == BRKT_R)
 		return 10;
