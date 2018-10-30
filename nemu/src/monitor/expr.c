@@ -222,12 +222,26 @@ printf("\ndomi_op is:%d\n", op);
 				return eval(p, op);
 			}
 			else if(tokens[op].type == NEG) {
-				uint32_t val = eval(op + 1, q, success);
-				return -val;
+				uint32_t val = -eval(op + 1, q, success);
+				
+				tokens[op] = NUM;
+				char unary_num[32] = {0};
+				memset(unary_num, 0, 32);
+				memset(tokens[op].str, 0, 32);
+				sprintf(unary_num, "%d", val);
+				memcpy(tokens[op].str, unary_num, 32);
+				return eval(p, op);
 			}
 			else if(tokens[op].type == NOT) {
-				uint32_t val = eval(op + 1, q, success);
-				return !val;
+				uint32_t val = !eval(op + 1, q, success);
+
+				tokens[op] = NUM;
+				char unary_num[32] = {0};
+				memset(unary_num, 0, 32);
+				memset(tokens[op].str, 0, 32);
+				sprintf(unary_num, "%d", val);
+				memcpy(tokens[op].str, unary_num, 32);
+				return eval(p, op);
 			}
 		//}
 
