@@ -185,6 +185,7 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 		*success = false;
 	}
 	else if(p == q) {
+printf("\np==q==%d\n",p);
 		return atoi(tokens[p].str);
 	}
 	else if(check_parentheses(p,q) == -1) {
