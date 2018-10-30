@@ -10,8 +10,8 @@
 #include <sys/types.h>
 #include <regex.h>
 
-extern static char *strtab = NULL;
-extern static Elf32_Sym *symtab = NULL;
+extern static char *strtab;
+extern static Elf32_Sym *symtab;
 extern static int nr_symtab_entry;
 
 enum {
