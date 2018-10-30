@@ -39,7 +39,7 @@ static struct rule {
 	{"==", EQ},
 	{"&&", AND},
 	{"\\|\\|", OR},
-	{"!", NOT}
+	{"!", NOT},
 	{"\\(", BRKT_L},
 	{"\\)", BRKT_R},
 	{"0[Xx][0-9a-fA-F]+", HEX},
