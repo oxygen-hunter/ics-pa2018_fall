@@ -212,7 +212,14 @@ printf("\ndomi_op is:%d\n", op);
 				/*TODO: judge addr is valid*/
 
 				uint32_t mem = vaddr_read(addr, 0, 4);
-				return mem;
+
+				tokens[op] = NUM;
+				char unary_num[32] = {0};
+				memset(unary_num, 0, 32);
+				memset(tokens[op].str, 0, 32);
+				sprintf(unary_num, "%d", mem);
+				memcpy(tokens[op].str, unary_num, 32);
+				return eval(p, op);
 			}
 			else if(tokens[op].type == NEG) {
 				uint32_t val = eval(op + 1, q, success);
