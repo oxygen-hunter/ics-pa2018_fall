@@ -10,11 +10,6 @@
 #include <sys/types.h>
 #include <regex.h>
 
-#include <elf.h>
-//extern static char *strtab;
-//extern static Elf32_Sym *symtab;
-//extern static int nr_symtab_entry;
-
 enum {
 	NOTYPE = 256, EQ, NUM, REG, SYMB, BRKT_L, BRKT_R, HEX, AND, OR, NEQ, NOT, DEREF, L, LE, G, GE, NEG
 
@@ -119,6 +114,11 @@ static bool make_token(char *e) {
 				uint32_t val_int = 0;
 				char val_int_s[32] = {0};
 
+				/* case SYMB's variable */
+				uint32_t val_sym = 0;
+				bool sucess_sym = false;
+				char val_sym_s[32] = {0];
+
 				switch(rules[i].token_type) {
 					case REG: 
 							  reg_x = which_reg(tokens[nr_token].str); //to judge $xxx is which reg and get val
@@ -138,9 +138,11 @@ static bool make_token(char *e) {
 							  break;
 					
 					case SYMB:
-							  for(int i = 0; i < nr_symtab_entry; i ++) {
-							  	  printf("%x\n", symtab[i]);
-							  }
+							  val_sym = look_up_symtab(tokens[i].str, &success);
+							  memset(val_sym_s, 0, 32);
+							  sprintf(val_sym_s, "%d", val_sym);
+							  memset(tokens[nr_token].str, 0, 32); //zeror str
+							  memcpy(tokens[nr_token].str, sym_val_s, 32);
 							  break;
 					default:  
 							  break;
