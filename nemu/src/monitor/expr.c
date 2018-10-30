@@ -119,7 +119,7 @@ static bool make_token(char *e) {
 							  reg_x = which_reg(tokens[nr_token].str); //to judge $xxx is which reg and get val
 							  memset(reg_val_s, 0, 32); //zero
 							  sprintf(reg_val_s, "%d", reg_x); //get reg's val (string)
-//printf("after sprintf: reg_val_s : %s\n", reg_val_s);
+printf("after sprintf: reg_val_s : %s\n", reg_val_s);
 							  memset(tokens[nr_token].str, 0, 32); //zeror str
 							  memcpy(tokens[nr_token].str, reg_val_s, 32); //copy reg's val (string) to token's str
 					
