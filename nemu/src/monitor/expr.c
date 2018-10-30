@@ -10,6 +10,7 @@
 #include <sys/types.h>
 #include <regex.h>
 
+#include <elf.h>
 extern static char *strtab;
 extern static Elf32_Sym *symtab;
 extern static int nr_symtab_entry;
