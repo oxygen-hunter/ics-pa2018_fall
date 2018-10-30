@@ -198,7 +198,7 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 				vaddr_t addr = eval(op + 1, q, success);
 				/*TODO: judge addr is valid*/
 
-				uint32_t mem = vaddr_read(addr);
+				uint32_t mem = vaddr_read(addr, 0, 4);
 				return mem;
 			}
 			else if(tokens[op].type == NEG) {
