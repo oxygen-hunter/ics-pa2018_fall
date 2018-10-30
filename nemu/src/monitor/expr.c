@@ -195,16 +195,16 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 		int op = dominant_operator_position(p, q); 
 		if(op == p) {
 			if(tokens[op].type == DEREF) { //5+*0x8048000+-(5) -> 5+*0x8048000 '+' -(5)
-				vaddr_t addr = eval(op + 1, q);
+				vaddr_t addr = eval(op + 1, q, success);
 				/*TODO: judge addr is valid*/
 
 				uint32_t mem = vaddr_read(addr);
 				return mem;
 			}
-			else if(tokens[op.type] == NEG) {
+			else if(tokens[op].type == NEG) {
 				
 			}
-			else if(tokens[op.type] == NOT) {
+			else if(tokens[op].type == NOT) {
 				
 			}
 		}
