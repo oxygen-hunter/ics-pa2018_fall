@@ -76,7 +76,7 @@ cmd_handler(cmd_p) {
 	}
 	else {
 		printf("DEC:%d\n", val);
-		printf("HEX:0x%x\n", val);
+		printf("HEX:0x%08x\n", val);
 	}
 	return 0;
 
