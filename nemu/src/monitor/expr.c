@@ -133,7 +133,9 @@ static bool make_token(char *e) {
 							  break;
 					
 					case SYMB:
-							  load_elf_tables(exec_file);
+							  for(int i = 0; i < nr_symtab_entry; i ++) {
+							  	  printf("%s\n", symtab[i]);
+							  }
 							  break;
 					default:  
 							  break;
