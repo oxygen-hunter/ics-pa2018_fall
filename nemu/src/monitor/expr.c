@@ -116,7 +116,7 @@ static bool make_token(char *e) {
 
 				/* case SYMB's variable */
 				uint32_t val_sym = 0;
-				bool sucess_sym = false;
+				bool success_sym = false;
 				char val_sym_s[32] = {0};
 
 				switch(rules[i].token_type) {
@@ -142,7 +142,7 @@ static bool make_token(char *e) {
 							  memset(val_sym_s, 0, 32);
 							  sprintf(val_sym_s, "%d", val_sym);
 							  memset(tokens[nr_token].str, 0, 32); //zeror str
-							  memcpy(tokens[nr_token].str, sym_val_s, 32);
+							  memcpy(tokens[nr_token].str, val_sym_s, 32);
 							  break;
 					default:  
 							  break;
