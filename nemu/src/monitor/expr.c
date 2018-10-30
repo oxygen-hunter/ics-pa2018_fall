@@ -193,6 +193,21 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 	else {
 //printf("\nbefore op\n");
 		int op = dominant_operator_position(p, q); 
+		if(op == p) {
+			if(tokens[op].type == DEREF) { //5+*0x8048000+-(5) -> 5+*0x8048000 '+' -(5)
+				vaddr_t addr = eval(op + 1, q);
+				/*TODO: judge addr is valid*/
+
+				uint32_t mem = vaddr_read(addr);
+				return mem;
+			}
+			else if(tokens[op.type] == NEG) {
+				
+			}
+			else if(tokens[op.type] == NOT) {
+				
+			}
+		}
 //printf("\ndomi_op is:%d\n", op);
 		// to find the position of dominant operator in tokes[p, q]
 		uint32_t val1 = eval(p, op - 1, success);
