@@ -11,7 +11,7 @@
 #include <regex.h>
 
 enum {
-	NOTYPE = 256, EQ, NUM, REG, SYMB, BRKT_L, BRKT_R, HEX, AND, OR, NEQ, NOT, DEREF, L, LE, G, GE
+	NOTYPE = 256, EQ, NUM, REG, SYMB, BRKT_L, BRKT_R, HEX, AND, OR, NEQ, NOT, DEREF, L, LE, G, GE, NEG
 
 	/* TODO: Add more token types */
 
@@ -39,6 +39,7 @@ static struct rule {
 	{"==", EQ},
 	{"&&", AND},
 	{"\\|\\|", OR},
+	{"!", NOT}
 	{"\\(", BRKT_L},
 	{"\\)", BRKT_R},
 	{"0[Xx][0-9a-fA-F]+", HEX},
@@ -154,11 +155,14 @@ uint32_t expr(char *e, bool *success) {
 	*success = true; //?? to be continued...
 
 	/*TODO:Implement code to eeeeeevaluate the expression.*/
-	/*for(int i = 0; i < nr_token; i++) {
-		if(tokens[i].type == '*' &&(i == 0 || tokens[i - 1].type == certain type) {
+	for(int i = 0; i < nr_token; i++) {
+		if(tokens[i].type == '*' &&(i == 0 || tokens[i - 1].type == certain type) { // * is deref
 			tokens[i].type = DEREF;
 		}
-	}*/
+		if(tokens[i].type == '-' &&(i == 0 || tokens[i - 1].type == certain type) { // - is neg
+			tokens[i].type = NEG;
+		}
+	}
 
 	//printf("\nPlease implement expr at expr.c\n");
 	//assert(0);
