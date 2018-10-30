@@ -298,7 +298,7 @@ int oprator_precedence(int opr);
 int dominant_operator_position(int p, int q) {
 //printf("\ndomi's p:%d, q:%d\n", p, q);
 	int domi_opr_pos = p;
-	int domi = 0x7fffffff;
+	int domi = 0x7777777;
 	int i_domi = 0x7fffffff;	
 	for(int i = p; i <= q; i++) {
 		i_domi = oprator_precedence(tokens[i].type);
@@ -315,7 +315,7 @@ int dominant_operator_position(int p, int q) {
 		}
 		else
 			domi = oprator_precedence(tokens[domi_opr_pos].type);
-//printf("domi:%d, i_domi:%d, i:%d\n", domi, i_domi, i);
+printf("domi:%d, i_domi:%d, i:%d\n", domi, i_domi, i);
 		if(i_domi != -1) {
 			if(i_domi <= domi)
 				domi_opr_pos = i;
