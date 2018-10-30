@@ -11,9 +11,9 @@
 #include <regex.h>
 
 #include <elf.h>
-extern static char *strtab;
-extern static Elf32_Sym *symtab;
-extern static int nr_symtab_entry;
+//extern static char *strtab;
+//extern static Elf32_Sym *symtab;
+//extern static int nr_symtab_entry;
 
 enum {
 	NOTYPE = 256, EQ, NUM, REG, SYMB, BRKT_L, BRKT_R, HEX, AND, OR, NEQ, NOT, DEREF, L, LE, G, GE, NEG
