@@ -342,7 +342,7 @@ int dominant_operator_position(int p, int q) {
 			if(i_domi <= domi)
 				domi_opr_pos = i;
 		}
-printf("domi:%d, i_domi:%d, i:%d\n", domi, i_domi, i);
+printf("domi:%d, i_domi:%d, i:%d, domi_pos:%d\n", domi, i_domi, i, domi_opr_pos);
 	}
 	return domi_opr_pos;
 }
