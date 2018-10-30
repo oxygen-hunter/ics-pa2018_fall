@@ -312,7 +312,7 @@ int dominant_operator_position(int p, int q) {
 uint32_t which_reg(char* str) { //str format: $e??
 	char str2 = str[2], str3 = str[3];
 	if(str3 == 'x') { //e[a,c,d,b]x
-		if(str2 == 'a') return cpu.eax;
+		if(str2 == 'a') {printf("0x%08x\n",cpu.eax);return cpu.eax;}
 		if(str2 == 'c') return cpu.ecx;
 		if(str2 == 'd') return cpu.edx;
 		if(str2 == 'b') return cpu.ebx;
