@@ -205,7 +205,7 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 	else {
 //printf("\nbefore op\n");
 		int op = dominant_operator_position(p, q); 
-printf("\ndomi_op is:%d\n", op);
+//printf("\ndomi_op is:%d\n", op);
 		//if(op == p) {
 			if(tokens[op].type == DEREF) { //5+*0x8048000+-(5) -> 5+*0x8048000 '+' -(5)
 				vaddr_t addr = eval(op + 1, q, success);
@@ -283,7 +283,7 @@ printf("\ndomi_op is:%d\n", op);
 int find_bracket_r(int p, int q, int bracket_l_pos);
 
 int check_parentheses(int p, int q) {
-printf("\nchecking parentheses... p:%d, q:%d\n", p, q);
+//printf("\nchecking parentheses... p:%d, q:%d\n", p, q);
 	int stack[32];
 	memset(stack, 0, 32 * sizeof(int));
 	int top = -1;
@@ -342,7 +342,7 @@ int dominant_operator_position(int p, int q) {
 			if(i_domi <= domi)
 				domi_opr_pos = i;
 		}
-printf("domi:%d, i_domi:%d, i:%d, domi_pos:%d\n", domi, i_domi, i, domi_opr_pos);
+//printf("domi:%d, i_domi:%d, i:%d, domi_pos:%d\n", domi, i_domi, i, domi_opr_pos);
 	}
 	return domi_opr_pos;
 }
