@@ -321,6 +321,7 @@ int dominant_operator_position(int p, int q) {
 	int domi_opr_pos = p;
 	int domi = 0x7777777;
 	int i_domi = 0x7fffffff;	
+	bool domi_is_inited = false;
 	for(int i = p; i <= q; i++) {
 		i_domi = oprator_precedence(tokens[i].type);
 
@@ -330,9 +331,10 @@ int dominant_operator_position(int p, int q) {
 			i = bracket_r_pos;
 		}
 
-		if(domi_opr_pos == p && domi == 0x7777777 && i_domi != -1) { //to init domi
+		if(domi_is_inited == false && i_domi != -1) { //to init domi
 			domi_opr_pos = i;
 			domi = i_domi;
+			domi_is_inited = true;
 		}
 		else
 			domi = oprator_precedence(tokens[domi_opr_pos].type);
