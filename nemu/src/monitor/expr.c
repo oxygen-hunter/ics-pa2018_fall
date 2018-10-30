@@ -133,7 +133,7 @@ static bool make_token(char *e) {
 							  break;
 					
 					case SYMB:
-							  
+							  load_elf_tables(exec_file);
 							  break;
 					default:  
 							  break;
