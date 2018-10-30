@@ -139,7 +139,7 @@ static bool make_token(char *e) {
 					
 					case SYMB:
 							  for(int i = 0; i < nr_symtab_entry; i ++) {
-							  	  printf("%s\n", symtab[i]);
+							  	  printf("%x\n", symtab[i]);
 							  }
 							  break;
 					default:  
