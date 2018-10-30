@@ -10,6 +10,10 @@
 #include <sys/types.h>
 #include <regex.h>
 
+extern static char *strtab = NULL;
+extern static Elf32_Sym *symtab = NULL;
+extern static int nr_symtab_entry;
+
 enum {
 	NOTYPE = 256, EQ, NUM, REG, SYMB, BRKT_L, BRKT_R, HEX, AND, OR, NEQ, NOT, DEREF, L, LE, G, GE, NEG
 
