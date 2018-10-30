@@ -309,7 +309,7 @@ int dominant_operator_position(int p, int q) {
 			i = bracket_r_pos;
 		}
 
-		if(domi_opr_pos == p && i_domi != -1) { //to init domi
+		if(domi == 0x7777777 && i_domi != -1) { //to init domi
 			domi_opr_pos = i;
 			domi = i_domi;
 		}
