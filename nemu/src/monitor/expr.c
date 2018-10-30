@@ -159,14 +159,14 @@ uint32_t expr(char *e, bool *success) {
 	*success = true; //?? to be continued...
 
 	/*TODO:Implement code to eeeeeevaluate the expression.*/
-	/*for(int i = 0; i < nr_token; i++) {
+	for(int i = 0; i < nr_token; i++) {
 		if(tokens[i].type == '*' &&(i == 0 || (tokens[i - 1].type != REG && tokens[i - 1].type != NUM && tokens[i - 1].type != HEX && tokens[i - 1].type != BRKT_R))) { // * is deref
 			tokens[i].type = DEREF;
 		}
 		if(tokens[i].type == '-' &&(i == 0 || (tokens[i - 1].type != REG && tokens[i - 1].type != NUM && tokens[i - 1].type != HEX && tokens[i - 1].type != BRKT_R))) { // - is neg
 			tokens[i].type = NEG;
 		}
-	}*/
+	}
 
 	//printf("\nPlease implement expr at expr.c\n");
 	//assert(0);
