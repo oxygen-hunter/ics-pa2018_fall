@@ -122,7 +122,8 @@ static bool make_token(char *e) {
 printf("after sprintf: reg_val_s : %s\n", reg_val_s);
 							  memset(tokens[nr_token].str, 0, 32); //zeror str
 							  memcpy(tokens[nr_token].str, reg_val_s, 32); //copy reg's val (string) to token's str
-					
+printf("now token's str: %s\n", tokens[nr_token].str);					
+
 					case HEX:  
 							  val_int = trans_hex_to_int(tokens[nr_token].str); //to change hex to int
 							  memset(val_int_s, 0, 32); //zero
