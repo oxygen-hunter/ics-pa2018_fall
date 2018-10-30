@@ -213,7 +213,7 @@ printf("\ndomi_op is:%d\n", op);
 
 				uint32_t mem = vaddr_read(addr, 0, 4);
 
-				tokens[op] = NUM;
+				tokens[op].type = NUM;
 				char unary_num[32] = {0};
 				memset(unary_num, 0, 32);
 				memset(tokens[op].str, 0, 32);
@@ -224,7 +224,7 @@ printf("\ndomi_op is:%d\n", op);
 			else if(tokens[op].type == NEG) {
 				uint32_t val = -eval(op + 1, q, success);
 				
-				tokens[op] = NUM;
+				tokens[op].type = NUM;
 				char unary_num[32] = {0};
 				memset(unary_num, 0, 32);
 				memset(tokens[op].str, 0, 32);
@@ -235,7 +235,7 @@ printf("\ndomi_op is:%d\n", op);
 			else if(tokens[op].type == NOT) {
 				uint32_t val = !eval(op + 1, q, success);
 
-				tokens[op] = NUM;
+				tokens[op].type = NUM;
 				char unary_num[32] = {0};
 				memset(unary_num, 0, 32);
 				memset(tokens[op].str, 0, 32);
