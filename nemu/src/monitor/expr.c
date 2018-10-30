@@ -170,7 +170,9 @@ uint32_t expr(char *e, bool *success) {
 
 	//printf("\nPlease implement expr at expr.c\n");
 	//assert(0);
-
+for(int i=0;i<nr_token;i++) {
+	printf("\n%s\n", tokens[i].str);
+}
 	return eval(0, nr_token - 1, success);
 }
 
