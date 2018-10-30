@@ -131,6 +131,10 @@ static bool make_token(char *e) {
 							  memset(tokens[nr_token].str, 0, 32); //zeror str
 							  memcpy(tokens[nr_token].str, val_int_s, 32);
 							  break;
+					
+					case SYMB:
+							  
+							  break;
 					default:  
 							  break;
 				}
