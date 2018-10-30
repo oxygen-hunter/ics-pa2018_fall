@@ -75,7 +75,8 @@ cmd_handler(cmd_p) {
 		printf("invalid expression: '%s'\n", args);
 	}
 	else {
-		printf("%d\n", val);
+		printf("DEC:%d\n", val);
+		printf("HEX:0x%x\n", val);
 	}
 	return 0;
 
