@@ -123,17 +123,22 @@ printf("after sprintf: reg_val_s : %s\n", reg_val_s);
 							  memset(tokens[nr_token].str, 0, 32); //zeror str
 							  memcpy(tokens[nr_token].str, reg_val_s, 32); //copy reg's val (string) to token's str
 printf("now token's str: %s\n", tokens[nr_token].str);					
-
+							  break;
 					case HEX:  
 							  val_int = trans_hex_to_int(tokens[nr_token].str); //to change hex to int
 							  memset(val_int_s, 0, 32); //zero
 							  sprintf(val_int_s, "%d", val_int);
 							  memset(tokens[nr_token].str, 0, 32); //zeror str
 							  memcpy(tokens[nr_token].str, val_int_s, 32);
-					default: tokens[nr_token].type = rules[i].token_type;
-							 nr_token ++;
+							  break;
+					default:  
+							  break;
 				}
 				
+				tokens[nr_token].type = rules[i].token_type;
+				nr_token ++;				
+
+
 				if(rules[i].token_type == NOTYPE)
 					nr_token --;
 
