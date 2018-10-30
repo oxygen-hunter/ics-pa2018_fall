@@ -214,10 +214,12 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 				return mem;
 			}
 			else if(tokens[op].type == NEG) {
-				
+				uint32_t val = eval(op + 1, q, success);
+				return -val;
 			}
 			else if(tokens[op].type == NOT) {
-				
+				uint32_t val = eval(op + 1, q, success);
+				return !val;
 			}
 		}
 //printf("\ndomi_op is:%d\n", op);
