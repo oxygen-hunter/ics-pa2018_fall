@@ -119,10 +119,10 @@ static bool make_token(char *e) {
 							  reg_x = which_reg(tokens[nr_token].str); //to judge $xxx is which reg and get val
 							  memset(reg_val_s, 0, 32); //zero
 							  sprintf(reg_val_s, "%d", reg_x); //get reg's val (string)
-printf("after sprintf: reg_val_s : %s\n", reg_val_s);
+//printf("after sprintf: reg_val_s : %s\n", reg_val_s);
 							  memset(tokens[nr_token].str, 0, 32); //zeror str
 							  memcpy(tokens[nr_token].str, reg_val_s, 32); //copy reg's val (string) to token's str
-printf("now token's str: %s\n", tokens[nr_token].str);					
+//printf("now token's str: %s\n", tokens[nr_token].str);					
 							  break;
 					case HEX:  
 							  val_int = trans_hex_to_int(tokens[nr_token].str); //to change hex to int
@@ -192,11 +192,7 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 		*success = false;
 	}
 	else if(p == q) {
-printf("\np==q==%d\n",p);
-printf("nnn token[p]'s str: %s\n", tokens[p].str);
-printf("%d\n", atoi(tokens[p].str));
-printf("%d\n", atoi("245856"));
-printf("%d\n", atoi("245856\0"));
+//printf("\np==q==%d\n",p);
 		return atoi(tokens[p].str);
 	}
 	else if(check_parentheses(p,q) == -1) {
