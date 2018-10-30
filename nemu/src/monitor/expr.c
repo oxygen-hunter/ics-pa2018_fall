@@ -143,6 +143,7 @@ static bool make_token(char *e) {
 							  val_sym = look_up_symtab(tokens[i].str, &success_sym);
 							  if(success_sym == false) {
 								  printf("\nno such symbol: %s\n", tokens[i].str);
+								  return false;
 							  }
 							  memset(val_sym_s, 0, 32);
 							  sprintf(val_sym_s, "%d", val_sym);
