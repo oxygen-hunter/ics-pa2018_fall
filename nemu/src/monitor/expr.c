@@ -186,6 +186,7 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 	}
 	else if(p == q) {
 printf("\np==q==%d\n",p);
+printf("nnn token[p]'s str: %s\n", tokens[p].str);
 printf("%d\n", atoi(tokens[p].str));
 printf("%d\n", atoi("245856"));
 printf("%d\n", atoi("245856\0"));
