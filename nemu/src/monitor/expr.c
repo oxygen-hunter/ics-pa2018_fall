@@ -142,7 +142,7 @@ static bool make_token(char *e) {
 					case SYMB:
 							  val_sym = look_up_symtab(tokens[nr_token].str, &success_sym);
 							  if(success_sym == false) {
-								  printf("\nno such symbol: %s\n", tokens[nr_token].str);
+								  printf("no such symbol: '%s'\n", tokens[nr_token].str);
 								  return false;
 							  }
 							  memset(val_sym_s, 0, 32);
