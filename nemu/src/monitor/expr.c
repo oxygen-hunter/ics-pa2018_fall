@@ -50,7 +50,7 @@ static struct rule {
 	{"\\$e[s,b]p", REG},
 	{"\\$e[s,d]i", REG},
 	{"\\$eip", REG},
-	{"[a-zA-Z]+[a-zA-Z0-9]*", SYMB},
+	{"[_a-zA-Z]+[_a-zA-Z0-9]*", SYMB},
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
