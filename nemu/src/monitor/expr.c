@@ -220,7 +220,7 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 	}
 	else if(check_parentheses(p,q) == -1) {
 		printf("Can't match \'(\' and \')\' at ");
-		for(int j = p, j <= q; j ++) {
+		for(int j = p; j <= q; j ++) {
 			printf("%s", tokens[j].str);
 		}
 		printf("\n");
