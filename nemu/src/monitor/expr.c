@@ -283,8 +283,8 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 			case '/': if(val2 != 0)
 					  	return val1 / val2;
 					  else {
-					  	printf("Divide Fault: dividend can't be '0'!\n");
-						printf("Divide Fault happens at: ");
+					  	printf("Divide fault: dividend can't be '0'!\n");
+						printf("Divide fault happens at: ");
 						for(int j = op + 1; j <= q; j++)
 							printf("%s", tokens[j].str);
 						printf("\n");
@@ -300,7 +300,7 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 			case LE: return val1 <= val2;
 			case GE: return val1 >= val2;
 			default: 
-				printf("\ninvalid op type at tokens[%d], whose type is %d.\n", op, tokens[op].type);
+				printf("Invalid operator type at tokens[%d], whose type is %d.\n", op, tokens[op].type);
 				assert(0);
 		}
 	}
