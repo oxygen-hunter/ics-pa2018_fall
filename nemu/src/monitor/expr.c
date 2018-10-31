@@ -451,7 +451,7 @@ int oprator_precedence(int opr) {
 	else return -1; //if opr is not an operator.
 }
 
-int find_bracket_r(int p, int q, int bracket_l_pos) {
+int find_bracket_r(int p, int q, int bracket_l_pos, bool* success) {
 	int brkt_l_num = 0;
 	int brkt_r_num = 0;
 	for(int i = p; i <= q; i ++) {
@@ -463,7 +463,7 @@ int find_bracket_r(int p, int q, int bracket_l_pos) {
 			return i;
 	}
 	printf("Can't find tokens[%d]'s matched \')\'.\n", p);
-	assert(0);
+	*success = false;
 	return -1;
 }
 
