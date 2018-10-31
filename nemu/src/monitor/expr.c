@@ -323,17 +323,21 @@ int check_parentheses(int p, int q) {
 			top --; //pop
 		}
 		if(top < -1) {
-			printf("\')\' more than \'(\' at tokens[%d]\n", i);
+			printf("\')\' more than \'(\' at '");
+			for(int j = p; j <= q; j ++) {
+				printf("%s", tokens[j].str); 
+			}
+			printf("'\n");
 //printf("return -1\n");
 			return -1;
 		}
 	}
 	if(top > -1) {
-		printf("\'(\' more than \')\' at ");
+		printf("\'(\' more than \')\' at '");
 		for(int j = p; j <= q; j ++) {
 			printf("%s", tokens[j].str); 
 		}
-		printf("\n");
+		printf("'\n");
 //printf("return -1\n");		
 		return -1;
 	}
