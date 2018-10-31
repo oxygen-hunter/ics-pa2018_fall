@@ -208,7 +208,7 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 		/*TODO:bad expression*/
 		printf("Bad expression at ");
 		for(int j = q; j <= p; j ++) {
-			printf("%.*s", tokens[j].str);
+			printf("%s", tokens[j].str);
 		}
 		printf("\n");
 //printf("p:%d, q:%d\n", p, q);
@@ -219,7 +219,11 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 		return atoi(tokens[p].str);
 	}
 	else if(check_parentheses(p,q) == -1) {
-		printf("\nCan't match \"(\" and \")\". Please check.\n");
+		printf("Can't match \'(\' and \')\' at ");
+		for(int j = p, j <= q; j ++) {
+			printf("%s", tokens[j].str);
+		}
+		printf("\n");
 		*success = false;
 	}
 	else if(check_parentheses(p,q) == 1) {
@@ -279,7 +283,7 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 			case '/': if(val2 != 0)
 					  	return val1 / val2;
 					  else {
-					  	printf("\nDivide Fault: dividend can't be '0'!\n");
+					  	printf("Divide Fault: dividend can't be '0'!\n");
 						printf("Divide Fault happens at: ");
 						for(int j = op + 1; j <= q; j++)
 							printf("%s", tokens[j].str);
