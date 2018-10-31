@@ -321,7 +321,11 @@ int check_parentheses(int p, int q) {
 		}
 	}
 	if(top > -1) {
-		printf("\n\'(\' more than \')\'\n");
+		printf("\n\'(\' more than \')\' at ");
+		for(int j = p; j <= q; j ++) {
+			printf("%.*s", tokens[j].str); 
+		}
+		printf("\n");
 //printf("return -1\n");		
 		return -1;
 	}
@@ -384,7 +388,7 @@ uint32_t which_reg(char* str) { //str format: $e??
 		if(str2 == 'd') return cpu.edi;
 	}
 	else { //this situation won't happen because tokens can't match these ones.
-		printf("\nreg format error: %s\n", str);
+		printf("\nReg name format error: '%s'\n", str);
 		assert(0);
 	}
 	return -1;
