@@ -388,7 +388,7 @@ uint32_t which_reg(char* str) { //str format: $e??
 		if(str2 == 'd') return cpu.edi;
 	}
 	else { //this situation won't happen because tokens can't match these ones.
-		printf("\nReg name format error: '%s'\n", str);
+		printf("\nReg name format fault at '%s'\n", str);
 		assert(0);
 	}
 	return -1;
@@ -411,7 +411,7 @@ uint32_t trans_hex_to_int(char* str) {
 		else if('A' <= hex_start[i] && hex_start[i] <= 'F')
 			one_bit = hex_start[i] - 'A' + 10; //A-10, B-11 ...
 		else { //won't happen because make_token has done for me
-			printf("\nHex Format Fault\n");
+			printf("\nHex format fault at '%s'\n", str);
 		}
 		val_int += one_bit * hex_exp;
 		hex_exp *= 16;
@@ -450,7 +450,7 @@ int find_bracket_r(int p, int q, int bracket_l_pos) {
 		if(brkt_l_num != 0 && brkt_l_num == brkt_r_num)
 			return i;
 	}
-	printf("\ncan't find tokens[%d]'s matched \')\'.\n", p);
+	printf("Can't find tokens[%d]'s matched \')\'.\n", p);
 	assert(0);
 	return -1;
 }
