@@ -331,7 +331,7 @@ int check_parentheses(int p, int q) {
 	if(top > -1) {
 		printf("\'(\' more than \')\' at ");
 		for(int j = p; j <= q; j ++) {
-			printf("%.*s", tokens[j].str); 
+			printf("%s", tokens[j].str); 
 		}
 		printf("\n");
 //printf("return -1\n");		
