@@ -206,11 +206,11 @@ int dominant_operator_position(int p, int q);
 uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 	if(p > q) {
 		/*TODO:bad expression*/
-		printf("Bad expression at ");
+		printf("Bad expression at '");
 		for(int j = q; j <= p; j ++) {
 			printf("%s", tokens[j].str);
 		}
-		printf("\n");
+		printf("'\n");
 //printf("p:%d, q:%d\n", p, q);
 		*success = false;
 	}
@@ -219,11 +219,11 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 		return atoi(tokens[p].str);
 	}
 	else if(check_parentheses(p,q) == -1) {
-		printf("Can't match \'(\' and \')\' at ");
+		printf("Can't match \'(\' and \')\' at '");
 		for(int j = p; j <= q; j ++) {
 			printf("%s", tokens[j].str);
 		}
-		printf("\n");
+		printf("'\n");
 		*success = false;
 	}
 	else if(check_parentheses(p,q) == 1) {
