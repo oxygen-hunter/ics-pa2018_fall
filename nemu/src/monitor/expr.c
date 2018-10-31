@@ -300,7 +300,7 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 			case LE: return val1 <= val2;
 			case GE: return val1 >= val2;
 			default: 
-				printf("Invalid operator type at tokens[%d], whose type is %d.\n", op, tokens[op].type);
+				printf("Invalid operator type at '%s', whose type is %d.\n", tokens[op].str, tokens[op].type);
 				*success = false;
 		}
 	}
