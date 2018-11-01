@@ -433,21 +433,21 @@ uint32_t trans_hex_to_int(char* str) {
 
 int oprator_precedence(int opr) {
 	if(opr == OR)
-		return -10;
+		return 12;
 	if(opr == AND)
-		return -9;
+		return 11;
 	if(opr == EQ || opr == NEQ)
-		return -5;
+		return 7;
 	if(opr == L || opr == G || opr == LE || opr == GE)
-		return -4;
+		return 6;
 	if(opr == '+' || opr == '-')
-		return 1;
+		return 4;
 	if(opr == '*' || opr == '/')
-		return 2;
-	if(opr == DEREF || opr == NOT || opr == NEG)
 		return 3;
+	if(opr == DEREF || opr == NOT || opr == NEG)
+		return 2;
 	if(opr == BRKT_L || opr == BRKT_R)
-		return 10;
+		return 1;
 	else return -1; //if opr is not an operator.
 }
 
