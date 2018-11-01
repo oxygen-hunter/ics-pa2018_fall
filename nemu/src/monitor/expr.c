@@ -281,7 +281,7 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 			case '-': return val1 - val2; //to be continued...
 			case '*': return val1 * val2; //to be continued...
 			case '/': if(val2 != 0)
-					  	return val1 / val2;
+					  	return (int)val1 / (int)val2;
 					  else {
 					  	printf("Divide fault: dividend can't be '0'!\n");
 						printf("Divide fault happens at: ");
