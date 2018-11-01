@@ -184,10 +184,10 @@ uint32_t expr(char *e, bool *success) {
 
 	/*TODO:Implement code to eeeeeevaluate the expression.*/
 	for(int i = 0; i < nr_token; i++) {
-		if(tokens[i].type == '*' &&(i == 0 || (tokens[i - 1].type != REG && tokens[i - 1].type != NUM && tokens[i - 1].type != HEX && tokens[i - 1].type != BRKT_R))) { // * is deref
+		if(tokens[i].type == '*' &&(i == 0 || (tokens[i - 1].type != REG && tokens[i - 1].type != NUM && tokens[i - 1].type != HEX && tokens[i - 1].type != BRKT_R && tokens[i - 1].type != SYMB))) { // * is deref
 			tokens[i].type = DEREF;
 		}
-		if(tokens[i].type == '-' &&(i == 0 || (tokens[i - 1].type != REG && tokens[i - 1].type != NUM && tokens[i - 1].type != HEX && tokens[i - 1].type != BRKT_R))) { // - is neg
+		if(tokens[i].type == '-' &&(i == 0 || (tokens[i - 1].type != REG && tokens[i - 1].type != NUM && tokens[i - 1].type != HEX && tokens[i - 1].type != BRKT_R && tokens[i - 1].type != SYMB))) { // - is neg
 			tokens[i].type = NEG;
 		}
 	}
