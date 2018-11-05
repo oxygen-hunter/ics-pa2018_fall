@@ -97,7 +97,7 @@ printf("%d %s\n", N, addr_expr);
 		printf("invalid command: '%s'\n", args);
 	}
 	else if(N <= 0)
-		printf("invalid command: '%s'\nN is '%d', which should above 0.\n", args, N);
+		printf("invalid command: '%s'\nN is '%d', which should be above 0.\n", args, N);
 	else if(N % 4 != 0)
 		printf("invalid command: '%s'\nN is '%d', which should be 4k.(k > 0)\n", args, N);
 	else {
