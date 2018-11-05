@@ -85,6 +85,38 @@ p_error:
 	return 0;
 }
 
+cmd_handler(cmd_x) {
+	if(args == NULL) { goto x_error; }
+	//if(args + strspn(args, " ") >= cmd_end) { goto p_error; }
+	int N = 0;
+	char* addr_expr = NULL;
+	int flag = sscanf(args, "%d %s", N, addr_expr);
+	if(flag != 2 || N <= 0 || N % 4 != 0 || addr_expr == NULL) {
+		printf("invalid command: '%s'\n", args);
+	}
+
+	bool success;
+	vaddr_t addr = (vaddr_t)expr(addr_expr, &success);
+	uint32_t mem = 0xffffffff;
+	if(!success) {
+		printf("invalid expression: '%s'\n", addr_expr);
+	}
+	else {
+		for(int i = 0; i < N/4 ; i ++) {
+			mem = vaddr_read(addr, 0, 4);
+			printf("%x ", mem);
+			if(i != 0 && i%8 == 0)
+				printf("\n");
+		}
+		printf("\n");
+	}
+	return 0;
+
+x_error:
+	puts("Command format: \"x N EXPR\"");
+	return 0;
+}
+
 uint32_t look_up_fun_symtab(char *, bool *);
 
 //static void cmd_b(char *e, char *cmd_end) {
