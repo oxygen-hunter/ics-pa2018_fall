@@ -110,7 +110,7 @@ cmd_handler(cmd_x) {
 		else {
 			for(int i = 0; i < N/4 ; i ++) {
 				if(!addr_is_valid(addr+ 4 * i)) {
-					printf("Invalid memory address at: '%d'\n", (int)(addr + 4*i));
+					printf("Invalid memory address at: '%x'\n", (uint32_t)(addr + 4*i));
 					return 0;
 				}
 				else {
