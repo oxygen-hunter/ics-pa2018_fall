@@ -103,7 +103,7 @@ cmd_handler(cmd_x) {
 	else {
 		bool success;
 		vaddr_t addr = (vaddr_t)expr(addr_expr, &success);
-		uint32_t mem = 0xffffffff;
+		uint32_t mem = 0;
 		if(!success) {
 			printf("invalid expression: '%s'\n", addr_expr);
 		}
