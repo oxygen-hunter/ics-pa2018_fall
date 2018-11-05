@@ -110,14 +110,12 @@ cmd_handler(cmd_x) {
 		else {
 			for(int i = 0; i < N/4 ; i ++) {
 				if(!addr_is_valid(addr+ 4 * i)) {
-					printf("\nInvalid memory address at: '0x%08x'\n", (uint32_t)(addr + 4*i));
+					printf("\nInvalid memory address at: '0x%08x'\n", (uint32_t)(addr + 4 * i));
 					//return 0;
 				}
 				else {
 					mem = vaddr_read(addr + 4 * i, 0, 4);
-					printf("0x%08x ", mem);
-					if(i != 0 && i%3 == 0)
-						printf("\n");
+					printf("0x%08x: 0x%08x\n",(uint32_t)(addr + 4 * i), mem);
 				}
 			}
 			printf("\n");
