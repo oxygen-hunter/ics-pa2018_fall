@@ -68,5 +68,5 @@ uint8_t * get_mem_addr() {
 }
 
 bool addr_is_valid(vaddr_t addr) {
-	return vaddr_t < MEM_SIZE_B;
+	return addr < MEM_SIZE_B;
 }
