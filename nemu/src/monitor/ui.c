@@ -95,21 +95,22 @@ cmd_handler(cmd_x) {
 	if(flag != 2 || N <= 0 || N % 4 != 0 || addr_expr == NULL) {
 		printf("invalid command: '%s'\n", args);
 	}
-
-	bool success;
-	vaddr_t addr = (vaddr_t)expr(addr_expr, &success);
-	uint32_t mem = 0xffffffff;
-	if(!success) {
-		printf("invalid expression: '%s'\n", addr_expr);
-	}
 	else {
-		for(int i = 0; i < N/4 ; i ++) {
-			mem = vaddr_read(addr, 0, 4);
-			printf("%x ", mem);
-			if(i != 0 && i%8 == 0)
-				printf("\n");
+		bool success;
+		vaddr_t addr = (vaddr_t)expr(addr_expr, &success);
+		uint32_t mem = 0xffffffff;
+		if(!success) {
+			printf("invalid expression: '%s'\n", addr_expr);
 		}
-		printf("\n");
+		else {
+			for(int i = 0; i < N/4 ; i ++) {
+				mem = vaddr_read(addr, 0, 4);
+				printf("%x ", mem);
+				if(i != 0 && i%8 == 0)
+					printf("\n");
+			}
+			printf("\n");
+		}
 	}
 	return 0;
 
