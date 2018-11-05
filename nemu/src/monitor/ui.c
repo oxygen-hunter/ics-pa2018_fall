@@ -111,7 +111,7 @@ cmd_handler(cmd_x) {
 			for(int i = 0; i < N/4 ; i ++) {
 				mem = vaddr_read(addr + 4*i, 0, 4);
 				printf("0x%08x ", mem);
-				if(i != 0 && i%8 == 0)
+				if(i != 0 && i%3 == 0)
 					printf("\n");
 			}
 			printf("\n");
