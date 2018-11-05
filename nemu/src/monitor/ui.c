@@ -118,7 +118,6 @@ cmd_handler(cmd_x) {
 					printf("0x%08x: 0x%08x\n",(uint32_t)(addr + 4 * i), mem);
 				}
 			}
-			printf("\n");
 		}
 	}
 	return 0;
