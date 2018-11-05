@@ -42,6 +42,7 @@ uint32_t instr_fetch(vaddr_t vaddr, size_t len);
 //void mem_print(uint32_t addr, size_t len);
 uint8_t * get_mem_addr();
 
-
+//make sure addr is valid when use p *addr or x N addr
+bool addr_is_valid(vaddr_t addr);
 
 #endif

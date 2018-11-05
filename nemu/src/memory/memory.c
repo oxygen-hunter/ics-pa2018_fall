@@ -66,3 +66,7 @@ uint32_t instr_fetch(vaddr_t vaddr, size_t len) {
 uint8_t * get_mem_addr() {
 	return hw_mem;
 }
+
+bool addr_is_valid(vaddr_t addr) {
+	return vaddr_t < MEM_SIZE_B;
+}
