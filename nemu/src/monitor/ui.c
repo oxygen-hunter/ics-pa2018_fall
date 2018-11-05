@@ -96,6 +96,10 @@ printf("%d %s\n", N, addr_expr);
 	if(flag != 2 || N <= 0 || N % 4 != 0 || addr_expr == NULL) {
 		printf("invalid command: '%s'\n", args);
 	}
+	else if(N <= 0)
+		printf("invalid command: '%s'\nN is '%d', which should above 0.\n", args, N);
+	else if(N % 4 != 0)
+		printf("invalid command: '%s'\nN is '%d', which should be 4k.(k > 0)\n", args, N);
 	else {
 		bool success;
 		vaddr_t addr = (vaddr_t)expr(addr_expr, &success);
