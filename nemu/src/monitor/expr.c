@@ -241,6 +241,7 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 				/*TODO: judge addr is valid*/
 
 				uint32_t mem = 0;
+printf("p's addr:%d\n", (int)addr);
 				if(!addr_is_valid(addr)) {
 					printf("Invalid memory address at: '");
 					for(int j = op + 1; j <= q; j ++) {
