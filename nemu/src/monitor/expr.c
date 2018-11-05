@@ -204,6 +204,8 @@ int check_parentheses(int p, int q); // -1: can't match, 0: can match but not (.
 int dominant_operator_position(int p, int q);
 
 uint32_t eval(int p, int q, bool *success) { //compute val of tokens
+	if(*success == false)
+		return -1;
 	if(p > q) {
 		/*TODO:bad expression*/
 		printf("Bad expression at '");
