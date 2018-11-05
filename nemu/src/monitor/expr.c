@@ -238,15 +238,25 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 				vaddr_t addr = eval(op + 1, q, success);
 				/*TODO: judge addr is valid*/
 
-				uint32_t mem = vaddr_read(addr, 0, 4);
-
-				tokens[op].type = NUM;
-				char unary_num[32] = {0};
-				memset(unary_num, 0, 32);
-				memset(tokens[op].str, 0, 32);
-				sprintf(unary_num, "%d", mem);
-				memcpy(tokens[op].str, unary_num, 32);
-				return eval(p, op, success);
+				uint32_t mem = 0;
+				if(!addr_is_valid(addr)) {
+					printf("invalid memory address at: '");
+					for(int j = op + 1; j <= q; j ++) {
+						printf("%s", tokens[j].str);
+					}
+					printf("'\n");
+					*success = false;
+				}
+				else {
+					mem = vaddr_read(addr, 0, 4);
+					tokens[op].type = NUM;
+					char unary_num[32] = {0};
+					memset(unary_num, 0, 32);
+					memset(tokens[op].str, 0, 32);
+					sprintf(unary_num, "%d", mem);
+					memcpy(tokens[op].str, unary_num, 32);
+					return eval(p, op, success);
+				}
 			}
 			else if(tokens[op].type == NEG) {
 				uint32_t val = -eval(op + 1, q, success);
