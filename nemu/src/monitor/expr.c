@@ -247,7 +247,7 @@ uint32_t eval(int p, int q, bool *success) { //compute val of tokens
 					for(int j = op + 1; j <= q; j ++) {
 						printf("%s", tokens[j].str);
 					}
-					printf("'\n");
+					printf("', which is '0x%08x'\n", (uint32_t)addr);
 					*success = false;
 				}
 				else {
