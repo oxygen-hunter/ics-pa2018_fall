@@ -92,6 +92,7 @@ cmd_handler(cmd_x) {
 	int N = 0;
 	char* addr_expr = NULL;
 	int flag = sscanf(args, "%d %s", &N, addr_expr);
+printf("%d %s\n", N, addr_expr);
 	if(flag != 2 || N <= 0 || N % 4 != 0 || addr_expr == NULL) {
 		printf("invalid command: '%s'\n", args);
 	}
