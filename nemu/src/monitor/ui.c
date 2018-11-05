@@ -90,7 +90,7 @@ cmd_handler(cmd_x) {
 	//if(args + strspn(args, " ") >= cmd_end) { goto p_error; }
 	int N = 0;
 	char* addr_expr = NULL;
-	int flag = sscanf(args, "%d %s", N, addr_expr);
+	int flag = sscanf(args, "%d %s", &N, addr_expr);
 	if(flag != 2 || N <= 0 || N % 4 != 0 || addr_expr == NULL) {
 		printf("invalid command: '%s'\n", args);
 	}
