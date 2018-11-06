@@ -93,14 +93,11 @@ cmd_handler(cmd_x) {
 	char addr_expr[32] = {0};
 	int flag = sscanf(args, "%d %s", &N, addr_expr);
 //printf("%d %s\n", N, addr_expr);
-//	N = 4 * N;
 	if(flag != 2 || addr_expr == NULL) {
 		printf("invalid command: '%s'\n", args);
 	}
 	else if(N <= 0)
 		printf("invalid command: '%s'\nN is '%d', which should be above 0.\n", args, N);
-//	else if(N % 4 != 0)
-//		printf("invalid command: '%s'\nN is '%d', which should be 4k.(k > 0)\n", args, N);
 	else {
 		bool success;
 		vaddr_t addr = (vaddr_t)expr(addr_expr, &success);
