@@ -93,14 +93,14 @@ cmd_handler(cmd_x) {
 	char addr_expr[32] = {0};
 	int flag = sscanf(args, "%d %s", &N, addr_expr);
 //printf("%d %s\n", N, addr_expr);
-	N = 4 * N;
+//	N = 4 * N;
 	if(flag != 2 || addr_expr == NULL) {
 		printf("invalid command: '%s'\n", args);
 	}
 	else if(N <= 0)
 		printf("invalid command: '%s'\nN is '%d', which should be above 0.\n", args, N);
-	else if(N % 4 != 0)
-		printf("invalid command: '%s'\nN is '%d', which should be 4k.(k > 0)\n", args, N);
+//	else if(N % 4 != 0)
+//		printf("invalid command: '%s'\nN is '%d', which should be 4k.(k > 0)\n", args, N);
 	else {
 		bool success;
 		vaddr_t addr = (vaddr_t)expr(addr_expr, &success);
@@ -109,7 +109,7 @@ cmd_handler(cmd_x) {
 			printf("invalid expression: '%s'\n", addr_expr);
 		}
 		else {
-			for(int i = 0; i < N/4 ; i ++) {
+			for(int i = 0; i < N ; i ++) {
 				if(!addr_is_valid(addr+ 4 * i)) {
 					printf("0x%08x: invalid memory address\n", (uint32_t)(addr + 4 * i));
 					//return 0;
