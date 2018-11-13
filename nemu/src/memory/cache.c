@@ -43,7 +43,7 @@ printf("cross cacheline to read\n");
 			}
 			else { //hit, but invalid, copy from memory to cache, then read it 
 printf("hit but invalid\n");
-				memcpy(cache[i].data, hw_mem + ((paddr >> 6) << 6), 64);
+				memcpy(cache[i].data, hw_mem + paddr , 64);
 				cache[i].valid = 1;
 				cache[i].tag = tag;
 				result = cache_read(paddr, len, cache);
@@ -65,7 +65,7 @@ printf("can't hit\n");
 		if(group_blank == true) { //cache group has a blank line
 printf("group blank, at cacheline[%d]\n", blank_line_index);
 printf("hw_mem:0x%x\n", (uint32_t)hw_mem);
-printf("hw_mem+paddr >><<6:0x%x\n", (uint32_t)(hw_mem + ((paddr >> 6) << 6)));
+printf("hw_mem+paddr >><<6:0x%x\n", (uint32_t)(hw_mem + paddr );
 			memcpy(cache[blank_line_index].data, hw_mem + paddr , 64); //full this blank line
 printf("after memcpy\n");
 			cache[blank_line_index].valid = 1;
@@ -76,7 +76,7 @@ printf("after memcpy\n");
 		else { //cache group is full
 printf("group[%d] is full\n", group_index);
 			int random_num = group_start + 1; //to get a random number in [0:7]
-			memcpy(cache[random_num].data, hw_mem + ((paddr >> 6) << 6), 64); //replace this line
+			memcpy(cache[random_num].data, hw_mem + paddr , 64); //replace this line
 			cache[random_num].valid = 1;
 			cache[random_num].tag = tag;
 			result = cache_read(paddr, len, cache); //read cache
