@@ -72,7 +72,6 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 			cache[random_num].valid = 1;
 			cache[random_num].tag = tag;
 		}
-	
 	}
 	return result;
 }
