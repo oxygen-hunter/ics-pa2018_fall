@@ -42,8 +42,9 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 					result = (val_this << (32 - len_this)) | val_next; //connect val_this with val_next
 				}
 			}
-			else { //hit, but invalid, copy from disk to cache, then read it 
-				
+			else { //hit, but invalid, copy from memory to cache, then read it 
+				memcpy(cache[i].data, hw_mem + paddr, 64);
+				result = cache_read(paddr, len, cache);
 			}
 			break;
 		}
