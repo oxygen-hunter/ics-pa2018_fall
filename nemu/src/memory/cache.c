@@ -60,7 +60,7 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 			result = cache_read(paddr, len, cache); //read cache
 		}
 		else { //cache group is full
-			int random_num = ; //to get a random number in [0:7]
+			int random_num = 1; //to get a random number in [0:7]
 			memcpy(cache[random_num].data, hw_mem + ((paddr >> 6) << 6), 64); //replace this line
 			cache[random_num].valid = 1;
 			cache[random_num].tag = tag;
