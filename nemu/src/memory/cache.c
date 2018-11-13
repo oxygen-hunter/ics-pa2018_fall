@@ -14,7 +14,7 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 	uint32_t baddr = paddr & 127; //low 6 bit
 
 	uint32_t group_start = group_index * 8; //group start at here
-	bool group_full = true; //if group is full
+	//bool group_full = true; //if group is full
 	
 	uint32_t result = 0; //the memory i want to read
 	int i = group_start;
