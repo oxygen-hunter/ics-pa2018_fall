@@ -11,6 +11,8 @@ typedef struct CacheLine {
 	uint8_t data[CACHE_BLOCK_SIZE]; //data area who has 64 B
 };
 
+extern CacheLine cache[];
+
 //clear all valid bit
 void init_cache(); 
 
