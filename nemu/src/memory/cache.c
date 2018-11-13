@@ -9,6 +9,7 @@ void init_cache() {
 }
 
 uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
+printf("hw_mem:0x%x\n", (uint32_t)hw_mem);
 printf("paddr:0x%x, len:0x%x\n", (uint32_t)paddr, (uint32_t)len);
 	uint32_t tag = paddr >> 13; //high 19 bit
 	uint32_t group_index = (paddr << 19) >> 25; //which group, medium 7 bit
