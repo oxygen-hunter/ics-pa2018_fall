@@ -2,7 +2,7 @@
 #include "memory/cache.h"
 #include "memory/memory.h"
 
-CacheLine cache[CACHELINE_NUM]; //64KB Cache
+CacheLine cache[1024]; //64KB Cache
 
 void init_cache() {
 	memset(cache, 0, sizeof(cache));

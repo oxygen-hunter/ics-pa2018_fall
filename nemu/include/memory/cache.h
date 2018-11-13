@@ -8,7 +8,7 @@
 typedef struct {
 	bool valid; //1 when CacheLine is valid, 0 when CacheLine is invalid
 	uint32_t tag; //to sign which if this cache matches address
-	uint8_t data[CACHE_BLOCK_SIZE]; //data area who has 64 B
+	uint8_t data[64]; //data area who has 64 B
 } CacheLine;
 
 extern CacheLine cache[];
