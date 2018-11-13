@@ -10,7 +10,7 @@ void init_cache() {
 
 uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 	uint32_t tag = paddr >> 13; //high 19 bit
-	uint32_t group_index = ((paddr << 19) >> 26) % 128; //which group, medium 7 bit
+	uint32_t group_index = (paddr << 19) >> 25; //which group, medium 7 bit
 	uint32_t baddr = paddr & 0x3f; //low 6 bit
 
 	uint32_t group_start = group_index * 8; //group start at here
