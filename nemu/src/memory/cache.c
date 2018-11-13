@@ -69,7 +69,7 @@ printf("hw_mem:0x%x\n", (uint32_t)hw_mem);
 printf("hw_mem+paddr >><<6:0x%x\n", (uint32_t)(hw_mem + ((paddr >> 6) << 6)));
 			//memcpy(cache[blank_line_index].data, hw_mem + paddr - baddr, 64); //full this blank line
 			for(int k = 0; k < 64; k++){
-				cache[blank_line_index].data[k] = ((uint8_t*)(hw_mem + ((paddr >> 6) << 6)))[k];
+				cache[blank_line_index].data[k] = /*((uint8_t*)(hw_mem + ((paddr >> 6) << 6)))[k];*/1;
 			}
 printf("after memcpy\n");
 			cache[blank_line_index].valid = 1;
