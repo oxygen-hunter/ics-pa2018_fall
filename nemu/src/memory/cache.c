@@ -26,7 +26,7 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 	
 	uint32_t result = 0; //the memory i want to read
 	int i = group_start;
-	for(; i < CACHEGROUP_SIZE; i ++) {
+	for(; i < CACHEGROUP_SIZE; i ++) { //search all lines of the group
 		if(cache[i].tag == tag) { //hit
 			if(cache[i].valid == 1) { //hit, and valid, read it from cache
 				if(baddr <= 64 - len) { //directly read from cache data
