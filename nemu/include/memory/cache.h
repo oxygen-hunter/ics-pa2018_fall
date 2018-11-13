@@ -1,3 +1,4 @@
+#ifdef CACHE_ENABLED
 #include "nemu.h"
 
 #define CACHE_BLOCK_SIZE 64
@@ -19,3 +20,5 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache);
 
 //write cache
 void cache_write(paddr_t paddr, size_t len, uint32_t data, CacheLine* cache);
+
+#endif
