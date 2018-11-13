@@ -20,6 +20,7 @@ printf("tag:0x%x, group_index:0x%x, baddr:0x%x\n",tag, group_index, baddr);
 	int i = group_start;
 	for(; i < 8; i ++) { //search all lines of the group
 		if(cache[i].tag == tag) { //hit
+printf("hit\n");
 			if(cache[i].valid == 1) { //hit, and valid, read it from cache
 printf("hit and valid\n");
 				if(baddr <= 64 - len) { //directly read from cache data
