@@ -54,23 +54,23 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 	bool group_blank = false;
 	int blank_line_index = -1;
 	if(i == 8) { //can't hit
-		for(int i = group_start; i < 8; i ++) { // to test if any line is blank
-			if(cache[i].valid == 0) {
+		for(int j = group_start; j < 8; j ++) { // to test if any line is blank
+			if(cache[j].valid == 0) {
 				group_blank = true;
-				blank_line_index = i;
+				blank_line_index = j;
 				break;
 			}
 		}
 		if(group_blank == true) { //cache group has a blank line
-			memcpy(cache[i].data, hw_mem + ((paddr >> 6) << 6), 64); //full this blank line
-			cache[i].valid = 1;
-			cache[i].tag = tag;
+			memcpy(cache[blank_line_index].data, hw_mem + ((paddr >> 6) << 6), 64); //full this blank line
+			cache[blank_line_index].valid = 1;
+			cache[blank_line_index].tag = tag;
 		}
 		else { //cache group is full
-			int random_i = ; //to get a random number in [0:7]
-			memcpy(cache[random_i].data, hw_mem + ((paddr >> 6) << 6), 64); //replace this line
-			cache[random_i].valid = 1;
-			cache[random_i].tag = tag;
+			int random_num = ; //to get a random number in [0:7]
+			memcpy(cache[random_num].data, hw_mem + ((paddr >> 6) << 6), 64); //replace this line
+			cache[random_num].valid = 1;
+			cache[random_num].tag = tag;
 		}
 	
 	}
