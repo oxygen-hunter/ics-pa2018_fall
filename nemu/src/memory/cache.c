@@ -43,7 +43,9 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 				}
 			}
 			else { //hit, but invalid, copy from memory to cache, then read it 
-				memcpy(cache[i].data, hw_mem + paddr, 64);
+				memcpy(cache[i].data, hw_mem + ((paddr >> 6) << 6), 64);
+				cache[i].valid = 1;
+				cache[i].tag = tag;
 				result = cache_read(paddr, len, cache);
 			}
 			break;
@@ -51,7 +53,7 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 	}
 	bool group_blank = false;
 	int blank_line_index = -1;
-	if(i == CACHEGROUP_SIZE) { //can't hit
+	if(i == 8) { //can't hit
 		for(int i = group_start; i < 8; i ++) {
 			if(cache[i].valid == 0) {
 				group_blank = true;
@@ -61,6 +63,8 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 		}
 		if(group_blank == true) { //cache group has a blank line
 			memcpy(cache[i].data, hw_mem + ((paddr >> 6) << 6), 64);
+			cache[i].valid = 1;
+			cache[i].tag = tag;
 		}
 		else {
 
