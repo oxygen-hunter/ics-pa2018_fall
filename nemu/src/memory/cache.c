@@ -29,10 +29,15 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 	for(; i < CACHEGROUP_SIZE; i ++) {
 		if(cache[i].tag == tag) { //hit
 			if(cache[i].valid == 1) { //hit, and valid, read it from cache
-				
+				if(baddr <= 64 - len) { //directly read from cache data
+					memcpy(&result, cache[i].data + baddr, len);
+				}
+				else { //cross cacheline to read data
+					
+				}
 			}
 			else { //hit, but invalid, copy from disk to cache, then read it 
-
+				
 			}
 			break;
 		}
@@ -41,6 +46,7 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 		group_full = true;
 		
 	}
+	return result;
 }
 
 
