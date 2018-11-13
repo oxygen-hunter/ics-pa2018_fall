@@ -51,7 +51,7 @@ printf("hit but invalid\n");
 		}
 	}
 	bool group_blank = false;
-	int blank_line_index = -1;
+	int blank_line_index = 0;
 	if(i == group_start + 8) { //can't hit
 printf("can't hit\n");
 		for(int j = group_start; j < group_start + 8; j ++) { // to test if any line is blank
