@@ -5,6 +5,8 @@
 #define CACHEGROUP_NUM 128
 #define CACHEGROUP_SIZE 8
 
+struct CacheLine;
+
 struct CacheLine {
 	bool valid; //1 when CacheLine is valid, 0 when CacheLine is invalid
 	uint32_t tag; //to sign which if this cache matches address
