@@ -1,7 +1,6 @@
 #include "nemu.h"
 
-#define CACHE_BLOCK_SIZE 64
-#define CACHELINE_NUM 1024
+
 
 struct CacheLine {
 	bool valid; //1 when CacheLine is valid, 0 when CacheLine is invalid
