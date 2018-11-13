@@ -21,19 +21,25 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 	uint32_t group_index = ((paddr << 19) >> 25) % CACHEGROUP_NUM; //which group, medium 7 bit
 	uint32_t baddr = paddr & 127; //low 6 bit
 
-	uint32_t group_start = group_index * CACHEGROUP_SIZE; //group start at here
+	uint32_t group_start = group_index * 8; //group start at here
 	bool group_full = false; //if group is full
 	
 	uint32_t result = 0; //the memory i want to read
 	int i = group_start;
-	for(; i < CACHEGROUP_SIZE; i ++) { //search all lines of the group
+	for(; i < 8; i ++) { //search all lines of the group
 		if(cache[i].tag == tag) { //hit
 			if(cache[i].valid == 1) { //hit, and valid, read it from cache
 				if(baddr <= 64 - len) { //directly read from cache data
 					memcpy(&result, cache[i].data + baddr, len);
 				}
 				else { //cross cacheline to read data
-					
+					uint32_t len_this = 64 - baddr; //length in this line
+					uint32_t len_next = len - len_this; //length in next line
+					uint32_t val_this = 0; //val in this line
+					uint32_t val_next = 0; //val in next line
+					memcpy(&val_this, cache[i].data + baddr, len_this); //read val in this line
+					val_next = cache_read(paddr + len_this, len_next, cache); //read val in next line
+					result = (val_this << (32 - len_this)) | val_next; //connect val_this with val_next
 				}
 			}
 			else { //hit, but invalid, copy from disk to cache, then read it 
