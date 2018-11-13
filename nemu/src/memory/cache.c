@@ -19,7 +19,7 @@ printf("tag:0x%x, group_index:0x%x, baddr:0x%x\n",tag, group_index, baddr);
 	uint32_t result = 0; //the memory i want to read
 	int i = group_start;
 printf("group_start:%d\n", group_start);
-	for(; i < 8; i ++) { //search all lines of the group
+	for(; i < group_start + 8; i ++) { //search all lines of the group
 		if(cache[i].tag == tag) { //hit
 printf("hit\n");
 			if(cache[i].valid == 1) { //hit, and valid, read it from cache
@@ -52,9 +52,9 @@ printf("hit but invalid\n");
 	}
 	bool group_blank = false;
 	int blank_line_index = -1;
-	if(i == 8) { //can't hit
+	if(i == group_start + 8) { //can't hit
 printf("can't hit\n");
-		for(int j = group_start; j < 8; j ++) { // to test if any line is blank
+		for(int j = group_start; j < group_start + 8; j ++) { // to test if any line is blank
 			if(cache[j].valid == 0) {
 				group_blank = true;
 				blank_line_index = j;
