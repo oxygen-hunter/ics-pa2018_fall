@@ -22,6 +22,7 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 		if(cache[i].tag == tag) { //hit
 			if(cache[i].valid == 1) { //hit, and valid, read it from cache
 				if(baddr <= 64 - len) { //directly read from cache data
+printf("hit and valid\n");
 					memcpy(&result, cache[i].data + baddr, len);
 				}
 				else { //cross cacheline to read data
@@ -47,6 +48,7 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 	bool group_blank = false;
 	int blank_line_index = -1;
 	if(i == 8) { //can't hit
+printf("can't hit\n");
 		for(int j = group_start; j < 8; j ++) { // to test if any line is blank
 			if(cache[j].valid == 0) {
 				group_blank = true;
