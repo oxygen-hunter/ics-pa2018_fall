@@ -65,12 +65,14 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 			memcpy(cache[blank_line_index].data, hw_mem + ((paddr >> 6) << 6), 64); //full this blank line
 			cache[blank_line_index].valid = 1;
 			cache[blank_line_index].tag = tag;
+			result = read(paddr, len, cache); //read cache
 		}
 		else { //cache group is full
 			int random_num = ; //to get a random number in [0:7]
 			memcpy(cache[random_num].data, hw_mem + ((paddr >> 6) << 6), 64); //replace this line
 			cache[random_num].valid = 1;
 			cache[random_num].tag = tag;
+			result = read(paddr, len, cache); //read cache
 		}
 	}
 	return result;
