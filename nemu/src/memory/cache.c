@@ -1,6 +1,6 @@
 #include "nemu.h"
-//#include "memory/cache.h"
-
+#include "memory/cache.h"
+#include "memory/memory.h"
 
 CacheLine cache[CACHELINE_NUM]; //64KB Cache
 
