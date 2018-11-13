@@ -12,7 +12,7 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 	uint32_t tag = paddr >> 13; //high 19 bit
 	uint32_t group_index = (paddr << 19) >> 25; //which group, medium 7 bit
 	uint32_t baddr = paddr & 0x3f; //low 6 bit
-printf("tag:%x, group_index:%x, baddr:%x\n",tag, group_index, baddr);
+printf("tag:0x%x, group_index:0x%x, baddr:0x%x\n",tag, group_index, baddr);
 	uint32_t group_start = group_index * 8; //group start at here
 	//bool group_full = true; //if group is full
 	
@@ -75,7 +75,7 @@ printf("group[%d] is full\n", group_index);
 			result = cache_read(paddr, len, cache); //read cache
 		}
 	}
-printf("paddr:%x, len:%x, result:%x\n\n", (uint32_t)paddr, (uint32_t)len, result);
+printf("paddr:0x%x, len:0x%x, result:0x%x\n\n", (uint32_t)paddr, (uint32_t)len, result);
 	return result;
 }
 
