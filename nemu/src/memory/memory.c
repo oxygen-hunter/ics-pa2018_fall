@@ -37,6 +37,7 @@ void paddr_write(paddr_t paddr, size_t len, uint32_t data) {
 
 
 uint32_t laddr_read(laddr_t laddr, size_t len) {
+printf("upper laddr:0x%x\n", laddr);
 	return paddr_read(laddr, len);
 }
 
