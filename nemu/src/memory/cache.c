@@ -66,6 +66,7 @@ printf("group blank, at cacheline[%d]\n", blank_line_index);
 			memcpy(cache[blank_line_index].data, hw_mem + ((paddr >> 6) << 6), 64); //full this blank line
 			cache[blank_line_index].valid = 1;
 			cache[blank_line_index].tag = tag;
+printf("after memcpy\n");
 			result = cache_read(paddr, len, cache); //read cache
 		}
 		else { //cache group is full
