@@ -29,7 +29,6 @@ printf("hit and valid\n");
 				if(baddr <= 64 - len) { //directly read from cache data
 printf("directly read from cache\n");
 					memcpy(&result, cache[i].data + baddr, len);
-					return result;
 				}
 				else { //cross cacheline to read data
 printf("cross cacheline to read\n");
@@ -41,7 +40,6 @@ printf("cross cacheline to read\n");
 					val_next = cache_read(paddr + len_this, len_next, cache); //read val in next line
 					result = (val_next << len_this * 8) | val_this; 
 					//connect val_this with val_next, pay attention to little-edium
-					return result;
 				}
 			}
 			else { //hit, but invalid, copy from memory to cache, then read it 
@@ -50,7 +48,6 @@ printf("hit but invalid\n");
 				cache[i].valid = 1;
 				cache[i].tag = tag;
 				result = cache_read(paddr, len, cache);
-				return result;
 			}
 			break;
 		}
