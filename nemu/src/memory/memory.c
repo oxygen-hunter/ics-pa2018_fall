@@ -69,6 +69,7 @@ void init_mem() {
 }
 
 uint32_t instr_fetch(vaddr_t vaddr, size_t len) {
+printf("upper vaddr:0x%x\n", vaddr);
 	assert(len == 1 || len == 2 || len == 4);
 	return vaddr_read(vaddr, SREG_CS, len);
 }
