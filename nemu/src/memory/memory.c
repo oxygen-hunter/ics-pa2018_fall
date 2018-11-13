@@ -20,7 +20,7 @@ void hw_mem_write(paddr_t paddr, size_t len, uint32_t data) {
 }
 
 uint32_t paddr_read(paddr_t paddr, size_t len) {
-printf("upper paddr:0x%x\n", paddr);
+//printf("upper paddr:0x%x\n", paddr);
 	uint32_t ret = 0;
 #ifdef CACHE_ENABLED
 	//ret = cache_read(paddr, len, cache);
