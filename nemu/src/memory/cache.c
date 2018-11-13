@@ -67,11 +67,11 @@ printf("can't hit\n");
 printf("group blank, at cacheline[%d]\n", blank_line_index);
 printf("hw_mem:0x%x\n", (uint32_t)hw_mem);
 printf("hw_mem+paddr >><<6:0x%x\n", (uint32_t)(hw_mem + ((paddr >> 6) << 6)));
+			memcpy(cache[blank_line_index].data, hw_mem + paddr - baddr, 64); //full this blank line
+printf("after memcpy\n");
 			cache[blank_line_index].valid = 1;
 			cache[blank_line_index].tag = tag;
-printf("after memcpy\n");
-			
-memcpy(cache[blank_line_index].data, hw_mem + paddr - baddr, 64); //full this blank line
+
 			result = cache_read(paddr, len, cache); //read cache
 		}
 		else { //cache group is full
