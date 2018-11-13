@@ -63,14 +63,14 @@ printf("can't hit\n");
 		}
 		if(group_blank == true) { //cache group has a blank line
 printf("group blank, at cacheline[%d]\n", blank_line_index);
-			//memcpy(cache[blank_line_index].data, hw_mem + ((paddr >> 6) << 6), 64); //full this blank line
+			memcpy(cache[blank_line_index].data, hw_mem + ((paddr >> 6) << 6), 64); //full this blank line
 			cache[blank_line_index].valid = 1;
 			cache[blank_line_index].tag = tag;
 			result = cache_read(paddr, len, cache); //read cache
 		}
 		else { //cache group is full
 printf("group[%d] is full\n", group_index);
-			int random_num = 1; //to get a random number in [0:7]
+			int random_num = group_start + 1; //to get a random number in [0:7]
 			memcpy(cache[random_num].data, hw_mem + ((paddr >> 6) << 6), 64); //replace this line
 			cache[random_num].valid = 1;
 			cache[random_num].tag = tag;
