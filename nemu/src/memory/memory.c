@@ -5,7 +5,7 @@
 #include <memory.h>
 #include <stdio.h>
 
-
+extern CacheLine cache[CACHELINE_NUM]; //64KB Cache
 uint8_t hw_mem[MEM_SIZE_B];
 
 uint32_t hw_mem_read(paddr_t paddr, size_t len) {
@@ -21,7 +21,7 @@ void hw_mem_write(paddr_t paddr, size_t len, uint32_t data) {
 uint32_t paddr_read(paddr_t paddr, size_t len) {
 	uint32_t ret = 0;
 #ifdef CACHE_ENABLED
-	ret = cache_read(paddr, len, &L1_dcache);
+	ret = cache_read(paddr, len, cache);
 #else
 	ret = hw_mem_read(paddr, len);
 #endif
