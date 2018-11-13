@@ -63,7 +63,7 @@ printf("can't hit\n");
 		}
 		if(group_blank == true) { //cache group has a blank line
 printf("group blank, at cacheline[%d]\n", blank_line_index);
-			memcpy(cache[blank_line_index].data, hw_mem + ((paddr >> 6) << 6), 64); //full this blank line
+			memcpy(cache[blank_line_index].data, hw_mem + ((paddr >> 6) << 6), 8); //full this blank line
 			cache[blank_line_index].valid = 1;
 			cache[blank_line_index].tag = tag;
 printf("after memcpy\n");
