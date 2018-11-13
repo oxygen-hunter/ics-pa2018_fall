@@ -68,7 +68,7 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 			result = cache_read(paddr, len, cache); //read cache
 		}
 	}
-printf("paddr:%n, len:%n, result:%n\n", paddr, len, result);
+printf("paddr:%x, len:%x, result:%x\n", (uint32_t)paddr, (uint32_t)len, result);
 	return result;
 }
 
