@@ -12,7 +12,7 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 	uint32_t tag = paddr >> 13; //high 19 bit
 	uint32_t group_index = (paddr << 19) >> 25; //which group, medium 7 bit
 	uint32_t baddr = paddr & 0x3f; //low 6 bit
-
+printf("tag:%d, group_index:%d, baddr:%d\n",tag, group_index, baddr);
 	uint32_t group_start = group_index * 8; //group start at here
 	//bool group_full = true; //if group is full
 	
@@ -67,6 +67,7 @@ printf("group blank, at cache[%d][%d]\n", group_index, blank_line_index);
 			result = cache_read(paddr, len, cache); //read cache
 		}
 		else { //cache group is full
+printf("group[%d] is full\n", group_index);
 			int random_num = 1; //to get a random number in [0:7]
 			memcpy(cache[random_num].data, hw_mem + ((paddr >> 6) << 6), 64); //replace this line
 			cache[random_num].valid = 1;
@@ -74,7 +75,7 @@ printf("group blank, at cache[%d][%d]\n", group_index, blank_line_index);
 			result = cache_read(paddr, len, cache); //read cache
 		}
 	}
-printf("paddr:%x, len:%x, result:%x\n", (uint32_t)paddr, (uint32_t)len, result);
+printf("paddr:%x, len:%x, result:%x\n\n", (uint32_t)paddr, (uint32_t)len, result);
 	return result;
 }
 
