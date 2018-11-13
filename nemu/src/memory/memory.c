@@ -5,7 +5,7 @@
 #include <memory.h>
 #include <stdio.h>
 
-extern CacheLine cache[CACHELINE_NUM]; //64KB Cache
+//extern CacheLine cache[CACHELINE_NUM]; //64KB Cache
 uint8_t hw_mem[MEM_SIZE_B];
 
 uint32_t hw_mem_read(paddr_t paddr, size_t len) {
@@ -21,7 +21,7 @@ void hw_mem_write(paddr_t paddr, size_t len, uint32_t data) {
 uint32_t paddr_read(paddr_t paddr, size_t len) {
 	uint32_t ret = 0;
 #ifdef CACHE_ENABLED
-	ret = cache_read(paddr, len, cache);
+	ret = cache_read(paddr, len, &L1_dcache);
 #else
 	ret = hw_mem_read(paddr, len);
 #endif
@@ -55,6 +55,9 @@ void vaddr_write(vaddr_t vaddr, uint8_t sreg, size_t len, uint32_t data) {
 void init_mem() {
 	// clear the memory on initiation
 	memset(hw_mem, 0, MEM_SIZE_B);
+#ifdef CACHE_ENABLED
+	init_cache();
+#endif
 
 #ifdef TLB_ENABLED
 	make_all_tlb();
