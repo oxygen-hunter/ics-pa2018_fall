@@ -27,6 +27,7 @@ printf("directly read from cache\n");
 					memcpy(&result, cache[i].data + baddr, len);
 				}
 				else { //cross cacheline to read data
+printf("cross cacheline to read\n");
 					uint32_t len_this = 64 - baddr; //length in this line
 					uint32_t len_next = len - len_this; //length in next line
 					uint32_t val_this = 0; //val in this line
@@ -38,6 +39,7 @@ printf("directly read from cache\n");
 				}
 			}
 			else { //hit, but invalid, copy from memory to cache, then read it 
+printf("hit but invalid\n");
 				memcpy(cache[i].data, hw_mem + ((paddr >> 6) << 6), 64);
 				cache[i].valid = 1;
 				cache[i].tag = tag;
