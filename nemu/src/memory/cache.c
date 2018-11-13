@@ -1,14 +1,6 @@
 #include "nemu.h"
 #include "memory/cache.h"
 
-#define CACHE_BLOCK_SIZE 64
-#define CACHELINE_NUM 1024
-#define c 10
-#define q 8
-#define s 2
-#define b 6
-#define CACHEGROUP_NUM 128
-#define CACHEGROUP_SIZE 8
 
 CacheLine cache[CACHELINE_NUM]; //64KB Cache
 
