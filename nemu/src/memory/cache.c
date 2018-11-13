@@ -39,7 +39,7 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 					uint32_t val_next = 0; //val in next line
 					memcpy(&val_this, cache[i].data + baddr, len_this); //read val in this line
 					val_next = cache_read(paddr + len_this, len_next, cache); //read val in next line
-					result = (val_next << len_this) | val_this; //connect val_this with val_next, pay attention to small
+					result = (val_next << len_this) | val_this; //connect val_this with val_next, pay attention to little-edium
 				}
 			}
 			else { //hit, but invalid, copy from memory to cache, then read it 
