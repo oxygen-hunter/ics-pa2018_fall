@@ -110,7 +110,6 @@ void exec(uint32_t n) {
 int exec_inst() {
 	uint8_t opcode = 0;
 	// get the opcode
-printf("eip:0x%x\n", cpu.eip);
 	opcode = instr_fetch(cpu.eip, 1);
 	//printf("opcode = %x, eip = %x\n", opcode, cpu.eip);
 	// instruction decode and execution
