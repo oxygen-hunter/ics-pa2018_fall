@@ -11,30 +11,30 @@ void init_cache() {
 }
 
 uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
-printf("hw_mem:0x%x\n", (uint32_t)hw_mem);
-printf("paddr:0x%x, len:0x%x\n", (uint32_t)paddr, (uint32_t)len);
+//printf("hw_mem:0x%x\n", (uint32_t)hw_mem);
+//printf("paddr:0x%x, len:0x%x\n", (uint32_t)paddr, (uint32_t)len);
 	uint32_t tag = paddr >> 13; //high 19 bit
 	uint32_t group_index = (paddr << 19) >> 25; //which group, medium 7 bit
 	uint32_t baddr = paddr & 0x3f; //low 6 bit
-printf("tag:0x%x, group_index:0x%x, baddr:0x%x\n",tag, group_index, baddr);
+//printf("tag:0x%x, group_index:0x%x, baddr:0x%x\n",tag, group_index, baddr);
 	uint32_t group_start = group_index * 8; //group start at here
 	//bool group_full = true; //if group is full
 	
 	uint32_t result = 0; //the memory i want to read
 	int i = group_start;
-printf("group_start:%d\n", group_start);
+//printf("group_start:%d\n", group_start);
 	for(; i < group_start + 8; i ++) { //search all lines of the group
 		if(cache[i].tag == tag) { //hit
-printf("hit\n");
+//printf("hit\n");
 			if(cache[i].valid == 1) { //hit, and valid, read it from cache
-printf("hit and valid\n");
+//printf("hit and valid\n");
 				if(baddr <= 64 - len) { //directly read from cache data
-printf("directly read from cache\n");
+//printf("directly read from cache\n");
 					//memcpy(&result, cache[i].data + baddr, len);
 					memcpy(&result, hw_mem + paddr, len);
 				}
 				else { //cross cacheline to read data
-printf("cross cacheline to reald\n");
+//printf("cross cacheline to reald\n");
 					//uint32_t len_this = 64 - baddr; //length in this line
 					//uint32_t len_next = len - len_this; //length in next line
 					//uint32_t val_this = 0; //val in this line
@@ -47,7 +47,7 @@ printf("cross cacheline to reald\n");
 				}
 			}
 			else { //hit, but invalid, copy from memory to cache, then read it 
-printf("hit but invalid\n");
+//printf("hit but invalid\n");
 				memcpy(cache[i].data, hw_mem + ((paddr >> 6) << 6), 64);
 				cache[i].valid = 1;
 				cache[i].tag = tag;
@@ -60,7 +60,7 @@ printf("hit but invalid\n");
 	bool group_blank = false;
 	int blank_line_index = 0;
 	if(i == group_start + 8) { //can't hit
-printf("can't hit\n");
+//printf("can't hit\n");
 		for(int j = group_start; j < group_start + 8; j ++) { // to test if any line is blank
 			if(cache[j].valid == 0) {
 				group_blank = true;
@@ -69,11 +69,11 @@ printf("can't hit\n");
 			}
 		}
 		if(group_blank == true) { //cache group has a blank line
-printf("group blank, at cacheline[%d]\n", blank_line_index);
-printf("hw_mem:0x%x\n", (uint32_t)hw_mem);
-printf("hw_mem+paddr >><<6:0x%x\n", (uint32_t)(hw_mem + ((paddr >> 6) << 6)));
+//printf("group blank, at cacheline[%d]\n", blank_line_index);
+//printf("hw_mem:0x%x\n", (uint32_t)hw_mem);
+//printf("hw_mem+paddr >><<6:0x%x\n", (uint32_t)(hw_mem + ((paddr >> 6) << 6)));
 			memcpy(cache[blank_line_index].data, hw_mem + ((paddr >> 6) << 6), 64); //full this blank line
-printf("after memcpy\n");
+//printf("after memcpy\n");
 			cache[blank_line_index].valid = 1;
 			cache[blank_line_index].tag = tag;
 
@@ -81,7 +81,7 @@ printf("after memcpy\n");
 			memcpy(&result, hw_mem + paddr, len);
 		}
 		else { //cache group is full
-printf("group[%d] is full\n", group_index);
+//printf("group[%d] is full\n", group_index);
 			int random_num = group_start + 1; //to get a random number in [0:7]
 			memcpy(cache[random_num].data, hw_mem + ((paddr >> 6) << 6), 64); //replace this line
 			cache[random_num].valid = 1;
@@ -90,7 +90,7 @@ printf("group[%d] is full\n", group_index);
 			memcpy(&result, hw_mem + paddr, len);
 		}
 	}
-printf("result:0x%x\n\n", result);
+//printf("result:0x%x\n\n", result);
 	return result;
 }
 
