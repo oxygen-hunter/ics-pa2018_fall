@@ -26,6 +26,11 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 				if(baddr <= 64 - len) { //directly read from cache data
 					memcpy(&result, cache[i].data + baddr, len);
 					//memcpy(&result, hw_mem + paddr, len);
+					uint32_t cc=0;
+					uint32_t mm=0;
+					memcpy(&cc, cache[i].data + baddr, len);
+					memcpy(&mm, hw_mem + paddr, len);
+					printf("incache:%x, inmem:%x\n", cc, mm);
 				}
 				else { //cross cacheline to read data
 					uint32_t len_this = 64 - baddr; //length in this line
