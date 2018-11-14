@@ -17,9 +17,9 @@ printf("tag:0x%x, group_index:0x%x, baddr:0x%x\n",tag, group_index, baddr);
 	uint32_t group_start = group_index * 8; //group start at here
 	uint8_t flag = 0;
 	uint32_t result = 0; //the memory i want to read
-	int i = group_start;
+	
 
-	for(; i < group_start + 8; i ++) { //search all lines of the group
+	for(int i = group_start; i < group_start + 8; i ++) { //search all lines of the group
 		if(cache[i].tag == tag) { //hit
 			if(cache[i].valid == 1) { //hit, and valid, read it from cache
 				if(baddr <= 64 - len) { //directly read from cache data
