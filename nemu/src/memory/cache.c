@@ -71,13 +71,11 @@ assert(0);
 		}
 		if(group_blank == true) { //cache group has a blank line
 printf("blank\n");
-assert(0);
 			memcpy(cache[blank_line_index].data, hw_mem + ((paddr >> 6) << 6), 64); //full this blank line
 			cache[blank_line_index].valid = 1;
 			cache[blank_line_index].tag = tag;
-
-			result = cache_read(paddr, len, cache); //read cache
-			//memcpy(&result, hw_mem + paddr, len);
+			//result = cache_read(paddr, len, cache); //read cache
+			memcpy(&result, hw_mem + paddr, len);
 		}
 		else { //cache group is full
 			int random_num = group_start + 1; //to get a random number in [0:7]
