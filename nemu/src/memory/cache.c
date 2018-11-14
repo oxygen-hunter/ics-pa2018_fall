@@ -78,7 +78,7 @@ printf("blank\n");
 			result = cache_read(paddr, len, cache); //read cache
 printf("blank line:%d\n", blank_line_index);
 for(int m=0;m<64;m++) 
-	printf("%x", cache[blank_line_index].data[m]);
+	printf("%1x", cache[blank_line_index].data[m]);
 printf("\n");
 printf("res:0x%x\n", result);
 			//memcpy(&result, hw_mem + paddr, len);
