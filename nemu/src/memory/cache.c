@@ -56,7 +56,7 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 			if(cache[j].valid == 0) {
 				group_blank = true;
 				blank_line_index = j;
-				break;
+				
 			}
 		}
 		if(group_blank == true) { //cache group has a blank line
