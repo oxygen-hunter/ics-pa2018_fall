@@ -5,9 +5,7 @@
 CacheLine cache[1024]; //64KB Cache
 
 void init_cache() {
-	//memset(cache, 0, sizeof(cache));
-	for(int i=0;i<1024;i++)
-		cache[i].valid=0;
+	memset(cache, 0, sizeof(cache));
 }
 
 uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
@@ -25,11 +23,11 @@ printf("tag:0x%x, group_index:0x%x, baddr:0x%x\n",tag, group_index, baddr);
 			if(cache[i].valid == 1) { //hit, and valid, read it from cache
 				if(baddr <= 64 - len) { //directly read from cache data
 					
-printf("hit and valid\n");
+/*printf("hit and valid\n");
 for(int m=0;m<64;m++) {
 	printf("%x ", cache[i].data[m]);
 }
-printf("\n");
+printf("\n");*/
 					uint32_t cc=0;
 					uint32_t mm=0;
 					memcpy(&cc, cache[i].data + baddr, len);
