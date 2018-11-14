@@ -67,7 +67,7 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 		else { //cache group is full
 			srand((unsigned)time(NULL));
 			int random_num = group_start + rand() % 8; //to get a random number in [0:7]
-printf("rand:%d\n", random_num);
+printf("rand:%d\n", random_num - group_start);
 			memcpy(cache[random_num].data, hw_mem + ((paddr >> 6) << 6), 64); //replace this line
 			cache[random_num].valid = 1;
 			cache[random_num].tag = tag;
