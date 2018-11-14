@@ -20,15 +20,9 @@ void hw_mem_write(paddr_t paddr, size_t len, uint32_t data) {
 }
 
 uint32_t paddr_read(paddr_t paddr, size_t len) {
-//printf("upper paddr:0x%x\n", paddr);
 	uint32_t ret = 0;
 #ifdef CACHE_ENABLED
-	if(paddr > MEM_SIZE_B) {
-		printf("paddr over:0x%x\n", paddr);
-		//assert(0);
-	}
 	ret = cache_read(paddr, len, cache);
-	//ret = hw_mem_read(paddr, len);
 #else
 	ret = hw_mem_read(paddr, len);
 #endif
@@ -37,7 +31,6 @@ uint32_t paddr_read(paddr_t paddr, size_t len) {
 
 void paddr_write(paddr_t paddr, size_t len, uint32_t data) {
 #ifdef CACHE_ENABLED
-	//hw_mem_write(paddr, len, data);
 	cache_write(paddr, len, data, cache);
 #else
 	hw_mem_write(paddr, len, data);
