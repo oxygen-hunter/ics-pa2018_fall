@@ -14,7 +14,7 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 	uint32_t baddr = paddr & 0x3f; //low 6 bit
 //printf("tag:0x%x, group_index:0x%x, baddr:0x%x\n",tag, group_index, baddr);
 	uint32_t group_start = group_index * 8; //group start at here
-	
+	uint8_t flag = 0;
 	uint32_t result = 0; //the memory i want to read
 	int i = group_start;
 
@@ -56,6 +56,7 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 				result = cache_read(paddr, len, cache);
 				//memcpy(&result, hw_mem + paddr, len);
 			}
+			flag = 1;
 			break;
 		}
 	}
