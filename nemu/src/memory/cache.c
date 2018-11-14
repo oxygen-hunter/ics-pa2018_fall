@@ -39,7 +39,8 @@ printf("\n");
 						printf("i:%d\n", i);
 						printf("baddr:0x%x\n", baddr);
 						printf("incache:%x, inmem:%x\n", cc, mm);
-						assert(0);
+					memcpy(cache[i].data, hw_mem+((paddr>>6)<<6), 64);
+						//assert(0);
 					}
 				}
 				else { //cross cacheline to read data
@@ -94,7 +95,9 @@ assert(0);
 	return result;
 }
 
-
+void cache_write(paddr_t paddr, size_t len, uint32_t data, CacheLine* cache) {
+	
+}
 
 
 
