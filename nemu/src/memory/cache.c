@@ -75,6 +75,7 @@ printf("blank\n");
 			cache[blank_line_index].valid = 1;
 			cache[blank_line_index].tag = tag;
 			result = cache_read(paddr, len, cache); //read cache
+printf("res:0x%x\n", result);
 			//memcpy(&result, hw_mem + paddr, len);
 		}
 		else { //cache group is full
