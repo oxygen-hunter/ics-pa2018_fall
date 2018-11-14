@@ -32,6 +32,7 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 					memcpy(&mm, hw_mem + paddr, len);
 					if(cc != mm) {
 						printf("i:%d\n", i);
+						printf("baddr:0x%x\n", baddr);
 						printf("incache:%x, inmem:%x\n", cc, mm);
 						assert(0);
 					}
