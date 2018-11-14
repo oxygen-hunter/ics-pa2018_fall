@@ -30,7 +30,10 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 					uint32_t mm=0;
 					memcpy(&cc, cache[i].data + baddr, len);
 					memcpy(&mm, hw_mem + paddr, len);
-					printf("incache:%x, inmem:%x\n", cc, mm);
+					if(cc != mm) {
+						printf("incache:%x, inmem:%x\n", cc, mm);
+						assert(0);
+					}
 				}
 				else { //cross cacheline to read data
 					uint32_t len_this = 64 - baddr; //length in this line
