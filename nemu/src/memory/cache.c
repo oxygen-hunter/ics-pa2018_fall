@@ -41,9 +41,10 @@ printf("\n");
 					memcpy(cache[i].data, hw_mem+((paddr>>6)<<6), 64);
 						//assert(0);
 					}
-				}
 					memcpy(&result, cache[i].data + baddr, len);
 					//memcpy(&result, hw_mem + paddr, len);
+				}
+					
 				else { //cross cacheline to read data
 					uint32_t len_this = 64 - baddr; //length in this line
 					uint32_t len_next = len - len_this; //length in next line
