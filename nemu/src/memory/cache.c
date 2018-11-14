@@ -40,7 +40,6 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 				}
 			}
 			else { //hit, but invalid, copy from memory to cache, then read it 
-				continue;
 				memcpy(cache[i].data, hw_mem + ((paddr >> 6) << 6), 64);
 				cache[i].valid = 1;
 				cache[i].tag = tag;
