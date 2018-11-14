@@ -81,7 +81,7 @@ for(int m=0;m<64;m++)
 	printf("%x ", cache[blank_line_index].data[m]);
 uint64_t mmm=0;
 memcpy(&mmm, hw_mem+((paddr>>6)<<6),64);
-printf("mmm:%x\n", mmm);
+printf("\nmmm:%x\n", mmm);
 printf("\n");
 printf("res:0x%x\n", result);
 			//memcpy(&result, hw_mem + paddr, len);
