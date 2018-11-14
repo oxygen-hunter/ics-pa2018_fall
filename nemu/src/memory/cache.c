@@ -72,7 +72,7 @@ assert(0);
 		}
 		if(group_blank == true) { //cache group has a blank line
 printf("blank\n");
-printf("before memcpy:);
+printf("before memcpy:");
 for(int m=0;m<64;m++) {
 	printf("%x ", cache[blank_line_index].data[m]);
 }
