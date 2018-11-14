@@ -11,7 +11,7 @@ typedef struct {
 	uint8_t data[64]; //data area who has 64 B
 } CacheLine;
 
-extern CacheLine cache[];
+//extern CacheLine cache[];
 
 //clear all valid bit
 void init_cache(); 
