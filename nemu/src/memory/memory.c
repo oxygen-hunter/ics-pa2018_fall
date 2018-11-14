@@ -25,7 +25,7 @@ uint32_t paddr_read(paddr_t paddr, size_t len) {
 #ifdef CACHE_ENABLED
 	if(paddr > MEM_SIZE_B) {
 		printf("paddr over:0x%x\n", paddr);
-		assert(0);
+		//assert(0);
 	}
 	ret = cache_read(paddr, len, cache);
 	//ret = hw_mem_read(paddr, len);
