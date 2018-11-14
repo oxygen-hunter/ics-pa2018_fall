@@ -14,7 +14,7 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 	uint32_t baddr = paddr & 0x3f; //low 6 bit
 
 	uint32_t group_start = group_index * 8; //group start at here
-	uint8_t flag = 0;
+	uint8_t flag = 0; //if tag hit
 	uint32_t result = 0; //the memory i want to read
 	
 	for(int i = group_start; i < group_start + 8; i ++) { //search all lines of the group
