@@ -37,7 +37,7 @@ printf("\n");*/
 						printf("baddr:0x%x\n", baddr);
 						printf("incache:%x, inmem:%x\n", cc, mm);
 					memcpy(cache[i].data, hw_mem+((paddr>>6)<<6), 64);
-						assert(0);
+						//assert(0);
 					}
 					memcpy(&result, cache[i].data + baddr, len);
 					//memcpy(&result, hw_mem + paddr, len);
