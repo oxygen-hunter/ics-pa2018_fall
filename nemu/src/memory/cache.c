@@ -25,7 +25,7 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 uint32_t diff=0;
 for(int k=0;k<len;k++){
 	if(cache[i].data[baddr+k] != hw_mem[paddr+k]){
-		printf("cache:0x%x, mem:0x%x\n", cache[i].data[k], hw_mem[paddr+k])
+		printf("cache:0x%x, mem:0x%x\n", cache[i].data[k], hw_mem[paddr+k]);
 		diff=1;
 	}
 }
