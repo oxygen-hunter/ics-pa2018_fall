@@ -23,12 +23,12 @@ uint32_t paddr_read(paddr_t paddr, size_t len) {
 //printf("upper paddr:0x%x\n", paddr);
 	uint32_t ret = 0;
 #ifdef CACHE_ENABLED
-	//ret = cache_read(paddr, len, cache);
 	if(paddr > MEM_SIZE_B) {
 		printf("paddr over:%x", paddr);
 		assert(0);
 	}
-	ret = hw_mem_read(paddr, len);
+	ret = cache_read(paddr, len, cache);
+	//ret = hw_mem_read(paddr, len);
 #else
 	ret = hw_mem_read(paddr, len);
 #endif
