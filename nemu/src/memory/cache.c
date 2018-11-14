@@ -87,7 +87,7 @@ void cache_write(paddr_t paddr, size_t len, uint32_t data, CacheLine* cache) {
 	uint32_t group_start = group_index * 8; //group start at here
 	for(int i = group_start; group_start + 8; i ++) {
 		if(cache[i].tag == tag && cache[i].valid == 1) {
-			cache[i].valid;
+			cache[i].valid = 0;
 		}
 	}
 }
