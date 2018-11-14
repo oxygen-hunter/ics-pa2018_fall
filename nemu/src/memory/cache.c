@@ -29,7 +29,7 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 					if(cc != mm) {
 						printf("i:%d\n", i);
 						printf("baddr:0x%x\n", baddr);
-						printf("incache:%x, inmem:%x\n", cc, mm);
+						printf("incache:%x, inmem:%x\n\n", cc, mm);
 					memcpy(cache[i].data, hw_mem+((paddr>>6)<<6), 64);
 						//assert(0);
 					}
@@ -50,9 +50,8 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 				}
 			}
 			else { //hit, but invalid, copy from memory to cache, then read it 
-printf("i:%d\n", i);
-printf("baddr:0x%x\n", baddr);
-printf("hit but invalid\n");
+printf("tag:0x%x, group_index:0x%x, baddr:0x%x\n",tag, group_index, baddr);
+printf("hit but invalid\n\n");
 assert(0);
 				memcpy(cache[i].data, hw_mem + ((paddr >> 6) << 6), 64);
 				cache[i].valid = 1;
