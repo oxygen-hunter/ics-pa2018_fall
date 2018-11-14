@@ -79,7 +79,9 @@ printf("blank\n");
 printf("blank line:%d\n", blank_line_index);
 for(int m=0;m<64;m++) {
 	printf("%x ", cache[blank_line_index].data[m]);
+}
 printf("\n");
+for(int m=0;m<64;m++) {
 	printf("%x ", hw_mem[((paddr>>6)<<6)+m]);
 }
 printf("\n");
