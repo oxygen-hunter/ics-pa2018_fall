@@ -77,27 +77,10 @@ assert(0);
 			}
 		}
 		if(group_blank == true) { //cache group has a blank line
-printf("blank\n");
-printf("before memcpy:");
-for(int m=0;m<64;m++) {
-	printf("%x ", cache[blank_line_index].data[m]);
-}
-printf("\n");
 			memcpy(cache[blank_line_index].data, hw_mem + ((paddr >> 6) << 6), 64); //full this blank line
 			cache[blank_line_index].valid = 1;
 			cache[blank_line_index].tag = tag;
 			result = cache_read(paddr, len, cache); //read cache
-printf("blank line:%d\n", blank_line_index);
-for(int m=0;m<64;m++) {
-	printf("%x ", cache[blank_line_index].data[m]);
-}
-printf("\n");
-for(int m=0;m<64;m++) {
-	printf("%x ", hw_mem[((paddr>>6)<<6)+m]);
-}
-printf("\n");
-printf("res:0x%x\n", result);
-			//memcpy(&result, hw_mem + paddr, len);
 		}
 		else { //cache group is full
 			int random_num = group_start + 1; //to get a random number in [0:7]
@@ -108,7 +91,6 @@ printf("res:0x%x\n", result);
 			//memcpy(&result, hw_mem + paddr, len);
 		}
 	}
-printf("*****************************************\n");
 	return result;
 }
 
