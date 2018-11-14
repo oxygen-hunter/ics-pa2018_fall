@@ -18,7 +18,6 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 	uint8_t flag = 0;
 	uint32_t result = 0; //the memory i want to read
 	
-
 	for(int i = group_start; i < group_start + 8; i ++) { //search all lines of the group
 		if(cache[i].tag == tag) { //hit
 			if(cache[i].valid == 1) { //hit, and valid, read it from cache
