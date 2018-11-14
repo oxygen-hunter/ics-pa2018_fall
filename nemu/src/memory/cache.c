@@ -22,6 +22,11 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 		if(cache[i].tag == tag) { //hit
 			if(cache[i].valid == 1) { //hit, and valid, read it from cache
 				if(baddr <= 64 - len) { //directly read from cache data
+for(int k=0;k<len;k++){
+	if(cache[i].data[baddr+k] != hw_mem[paddr+k]){
+		printf("cache:0x%x, mem:0x%x\n", cache[i].data[k], hw_mem[paddr+k])
+	}
+}
 					memcpy(&result, cache[i].data + baddr, len);
 					//memcpy(&result, hw_mem + paddr, len);
 				}
