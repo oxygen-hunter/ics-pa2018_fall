@@ -22,12 +22,6 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 		if(cache[i].tag == tag) { //hit
 			if(cache[i].valid == 1) { //hit, and valid, read it from cache
 				if(baddr <= 64 - len) { //directly read from cache data
-					
-/*printf("hit and valid\n");
-for(int m=0;m<64;m++) {
-	printf("%x ", cache[i].data[m]);
-}
-printf("\n");*/
 					uint32_t cc=0;
 					uint32_t mm=0;
 					memcpy(&cc, cache[i].data + baddr, len);
@@ -56,6 +50,8 @@ printf("\n");*/
 				}
 			}
 			else { //hit, but invalid, copy from memory to cache, then read it 
+printf("i:%d\n", i);
+printf("baddr:0x%x\n", baddr);
 printf("hit but invalid\n");
 assert(0);
 				memcpy(cache[i].data, hw_mem + ((paddr >> 6) << 6), 64);
