@@ -30,7 +30,8 @@ printf("hit\n");
 printf("hit and valid\n");
 				if(baddr <= 64 - len) { //directly read from cache data
 printf("directly read from cache\n");
-					memcpy(&result, cache[i].data + baddr, len);
+					//memcpy(&result, cache[i].data + baddr, len);
+					memcpy(&result, hw_mem + paddr, len);
 				}
 				else { //cross cacheline to read data
 printf("cross cacheline to read\n");
