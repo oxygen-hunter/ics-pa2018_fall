@@ -38,14 +38,14 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 				}
 					
 				else { //cross cacheline to read data
-					uint32_t len_this = 64 - baddr; //length in this line
+					/*uint32_t len_this = 64 - baddr; //length in this line
 					uint32_t len_next = len - len_this; //length in next line
 					uint32_t val_this = 0; //val in this line
 					uint32_t val_next = 0; //val in next line
 					memcpy(&val_this, cache[i].data + baddr, len_this); //read val in this line
 					val_next = cache_read(paddr + len_this, len_next, cache); //read val in next line
-					result = (val_next << (len_this * 8)) | val_this;
-				 	//memcpy(&result, hw_mem + paddr, len);
+					result = (val_next << (len_this * 8)) | val_this;*/
+				 	memcpy(&result, hw_mem + paddr, len);
 					//connect val_this with val_next, pay attention to little-edium
 				}
 			}
