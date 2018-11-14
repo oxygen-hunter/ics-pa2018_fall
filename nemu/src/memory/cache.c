@@ -22,8 +22,8 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 		if(cache[i].tag == tag) { //hit
 			if(cache[i].valid == 1) { //hit, and valid, read it from cache
 				if(baddr <= 64 - len) { //directly read from cache data
-					memcpy(&result, cache[i].data + baddr, len);
-					//memcpy(&result, hw_mem + paddr, len);
+					//memcpy(&result, cache[i].data + baddr, len);
+					memcpy(&result, hw_mem + paddr, len);
 				}
 					
 				else { //cross cacheline to read data
