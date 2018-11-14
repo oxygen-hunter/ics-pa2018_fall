@@ -49,7 +49,8 @@ printf("hit but invalid\n");
 				memcpy(cache[i].data, hw_mem + ((paddr >> 6) << 6), 64);
 				cache[i].valid = 1;
 				cache[i].tag = tag;
-				result = cache_read(paddr, len, cache);
+				//result = cache_read(paddr, len, cache);
+				memcpy(&result, hw_mem + paddr, len);
 			}
 			break;
 		}
