@@ -22,7 +22,6 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 			if(cache[i].valid == 1) { //hit, and valid, read it from cache
 				if(baddr <= 64 - len) { //directly read from cache data
 					memcpy(&result, cache[i].data + baddr, len);
-					//memcpy(&result, hw_mem + paddr, len);
 				}			
 				else { //cross cacheline to read data
 					uint32_t len_this = 64 - baddr; //length in this line
@@ -32,7 +31,6 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 					memcpy(&val_this, cache[i].data + baddr, len_this); //read val in this line
 					val_next = cache_read(paddr + len_this, len_next, cache); //read val in next line
 					result = (val_next << (len_this * 8)) | val_this;
-				 	//memcpy(&result, hw_mem + paddr, len);
 					//connect val_this with val_next, pay attention to little-edium
 				}
 			}
@@ -41,7 +39,6 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 				cache[i].valid = 1;
 				cache[i].tag = tag;
 				result = cache_read(paddr, len, cache);
-				//memcpy(&result, hw_mem + paddr, len);
 			}
 			flag = 1;
 			break;
@@ -62,7 +59,6 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 			cache[blank_line_index].valid = 1;
 			cache[blank_line_index].tag = tag;
 			result = cache_read(paddr, len, cache); //read cache
-			//memcpy(&result, hw_mem + paddr, len);
 		}
 		else { //cache group is full
 			srand((unsigned)time(NULL)); //set time as random number seed
@@ -71,7 +67,6 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 			cache[random_num].valid = 1;
 			cache[random_num].tag = tag;
 			result = cache_read(paddr, len, cache); //read cache
-			//memcpy(&result, hw_mem + paddr, len);
 		}
 	}
 	return result;
