@@ -70,6 +70,8 @@ assert(0);
 			}
 		}
 		if(group_blank == true) { //cache group has a blank line
+printf("blank\n");
+assert(0);
 			memcpy(cache[blank_line_index].data, hw_mem + ((paddr >> 6) << 6), 64); //full this blank line
 			cache[blank_line_index].valid = 1;
 			cache[blank_line_index].tag = tag;
