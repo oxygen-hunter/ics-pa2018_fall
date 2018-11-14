@@ -1,4 +1,5 @@
 #include "nemu.h"
+#include <stdlib.h>
 
 #define CACHE_BLOCK_SIZE 64
 #define CACHELINE_NUM 1024
