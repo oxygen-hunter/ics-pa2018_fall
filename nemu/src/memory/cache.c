@@ -77,8 +77,8 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 			cache[blank_line_index].valid = 1;
 			cache[blank_line_index].tag = tag;
 
-			//result = cache_read(paddr, len, cache); //read cache
-			memcpy(&result, hw_mem + paddr, len);
+			result = cache_read(paddr, len, cache); //read cache
+			//memcpy(&result, hw_mem + paddr, len);
 		}
 		else { //cache group is full
 //printf("group[%d] is full\n", group_index);
