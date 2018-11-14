@@ -56,7 +56,7 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 				result = cache_read(paddr, len, cache);
 				//memcpy(&result, hw_mem + paddr, len);
 			}
-			break;
+			//break;
 		}
 	}
 	bool group_blank = false;
