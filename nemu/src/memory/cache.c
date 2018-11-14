@@ -61,7 +61,7 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 	}
 	bool group_blank = false;
 	int blank_line_index = -1;
-	if(i == group_start + 8) { //can't hit
+	if(flag == 0) { //can't hit
 		for(int j = group_start; j < group_start + 8; j ++) { // to test if any line is blank
 			if(cache[j].valid == 0) {
 				group_blank = true;
