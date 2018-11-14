@@ -5,7 +5,9 @@
 CacheLine cache[1024]; //64KB Cache
 
 void init_cache() {
-	memset(cache, 0, sizeof(cache));
+	//memset(cache, 0, sizeof(cache));
+	for(int i=0;i<1024;i++)
+		cache[i].valid=0;
 }
 
 uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
@@ -38,7 +40,7 @@ printf("cross cacheline to read\n");
 					uint32_t val_next = 0; //val in next line
 					memcpy(&val_this, cache[i].data + baddr, len_this); //read val in this line
 					val_next = cache_read(paddr + len_this, len_next, cache); //read val in next line
-					result = (val_next << len_this * 8) | val_this; 
+					result = (val_next << (len_this * 8)) | val_this; 
 					//connect val_this with val_next, pay attention to little-edium
 				}
 			}
