@@ -35,14 +35,10 @@ printf("directly read from cache\n");
 				}
 				else { //cross cacheline to read data
 printf("cross cacheline to reald\n");
-					uint32_t len_this = 64 - baddr; //length in this line
-					uint32_t len_next = len - len_this; //length in next line
-					uint32_t val_this = 0; //val in this line
-					uint32_t val_next = 0; //val in next line
-					val_this=1;
-					val_next=1;
-					len_this=1;
-					len_next=0;
+					//uint32_t len_this = 64 - baddr; //length in this line
+					//uint32_t len_next = len - len_this; //length in next line
+					//uint32_t val_this = 0; //val in this line
+					//uint32_t val_next = 0; //val in next line
 					//memcpy(&val_this, cache[i].data + baddr, len_this); //read val in this line
 					//val_next = cache_read(paddr + len_this, len_next, cache); //read val in next line
 					//result = (val_next << (len_this * 8)) | val_this;
