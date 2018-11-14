@@ -22,7 +22,7 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 		if(cache[i].tag == tag) { //hit
 			if(cache[i].valid == 1) { //hit, and valid, read it from cache
 				if(baddr <= 64 - len) { //directly read from cache data
-					uint32_t cc=0;
+					/*uint32_t cc=0;
 					uint32_t mm=0;
 					memcpy(&cc, cache[i].data + baddr, len);
 					memcpy(&mm, hw_mem + paddr, len);
@@ -32,7 +32,7 @@ uint32_t cache_read(paddr_t paddr, size_t len, CacheLine* cache) {
 						printf("incache:%x, inmem:%x\n\n", cc, mm);
 					memcpy(cache[i].data, hw_mem+((paddr >> 6) << 6), 64);
 						//assert(0);
-					}
+					}*/
 					memcpy(&result, cache[i].data + baddr, len);
 					//memcpy(&result, hw_mem + paddr, len);
 				}
