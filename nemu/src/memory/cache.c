@@ -77,7 +77,7 @@ for(int m=0;m<64;m++) {
 	printf("%x ", cache[blank_line_index].data[m]);
 }
 printf("\n");
-			memcpy(cache[blank_line_index].data, hw_mem + ((paddr >> 6) << 6), 64); //full this blank line
+			memcpy(cache[blank_line_index].data, hw_mem + paddr, 64); //full this blank line
 			cache[blank_line_index].valid = 1;
 			cache[blank_line_index].tag = tag;
 			result = cache_read(paddr, len, cache); //read cache
