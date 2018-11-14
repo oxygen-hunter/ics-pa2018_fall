@@ -24,8 +24,7 @@ printf("tag:0x%x, group_index:0x%x, baddr:0x%x\n",tag, group_index, baddr);
 		if(cache[i].tag == tag) { //hit
 			if(cache[i].valid == 1) { //hit, and valid, read it from cache
 				if(baddr <= 64 - len) { //directly read from cache data
-					memcpy(&result, cache[i].data + baddr, len);
-					//memcpy(&result, hw_mem + paddr, len);
+					
 printf("hit and valid\n");
 for(int m=0;m<64;m++) {
 	printf("%x ", cache[i].data[m]);
@@ -43,6 +42,8 @@ printf("\n");
 						//assert(0);
 					}
 				}
+					memcpy(&result, cache[i].data + baddr, len);
+					//memcpy(&result, hw_mem + paddr, len);
 				else { //cross cacheline to read data
 					uint32_t len_this = 64 - baddr; //length in this line
 					uint32_t len_next = len - len_this; //length in next line
