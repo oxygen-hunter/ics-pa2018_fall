@@ -108,7 +108,7 @@ printf("res:0x%x\n", result);
 			//memcpy(&result, hw_mem + paddr, len);
 		}
 	}
-printf("\n");
+printf("*****************************************\n");
 	return result;
 }
 
