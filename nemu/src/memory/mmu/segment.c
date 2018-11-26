@@ -1,6 +1,6 @@
 #include "cpu/cpu.h"
 #include "memory/memory.h"
-#include "memory/mmu/segment.h"
+//#include "memory/mmu/segment.h"
 
 // return the linear address from the virtual address and segment selector
 uint32_t segment_translate(uint32_t offset, uint8_t sreg) {
@@ -18,7 +18,7 @@ void load_sreg(uint8_t sreg) {
 	 */
 	
 	uint32_t index = cpu.segReg[sreg].index; //which SegmentDescriptor
-	SegmentDescriptor* segTable = (SegmentDescriptor*) cpu.gdtr.base; //segTable start addr
+	SegDesc* segTable = (SegDesc*) cpu.gdtr.base; //segTable start addr
 
 	assert(segTable[index].base_15_0 == 0x0); //check SegmentDescriptor
 	assert(segTable[index].limit_15_0 == 0xffff);
