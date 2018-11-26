@@ -298,7 +298,7 @@ make_instr_func(mov_c2r_l) {
 	r.type = OPR_REG;
 	r.data_size = 32;
 	
-	int len = 2;
+	int len = 1;
 	len += modrm_r_rm(eip + len, &cr, &r);
 
 	operand_read(&cr);
@@ -316,7 +316,7 @@ make_instr_func(mov_r2c_l) {
 	cr.type = OPR_CREG;
 	cr.data_size = 32;
 
-	int len = 2;
+	int len = 1;
 	len += modrm_r_rm(eip + len, &r, &cr);
 
 	operand_read(&r);
