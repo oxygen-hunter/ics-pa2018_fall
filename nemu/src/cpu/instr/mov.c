@@ -301,5 +301,5 @@ make_instr_func(mov_r2c_l) {
 }
 
 make_instr_func(mov_rm2s_w) {
-	
+	return 0;
 }
