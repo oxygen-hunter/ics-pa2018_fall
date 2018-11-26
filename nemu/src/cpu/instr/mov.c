@@ -326,6 +326,6 @@ make_instr_func(mov_rm2s_w) {
 	operand_read(&rm);
 	sr.val = rm.val;
 	operand_write(&sr);
-
+print_asm_2("mov", "", len, &rm, &sr);
 	return len;
 }
