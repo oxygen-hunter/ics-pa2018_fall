@@ -56,7 +56,7 @@ uint32_t vaddr_read(vaddr_t vaddr, uint8_t sreg, size_t len) {
 	if(cpu.cr0.pe == 1) {
 		laddr = segment_translate(vaddr, sreg);
 	}
-	if(laddr >= 1024*1024*128)
+	//if(laddr >= 1024*1024*128)
 		printf("laddr over: %x", laddr);
 	return laddr_read(laddr, len);
 #endif
