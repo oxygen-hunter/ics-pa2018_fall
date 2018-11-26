@@ -33,5 +33,5 @@ void load_sreg(uint8_t sreg) {
 //printf("load_sreg: segTable[index].val[0]:%x, val[1]:%x\n", segTable[index].val[0], segTable[index].val[1]);
 	cpu.segReg[sreg].base = segdesc.base_15_0; //load sreg's invisible part
 	cpu.segReg[sreg].limit = segdesc.limit_15_0;
-printf("3\n");
+//printf("3\n");
 }
