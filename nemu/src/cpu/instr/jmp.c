@@ -63,6 +63,7 @@ make_instr_func(jmp_far_imm) {
 	imm.addr = eip + 1;
 	imm.data_size = 32;
 	operand_read(&imm);
+printasm
 	cpu.eip = imm.val;
 	return 0;
 }
