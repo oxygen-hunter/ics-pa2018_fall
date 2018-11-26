@@ -314,9 +314,18 @@ make_instr_func(mov_r2c_l) {
 }
 
 make_instr_func(mov_rm2s_w) {
-	OPERAND rm;
+	OPERAND rm, sr;
 	rm.data_size = 16;
 	
+	sr.type = OPR_SREG
+	sr.data_size = 16;
+	
 	int len = 1;
+	len += modrm_r_rm(eip + 1, &rm, &sr);
+	
+	operand_read(&rm);
+	sr.val = rm.val;
+	operand_write(&sr);
+
 	return len;
 }
