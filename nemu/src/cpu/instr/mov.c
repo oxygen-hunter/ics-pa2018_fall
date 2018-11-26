@@ -291,6 +291,19 @@ make_instr_func(mov_srm162r_l) {
 }
 
 make_instr_func(mov_c2r_l) {
+	/*OPERAND c, r;
+	c.type = OPRCREG;
+	c.data_size = 32;
+	
+	r.type = OPR_REG;
+	r.data_size = 32;
+	
+	int len = 2;
+	len += modrm_r_rm(eip + 2, &c, &r);
+
+	operand_read(&c);
+	r.val = c.val;
+	operand_write(&r);*/
 	cpu.eax = cpu.cr0.val;
 	return 2;
 }
@@ -301,5 +314,9 @@ make_instr_func(mov_r2c_l) {
 }
 
 make_instr_func(mov_rm2s_w) {
-	return 0;
+	OPERAND rm;
+	rm.data_size = 16;
+	
+	int len = 1;
+	return len;
 }
