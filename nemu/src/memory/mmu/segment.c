@@ -16,11 +16,12 @@ void load_sreg(uint8_t sreg) {
 	 * The visible part of 'sreg' should be assigned by mov or ljmp already.
 	 */
 	
-	/* TODO: assert */
-	
-	/* ************ */
 	uint32_t index = cpu.segReg[sreg].index; //which SegmentDescriptor
 	SegmentDescriptor* segTable = (SegmentDescriptor*) cpu.gdtr.base; //segTable start addr
+
+	assert(segTable[index].base_15_0 == 0x0);
+	assert(segTable[index].limit_15_0 == 0xffff);
+	assert(segTable[index].granularity == 0x1);
 
 	cpu.segReg[sreg].base = segTable[index].base_15_0; //load sreg's invisible part
 	cpu.segReg[sreg].limit = segTable[index].limit_15_0;
