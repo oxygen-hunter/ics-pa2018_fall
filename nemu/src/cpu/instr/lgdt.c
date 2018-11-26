@@ -6,7 +6,7 @@ make_instr_func(lgdt) {
 	modrm_rm(eip + 1, &rm);
 	operand_read(&rm);
 	uint32_t base = rm.val;
-	uint32_t limit = rm.val & 0xffff;
+	uint32_t limit = rm.val & 0xffff; //low 16 bit
 	cpu.gdtr.base = base;
 	cpu.gdtr.limit = limit;
 }
