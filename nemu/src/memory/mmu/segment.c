@@ -6,7 +6,7 @@ uint32_t segment_translate(uint32_t offset, uint8_t sreg) {
 	/* TODO: perform segment translation from virtual address to linear address
 	 * by reading the invisible part of the segment register 'sreg'
 	 */
-	uint32_t base = segReg[sreg].base;
+	uint32_t base = cpu.segReg[sreg].base;
 	return base + offset;
 }
 
@@ -19,6 +19,6 @@ void load_sreg(uint8_t sreg) {
 	/* TODO: assert */
 	
 	/* ************ */
-	segReg[sreg].base = gdtr.base;
-	segReg[sreg].limit = gdtr.limit;
+	segReg[sreg].base = cpu.gdtr.base;
+	segReg[sreg].limit = cpu.gdtr.limit;
 }
