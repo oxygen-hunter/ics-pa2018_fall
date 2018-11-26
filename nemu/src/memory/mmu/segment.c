@@ -8,7 +8,7 @@ uint32_t segment_translate(uint32_t offset, uint8_t sreg) {
 	 */
 
 	uint32_t base = cpu.segReg[sreg].base;
-printf("\nseg_trans: base:%x, offset:%x, base + offset:%x, sreg:%x\n", base, offset, base+offset, sreg);	
+//printf("\nseg_trans: base:%x, offset:%x, base + offset:%x, sreg:%x\n", base, offset, base+offset, sreg);	
 	return base + offset;
 }
 
@@ -19,6 +19,7 @@ void load_sreg(uint8_t sreg) {
 	 */
 printf("\nload_sreg: sreg:%x\n", sreg);
 	uint32_t index = cpu.segReg[sreg].index; //which SegmentDescriptor
+printf("\nload_sreg: index:%x\n", index);
 	SegDesc* segTable = (SegDesc*) cpu.gdtr.base; //segTable start addr
 
 	assert(segTable[index].base_15_0 == 0x0); //check SegmentDescriptor
