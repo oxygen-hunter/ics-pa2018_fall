@@ -15,4 +15,10 @@ void load_sreg(uint8_t sreg) {
 	/* TODO: load the invisibile part of the segment register 'sreg' by reading the GDT.
 	 * The visible part of 'sreg' should be assigned by mov or ljmp already.
 	 */
+	
+	/* TODO: assert */
+	
+	/* ************ */
+	segReg[sreg].base = gdtr.base;
+	segReg[sreg].limit = gdtr.limit;
 }
