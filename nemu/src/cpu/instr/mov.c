@@ -334,7 +334,7 @@ make_instr_func(mov_rm2s_w) {
 	sr.data_size = 16;
 	
 	int len = 1;
-	len += modrm_r_rm(eip + 1, &rm, &sr);
+	len += modrm_r_rm(eip + 1, &sr, &rm);
 	
 	operand_read(&rm);
 	sr.val = rm.val;
