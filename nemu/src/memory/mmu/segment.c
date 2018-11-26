@@ -25,7 +25,7 @@ printf("\nload_sreg: index:%x\n", index);
 	SegDesc segdesc;
 	segdesc.val[0] = laddr_read(segTable + 8 * index, 4);
 	segdesc.val[1] = laddr_read(segTable + 8 * index + 4, 4);
-//printf("\nload_sreg: segTable:%x\n", (uint32_t)segTable);
+printf("\nload_sreg: segTable:%x\n", (uint32_t)segTable);
 
 	//assert(segdesc.base_15_0 == 0x0); //check SegmentDescriptor
 	//assert(segdesc.limit_15_0 == 0xffff);
