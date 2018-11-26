@@ -11,6 +11,6 @@ make_instr_func(lgdt) {
 	uint32_t limit = rm.val & 0xffff; //low 16 bit
 	cpu.gdtr.base = base;
 	cpu.gdtr.limit = limit;
-
+print_asm_1("lgdt", "", len, &rm);
 	return len;
 }
