@@ -20,9 +20,9 @@ void load_sreg(uint8_t sreg) {
 printf("\nload_sreg: sreg:%x\n", sreg);
 	uint32_t index = cpu.segReg[sreg].index; //which SegmentDescriptor
 printf("\nload_sreg: index:%x\n", index);
-	SegDesc* segTable = (SegDesc*) cpu.gdtr.base; //segTable start addr
-	SegDesc.val[0] = hw_mem_read(segTable + 8 * index, 4);
-	SegDesc.val[1] = hw_mem_read(segTable + 8 * index + 4, 4);
+	laddr_t segTable = (laddr_t) cpu.gdtr.base; //segTable start addr, is a laddr
+	SegDesc.val[0] = laddr_read(segTable + 8 * index, 4);
+	SegDesc.val[1] = laddr_read(segTable + 8 * index + 4, 4);
 //printf("\nload_sreg: segTable:%x\n", (uint32_t)segTable);
 	//assert(segTable[index].base_15_0 == 0x0); //check SegmentDescriptor
 	//assert(segTable[index].limit_15_0 == 0xffff);
