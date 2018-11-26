@@ -21,6 +21,8 @@ make_instr_func(mov_srm162r_l);
 make_instr_func(movs_v);
 make_instr_func(movs_b);
 
+make_instr_func(mov_c2r_l);
+
 make_instr_func(cmova_rm2r_v);
 make_instr_func(cmovae_rm2r_v);
 make_instr_func(cmovb_rm2r_v);
@@ -37,5 +39,7 @@ make_instr_func(cmovo_rm2r_v);
 make_instr_func(cmovp_rm2r_v);
 make_instr_func(cmovs_rm2r_v);
 make_instr_func(cmove_rm2r_v);
+
+
 
 #endif
