@@ -50,13 +50,13 @@ typedef struct {
 	} eflags;
 
 	// GDTR
-	typedef struct {
+	struct {
 		uint32_t limit :16;
 		uint32_t base :32;
 	} GDTR;
 	
 	// CR0
-	typedef union {
+	union {
 		struct {
 			uint32_t pe :1;
 			uint32_t mp :1;
@@ -70,7 +70,7 @@ typedef struct {
 	} CR0;
 
 	// SegRegs
-	typedef struct {
+	struct {
 	// the 16-bit visible part, i.e., the selector
 		union {
 			uint32_t val;
