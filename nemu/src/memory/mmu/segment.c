@@ -27,7 +27,7 @@ printf("\nload_sreg: index:%x\n", index);
 	segdesc.val[1] = laddr_read(segTable + 8 * index + 4, 4);
 printf("\nload_sreg: segTable:%x\n", (uint32_t)segTable);
 printf("segdesc.base_15_0:%x\n", segdesc.base_15_0);
-printf("segdesc.limit_15_0%x\n", segdesc.limit_15_0);
+printf("segdesc.limit_15_0:%x\n", segdesc.limit_15_0);
 printf("segdesc.granularity:%x\n", segdesc.granularity);
 	assert(segdesc.base_15_0 == 0x0); //check SegmentDescriptor
 	assert(segdesc.limit_15_0 == 0xffff);
