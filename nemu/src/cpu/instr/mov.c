@@ -299,3 +299,7 @@ make_instr_func(mov_r2c_l) {
 	cpu.cr0.val = cpu.eax;
 	return 2;
 }
+
+make_instr_func(mov_rm2s_w) {
+	
+}
