@@ -19,6 +19,9 @@ void load_sreg(uint8_t sreg) {
 	/* TODO: assert */
 	
 	/* ************ */
-	cpu.segReg[sreg].base = cpu.gdtr.base;
-	cpu.segReg[sreg].limit = cpu.gdtr.limit;
+	uint32_t index = cpu.segReg[sreg].index; //which SegmentDescriptor
+	SegmentDescriptor* segTable = (SegmentDescriptor*) cpu.gdtr.base; //segTable start addr
+
+	cpu.segReg[sreg].base = segTable[index].base_15_0; //load sreg's invisible part
+	cpu.segReg[sreg].limit = segTable[index].limit_15_0;
 }
