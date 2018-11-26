@@ -18,7 +18,7 @@ void load_sreg(uint8_t sreg) {
 	
 	/* TODO: assert */
 	assert(gdtr.base == 0);
-	assert(gdtr.limit == 0xffff;
+	assert(gdtr.limit == 0xffff);
 	/* ************ */
 	segReg[sreg].base = gdtr.base;
 	segReg[sreg].limit = gdtr.limit;
