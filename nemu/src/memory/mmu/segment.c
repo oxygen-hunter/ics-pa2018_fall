@@ -17,7 +17,7 @@ void load_sreg(uint8_t sreg) {
 	/* TODO: load the invisibile part of the segment register 'sreg' by reading the GDT.
 	 * The visible part of 'sreg' should be assigned by mov or ljmp already.
 	 */
-	
+printf("\nload_sreg: sreg:%x\n", sreg);
 	uint32_t index = cpu.segReg[sreg].index; //which SegmentDescriptor
 	SegDesc* segTable = (SegDesc*) cpu.gdtr.base; //segTable start addr
 
