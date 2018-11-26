@@ -25,7 +25,7 @@ printf("\nload_sreg: segTable:%x\n", (uint32_t)segTable);
 	//assert(segTable[index].base_15_0 == 0x0); //check SegmentDescriptor
 	//assert(segTable[index].limit_15_0 == 0xffff);
 	//assert(segTable[index].granularity == 0x1);
-printf("2\n");
+printf("load_sreg: sizeof():%x\n", sizeof(SegDesc));
 	cpu.segReg[sreg].base = segTable[index].base_15_0; //load sreg's invisible part
 	cpu.segReg[sreg].limit = segTable[index].limit_15_0;
 printf("3\n");
