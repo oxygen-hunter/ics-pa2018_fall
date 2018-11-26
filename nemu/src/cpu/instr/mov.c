@@ -330,7 +330,7 @@ make_instr_func(mov_rm2s_w) {
 	OPERAND rm, sr;
 	rm.data_size = 16;
 	
-	sr.type = OPR_SREG
+	sr.type = OPR_SREG;
 	sr.data_size = 16;
 	
 	int len = 1;
