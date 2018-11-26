@@ -8,7 +8,7 @@ uint32_t segment_translate(uint32_t offset, uint8_t sreg) {
 	 */
 
 	uint32_t base = cpu.segReg[sreg].base;
-printf("seg_trans: base:%x, offset:%x, base + offset:%x, sreg:%x\n", base, offset, base+offset, sreg);	
+printf("\nseg_trans: base:%x, offset:%x, base + offset:%x, sreg:%x\n", base, offset, base+offset, sreg);	
 	return base + offset;
 }
 
