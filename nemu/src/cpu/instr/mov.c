@@ -289,3 +289,13 @@ make_instr_func(mov_srm162r_l) {
 	print_asm_2("mov", "", len, &rm, &r);
         return len;
 }
+
+make_instr_func(mov_c2r_l) {
+	cpu.eax = cpu.cr0;
+	return 2;
+}
+
+make_instr_func(mov_r2c_l) {
+	cpu.cr0 = cpu.eax;
+	return 2;
+}
