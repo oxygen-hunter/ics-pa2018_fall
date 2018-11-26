@@ -291,11 +291,11 @@ make_instr_func(mov_srm162r_l) {
 }
 
 make_instr_func(mov_c2r_l) {
-	cpu.eax = cpu.cr0;
+	cpu.eax = cpu.cr0.val;
 	return 2;
 }
 
 make_instr_func(mov_r2c_l) {
-	cpu.cr0 = cpu.eax;
+	cpu.cr0.val = cpu.eax;
 	return 2;
 }
