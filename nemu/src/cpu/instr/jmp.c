@@ -66,6 +66,7 @@ imm.sreg = SREG_CS;
 	imm.data_size = 32;
 	operand_read(&imm);
 print_asm_1("jmp", "", 6, &imm);
+load_sreg(SREG_CS);
 	cpu.eip = imm.val;
 	return 0;
 }
