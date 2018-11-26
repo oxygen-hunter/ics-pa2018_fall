@@ -22,9 +22,9 @@ printf("\nload_sreg: sreg:%x\n", sreg);
 printf("\nload_sreg: index:%x\n", index);
 	SegDesc* segTable = (SegDesc*) cpu.gdtr.base; //segTable start addr
 printf("1\n");
-	assert(segTable[index].base_15_0 == 0x0); //check SegmentDescriptor
-	assert(segTable[index].limit_15_0 == 0xffff);
-	assert(segTable[index].granularity == 0x1);
+	//assert(segTable[index].base_15_0 == 0x0); //check SegmentDescriptor
+	//assert(segTable[index].limit_15_0 == 0xffff);
+	//assert(segTable[index].granularity == 0x1);
 printf("2\n");
 	cpu.segReg[sreg].base = segTable[index].base_15_0; //load sreg's invisible part
 	cpu.segReg[sreg].limit = segTable[index].limit_15_0;
