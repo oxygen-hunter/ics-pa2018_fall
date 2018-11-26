@@ -19,6 +19,6 @@ void load_sreg(uint8_t sreg) {
 	/* TODO: assert */
 	
 	/* ************ */
-	segReg[sreg].base = cpu.gdtr.base;
-	segReg[sreg].limit = cpu.gdtr.limit;
+	cpu.segReg[sreg].base = cpu.gdtr.base;
+	cpu.segReg[sreg].limit = cpu.gdtr.limit;
 }
