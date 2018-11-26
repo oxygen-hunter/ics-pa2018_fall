@@ -60,7 +60,7 @@ print_asm_1("jmp", "", len, &rm);
 make_instr_func(jmp_far_imm) {
 	OPERAND imm;
 	
-	imm.addr = eip + 1
+	imm.addr = eip + 1;
 	imm.data_size = 32;
 	operand_read(&imm);
 	cpu.eip = imm.val;
