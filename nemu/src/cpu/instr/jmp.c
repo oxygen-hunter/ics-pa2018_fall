@@ -61,7 +61,7 @@ make_instr_func(jmp_far_imm) {
 	OPERAND imm;
 	int len = 1;
 	imm.data_size = 32;
-	modrm(eip + 1, &imm);
+	len += modrm(eip + 1, &imm);
 	operand_read(&imm);
 	cpu.eip = imm.val;
 	return 0;
