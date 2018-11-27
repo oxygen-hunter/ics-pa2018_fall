@@ -20,7 +20,7 @@ void load_sreg(uint8_t sreg) {
 
 	uint32_t index = cpu.segReg[sreg].index; //which SegmentDescriptor
 	laddr_t segTable = (laddr_t) cpu.gdtr.base; //segTable start addr, is a laddr
-
+printf("index:%x\n", index);
 	SegDesc segdesc;
 	segdesc.val[0] = laddr_read(segTable + 8 * index, 4);
 	segdesc.val[1] = laddr_read(segTable + 8 * index + 4, 4);
