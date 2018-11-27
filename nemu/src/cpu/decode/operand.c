@@ -7,7 +7,7 @@ OPERAND opr_src, opr_dest;
 void operand_read(OPERAND * opr) {
 	switch(opr->type) {
 		case OPR_MEM:
-			if(opr->sreg != SREG_DS && opr->sreg != SREG_SS) printf("error sreg_:%x", opr->sreg);
+			if(opr->sreg != SREG_DS && opr->sreg != SREG_SS) printf("\nerror sreg_:%x\n", opr->sreg);
 			assert(opr->sreg == SREG_DS || opr->sreg == SREG_SS);
 			opr->val = vaddr_read(opr->addr, opr->sreg, 4);
 			break;
