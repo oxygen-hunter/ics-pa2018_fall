@@ -347,7 +347,7 @@ make_instr_func(mov_rm2s_w) {
 printf("\nsr.addr:%x, sr.val:%x\n", sr.addr, sr.val);
 printf("\nrm.addr:%x, rm.val:%x\n", rm.addr, rm.val);
 	sr.type = OPR_SREG;
-print_asm_2("mov", "", len, &rm, &sr);
+//print_asm_2("mov", "", len, &rm, &sr);
 load_sreg(sr.addr);
 	return len;
 }
