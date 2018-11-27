@@ -18,6 +18,8 @@ printf("val:%x\n", rm.val);
 	rm.data_size = 32;
 	operand_read(&rm);
 	cpu.gdtr.base = rm.val; //load base
+printf("addr:%x\n", rm.addr);
+printf("val:%x\n", rm.val);
 print_asm_1("lgdt", "", len, &rm);
 	return len;
 }
