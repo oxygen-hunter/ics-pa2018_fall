@@ -334,13 +334,14 @@ make_instr_func(mov_rm2s_w) {
 	sr.data_size = 16;
 	
 	int len = 1;
-	len += modrm_r_rm(eip + 1, &rm, &sr);
+	len += modrm_r_rm(eip + 1, &sr, &rm);
 	
 	operand_read(&rm);
 	sr.val = rm.val;
 	operand_write(&sr);
 
-	
+printf("\nsr.addr:%x, sr.val:%x\n", sr.addr, sr.val);
+printf("\nrm.addr:%x, rm.val:%x\n", rm.addr, rm.val);
 	
 print_asm_2("mov", "", len, &rm, &sr);
 load_sreg(sr.addr);
