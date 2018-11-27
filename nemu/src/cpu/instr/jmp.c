@@ -69,7 +69,7 @@ imm.sreg = SREG_CS;
 	index.addr = imm.addr + 4;
 	index.data_size = 16;
 	operand_read(&index);
-	cpu.cs.base = index.val;
+	cpu.cs.val = index.val;
 
 print_asm_1("jmp", "", 6, &imm);
 load_sreg(SREG_CS);
