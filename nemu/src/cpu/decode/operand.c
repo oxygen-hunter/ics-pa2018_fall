@@ -8,7 +8,7 @@ void operand_read(OPERAND * opr) {
 	switch(opr->type) {
 		case OPR_MEM:
 			if(opr->sreg != SREG_DS && opr->sreg != SREG_SS && opr->sreg != SREG_ES) printf("\nread sreg_:%x\n", opr->sreg);
-			//assert(opr->sreg == SREG_DS || opr->sreg == SREG_SS || opr->sreg == SREG_ES);
+			assert(opr->sreg == SREG_DS || opr->sreg == SREG_SS || opr->sreg == SREG_ES);
 			opr->val = vaddr_read(opr->addr, opr->sreg, 4);
 			break;
 		case OPR_IMM: 
