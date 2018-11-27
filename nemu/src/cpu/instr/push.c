@@ -14,6 +14,7 @@ if(opr_src.type == OPR_IMM && opr_src.data_size == 8) {
 	mem.data_size = opr_src.data_size;
 	mem.val = opr_src.val;
 	mem.addr = cpu.esp;
+mem.sreg = SREG_DS
 	operand_write(&mem);
 }
 
