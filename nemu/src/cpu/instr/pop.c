@@ -15,6 +15,7 @@ make_instr_func(pop_r_v) { //0x58-0x5f
 	mem.type = OPR_MEM;
 	mem.data_size = data_size;
 	mem.addr = cpu.esp;
+mem.sreg = SREG_DS;
 	operand_read(&mem);
 
 	r.val = mem.val;
