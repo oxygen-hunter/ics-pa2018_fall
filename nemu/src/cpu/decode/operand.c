@@ -7,7 +7,7 @@ OPERAND opr_src, opr_dest;
 void operand_read(OPERAND * opr) {
 	switch(opr->type) {
 		case OPR_MEM:
-			if(opr->sreg != SREG_DS && opr->sreg != SREG_SS && opr->sreg == SREG_ES) printf("\nread sreg_:%x\n", opr->sreg);
+			if(opr->sreg != SREG_DS && opr->sreg != SREG_SS && opr->sreg != SREG_ES) printf("\nread sreg_:%x\n", opr->sreg);
 			assert(opr->sreg == SREG_DS || opr->sreg == SREG_SS || opr->sreg == SREG_ES);
 			opr->val = vaddr_read(opr->addr, opr->sreg, 4);
 			break;
@@ -58,7 +58,7 @@ void operand_write(OPERAND * opr) {
 	switch(opr->type) {
 	case OPR_MEM:
 		// data size here
-		if(opr->sreg != SREG_DS && opr->sreg != SREG_SS && opr->sreg == SREG_ES) printf("\nwrite sreg_:%x\n", opr->sreg);
+		if(opr->sreg != SREG_DS && opr->sreg != SREG_SS && opr->sreg != SREG_ES) printf("\nwrite sreg_:%x\n", opr->sreg);
 		assert(opr->sreg == SREG_DS || opr->sreg == SREG_SS || opr->sreg == SREG_ES);
 		vaddr_write(opr->addr, opr->sreg, opr->data_size / 8, opr->val);
 		break;
