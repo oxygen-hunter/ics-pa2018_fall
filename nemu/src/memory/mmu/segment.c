@@ -21,6 +21,7 @@ void load_sreg(uint8_t sreg) {
 	uint32_t index = cpu.segReg[sreg].index; //which SegmentDescriptor
 	laddr_t segTable = (laddr_t) cpu.gdtr.base; //segTable start addr, is a laddr
 
+	assert(sreg < 6); //sreg: es, cs, ss, ds, fs, gs
 	assert(index != 0); //index shouldn't be 0!
 
 	SegDesc segdesc;
