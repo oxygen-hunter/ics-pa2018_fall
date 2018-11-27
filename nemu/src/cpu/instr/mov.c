@@ -332,7 +332,7 @@ print_asm_2("mov", "", len, &r, &cr);
 
 make_instr_func(mov_rm2s_w) {
 	OPERAND rm, sr;
-	rm.data_size = 32;
+	rm.data_size = 16;
 	
 	sr.type = OPR_SREG;
 	sr.data_size = 16;
@@ -340,6 +340,7 @@ make_instr_func(mov_rm2s_w) {
 	int len = 1;
 	len += modrm_r_rm(eip + 1, &sr, &rm);
 	
+	sr.type = OPR_SREG;
 	operand_read(&rm);
 	sr.val = rm.val;
 	operand_write(&sr);
