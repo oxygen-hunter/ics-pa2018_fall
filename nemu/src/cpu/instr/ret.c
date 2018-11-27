@@ -24,11 +24,13 @@ make_instr_func(ret_near_imm16) { //0xc2
 	imm.type = OPR_IMM;
 	imm.data_size = 16;
 	imm.addr = eip + 1;
+
 	operand_read(&imm);
 
 	ret_addr.type = OPR_MEM;
 	ret_addr.data_size = data_size;
 	ret_addr.addr = cpu.esp;
+ret_addr.sreg = SREG_DS;
 //printf("now esp:%x\n",cpu.esp);
 	operand_read(&ret_addr);
 
