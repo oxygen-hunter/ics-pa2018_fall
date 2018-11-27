@@ -15,8 +15,11 @@ make_instr_func(lgdt) {
 	printf("addr:%x\n", rm.addr);
 	printf("val:%x\n", rm.val);
 	
-	cpu.gdtr.limit = hw_mem_read(rm.addr, 2);
-	cpu.gdtr.base = hw_mem_read(rm.addr + 2 * 8, 4);
+	cpu.gdtr.limit = rm.val;
+	rm.addr = rm.addr + 2*8;
+	rm.data_size = 32;
+	operand_read(&rm);
+	cpu.gdtr.base = rm.val;
 print_asm_1("lgdt", "", len, &rm);
 	return len;
 }
