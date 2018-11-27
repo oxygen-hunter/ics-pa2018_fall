@@ -56,7 +56,7 @@ make_instr_func(pusha) { //0x60
 
 	mem.type = OPR_MEM;
 	mem.data_size = data_size;
-
+mem.sreg = SREG_DS;
 	operand_read(&temp); //store old esp/sp
 
 	for(; r.addr < 8; r.addr++) { //ax, ec, dx, bx, sp, bp, si, di
