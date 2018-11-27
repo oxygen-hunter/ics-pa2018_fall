@@ -58,13 +58,19 @@ print_asm_1("jmp", "", len, &rm);
 }
 
 make_instr_func(jmp_far_imm) {
-	OPERAND imm;
-	imm.type = OPR_IMM;
-	
+	OPERAND imm, index;
+	imm.type = OPR_IMM;	
 imm.sreg = SREG_CS;
 	imm.addr = eip + 1;
 	imm.data_size = 32;
 	operand_read(&imm);
+
+	index.type = OPR_IMM;
+	index.addr = imm.addr + 4;
+	index.data_size = 16;
+	operand_read(&index);
+	cpu.cs.index = index.val;
+
 print_asm_1("jmp", "", 6, &imm);
 load_sreg(SREG_CS);
 	cpu.eip = imm.val;
