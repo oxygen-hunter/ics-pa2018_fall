@@ -6,6 +6,7 @@ make_instr_func(ret_near) { //0xc3
 	ret_addr.type = OPR_MEM;
 	ret_addr.data_size = data_size;
 	ret_addr.addr = cpu.esp;
+ret_addr.sreg = SREG_DS;
 //printf("now esp:%x\n",cpu.esp);
 	operand_read(&ret_addr);
 
