@@ -70,6 +70,7 @@ imm.sreg = SREG_CS;
 	selector.data_size = 16;
 	operand_read(&selector);
 	cpu.cs.val = selector.val;
+printf("cs.val: %x\n", cpu.cs.val);
 
 print_asm_1("jmp", "", 6, &imm);
 load_sreg(SREG_CS);
