@@ -21,6 +21,5 @@ printf("val:%x\n", rm.val);
 printf("addr:%x\n", rm.addr);
 printf("val:%x\n", rm.val);
 print_asm_1("lgdt", "", len, &rm);
-	memcpy(&cpu.gdtr, hw_mem + rm.val,
 	return len;
 }
