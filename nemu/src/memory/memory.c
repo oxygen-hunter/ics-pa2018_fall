@@ -58,7 +58,7 @@ assert(0);
 		return 0;
 	}*/
 	else { //(cpu.cr0.pg == 0) 
-printf("read:7777\n");
+printf("laddr: 0x%x\n", laddr);
 		return paddr_read(laddr, len);
 	}
 }
