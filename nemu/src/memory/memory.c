@@ -52,7 +52,14 @@ uint32_t laddr_read(laddr_t laddr, size_t len) {
 			return hwaddr_read(hwaddr, len);
 		//}
 	}
-	else
+	else if(cpu.cr0.pe == 0) {
+		printf("cpu.cr0.pe == 0, please check init()\n");
+		assert(0);
+	}
+	else if(cpu.cr0.pg == 0) {
+		printf("cpu.cr0.pg == 0, plese check init()\n");
+		assert(0);
+	}
 #endif
 }
 
