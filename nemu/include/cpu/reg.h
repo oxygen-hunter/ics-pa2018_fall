@@ -3,7 +3,7 @@
 
 #include "nemu.h"
 
-// GDTR
+	// GDTR
 	typedef struct {
 		uint32_t limit :16;
 		uint32_t base :32;
@@ -44,6 +44,15 @@
 			uint32_t soft_use :1;
 		};
 	} SegReg;
+
+	//CR3
+	typedef union {
+		struct {
+			uint32_t reserved :12;
+			uint32_t pdbr :20;
+		}
+		uint32_t val;
+	}
 
 // define the structure of registers
 typedef struct {
