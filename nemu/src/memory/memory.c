@@ -48,8 +48,8 @@ uint32_t laddr_read(laddr_t laddr, size_t len) {
 			/* TODO this is a special case, you can handle it later*/
 			// assert(0);
 		//} else {
-			hwaddr_t hwaddr = page_translate(addr);
-			return hwaddr_read(hwaddr, len);
+			paddr_t paddr = page_translate(paddr);
+			return paddr_read(paddr, len);
 		//}
 	}
 	else if(cpu.cr0.pe == 0) {
