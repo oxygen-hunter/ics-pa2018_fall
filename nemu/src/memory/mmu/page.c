@@ -12,7 +12,7 @@ paddr_t page_translate(laddr_t laddr) {
 printf("PDE_start:%x\n", PDE_start);
 	PDE pde;
 	pde.val = paddr_read(PDE_start, 4); // read PDE
-printf("ped.val:%x\n", pde.val);
+printf("pde.val:%x\n", pde.val);
 	assert(pde.present == 1);
 
 	paddr_t PTE_start = pde.page_frame + 4 * page; // page table start here.
