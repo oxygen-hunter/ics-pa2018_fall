@@ -52,7 +52,7 @@
 			uint32_t pdbr :20; //page directory base register
 		}
 		uint32_t val;
-	}
+	} CR3;
 
 // define the structure of registers
 typedef struct {
