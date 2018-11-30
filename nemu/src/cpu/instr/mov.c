@@ -292,7 +292,7 @@ make_instr_func(mov_srm162r_l) {
 
 make_instr_func(mov_c2r_l) {
 	OPERAND cr, r;
-	
+	cr.type = OPR_CREG;
 	cr.data_size = 32;
 	
 	r.type = OPR_REG;
@@ -317,7 +317,7 @@ make_instr_func(mov_r2c_l) {
 	r.data_size = 32;
 	r.type = OPR_REG;
 
-	
+	cr.type = OPR_CREG;
 	cr.data_size = 32;
 
 	int len = 1;
