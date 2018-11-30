@@ -57,7 +57,7 @@ uint32_t laddr_read(laddr_t laddr, size_t len) {
 		assert(0);
 		return 0;
 	}
-	else if(cpu.cr0.pg == 0) {
+	else { //(cpu.cr0.pg == 0) 
 		printf("cpu.cr0.pg == 0, plese check it's init()\n");
 		assert(0);
 		return 0;
