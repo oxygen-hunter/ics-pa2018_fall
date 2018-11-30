@@ -39,7 +39,21 @@ void paddr_write(paddr_t paddr, size_t len, uint32_t data) {
 
 
 uint32_t laddr_read(laddr_t laddr, size_t len) {
+	assert(len == 1 || len == 2 || len == 4);
+#ifndef IA32_PAGE
 	return paddr_read(laddr, len);
+#else
+	if(cpu.cr0.pe == 1 && cpu.cr0.pg == 1) {
+		//if(data cross the page boundary) {
+			/* TODO this is a special case, you can handle it later*/
+			// assert(0);
+		//} else {
+			hwaddr_t hwaddr = page_translate(addr);
+			return hwaddr_read(hwaddr, len);
+		//}
+	}
+	else
+#endif
 }
 
 void laddr_write(laddr_t laddr, size_t len, uint32_t data) {
@@ -56,8 +70,6 @@ uint32_t vaddr_read(vaddr_t vaddr, uint8_t sreg, size_t len) {
 	if(cpu.cr0.pe == 1) {
 		laddr = segment_translate(vaddr, sreg);
 	}
-	if(laddr >= 1024*1024*128)
-		printf("laddr over: %x\n", laddr);
 	return laddr_read(laddr, len);
 #endif
 }
