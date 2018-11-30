@@ -17,6 +17,7 @@ printf("pde.val:%x\n", pde.val);
 	assert(pde.present == 1);
 
 	paddr_t PTE_start = pde.page_frame + 4 * page; // page table start here.
+printf("PTE_start:%x\n", PTE_start);
 	PTE pte;
 	pte.val = paddr_read(PTE_start, 4); // read PTE
 printf("pte.val:%x\n", pte.val);
