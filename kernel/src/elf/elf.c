@@ -37,18 +37,18 @@ uint32_t loader() {
 
 			/* TODO: copy the segment from the ELF file to its proper memory area */
 //#ifdef IA32_PAGE
-/*			uint32_t mm_paddr = mm_malloc((uint32_t)ph->p_vaddr, ph->p_memsz);
+			uint32_t mm_paddr = mm_malloc((uint32_t)ph->p_vaddr, ph->p_memsz);
 	Log("777\n");
 	assert(0);
 			memcpy((void*)(mm_paddr), (void*)(ph->p_offset), ph->p_filesz);
 			if(ph->p_memsz > ph->p_filesz)
 				memset((void*)(mm_paddr+ph->p_filesz), 0, ph->p_memsz - ph->p_filesz);
-*/
+
 //#else
-			memcpy((void*)(ph->p_vaddr), (void*)(ph->p_offset), ph->p_filesz);
-			/* TODO: zeror the memory area [vaddr + file_sz, vaddr + mem_sz] */
-			if(ph->p_memsz > ph->p_filesz)
-				memset((void*)(ph->p_vaddr+ph->p_filesz), 0, ph->p_memsz - ph->p_filesz);
+//			memcpy((void*)(ph->p_vaddr), (void*)(ph->p_offset), ph->p_filesz);
+//			/* TODO: zeror the memory area [vaddr + file_sz, vaddr + mem_sz] */
+//			if(ph->p_memsz > ph->p_filesz)
+//				memset((void*)(ph->p_vaddr+ph->p_filesz), 0, ph->p_memsz - ph->p_filesz);
 //#endif
 #ifdef IA32_PAGE
 			/* Record the program break for future use */
