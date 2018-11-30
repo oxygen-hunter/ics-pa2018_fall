@@ -41,8 +41,6 @@ void paddr_write(paddr_t paddr, size_t len, uint32_t data) {
 uint32_t laddr_read(laddr_t laddr, size_t len) {
 	assert(len == 1 || len == 2 || len == 4);
 	if(cpu.cr0.pg == 1) {
-printf("666\n");
-assert(0);
 		//if(data cross the page boundary) {
 			/* TODO this is a special case, you can handle it later*/
 			// assert(0);
@@ -51,13 +49,8 @@ assert(0);
 			return paddr_read(paddr, len);
 		//}
 	}
-	/*else if(cpu.cr0.pe == 0) {
-		printf("cpu.cr0.pe == 0, please check it's init()\n");
-		assert(0);
-		return 0;
-	}*/
 	else { //(cpu.cr0.pg == 0) 
-printf("laddr: 0x%x\n", laddr);
+//printf("laddr: 0x%x\n", laddr);
 		return paddr_read(laddr, len);
 	}
 }
@@ -90,8 +83,6 @@ uint32_t vaddr_read(vaddr_t vaddr, uint8_t sreg, size_t len) {
 #else
 	uint32_t laddr = vaddr;
 	if(cpu.cr0.pe == 1) {
-		printf("pe==1 already\n");
-		assert(0);
 		laddr = segment_translate(vaddr, sreg);
 	}
 	return laddr_read(laddr, len);
