@@ -40,7 +40,7 @@ uint32_t loader() {
 			uint32_t mm_paddr = mm_malloc((uint32_t)ph->p_vaddr, ph->p_memsz);
 			memcpy((void*)(hw_mem + mm_paddr), (void*)(ph->p_offset), ph->p_filesz);
 			if(ph->p_memsz > ph->p_filesz)
-				memset((void*)(mm_paddr+ph->p_filesz), 0, ph->p_memsz - ph->p_filesz);
+				memset((void*)(hw_mem + mm_paddr+ph->p_filesz), 0, ph->p_memsz - ph->p_filesz);
 //#else
 //			memcpy((void*)(ph->p_vaddr), (void*)(ph->p_offset), ph->p_filesz);
 //			/* TODO: zeror the memory area [vaddr + file_sz, vaddr + mem_sz] */
