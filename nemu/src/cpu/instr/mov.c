@@ -322,9 +322,9 @@ make_instr_func(mov_r2c_l) {
 
 	int len = 1;
 	len += modrm_r_rm(eip + len, &cr, &r);
-	cr.type = OPR_CREG;
 printf("c2r:after modrm, cr.type:%x, cr.addr:%x\n", cr.type, cr.addr);
 //if(cr.type != OPR_CREG) assert(0);
+	cr.type = OPR_CREG;
 	operand_read(&r);
 	cr.val = r.val;
 	operand_write(&cr);
