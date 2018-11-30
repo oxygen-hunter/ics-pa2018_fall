@@ -49,8 +49,7 @@ uint32_t laddr_read(laddr_t laddr, size_t len) {
 			return paddr_read(paddr, len);
 		//}
 	}
-	else { //(cpu.cr0.pg == 0) 
-//printf("laddr: 0x%x\n", laddr);
+	else {
 		return paddr_read(laddr, len);
 	}
 }
@@ -66,11 +65,7 @@ void laddr_write(laddr_t laddr, size_t len, uint32_t data) {
 			paddr_write(paddr, len, data);
 		//}
 	}
-	/*else if(cpu.cr0.pe == 0) {
-		printf("cpu.cr0.pe == 0, please check it's init()\n");
-		assert(0);
-	}*/
-	else { //(cpu.cr0.pg == 0)
+	else {
 		return paddr_write(laddr, len, data);
 	}
 }
