@@ -40,7 +40,6 @@ void paddr_write(paddr_t paddr, size_t len, uint32_t data) {
 
 uint32_t laddr_read(laddr_t laddr, size_t len) {
 	assert(len == 1 || len == 2 || len == 4);
-
 	if(cpu.cr0.pg == 1) {
 printf("666\n");
 assert(0);
