@@ -5,8 +5,8 @@
 paddr_t page_translate(laddr_t laddr) {
 #ifndef TLB_ENABLED
 	uint32_t dir = laddr >> 22; // page dirctory index. high 10 bit
-	uint32_t page = laddr << 10 >> 22; // page table index, mid 10 bit
-	uint32_t offset = laddr << 20 >> 20; // page frame index, low 12 bit
+	uint32_t page = (laddr << 10) >> 22; // page table index, mid 10 bit
+	uint32_t offset = (laddr << 20) >> 20; // page frame index, low 12 bit
 	
 	paddr_t PDE_start = cpu.cr3.pdbr + 4 * dir; // page directory start here. physical addr
 printf("PDE_start:%x\n", PDE_start);
