@@ -9,8 +9,10 @@ paddr_t page_translate(laddr_t laddr) {
 	uint32_t offset = laddr << 20 >> 20; // page frame index, low 12 bit
 	
 	paddr_t PDE_start = cpu.cr3.pdbr + 4 * dir; // page directory start here. physical addr
+printf("PDE_start:%x\n", PDE_start);
 	PDE pde;
 	pde.val = paddr_read(PDE_start, 4); // read PDE
+printf("ped.val:%x\n", ped.val);
 	assert(pde.present == 1);
 
 	paddr_t PTE_start = pde.page_frame + 4 * page; // page table start here.
