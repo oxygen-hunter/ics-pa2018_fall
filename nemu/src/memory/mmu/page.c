@@ -10,17 +10,17 @@ printf("laddr:%x\n", laddr);
 	uint32_t offset = (laddr << 20) >> 20; // page frame index, low 12 bit
 	
 	paddr_t PDE_start = (cpu.cr3.pdbr << 12) + 4 * dir; // page directory start here. physical addr
-printf("PDE_start:%x\n", PDE_start);
+//printf("PDE_start:%x\n", PDE_start);
 	PDE pde;
 	pde.val = paddr_read(PDE_start, 4); // read PDE
-printf("pde.val:%x\n", pde.val);
+//printf("pde.val:%x\n", pde.val);
 	assert(pde.present == 1);
 
 	paddr_t PTE_start = (pde.page_frame << 12) + 4 * page; // page table start here.
-printf("PTE_start:%x\n", PTE_start);
+//printf("PTE_start:%x\n", PTE_start);
 	PTE pte;
 	pte.val = paddr_read(PTE_start, 4); // read PTE
-printf("pte.val:%x\n", pte.val);
+//printf("pte.val:%x\n", pte.val);
 	assert(pte.present == 1);
 
 	paddr_t paddr = (pte.page_frame << 12) + offset; // physical addr.
