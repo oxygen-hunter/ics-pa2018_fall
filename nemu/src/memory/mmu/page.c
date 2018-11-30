@@ -16,14 +16,14 @@ printf("PDE_start:%x\n", PDE_start);
 printf("pde.val:%x\n", pde.val);
 	assert(pde.present == 1);
 
-	paddr_t PTE_start = pde.page_frame + 4 * page; // page table start here.
+	paddr_t PTE_start = (pde.page_frame << 12) + 4 * page; // page table start here.
 printf("PTE_start:%x\n", PTE_start);
 	PTE pte;
 	pte.val = paddr_read(PTE_start, 4); // read PTE
 printf("pte.val:%x\n", pte.val);
 	assert(pte.present == 1);
 
-	paddr_t paddr = pte.page_frame + offset; // physical addr.
+	paddr_t paddr = (pte.page_frame << 12) + offset; // physical addr.
 	return paddr;
 #else	
 	return tlb_read(laddr) | (laddr & PAGE_MASK);;
