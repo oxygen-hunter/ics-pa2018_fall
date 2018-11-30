@@ -40,6 +40,7 @@ void paddr_write(paddr_t paddr, size_t len, uint32_t data) {
 
 uint32_t laddr_read(laddr_t laddr, size_t len) {
 	assert(len == 1 || len == 2 || len == 4);
+printf("read:7777\n");
 	if(cpu.cr0.pg == 1) {
 		//if(data cross the page boundary) {
 			/* TODO this is a special case, you can handle it later*/
