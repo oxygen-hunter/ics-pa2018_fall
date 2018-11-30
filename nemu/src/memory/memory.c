@@ -83,7 +83,7 @@ void laddr_write(laddr_t laddr, size_t len, uint32_t data) {
 		printf("cpu.cr0.pe == 0, please check it's init()\n");
 		assert(0);
 	}
-	else if(cpu.cr0.pg == 0) {
+	else { //(cpu.cr0.pg == 0)
 		printf("cpu.cr0.pg == 0, plese check it's init()\n");
 		assert(0);
 	}
