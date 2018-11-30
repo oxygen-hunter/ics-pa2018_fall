@@ -292,7 +292,7 @@ make_instr_func(mov_srm162r_l) {
 
 make_instr_func(mov_c2r_l) {
 	OPERAND cr, r;
-	cr.type = OPR_CREG;
+	
 	cr.data_size = 32;
 	
 	r.type = OPR_REG;
@@ -300,8 +300,9 @@ make_instr_func(mov_c2r_l) {
 	
 	int len = 1;
 	len += modrm_r_rm(eip + len, &r, &cr);
-printf("c2r:after modrm, cr.type:%x\n", cr.type);
-if(cr.type != OPR_CREG) assert(0);
+//printf("c2r:after modrm, cr.type:%x\n", cr.type);
+//if(cr.type != OPR_CREG) assert(0);
+	cr.type = OPR_CREG;
 	operand_read(&cr);
 	r.val = cr.val;
 	operand_write(&r);
@@ -316,13 +317,14 @@ make_instr_func(mov_r2c_l) {
 	r.data_size = 32;
 	r.type = OPR_REG;
 
-	cr.type = OPR_CREG;
+	
 	cr.data_size = 32;
 
 	int len = 1;
 	len += modrm_r_rm(eip + len, &cr, &r);
-printf("r2c:after modrm, cr.type:%x\n", cr.type);
-if(cr.type != OPR_CREG) assert(0);
+	cr.type = OPR_CREG;
+//printf("r2c:after modrm, cr.type:%x\n", cr.type);
+//if(cr.type != OPR_CREG) assert(0);
 	operand_read(&r);
 	cr.val = r.val;
 	operand_write(&cr);
