@@ -300,7 +300,7 @@ make_instr_func(mov_c2r_l) {
 	
 	int len = 1;
 	len += modrm_r_rm(eip + len, &r, &cr);
-
+printf("c2r:after modrm, cr.type:%x\n", cr.type);
 	operand_read(&cr);
 	r.val = cr.val;
 	operand_write(&r);
@@ -320,7 +320,7 @@ make_instr_func(mov_r2c_l) {
 
 	int len = 1;
 	len += modrm_r_rm(eip + len, &cr, &r);
-
+printf("r2c:after modrm, cr.type:%x\n", cr.type);
 	operand_read(&r);
 	cr.val = r.val;
 	operand_write(&cr);
