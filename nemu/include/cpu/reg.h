@@ -50,7 +50,7 @@
 		struct {
 			uint32_t reserved :12; //always 0x0, useless
 			uint32_t pdbr :20; //page directory base register
-		}
+		};
 		uint32_t val;
 	} CR3;
 
