@@ -73,8 +73,8 @@ void laddr_write(laddr_t laddr, size_t len, uint32_t data) {
 			/* TODO this is a special case, you can handle it later*/
 			// assert(0);
 		//} else {
-			hwaddr_t hwaddr = page_translate(addr);
-			hwaddr_read(hwaddr, len, data);
+			paddr_t paddr = page_translate(paddr);
+			paddr_read(paddr, len, data);
 		//}
 	}
 	else if(cpu.cr0.pe == 0) {
