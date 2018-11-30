@@ -11,10 +11,12 @@ paddr_t page_translate(laddr_t laddr) {
 	paddr_t PDE_start = cpu.cr3.pdtr + 8 * dir; // page directory start here. physical addr
 	PDE pde;
 	pde.val = paddr_read(PDE_start, 4); // read PDE
+	assert(pde.present == 1);
 
 	paddr_t PTE_start = pde.page_frame + 8 * page; // page table start here.
 	PTE pte;
 	pte.val = paddr_read(PTE_start, 4); // read PTE
+	assert(pte.present == 1);
 
 	paddr_t paddr = pte.page_frame + 8 * offset; // physical addr.
 	return paddr;
