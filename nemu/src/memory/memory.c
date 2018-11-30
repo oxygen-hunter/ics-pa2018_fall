@@ -70,7 +70,7 @@ void laddr_write(laddr_t laddr, size_t len, uint32_t data) {
 #ifndef IA32_PAGE
 	paddr_write(laddr, len, data);
 #else
-	if(cpu.cr0.pe == 1 && cpu.cr0.pg == 1) {
+	if(cpu.cr0.pg == 1) {
 		//if(data cross the page boundary) {
 			/* TODO this is a special case, you can handle it later*/
 			// assert(0);
@@ -79,10 +79,10 @@ void laddr_write(laddr_t laddr, size_t len, uint32_t data) {
 			paddr_write(paddr, len, data);
 		//}
 	}
-	else if(cpu.cr0.pe == 0) {
+	/*else if(cpu.cr0.pe == 0) {
 		printf("cpu.cr0.pe == 0, please check it's init()\n");
 		assert(0);
-	}
+	}*/
 	else { //(cpu.cr0.pg == 0)
 		printf("cpu.cr0.pg == 0, plese check it's init()\n");
 		assert(0);
