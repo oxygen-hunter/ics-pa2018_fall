@@ -43,7 +43,7 @@ uint32_t laddr_read(laddr_t laddr, size_t len) {
 #ifndef IA32_PAGE
 	return paddr_read(laddr, len);
 #else
-	if(cpu.cr0.pe == 1 && cpu.cr0.pg == 1) {
+	if(cpu.cr0.pg == 1) {
 		//if(data cross the page boundary) {
 			/* TODO this is a special case, you can handle it later*/
 			// assert(0);
@@ -52,11 +52,11 @@ uint32_t laddr_read(laddr_t laddr, size_t len) {
 			return paddr_read(paddr, len);
 		//}
 	}
-	else if(cpu.cr0.pe == 0) {
+	/*else if(cpu.cr0.pe == 0) {
 		printf("cpu.cr0.pe == 0, please check it's init()\n");
 		assert(0);
 		return 0;
-	}
+	}*/
 	else { //(cpu.cr0.pg == 0) 
 		printf("cpu.cr0.pg == 0, plese check it's init()\n");
 		assert(0);
