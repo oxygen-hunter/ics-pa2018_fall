@@ -13,12 +13,12 @@ paddr_t page_translate(laddr_t laddr) {
 	pde.val = paddr_read(PDE_start, 4); // read PDE
 	assert(pde.present == 1);
 
-	paddr_t PTE_start = pde.page_frame + 8 * page; // page table start here.
+	paddr_t PTE_start = pde.page_frame + 4 * page; // page table start here.
 	PTE pte;
 	pte.val = paddr_read(PTE_start, 4); // read PTE
 	assert(pte.present == 1);
 
-	paddr_t paddr = pte.page_frame + 8 * offset; // physical addr.
+	paddr_t paddr = pte.page_frame + offset; // physical addr.
 	return paddr;
 #else	
 	return tlb_read(laddr) | (laddr & PAGE_MASK);;
