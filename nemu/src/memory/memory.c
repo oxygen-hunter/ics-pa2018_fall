@@ -75,8 +75,7 @@ void laddr_write(laddr_t laddr, size_t len, uint32_t data) {
 		assert(0);
 	}*/
 	else { //(cpu.cr0.pg == 0)
-		printf("cpu.cr0.pg == 0, plese check it's init()\n");
-		assert(0);
+		return paddr_write(laddr, len, data);
 	}
 }
 
