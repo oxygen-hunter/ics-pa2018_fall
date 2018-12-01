@@ -40,34 +40,34 @@ void paddr_write(paddr_t paddr, size_t len, uint32_t data) {
 
 uint32_t laddr_read(laddr_t laddr, size_t len) {
 	assert(len == 1 || len == 2 || len == 4);
-	if(cpu.cr0.pe == 1 && cpu.cr0.pg == 1) {
+//	if(cpu.cr0.pe == 1 && cpu.cr0.pg == 1) {
 		//if(data cross the page boundary) {
 			/* TODO this is a special case, you can handle it later*/
 			// assert(0);
 		//} else {
-			paddr_t paddr = page_translate(laddr);
-			return paddr_read(paddr, len);
+//			paddr_t paddr = page_translate(laddr);
+//			return paddr_read(paddr, len);
 		//}
 	}
-	else {
+//	else {
 		return paddr_read(laddr, len);
-	}
+//	}
 }
 
 void laddr_write(laddr_t laddr, size_t len, uint32_t data) {
 	assert(len == 1 || len == 2 || len == 4);
-	if(cpu.cr0.pe == 1 && cpu.cr0.pg == 1) {
+//	if(cpu.cr0.pe == 1 && cpu.cr0.pg == 1) {
 		//if(data cross the page boundary) {
 			/* TODO this is a special case, you can handle it later*/
 			// assert(0);
 		//} else {
-			paddr_t paddr = page_translate(laddr);
-			paddr_write(paddr, len, data);
+//			paddr_t paddr = page_translate(laddr);
+//			paddr_write(paddr, len, data);
 		//}
 	}
-	else {
+//	else {
 		return paddr_write(laddr, len, data);
-	}
+//	}
 }
 
 
