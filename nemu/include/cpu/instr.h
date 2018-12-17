@@ -56,6 +56,9 @@ extern uint8_t data_size;
 #include "cpu/instr/cmps.h"
 #include "cpu/instr/lgdt.h"
 
+// pa 4-1
+#include "cpu/instr/cli.h"
+
 
 
 #endif
