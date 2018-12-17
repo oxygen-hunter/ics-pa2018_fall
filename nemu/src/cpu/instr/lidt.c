@@ -1,7 +1,6 @@
 #include "cpu/instr.h"
-#include "memory/memory.h"
 
-make_instr_func(lgdt) {
+make_instr_func(lidt) {
 	OPERAND rm;
 
 	int len = 1;
