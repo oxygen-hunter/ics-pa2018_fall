@@ -21,7 +21,7 @@ void raise_intr(uint8_t intr_no) {
 	gatedesc.val = laddr_read(IDT_start, 8); // read gate descripter' val
 
 	// Clear IF if it is an interrupt
-	if(interrupt)
+	if(gatedesc.type == 0xe) // gatedesc's type: 1110 means interrupt, 1111 means trap
 		cpu.eflags.IF = 0;
 
 	// Set EIP to the entry of the interrut handler
