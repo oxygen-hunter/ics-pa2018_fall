@@ -53,6 +53,10 @@ void raise_intr(uint8_t intr_no) {
 	segdesc.val[0] = laddr_read(GDT_start, 4);
 	segdesc.val[1] = laddr_read(GDT_start + 4, 4);
 
+	assert(segdesc.base_15_0 == 0x0); //check SegmentDescriptor
+	assert(segdesc.limit_15_0 == 0xffff);
+	assert(segdesc.granularity == 0x1);
+
 	laddr_t base_in_seg = (segdesc.base_31_24 << 24) + (segdesc.base_23_16 << 16) + (segdesc.base_15_0); 
 	laddr_t offset_in_seg = (gatedesc.offset_31_16 << 16) + (gatedesc.offset_15_0);
 	cpu.eip = base_in_seg + offset_in_seg;
