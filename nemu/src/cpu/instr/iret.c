@@ -23,5 +23,5 @@ make_instr_func(iret) {
 	cpu.esp = cpu.esp + 4;
 
 print_asm_0("iret", "", 1);
-	return 1;
+	return 0;
 }
