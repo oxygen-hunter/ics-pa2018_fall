@@ -27,3 +27,9 @@ mem.sreg = SREG_DS;
 print_asm_1("pop", "l", 1, &r);
 	return 1;
 }
+
+make_instr_func(popa) {
+	
+	print_asm_0("popa", "", 1);
+	return 1;
+}
