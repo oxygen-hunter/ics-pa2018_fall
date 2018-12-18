@@ -30,7 +30,7 @@ print_asm_1("pop", "l", 1, &r);
 
 make_instr_func(popa) {
 	OPERAND mem;
-	OPERAND DI, SI, BP, /*SP,*/ BX, DX, CX, AX;
+	OPERAND DI, SI, BP, /*SP,*/ BX, DX, CX, AX; // order mustn't change, throwaway SP.
 	
 	DI.type = SI.type = BP.type = BX.type = DX.type = CX.type = AX.type = OPR_REG;
 	DI.data_size = SI.data_size = BP.data_size = BX.data_size = DX.data_size = CX.data_size = AX.data_size = data_size;
@@ -42,6 +42,9 @@ make_instr_func(popa) {
 	
 	mem.addr = cpu.esp;
 	operand_read(&mem);
+	DI.val = mem.val;
+	operand_write(&DI);
+	cpu.esp = cpu.esp - data_size / 8;
 
 
 	print_asm_0("popa", "", 1);
