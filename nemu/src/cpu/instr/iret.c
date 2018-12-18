@@ -2,5 +2,5 @@
 
 make_instr_func(iret) {
 	
-	return 0;
+	return 1;
 }
