@@ -13,7 +13,7 @@ void raise_intr(uint8_t intr_no) {
 	EFLAGS.data_size = CS.data_size = EIP.data_size = 4;
 	EFLAGS.val = cpu.eflags.val;
 	CS.val = cpu.cs.val;
-	EIP.val = cpu.eip.val;
+	EIP.val = cpu.eip;
 
 	cpu.esp = cpu.esp - 4; // push EFLAGS
 	EFLAGS.addr = cpu.esp;
