@@ -12,12 +12,24 @@ void raise_intr(uint8_t intr_no) {
 	// 'intr_no' is the index to the IDT
 	
 
-	// Push EFLAGS, CS and EIP
-	cpu.esp = cpu.esp - 4;
+	// Push EFLAGS, CS and EIP	
 	OPERAND EFLAGS, CS, EIP;
+	EFLAGS.data_size = CS.data_size = EIP.data_size = 4;
 	EFLAGS.val = cpu.eflags.val;
 	CS.val = cpu.cs.val;
 	EIP.val = cpu.eip.val;
+
+	cpu.esp = cpu.esp - 4; // push EFLAGS
+	EFLAGS.addr = cpu.esp;
+	operand_write(&EFLAGS);
+
+	cpu.esp = cpu.esp - 4; // push CS's visible part
+	CS.addr = cpu.esp;
+	operand_write(&CS);
+
+	cpu.esp = cpu.esp - 4; // push EIP
+	EIP.addr = cpu.esp;
+	operand_write(&EIP);
 
 	// Find the IDT entry using 'intr_no'
 	GateDesc gatedesc; // sizeof(GateDesc) == 8
