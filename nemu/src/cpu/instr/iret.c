@@ -6,7 +6,7 @@ make_instr_func(iret) {
 	mem.data_size = 32;
 	mem.type = OPR_MEM;
 	mem.sreg = SREG_DS;
-
+print_asm_0("iret", "", 1);
 	mem.addr = cpu.esp; // pop EIP
 	operand_read(&mem);
 	cpu.eip = mem.val;
@@ -22,6 +22,6 @@ make_instr_func(iret) {
 	cpu.eflags.val = mem.val;
 	cpu.esp = cpu.esp + 4;
 
-print_asm_0("iret", "", 1);
+
 	return 0;
 }
