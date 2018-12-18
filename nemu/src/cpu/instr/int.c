@@ -1,8 +1,16 @@
 #include "cpu/instr.h"
 
 make_instr_func(int_) {
-	OPERAND imm;
+	OPERAND intr_no;
+	
+	intr_no.type = OPR_IMM;
+	intr_no.data_size = 8; //?
+	intr_no.addr = eip + 1;
+	
+	operand_read(&intr_no);
 
 print_asm_1("int", "", 1, &imm);
-	return 2;
+	
+	raise_sw_intr(intr_no.val); // awake os	
+	return 0;
 }
