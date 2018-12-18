@@ -54,6 +54,7 @@ void raise_intr(uint8_t intr_no) {
 	segdesc.val[1] = laddr_read(GDT_start + 4, 4);
 
 	assert(segdesc.base_15_0 == 0x0); //check SegmentDescriptor
+printf("limit_15_0: %x\n", segdesc.limit_15_0);
 	assert(segdesc.limit_15_0 == 0xffff);
 	assert(segdesc.granularity == 0x1);
 
