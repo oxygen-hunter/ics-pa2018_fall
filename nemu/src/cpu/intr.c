@@ -30,7 +30,8 @@ void raise_intr(uint8_t intr_no) {
 	// Find the IDT entry using 'intr_no'
 	GateDesc gatedesc; // sizeof(GateDesc) == 8
 	laddr_t IDT_start = cpu.idtr.base + 8 * intr_no; // idt start here. laddr
-	gatedesc.val = laddr_read(IDT_start, 8); // read gate descripter' val
+	gatedesc.val[0] = laddr_read(IDT_start, 4); // read gate descripter' val
+	gatedesc.val[1] = laddr_read(IDT_start + 4, 4);
 
 	// Clear IF if it is an interrupt
 	if(gatedesc.type == 0xe) // gatedesc's type: 1110 means interrupt, 1111 means trap
