@@ -48,6 +48,8 @@ void raise_intr(uint8_t intr_no) {
 		cpu.eflags.IF = 0;
 
 	// Set EIP to the entry of the interrut handler
+	assert(gatedesc.selector != 0);
+
 	laddr_t GDT_start = cpu.gdtr.base + 8 * gatedesc.selector; //use gatedesc's selector to look up GDT to get base_in_seg
 	SegDesc segdesc;
 	segdesc.val[0] = laddr_read(GDT_start, 4);
