@@ -11,9 +11,17 @@ void raise_intr(uint8_t intr_no) {
 	// Push EFLAGS, CS and EIP	
 	OPERAND EFLAGS, CS, EIP;
 	EFLAGS.data_size = CS.data_size = EIP.data_size = 4;
-	EFLAGS.val = cpu.eflags.val;
-	CS.val = cpu.cs.val;
-	EIP.val = cpu.eip;
+	EFLAGS.val = cpu.eflags.val; 
+	EFLAGS.type = OPR_MEM; 
+	EFLAGS.sreg = SREG_DS;
+	
+	CS.val = cpu.cs.val; 
+	CS.type = OPR_MEM; 
+	CS.sreg = SREG_DS;
+	
+	EIP.val = cpu.eip; 
+	EIP.type = OPR_MEM; 
+	EIP.sreg = SREG_DS;
 
 	cpu.esp = cpu.esp - 4; // push EFLAGS
 	EFLAGS.addr = cpu.esp;
