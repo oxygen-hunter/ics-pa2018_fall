@@ -39,7 +39,7 @@ make_instr_func(popa) {
 	mem.data_size = data_size;
 	mem.sreg = SREG_DS;
 
-	for(; r.addr >= 0; r.addr --) {
+	for(; r.addr != -1; r.addr --) { // r.addr might be unsigned(-1)
 		if(r.addr == 4) // throw away SP
 			cpu.esp = cpu.esp + data_size / 8;
 		else {
