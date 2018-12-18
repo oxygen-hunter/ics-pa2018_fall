@@ -49,15 +49,14 @@ void raise_intr(uint8_t intr_no) {
 
 	// Set EIP to the entry of the interrut handler
 	uint32_t index = gatedesc.selector >> 3;
-	assert(index != 0);
+	assert(index != 0); // index shouldn't be 0!
 
-	laddr_t GDT_start = cpu.gdtr.base + 8 * index; //use gatedesc's selector to look up GDT to get base_in_seg
+	laddr_t GDT_start = cpu.gdtr.base + 8 * index; // use gatedesc's selector to look up GDT to get base_in_seg
 	SegDesc segdesc;
 	segdesc.val[0] = laddr_read(GDT_start, 4);
 	segdesc.val[1] = laddr_read(GDT_start + 4, 4);
 
-	assert(segdesc.base_15_0 == 0x0); //check SegmentDescriptor
-printf("limit_15_0: %x\n", segdesc.limit_15_0);
+	assert(segdesc.base_15_0 == 0x0); // check SegmentDescriptor
 	assert(segdesc.limit_15_0 == 0xffff);
 	assert(segdesc.granularity == 0x1);
 
