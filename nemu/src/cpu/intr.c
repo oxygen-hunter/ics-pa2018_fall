@@ -5,13 +5,9 @@
 
 void raise_intr(uint8_t intr_no) {
 #ifdef IA32_INTR
-	//printf("Please implement raise_intr()");
-	//assert(0);
-
 	// Trigger an exception/interrrupt with 'intr_no'
 	// 'intr_no' is the index to the IDT
 	
-
 	// Push EFLAGS, CS and EIP	
 	OPERAND EFLAGS, CS, EIP;
 	EFLAGS.data_size = CS.data_size = EIP.data_size = 4;
