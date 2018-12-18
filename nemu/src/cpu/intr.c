@@ -48,7 +48,11 @@ void raise_intr(uint8_t intr_no) {
 		cpu.eflags.IF = 0;
 
 	// Set EIP to the entry of the interrut handler
-	cpu.eip = (gatedesc.offset_31_16 << 16) + gatedesc.offset_15_0;
+	laddr_t GDT_start = cpu.gdtr.base + 8 * gatedesc.selector;
+	SegDesc segdesc;
+	segdesc.val[0] = laddr_read(GDT_start, 4);
+	segdesc.val[1] = laddr_read(GDT_start + 4, 4);
+	uint32_t offset_in_seg = (gatedesc.offset_31_16 << 16) + gatedesc.offset_15_0;
 #endif
 }
 
