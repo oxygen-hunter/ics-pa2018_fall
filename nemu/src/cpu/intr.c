@@ -23,7 +23,7 @@ void raise_intr(uint8_t intr_no) {
 	EIP.type = OPR_MEM; 
 	EIP.sreg = SREG_DS;
 
-	cpu.esp = cpu.esp - 4; // push EFLAGS
+	cpu.esp = cpu.esp - 4; // push EFLAGS, next lines's order mustn't change
 	EFLAGS.addr = cpu.esp;
 	operand_write(&EFLAGS);
 
