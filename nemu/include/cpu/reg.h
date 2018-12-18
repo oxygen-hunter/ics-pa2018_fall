@@ -31,7 +31,7 @@
 
 	// SegRegs
 	typedef struct {
-	// the 16-bit visible part, i.e., the selector
+		// the 16-bit visible part, i.e., the selector
 		union {
 			uint32_t val;
 			struct {
