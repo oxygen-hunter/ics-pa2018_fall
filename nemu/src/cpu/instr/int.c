@@ -10,7 +10,7 @@ make_instr_func(int_) {
 	
 	operand_read(&intr_no);
 
-print_asm_1("int", "", 1, &imm);
+print_asm_1("int", "", 1, &intr_no);
 	
 	raise_sw_intr(intr_no.val); // awake os	
 	return 0;
