@@ -16,8 +16,8 @@ void raise_intr(uint8_t intr_no) {
 	
 
 	// Find the IDT entry using 'intr_no'
-	GateDesc gatedesc;
-	laddr_t IDT_start = cpu.idtr.base + 4 * intr_no; // idt start here. laddr
+	GateDesc gatedesc; // sizeof(GateDesc) == 8
+	laddr_t IDT_start = cpu.idtr.base + 8 * intr_no; // idt start here. laddr
 	gatedesc.val = laddr_read(IDT_start, 8); // read gate descripter' val
 
 	// Clear IF if it is an interrupt
