@@ -17,7 +17,7 @@ void raise_intr(uint8_t intr_no) {
 
 	// Find the IDT entry using 'intr_no'
 	GateDesc gatedesc;
-	laddr_t IDT_start = cpu.idtr.base + 8 * intr_no; // idt start here. laddr
+	laddr_t IDT_start = cpu.idtr.base + 4 * intr_no; // idt start here. laddr
 	gatedesc.val = laddr_read(IDT_start, 8); // read gate descripter' val
 
 	// Clear IF if it is an interrupt
@@ -25,7 +25,7 @@ void raise_intr(uint8_t intr_no) {
 		cpu.eflags.IF = 0;
 
 	// Set EIP to the entry of the interrut handler
-	cpu.eip = 
+	cpu.eip = gatedesc.
 #endif
 }
 
