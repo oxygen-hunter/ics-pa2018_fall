@@ -29,24 +29,28 @@ print_asm_1("pop", "l", 1, &r);
 }
 
 make_instr_func(popa) {
-	OPERAND mem;
-	OPERAND DI, SI, BP, /*SP,*/ BX, DX, CX, AX; // order mustn't change, throwaway SP.
-	
-	DI.type = SI.type = BP.type = BX.type = DX.type = CX.type = AX.type = OPR_REG;
-	DI.data_size = SI.data_size = BP.data_size = BX.data_size = DX.data_size = CX.data_size = AX.data_size = data_size;
-	DI.addr = 7; sI.addr = 6; BP.addr = 5; BX.addr = 3; DX.addr = 2; CX.addr = 1; AX.addr = 0;
+	OPERAND r, mem;
+
+	r.type = OPR_REG;
+	r.data_size = data_size;
+	r.addr = 7; // DI, SI, BP, -SP-, BX, DX, CX, AX
 
 	mem.type = OPR_MEM;
 	mem.data_size = data_size;
 	mem.sreg = SREG_DS;
-	
-	mem.addr = cpu.esp;
-	operand_read(&mem);
-	DI.val = mem.val;
-	operand_write(&DI);
-	cpu.esp = cpu.esp - data_size / 8;
 
+	for(; r.addr >= 0; r.addr --) {
+		if(r.addr == 4) // throw away SP
+			cpu.esp = cpu.esp - data_size / 8;
+		else {
+			mem.addr = cpu.esp;
+			operand_read(&mem);
+			r.val = mem.val;
+			operand_write(&r);
+			cpu.esp = cpu.esp - data_size / 8;
+		}
+	}
 
-	print_asm_0("popa", "", 1);
+print_asm_0("popa", "", 1);
 	return 1;
 }
