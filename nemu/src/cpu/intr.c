@@ -25,7 +25,7 @@ void raise_intr(uint8_t intr_no) {
 		cpu.eflags.IF = 0;
 
 	// Set EIP to the entry of the interrut handler
-	cpu.eip = gatedesc.
+	cpu.eip = (gatedesc.offset_31_16 << 16) + gatedesc.offset_15_0;
 #endif
 }
 
