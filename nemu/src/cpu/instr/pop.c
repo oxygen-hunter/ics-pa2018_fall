@@ -29,7 +29,21 @@ print_asm_1("pop", "l", 1, &r);
 }
 
 make_instr_func(popa) {
+	OPERAND mem;
+	OPERAND DI, SI, BP, /*SP,*/ BX, DX, CX, AX;
 	
+	DI.type = SI.type = BP.type = BX.type = DX.type = CX.type = AX.type = OPR_REG;
+	DI.data_size = SI.data_size = BP.data_size = BX.data_size = DX.data_size = CX.data_size = AX.data_size = data_size;
+	DI.addr = 7; sI.addr = 6; BP.addr = 5; BX.addr = 3; DX.addr = 2; CX.addr = 1; AX.addr = 0;
+
+	mem.type = OPR_MEM;
+	mem.data_size = data_size;
+	mem.sreg = SREG_DS;
+	
+	mem.addr = cpu.esp;
+	operand_read(&mem);
+
+
 	print_asm_0("popa", "", 1);
 	return 1;
 }
