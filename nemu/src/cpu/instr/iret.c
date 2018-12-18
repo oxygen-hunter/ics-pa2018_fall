@@ -19,7 +19,7 @@ make_instr_func(iret) {
 
 	mem.addr = cpu.esp; // pop EFLAGS
 	operand_read(&mem);
-	cpu.eflags = mem.val;
+	cpu.eflags.val = mem.val;
 	cpu.esp = cpu.esp + 4;
 
 print_asm_0("iret", "", 1);
