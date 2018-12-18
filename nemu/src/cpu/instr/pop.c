@@ -41,7 +41,7 @@ make_instr_func(popa) {
 
 	for(; r.addr >= 0; r.addr --) {
 		if(r.addr == 4) // throw away SP
-			cpu.esp = cpu.esp - data_size / 8;
+			cpu.esp = cpu.esp + data_size / 8;
 		else {
 			mem.addr = cpu.esp;
 			operand_read(&mem);
