@@ -47,7 +47,7 @@ make_instr_func(popa) {
 			operand_read(&mem);
 			r.val = mem.val;
 			operand_write(&r);
-			cpu.esp = cpu.esp - data_size / 8;
+			cpu.esp = cpu.esp + data_size / 8;
 		}
 	}
 
