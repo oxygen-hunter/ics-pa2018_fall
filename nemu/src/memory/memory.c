@@ -85,7 +85,7 @@ uint32_t vaddr_read(vaddr_t vaddr, uint8_t sreg, size_t len) {
 }
 
 void vaddr_write(vaddr_t vaddr, uint8_t sreg, size_t len, uint32_t data) {
-if(len != 1 && len != 2 && len != 3) printf("vaddr_write: len error: len = %d", (int)len);
+if(len != 1 && len != 2 && len != 4) printf("\nvaddr_write: len error: len = %d\n", (int)len);
 	assert(len == 1 || len == 2 || len == 4);
 #ifndef IA32_SEG
 	laddr_write(vaddr, len, data);
