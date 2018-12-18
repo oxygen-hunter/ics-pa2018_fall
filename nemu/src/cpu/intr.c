@@ -13,7 +13,9 @@ void raise_intr(uint8_t intr_no) {
 	
 
 	// Push EFLAGS, CS and EIP
-	
+	cpu.esp = cpu.esp - 4;
+	OPERAND EFLAGS, CS, EIP;
+	EFLAGS.val = cpu.eflags.val
 
 	// Find the IDT entry using 'intr_no'
 	GateDesc gatedesc; // sizeof(GateDesc) == 8
