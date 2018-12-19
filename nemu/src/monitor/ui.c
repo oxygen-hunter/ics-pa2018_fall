@@ -107,7 +107,7 @@ cmd_handler(cmd_x) {
 		}
 		else {
 			for(int i = 0; i < N ; i ++) {
-				if(!addr_is_valid(addr+ 4 * i)) {
+				if(!addr_is_valid(addr+ 4 * i)) { // pa-2-3's history problem, revised at 2018-12-19, doing pa-4-1
 					printf("0x%08x: invalid memory address\n", (uint32_t)(addr + 4 * i));
 					//return 0;
 				}
