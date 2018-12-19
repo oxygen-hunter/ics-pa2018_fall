@@ -128,6 +128,6 @@ uint8_t * get_mem_addr() {
 // so i thought when i use command `(nemu) x [addr]', i should make sure addr is [0,128MB]
 // now this check may take a break. xD
 bool addr_is_valid(vaddr_t addr) {
-	//return addr < MEM_SIZE_B;
-	return true;
+	//return addr < MEM_SIZE_B; // pa-2-3's history problem
+	return true; // pa-4-1's revise
 }
