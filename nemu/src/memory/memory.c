@@ -121,6 +121,13 @@ uint8_t * get_mem_addr() {
 	return hw_mem;
 }
 
+// 2018-12-19 revise for pa-2-3
+// when doing pa-2-3, i made a mistake here, because that time 
+// i don't know the difference between vaddr-laddr-paddr-hwaddr
+// at that time, '(nemu) x 0x8048000' will cause segmentation fault because seg-page function is OFF.
+// so i thought when i use command `(nemu) x [addr]', i should make sure addr is [0,128MB]
+// now this check may take a break. xD
 bool addr_is_valid(vaddr_t addr) {
-	return addr < MEM_SIZE_B;
+	//return addr < MEM_SIZE_B;
+	return true;
 }
