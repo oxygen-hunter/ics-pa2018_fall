@@ -60,8 +60,9 @@ mem.sreg = SREG_DS;
 	operand_read(&temp); //store old esp/sp
 
 	for(; r.addr < 8; r.addr++) { //ax, cx, dx, bx, sp, bp, si, di
-		if(r.addr == 4) //old sp
+		if(r.addr == 4) { //old sp
 			r = temp;
+		}
 		else {
 			operand_read(&r);
 		}
