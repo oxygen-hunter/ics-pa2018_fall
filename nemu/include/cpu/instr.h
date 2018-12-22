@@ -63,5 +63,7 @@ extern uint8_t data_size;
 #include "cpu/instr/int.h"
 #include "cpu/instr/iret.h"
 
+// pa 4-2
+#include "cpu/instr/io.h"
 
 #endif
