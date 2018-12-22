@@ -11,6 +11,8 @@ make_instr_func(in_b) {
 	al.type = OPR_REG;
 	al.data_size = 8; //%al
 	al.addr = 0;
-	al.val = pio_read(dx.val, 1); //Input byte from port dx into al
+	al.val = pio_read(dx.val, 1); //Input byte from port DX into AL
+	operand_write(&al);
+print_asm_0("in", "%dx, %al", 1);
 	return 1;
 }
