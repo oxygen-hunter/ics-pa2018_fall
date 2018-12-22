@@ -70,7 +70,8 @@ make_instr_func(out_v) {
 
 	pio_write(dx.val, data_size / 8, ax.val); //Output byte AL to port DX
 
-print_asm_0("out %al, %dx", "", 1);
+if(data_size == 16) print_asm_0("out %ax, %dx", "", 1);
+else print_asm_0("out %eax, %dx", "", 1);
 	return 1;
 }
 
