@@ -51,9 +51,8 @@ make_instr_func(out_b) {
 
 	pio_write(dx.val, 1, al.val); //Output byte AL to port DX
 
-print_asm_0("in %dx, %al", "", 1);
+print_asm_0("out %al, %dx", "", 1);
 	return 1;
-	
 }
 
 
