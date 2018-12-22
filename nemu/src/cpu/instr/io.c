@@ -55,7 +55,24 @@ print_asm_0("out %al, %dx", "", 1);
 	return 1;
 }
 
+make_instr_func(out_v) {
+	OPERAND ax, dx;
+	
+	ax.type = OPR_REG;
+	ax.data_size = data_size; //%eax/%ax
+	ax.addr = 0;
+	operand_read(&ax); //get %eax/%ax
 
+	dx.type = OPR_REG;
+	dx.data_size = 16; //%dx
+	dx.addr = 2;
+	operand_read(&dx); //get %dx
+
+	pio_write(dx.val, data_size / 8, ax.val); //Output byte AL to port DX
+
+print_asm_0("out %al, %dx", "", 1);
+	return 1;
+}
 
 
 
