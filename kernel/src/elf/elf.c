@@ -34,16 +34,17 @@ uint32_t loader() {
 		if(ph->p_type == PT_LOAD) {
 
 			//panic("Please implement the loader"); //annotate this sentence after finish loader()
-
 			/* TODO: copy the segment from the ELF file to its proper memory area */
-			void* mm_paddr = (void*)mm_malloc((uint32_t)ph->p_vaddr, ph->p_memsz);
-			memcpy(mm_paddr, (void*)(ph->p_offset), ph->p_filesz);
-			if(ph->p_memsz > ph->p_filesz)
-				memset((void*)(mm_paddr+ph->p_filesz), 0, ph->p_memsz - ph->p_filesz);
+			/* TODO: zeror the memory area [vaddr + file_sz, vaddr + mem_sz] */
+
+/* pa-3-3 */
+//			void* mm_paddr = (void*)mm_malloc((uint32_t)ph->p_vaddr, ph->p_memsz);
+//			memcpy(mm_paddr, (void*)(ph->p_offset), ph->p_filesz);
+//			if(ph->p_memsz > ph->p_filesz)
+//				memset((void*)(mm_paddr+ph->p_filesz), 0, ph->p_memsz - ph->p_filesz);
 
 /* pa-2-2 */
 //			memcpy((void*)(ph->p_vaddr), (void*)(ph->p_offset), ph->p_filesz);
-//			/* TODO: zeror the memory area [vaddr + file_sz, vaddr + mem_sz] */
 //			if(ph->p_memsz > ph->p_filesz)
 //				memset((void*)(ph->p_vaddr+ph->p_filesz), 0, ph->p_memsz - ph->p_filesz);
 
