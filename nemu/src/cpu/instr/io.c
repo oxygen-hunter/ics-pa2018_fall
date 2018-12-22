@@ -31,6 +31,7 @@ make_instr_func(in_v) {
 	ax.addr = 0;
 	ax.val = pio_read(dx.val, data_size / 8); //Input byte from port DX into %eax/%ax
 	operand_write(&ax);
-print_asm_0("in %dx, %al", "", 1);
+if(data_size == 16) print_asm_0("in %dx, %ax", "", 1);
+else print_asm_0("in %dx, %eax", "", 1);
 	return 1;
 }
