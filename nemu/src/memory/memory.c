@@ -44,7 +44,7 @@ uint32_t laddr_read(laddr_t laddr, size_t len) {
 		if(cross_page(laddr, len)) {
 			/* TODO this is a special case, you can handle it later*/
 
-			uint32_t low_len = (((laddr >> 12) + 1) << 12) - laddr;
+			/*uint32_t low_len = (((laddr >> 12) + 1) << 12) - laddr;
 			uint32_t high_len = len - low_len;
 
 			paddr_t paddr1 = page_translate(laddr); // read len bytes, low low_len bytes is useful
@@ -94,8 +94,27 @@ uint32_t laddr_read(laddr_t laddr, size_t len) {
 						break;
 				default: assert(0); break;// never reach here
 			}
-			return data;
+			return data;*/
+			paddr_t paddr1 = page_translate(laddr);
+			paddr_t paddr2 = page_translate(laddr + 8);
+			paddr_t paddr3 = page_translate(laddr + 16);
+			paddr_t paddr4 = page_translate(laddr + 24);
 
+			uint32_t data1 = paddr_read(paddr1, 1);
+			uint32_t data2 = paddr_read(paddr2, 1);
+			uint32_t data3 = paddr_read(paddr3, 1);
+			uint32_t data4 = paddr_read(paddr4, 1);
+			uint32_t data = 0;
+			if(len == 1) {
+				printf("when cross page, len shouldn't be 1!\n");
+				assert(0);
+			}
+			else if(len == 2) {
+				data = (data2 << 8) + data1;
+			}
+			else {
+				data = (data4 << 24) + (data3 << 16) + (data2 << 8) + data1;
+			}
 		} else {
 			paddr_t paddr = page_translate(laddr);
 			return paddr_read(paddr, len);
