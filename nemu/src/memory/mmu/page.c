@@ -4,7 +4,7 @@
 // translate from linear address to physical address
 paddr_t page_translate(laddr_t laddr) {
 #ifndef TLB_ENABLED
-//printf("laddr:%x\n", laddr);
+printf("laddr:%x\n", laddr);
 	uint32_t dir = laddr >> 22; // page dirctory index. high 10 bit
 	uint32_t page = (laddr << 10) >> 22; // page table index, mid 10 bit
 	uint32_t offset = (laddr << 20) >> 20; // page frame index, low 12 bit
