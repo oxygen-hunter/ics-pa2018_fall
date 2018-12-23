@@ -68,7 +68,8 @@ uint32_t laddr_read(laddr_t laddr, size_t len) {
 							printf("wrong low_len or high_len\n");
 							printf("low_len: 0x%x, high_len: 0x%x", low_len, high_len);
 							assert(0);
-						}				
+						}
+						break;				
 				case 4: 
 						if(low_len == 1 && high_len == 3) { // 1:3
 							low_useful = low & 0xFF;
@@ -90,7 +91,8 @@ uint32_t laddr_read(laddr_t laddr, size_t len) {
 							printf("low_len: 0x%x, high_len: 0x%x", low_len, high_len);
 							assert(0);
 						}
-				default: assert(0); // never reach here
+						break;
+				default: assert(0); break;// never reach here
 			}
 			return data;
 
