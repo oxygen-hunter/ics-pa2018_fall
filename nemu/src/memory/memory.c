@@ -133,11 +133,7 @@ void laddr_write(laddr_t laddr, size_t len, uint32_t data) {
 	assert(len == 1 || len == 2 || len == 4);
 	if(cpu.cr0.pe == 1 && cpu.cr0.pg == 1) {
 		if(cross_page(laddr, len)) {
-			/* TODO this is a special case, you can handle it later*/
-			/*paddr_t paddr1 = page_translate(laddr);
-			paddr_t paddr2 = page_translate(laddr + 8);
-			paddr_t paddr3 = page_translate(laddr + 16);
-			paddr_t paddr4 = page_translate(laddr + 24);
+			/* TODO this is a special case, you can handle it later*/	
 			
 			uint32_t data1 = data & 0xFF;
 			uint32_t data2 = (data >> 8) & 0xFF;
@@ -148,18 +144,23 @@ void laddr_write(laddr_t laddr, size_t len, uint32_t data) {
 				printf("when cross page, len shouldn't be 1!\n");
 				assert(0);
 			}
-			if(len == 2) {
+			else if(len == 2) {
+				paddr_t paddr1 = page_translate(laddr);
+				paddr_t paddr2 = page_translate(laddr + 8);
 				paddr_write(paddr1, 1, data1);
 				paddr_write(paddr2, 1, data2);
 			}
 			else if(len == 4) {
+				paddr_t paddr1 = page_translate(laddr);
+				paddr_t paddr2 = page_translate(laddr + 8);
+				paddr_t paddr3 = page_translate(laddr + 16);
+				paddr_t paddr4 = page_translate(laddr + 24);
 				paddr_write(paddr1, 1, data1);
 				paddr_write(paddr2, 1, data2);
 				paddr_write(paddr3, 1, data3);
 				paddr_write(paddr4, 1, data4);
-			}*/
-			paddr_t paddr = page_translate(laddr);
-			paddr_write(paddr, len, data);
+			}
+		
 		} else {
 			paddr_t paddr = page_translate(laddr);
 			paddr_write(paddr, len, data);
