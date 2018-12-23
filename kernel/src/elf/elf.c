@@ -23,6 +23,10 @@ uint32_t loader() {
 	ide_read(buf, ELF_OFFSET_IN_DISK, 4096);
 	elf = (void*)buf;
 	Log("ELF loading from hard disk.");
+	for(int i = 0; i < 4096; i++) {
+		Log("%x\n", elf[i]);
+	}
+	panic("elf");
 #else
 	elf = (void *)0x0;
 	Log("ELF loading from ram disk.");
