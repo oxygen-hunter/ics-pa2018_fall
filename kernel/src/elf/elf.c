@@ -40,7 +40,7 @@ uint32_t loader() {
 
 /* pa-4-2 */
 			void* mm_paddr = (void*)mm_malloc((uint32_t)ph->p_vaddr, ph->p_memsz);
-			ide_write(mm_paddr, ph->p_offset, ph->p_filesz);
+			ide_write((uint8_t*)mm_paddr, ph->p_offset, ph->p_filesz);
 			if(ph->p_memsz > ph->p_filesz)
 				memset((void*)(mm_paddr+ph->p_filesz), 0, ph->p_memsz - ph->p_filesz);
 
