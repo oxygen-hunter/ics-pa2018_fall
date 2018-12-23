@@ -113,7 +113,7 @@ uint32_t laddr_read(laddr_t laddr, size_t len) {
 				uint32_t data2 = paddr_read(paddr2, 1);
 				data = (data2 << 8) + data1;
 			}
-			else {
+			else if(len == 4) {
 				paddr_t paddr1 = page_translate(laddr);
 				paddr_t paddr2 = page_translate(laddr + 8);
 				paddr_t paddr3 = page_translate(laddr + 16);
