@@ -4,7 +4,7 @@
 // translate from linear address to physical address
 paddr_t page_translate(laddr_t laddr) {
 #ifndef TLB_ENABLED
-printf("laddr:%x\n", laddr);
+
 	uint32_t dir = laddr >> 22; // page dirctory index. high 10 bit
 	uint32_t page = (laddr << 10) >> 22; // page table index, mid 10 bit
 	uint32_t offset = (laddr << 20) >> 20; // page frame index, low 12 bit
@@ -14,6 +14,7 @@ printf("laddr:%x\n", laddr);
 	PDE pde;
 	pde.val = paddr_read(PDE_start, 4); // read PDE
 //printf("pde.val:%x\n", pde.val);
+if(pde.present != 1) printf("laddr:%x\n", laddr);
 	assert(pde.present == 1);
 
 	paddr_t PTE_start = (pde.page_frame << 12) + 4 * page; // page table start here.
