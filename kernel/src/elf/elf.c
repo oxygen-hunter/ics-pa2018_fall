@@ -27,7 +27,9 @@ uint32_t loader() {
 	elf = (void *)0x0;
 	Log("ELF loading from ram disk.");
 #endif
-
+	if(strncmp(elf, (void*)0x0, 4096)!=0) {
+		panic("elf not equal!");
+	}
 	/* Load each program segment */
 	ph = (void *)elf + elf->e_phoff;
 	eph = ph + elf->e_phnum;
