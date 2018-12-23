@@ -119,10 +119,21 @@ void laddr_write(laddr_t laddr, size_t len, uint32_t data) {
 			uint32_t data3 = (data >> 16) & 0xFF;
 			uint32_t data4 = data >> 24;
 
+			if(len == 1) {
+				printf("when cross page, len shouldn't be 1!\n");
+				assert(0);
+			}
 			if(len == 2) {
 				paddr_write(paddr1, 1, data1);
 				paddr_write(paddr2, 1, data2);
 			}
+			else if(len == 4) {
+				paddr_write(paddr1, 1, data1);
+				paddr_write(paddr2, 1, data2);
+				paddr_write(paddr3, 1, data3);
+				paddr_write(paddr4, 1, data4);
+			}
+
 		} else {
 			paddr_t paddr = page_translate(laddr);
 			paddr_write(paddr, len, data);
