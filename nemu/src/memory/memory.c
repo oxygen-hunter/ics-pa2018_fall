@@ -57,12 +57,17 @@ uint32_t laddr_read(laddr_t laddr, size_t len) {
 			uint32_t high_useful = 0;
 			switch(len) {
 				case 1: assert(0); break; //len 1 won't crosspage
-				case 2: assert(low_len == high_len == 1); // 1:1
-						low_useful = low & 0xFF;
-						high_useful = high & 0xFF;
-				case 4: assert(low_len == 1 && high_len == 3\
-								||low_len == 2 && high_len == 2\
-								||low_len == 3 && high_len == 1);
+				case 2: 
+						if(low_len == 1 && high_len == 1) { // 1:1
+							low_useful = low & 0xFF;
+							high_useful = high & 0xFF;
+						}
+						else {
+							printf("wrong low_len or high_len\n");
+							printf("low_len: 0x%x, high_len: 0x%x", low_len, high_len);
+							assert(0);
+						}				
+				case 4: 
 						if(low_len == 1 && high_len == 3) {
 							low_useful = low & 0xFF;
 							high_useful = high & 0xFFFFFF;
@@ -74,6 +79,11 @@ uint32_t laddr_read(laddr_t laddr, size_t len) {
 						else if(low_len == 3 && high_len == 1) {
 							low_useful = low & 0xFFFFFF;
 							high_useful = high & 0xFF;
+						}
+						else {
+							printf("wrong low_len or high_len\n");
+							printf("low_len: 0x%x, high_len: 0x%x", low_len, high_len);
+							assert(0);
 						}
 			}
 			
