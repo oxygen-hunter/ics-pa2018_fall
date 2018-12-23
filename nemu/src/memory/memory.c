@@ -109,14 +109,27 @@ void laddr_write(laddr_t laddr, size_t len, uint32_t data) {
 	if(cpu.cr0.pe == 1 && cpu.cr0.pg == 1) {
 		if(cross_page(laddr, len)) {
 			/* TODO this is a special case, you can handle it later*/
-			assert(0);
+			paddr_t paddr1 = page_translate(laddr);
+			paddr_t paddr2 = page_translate(laddr + 8);
+			paddr_t paddr3 = page_translate(laddr + 16);
+			paddr_t paddr4 = page_translate(laddr + 24);
+			
+			uint32_t data1 = data & 0xFF;
+			uint32_t data2 = (data >> 8) & 0xFF;
+			uint32_t data3 = (data >> 16) & 0xFF;
+			uint32_t data4 = data >> 24;
+
+			if(len == 2) {
+				paddr_write(paddr1, 1, data1);
+				paddr_write(paddr2, 1, data2);
+			}
 		} else {
 			paddr_t paddr = page_translate(laddr);
 			paddr_write(paddr, len, data);
 		}
 	}
 	else {
-		return paddr_write(laddr, len, data);
+		paddr_write(laddr, len, data);
 	}
 }
 
