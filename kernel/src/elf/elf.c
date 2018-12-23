@@ -30,7 +30,7 @@ uint32_t loader() {
 	if(strncmp((char*)elf, (char*)0x0, 4096)!=0) {
 		
 		for(int i = 0; i < 4096; i ++) {
-			Log("%x %x\n", (uint32_t*)elf+i, (uint32_t*)i);
+			Log("%x %x\n", *((uint32_t*)elf+i), *((uint32_t*)i));
 		}panic("elf not equal!");
 	}
 	/* Load each program segment */
