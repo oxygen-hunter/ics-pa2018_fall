@@ -55,12 +55,14 @@ uint32_t laddr_read(laddr_t laddr, size_t len) {
 
 			uint32_t low_useful = 0;
 			uint32_t high_useful = 0;
+			uint32_t data;
 			switch(len) {
 				case 1: assert(0); break; //len 1 won't cross page
 				case 2: 
 						if(low_len == 1 && high_len == 1) { // 1:1
 							low_useful = low & 0xFF;
 							high_useful = high & 0xFF;
+							data = (high_useful << 8) + low_useful;
 						}
 						else {
 							printf("wrong low_len or high_len\n");
@@ -68,25 +70,30 @@ uint32_t laddr_read(laddr_t laddr, size_t len) {
 							assert(0);
 						}				
 				case 4: 
-						if(low_len == 1 && high_len == 3) {
+						if(low_len == 1 && high_len == 3) { // 1:3
 							low_useful = low & 0xFF;
 							high_useful = high & 0xFFFFFF;
+							data = (high_useful << 8) + low_useful;
 						}
-						else if(low_len == 2 && high_len == 2) {
+						else if(low_len == 2 && high_len == 2) { // 2:2
 							low_useful = low & 0xFFFF;
 							high_useful = high & 0xFFFF;
+							data = (high_useful << 16) + low_useful;
 						}
-						else if(low_len == 3 && high_len == 1) {
+						else if(low_len == 3 && high_len == 1) { // 3:1
 							low_useful = low & 0xFFFFFF;
 							high_useful = high & 0xFF;
+							data = (high_useful << 24) + low_useful;
 						}
 						else {
 							printf("wrong low_len or high_len\n");
 							printf("low_len: 0x%x, high_len: 0x%x", low_len, high_len);
 							assert(0);
 						}
+				default: assert(0); // never reach here
 			}
-			
+			return data;
+
 		} else {
 			paddr_t paddr = page_translate(laddr);
 			return paddr_read(paddr, len);
