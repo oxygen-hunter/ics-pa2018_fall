@@ -45,4 +45,7 @@ uint8_t * get_mem_addr();
 //make sure addr is valid when use p *addr or x N addr
 bool addr_is_valid(vaddr_t addr);
 
+//check if data cross page boundary
+bool cross_page(laddr_t laddr, uint32_t len);
+
 #endif
