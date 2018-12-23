@@ -99,7 +99,7 @@ uint32_t laddr_read(laddr_t laddr, size_t len) {
 			paddr_t paddr2 = page_translate(laddr + 8);
 			paddr_t paddr3 = page_translate(laddr + 16);
 			paddr_t paddr4 = page_translate(laddr + 24);
-if(laddr == 0xd || laddr + 8 == 0xd || laddr + 16 == 0xd || laddr + 24 == 0xd) printf("laddr:%x\n", laddr);
+
 			uint32_t data1 = paddr_read(paddr1, 1);
 			uint32_t data2 = paddr_read(paddr2, 1);
 			uint32_t data3 = paddr_read(paddr3, 1);
@@ -135,7 +135,7 @@ void laddr_write(laddr_t laddr, size_t len, uint32_t data) {
 			paddr_t paddr2 = page_translate(laddr + 8);
 			paddr_t paddr3 = page_translate(laddr + 16);
 			paddr_t paddr4 = page_translate(laddr + 24);
-if(laddr == 0xd || laddr + 8 == 0xd || laddr + 16 == 0xd || laddr + 24 == 0xd) printf("laddr:%x\n", laddr);			
+			
 			uint32_t data1 = data & 0xFF;
 			uint32_t data2 = (data >> 8) & 0xFF;
 			uint32_t data3 = (data >> 16) & 0xFF;
