@@ -37,17 +37,19 @@ uint32_t loader() {
 			/* TODO: copy the segment from the ELF file to its proper memory area */
 			/* TODO: zeror the memory area [vaddr + file_sz, vaddr + mem_sz] */
 
+#ifdef HAS_DEVICE_IDE
 /* pa-4-2 */
 			void* mm_paddr = (void*)mm_malloc((uint32_t)ph->p_vaddr, ph->p_memsz);
 			ide_write((uint8_t*)mm_paddr, ph->p_offset, ph->p_filesz);
 			if(ph->p_memsz > ph->p_filesz)
 				memset((void*)(mm_paddr+ph->p_filesz), 0, ph->p_memsz - ph->p_filesz);
-
+#else
 /* pa-3-3 */
-//			void* mm_paddr = (void*)mm_malloc((uint32_t)ph->p_vaddr, ph->p_memsz);
-//			memcpy(mm_paddr, (void*)(ph->p_offset), ph->p_filesz);
-//			if(ph->p_memsz > ph->p_filesz)
-//				memset((void*)(mm_paddr+ph->p_filesz), 0, ph->p_memsz - ph->p_filesz);
+			void* mm_paddr = (void*)mm_malloc((uint32_t)ph->p_vaddr, ph->p_memsz);
+			memcpy(mm_paddr, (void*)(ph->p_offset), ph->p_filesz);
+			if(ph->p_memsz > ph->p_filesz)
+				memset((void*)(mm_paddr+ph->p_filesz), 0, ph->p_memsz - ph->p_filesz);
+#endif
 
 /* pa-2-2 */
 //			memcpy((void*)(ph->p_vaddr), (void*)(ph->p_offset), ph->p_filesz);
