@@ -230,9 +230,9 @@ bool addr_is_valid(vaddr_t addr) {
 
 
 bool cross_page(laddr_t laddr, uint32_t len) {
-	laddr_t high_20_now = laddr >> 12;
+	/*laddr_t high_20_now = laddr >> 12;
 	laddr_t high_20_nxt = (laddr + len - 1) >> 12;
-	//return (high_20_nxt == high_20_now + 1);
+	return (high_20_nxt == high_20_now + 1);*/
 	return false;
 }
 
