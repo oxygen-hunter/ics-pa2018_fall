@@ -145,7 +145,7 @@ void laddr_write(laddr_t laddr, size_t len, uint32_t data) {
 			uint32_t data1 = data & 0xFF;
 			uint32_t data2 = (data >> 8) & 0xFF;
 			uint32_t data3 = (data >> 16) & 0xFF;
-			uint32_t data4 = data >> 24;
+			uint32_t data4 = (data >> 24) & 0xFF;
 
 			if(len == 1) {
 				printf("when cross page, len shouldn't be 1!\n");
