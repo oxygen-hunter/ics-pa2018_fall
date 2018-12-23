@@ -43,7 +43,40 @@ uint32_t laddr_read(laddr_t laddr, size_t len) {
 	if(cpu.cr0.pe == 1 && cpu.cr0.pg == 1) {
 		if(cross_page(laddr, len)) {
 			/* TODO this is a special case, you can handle it later*/
-			 assert(0);
+
+			uint32_t low_len = (((laddr >> 12) + 1) << 12) - laddr;
+			uint32_t high_len = len - low_len;
+
+			paddr_t paddr1 = page_translate(laddr); // read len bytes, low low_len bytes is useful
+			uint32_t low = paddr_read(paddr1, len);
+
+			paddr_t paddr2 = page_translate(((laddr >> 12) + 1) << 12); // read len bytes, low high_len bytes is useful
+			uint32_t high = paddr_read(paddr2, len);
+
+			uint32_t low_useful = 0;
+			uint32_t high_useful = 0;
+			switch(len) {
+				case 1: assert(0); break; //len 1 won't crosspage
+				case 2: assert(low_len == high_len == 1); // 1:1
+						low_useful = low & 0xFF;
+						high_useful = high & 0xFF;
+				case 4: assert(low_len == 1 && high_len == 3\
+								||low_len == 2 && high_len == 2\
+								||low_len == 3 && high_len == 1);
+						if(low_len == 1 && high_len == 3) {
+							low_useful = low & 0xFF;
+							high_useful = high & 0xFFFFFF;
+						}
+						else if(low_len == 2 && high_len == 2) {
+							low_useful = low & 0xFFFF;
+							high_useful = high & 0xFFFF;
+						}
+						else if(low_len == 3 && high_len == 1) {
+							low_useful = low & 0xFFFFFF;
+							high_useful = high & 0xFF;
+						}
+			}
+			
 		} else {
 			paddr_t paddr = page_translate(laddr);
 			return paddr_read(paddr, len);
