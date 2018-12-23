@@ -115,6 +115,7 @@ uint32_t laddr_read(laddr_t laddr, size_t len) {
 			else {
 				data = (data4 << 24) + (data3 << 16) + (data2 << 8) + data1;
 			}
+			return data;
 		} else {
 			paddr_t paddr = page_translate(laddr);
 			return paddr_read(paddr, len);
