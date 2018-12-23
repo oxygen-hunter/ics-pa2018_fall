@@ -57,7 +57,7 @@ uint32_t laddr_read(laddr_t laddr, size_t len) {
 			uint32_t high_useful = 0;
 			uint32_t data;
 			switch(len) {
-				case 1: assert(0); break; //len 1 won't cross page
+				case 1: printf("when cross page, len shouldn't be 1!\n");assert(0); break; //len 1 won't cross page
 				case 2: 
 						if(low_len == 1 && high_len == 1) { // 1:1
 							low_useful = low & 0xFF;
