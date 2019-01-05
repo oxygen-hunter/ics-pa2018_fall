@@ -25,7 +25,7 @@ void create_video_mapping() {
 	//uint32_t pdir_idx, ptable_idx, pframe_idx;
 
 	pdir[0].val = make_pde(ptable);
-	ptable->val = make_pte(VMEM_ADDR);
+	ptable->val = 0xffffffff;//make_pte(VMEM_ADDR);
 	/*pframe_idx = VMEM_ADDR;
 	for(pdir_idx = 0; pdir_idx < PHY_MEM / PT_SIZE; pdir_idx ++) {
 		pdir[pdir_idx].val = make_pde(ptable);
