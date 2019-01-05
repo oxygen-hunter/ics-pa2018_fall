@@ -26,6 +26,7 @@ void create_video_mapping() {
 	PTE* tobe = (PTE*)(pdir[0].page_frame << 12);
 	for(pframe_idx = 0; pframe_idx < NR_PT; pframe_idx ++) {
 		tobe->val = make_pte(pframe_idx << 12);
+		tobe ++;
 	}
 
 }
