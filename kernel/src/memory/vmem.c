@@ -18,8 +18,12 @@ void create_video_mapping() {
 
 	//panic("please implement me");
 
+	PDE* pde_sta = get_kpdir();
 	PDE* pde_end = get_updir();
+	Log("\n\n%x\n\n", (uint32_t)pde_sta);
 	Log("\n\n%x\n\n", (uint32_t)pde_end);
+	
+	
 }
 
 void video_mapping_write_test() {
