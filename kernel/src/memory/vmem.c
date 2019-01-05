@@ -22,7 +22,7 @@ void create_video_mapping() {
 	PDE* pdir = (PDE*)va_to_pa(u_pdir);
 	uint32_t pdir_idx, ptable_idx, pframe_idx;
 
-	pframe_idx = ?;
+	pframe_idx = 0;
 	for(pdir_idx = 0; pdir_idx < PHY_MEM / PT_SIZE; pdir_idx ++) {
 		pdir[pdir_idx].val = make_pde(ptable);
 		for(ptable_idx = 0; ptable_idx < NR_PT; ptable_idx ++) {
