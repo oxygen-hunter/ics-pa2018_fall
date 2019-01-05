@@ -14,7 +14,7 @@ paddr_t page_translate(laddr_t laddr) {
 	PDE pde;
 	pde.val = paddr_read(PDE_start, 4); // read PDE
 //printf("pde.val:%x\n", pde.val);
-if(pde.present != 1) printf("laddr:%x\neip:%x\neax:%x\nebp:%x", laddr, cpu.eip, cpu.eax, cpu.ebp);
+if(pde.present != 1) printf("laddr:%x\neip:%x\neax:%x\nebp:%x\npde.val:%x\n", laddr, cpu.eip, cpu.eax, cpu.ebp, pde.val);
 	assert(pde.present == 1);
 
 	paddr_t PTE_start = (pde.page_frame << 12) + 4 * page; // page table start here.
@@ -22,7 +22,7 @@ if(pde.present != 1) printf("laddr:%x\neip:%x\neax:%x\nebp:%x", laddr, cpu.eip, 
 	PTE pte;
 	pte.val = paddr_read(PTE_start, 4); // read PTE
 //printf("pte.val:%x\n", pte.val);
-if(pte.present != 1) printf("laddr:%x\neip:%x\neax:%x\nebp:%x", laddr, cpu.eip, cpu.eax, cpu.ebp);
+if(pte.present != 1) printf("laddr:%x\neip:%x\neax:%x\nebp:%x\npte.val:%x\n", laddr, cpu.eip, cpu.eax, cpu.ebp, pte.val);
 	assert(pte.present == 1);
 
 	paddr_t paddr = (pte.page_frame << 12) + offset; // physical addr.
