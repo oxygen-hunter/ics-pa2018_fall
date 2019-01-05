@@ -18,9 +18,19 @@ void create_video_mapping() {
 
 	//panic("please implement me");
 	
-	//PDE* up_dir = get_updir();
-	//PDE* pdir = (PDE*)va_to_pa(kpdir);
-	
+	PDE* u_pdir = get_updir();
+	PDE* pdir = (PDE*)va_to_pa(u_pdir);
+	uint32_t pdir_idx, ptable_idx, pframe_idx;
+
+	pframe_idx = ?;
+	for(pdir_idx = 0; pdir_idx < PHY_MEM / PT_SIZE; pdir_idx ++) {
+		pdir[pdir_idx].val = make_pde(ptable);
+		for(ptable_idx = 0; ptable_idx < NR_PT; ptable_idx ++) {
+			ptable->val = make_pte(pframe_idx << 12);
+			pframe_idx ++;
+			ptable ++;
+		}
+	}
 	
 	
 }
