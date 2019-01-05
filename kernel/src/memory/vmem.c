@@ -7,7 +7,7 @@
 #define NR_PT ((SCR_SIZE + PT_SIZE - 1) / PT_SIZE)  // number of page tables to cover the vmem
 
 PDE* get_updir();
-PTE uptable[PHY_MEM / PAGE_SIZE] align_to_page; // i add it
+PTE uptable[NR_PT] align_to_page; // i add it
 
 void create_video_mapping() {
 	
@@ -28,7 +28,7 @@ void create_video_mapping() {
 	pframe_idx = VMEM_ADDR;
 	for(pdir_idx = 0; pdir_idx < PHY_MEM / PT_SIZE; pdir_idx ++) {
 		pdir[pdir_idx].val = make_pde(ptable);
-		pdir[pdir_idx + KOFFSET / PT_SIZE].val = make_pde(ptable);
+		//pdir[pdir_idx + KOFFSET / PT_SIZE].val = make_pde(ptable);
 		for(ptable_idx = 0; ptable_idx < NR_PTE; ptable_idx ++) {
 			ptable->val = make_pte(pframe_idx);
 			pframe_idx ++;
