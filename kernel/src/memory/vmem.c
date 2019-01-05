@@ -33,8 +33,6 @@ void create_video_mapping() {
 		pframe_idx ++;
 		ptable ++;
 	}
-	
-	
 }
 
 void video_mapping_write_test() {
