@@ -30,7 +30,7 @@ void create_video_mapping() {
 		pdir[pdir_idx].val = make_pde(ptable);
 		//pdir[pdir_idx + KOFFSET / PT_SIZE].val = make_pde(ptable);
 		for(ptable_idx = 0; ptable_idx < NR_PTE; ptable_idx ++) {
-			ptable->val = make_pte(pframe_idx);
+			ptable->val = make_pte(pframe_idx << 12);
 			pframe_idx ++;
 			ptable ++;
 		}
