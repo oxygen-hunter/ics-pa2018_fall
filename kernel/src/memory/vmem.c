@@ -25,12 +25,12 @@ void create_video_mapping() {
 	uint32_t pdir_idx, ptable_idx, pframe_idx;
 
 
-	pframe_idx = VMEM_ADDR;
+	pframe_idx = 0;
 	for(pdir_idx = 0; pdir_idx < PHY_MEM / PT_SIZE; pdir_idx ++) {
 		pdir[pdir_idx].val = make_pde(ptable);
-		pdir[pdir_idx + KOFFSET / PT_SIZE].val = make_pde(ptable);
+		//pdir[pdir_idx + KOFFSET / PT_SIZE].val = make_pde(ptable);
 		for(ptable_idx = 0; ptable_idx < NR_PT; ptable_idx ++) {
-			ptable->val = make_pte(pframe_idx << 12);
+			ptable->val = make_pte(VMEM_ADDR << 12);
 			pframe_idx ++;
 			ptable ++;
 		}
