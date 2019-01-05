@@ -24,14 +24,15 @@ void create_video_mapping() {
 
 	Log("pdir[0].val:%x\n", pdir[0].val);
 	PTE* ptable = (PTE*)va_to_pa(uptable);
-	//uint32_t pdir_idx;
+
 	uint32_t ptable_idx;
-	//uint32_t pframe_idx;
+	uint32_t pframe_idx;
 
 	pdir[0].val = make_pde(ptable);
-	//pframe_idx = 0;
+	pframe_idx = 0;
 	for(ptable_idx = 0; ptable_idx < NR_PTE; ptable_idx ++) {
-		ptable->val = make_pte(VMEM_ADDR);
+		ptable->val = make_pte(pframe_idx << 12);
+		pframe_idx ++;
 		ptable ++;
 	}
 	
