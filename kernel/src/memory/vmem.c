@@ -22,7 +22,7 @@ void create_video_mapping() {
 	PDE* updir = get_updir();
 	PDE* pdir = (PDE*)va_to_pa(updir);
 	PTE* ptable = (PTE*)va_to_pa(uptable);
-	uint32_t pdir_idx, ptable_idx, pframe_idx;
+	uint32_t pdir_idx, pframe_idx;
 
 	for(pframe_idx = 0; pframe_idx < NR_PT; pframe_idx ++) {
 		ptable->val = make_pte(ptable);
