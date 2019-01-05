@@ -19,7 +19,9 @@ void create_video_mapping() {
 
 	//panic("please implement me");
 	
-	PDE* updir = get_updir();
+	PDE* tst = get_updir();
+	Log("tst.val:%x\n", tst.val);
+	/*PDE* updir = get_updir();
 	PDE* pdir = (PDE*)va_to_pa(updir);
 	PTE* ptable = (PTE*)va_to_pa(uptable);
 	//uint32_t pdir_idx;
@@ -31,7 +33,7 @@ void create_video_mapping() {
 	for(ptable_idx = 0; ptable_idx < NR_PTE; ptable_idx ++) {
 		ptable->val = make_pte(VMEM_ADDR);
 		ptable ++;
-	}
+	}*/
 	
 	
 }
