@@ -24,8 +24,8 @@ if(pde.present != 1) printf("laddr:%x\neip:%x\neax:%x\nebp:%x\npde.val:%x\n", la
 //printf("pte.val:%x\n", pte.val);
 if(pte.present != 1) printf("laddr:%x\neip:%x\neax:%x\nebp:%x\npte.val:%x\n", laddr, cpu.eip, cpu.eax, cpu.ebp, pte.val);
 	assert(pte.present == 1);
-if(laddr == 0xa0000) printf("i am VGA!\npte.val:%x\n", pte.val);
 	paddr_t paddr = (pte.page_frame << 12) + offset; // physical addr.
+if(laddr == 0xa0000) printf("i am VGA!\npte.val:%x\npte.page_frame:%x\npaddr:%x\n", pte.val, pte.page_frame, paddr);
 	return paddr;
 #else	
 	return tlb_read(laddr) | (laddr & PAGE_MASK);;
