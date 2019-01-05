@@ -22,6 +22,8 @@ void create_video_mapping() {
 
 	PDE* updir = get_updir();
 	PDE* pdir = (PDE*)va_to_pa(updir);
+
+	Log("pdir[0].val:%x\n", pdir[0].val);
 	PTE* ptable = (PTE*)va_to_pa(uptable);
 	//uint32_t pdir_idx;
 	uint32_t ptable_idx;
