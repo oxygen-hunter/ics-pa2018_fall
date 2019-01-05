@@ -66,4 +66,7 @@ extern uint8_t data_size;
 // pa 4-2
 #include "cpu/instr/io.h"
 
+// pa 4-3
+#include "cpu/instr/neg.h"
+
 #endif
