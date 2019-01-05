@@ -19,6 +19,7 @@ void create_video_mapping() {
 	//panic("please implement me");
 
 	PDE* pde_end = get_updir();
+	Log("%x", (uint32_t)pde_end);
 }
 
 void video_mapping_write_test() {
