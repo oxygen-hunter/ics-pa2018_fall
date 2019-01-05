@@ -19,7 +19,7 @@ void create_video_mapping() {
 
 	//panic("please implement me");
 	
-	/*PDE* u_pdir = get_updir();
+	PDE* u_pdir = get_updir();
 	PDE* pdir = (PDE*)va_to_pa(u_pdir);
 	PTE* ptable = (PTE*)va_to_pa(uptable);
 	uint32_t pdir_idx, ptable_idx, pframe_idx;
@@ -34,7 +34,7 @@ void create_video_mapping() {
 			pframe_idx ++;
 			ptable ++;
 		}
-	}*/
+	}
 	
 	
 }
