@@ -147,6 +147,7 @@ uint32_t laddr_read(laddr_t laddr, size_t len) {
 			return data;
 
 		} else {
+if(laddr = 0xa0000) printf("read!\n");
 			paddr_t paddr = page_translate(laddr);
 			return paddr_read(paddr, len);
 		}
@@ -190,6 +191,7 @@ void laddr_write(laddr_t laddr, size_t len, uint32_t data) {
 			paddr_t paddr = page_translate(laddr);
 			paddr_write(paddr, len, data);
 		} else {
+if(laddr = 0xa0000) printf("write!\n");
 			paddr_t paddr = page_translate(laddr);
 			paddr_write(paddr, len, data);
 		}
