@@ -26,7 +26,7 @@ void create_video_mapping() {
 	uint32_t ptable_idx;
 	uint32_t pframe_idx;
 
-	pdir[0].val = make_pde(ptable);
+	pdir[0].val = make_pde(ptable); // laddr 0xa0000's dir = 0, page = 0xa0, offset = 0. so pdir[0].
 	pframe_idx = 0;
 	for(ptable_idx = 0; ptable_idx < NR_PTE; ptable_idx ++) {
 		ptable->val = make_pte(pframe_idx << 12);
