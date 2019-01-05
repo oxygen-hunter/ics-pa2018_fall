@@ -22,6 +22,7 @@ if(pde.present != 1) printf("laddr:%x\neip:%x\neax:%x\nebp:%x", laddr, cpu.eip, 
 	PTE pte;
 	pte.val = paddr_read(PTE_start, 4); // read PTE
 //printf("pte.val:%x\n", pte.val);
+if(pte.present != 1) printf("laddr:%x\neip:%x\neax:%x\nebp:%x", laddr, cpu.eip, cpu.eax, cpu.ebp);
 	assert(pte.present == 1);
 
 	paddr_t paddr = (pte.page_frame << 12) + offset; // physical addr.
