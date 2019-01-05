@@ -33,7 +33,7 @@ void create_video_mapping() {
 			ptable ++;
 		}
 	}
-	
+	Log("NR_PT:%x", NR_PT);
 	
 }
 
