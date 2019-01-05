@@ -25,7 +25,12 @@ if(pde.present != 1) printf("laddr:%x\neip:%x\neax:%x\nebp:%x\npde.val:%x\n", la
 if(pte.present != 1) printf("laddr:%x\neip:%x\neax:%x\nebp:%x\npte.val:%x\n", laddr, cpu.eip, cpu.eax, cpu.ebp, pte.val);
 	assert(pte.present == 1);
 	paddr_t paddr = (pte.page_frame << 12) + offset; // physical addr.
-if(laddr == 0xa0000) printf("i am VGA!\npte.val:%x\npte.page_frame:%x\npaddr:%x\n", pte.val, pte.page_frame, paddr);
+if(laddr == 0xa0000) {
+	printf("i am VGA!\npte.val:%x\npte.page_frame:%x\npaddr:%x\n", pte.val, pte.page_frame, paddr);
+	uint32_t* buf = hw_mem + 8*paddr;
+	for(int i=0;i<10;i++)
+		printf("%x", buf[i]);
+}
 	return paddr;
 #else	
 	return tlb_read(laddr) | (laddr & PAGE_MASK);;
