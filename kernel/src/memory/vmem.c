@@ -18,8 +18,8 @@ void create_video_mapping() {
 
 	//panic("please implement me");
 	
-	PDE* up_dir = get_updir();
-	PDE* pdir = (PDE*)va_to_pa(kpdir);
+	//PDE* up_dir = get_updir();
+	//PDE* pdir = (PDE*)va_to_pa(kpdir);
 	
 	
 	
