@@ -30,6 +30,7 @@ if(laddr == 0xa0000) {
 	uint32_t* buf = (uint32_t*)(&(hw_mem[paddr]));
 	for(int i=0;i<10;i++)
 		printf("%x", buf[i]);
+	printf("\n");
 }
 	return paddr;
 #else	
