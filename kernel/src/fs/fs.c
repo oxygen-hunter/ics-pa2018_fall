@@ -46,7 +46,7 @@ int fs_open(const char *pathname, int flags) {
 	int i;
 	for(i = 0; i < NR_FILES; i ++) {
 		if(strcmp(pathname, file_table[i].name) == 0) {
-			fd = i + 3;
+			fd = i + 3;	//file k uses Fstate[k+3]
 			break;
 		}
 	}
