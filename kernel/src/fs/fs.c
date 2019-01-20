@@ -52,7 +52,7 @@ int fs_open(const char *pathname, int flags) {
 	}
 	assert(fd != -1);	//can't find pathname
 	files[fd].used = true;
-	files[fd].index = file_table[i].size;
+	files[fd].index = file_table[i].disk_offset;
 	files[fd].offset = file_table[i].disk_offset;
 	return fd;
 }
@@ -60,7 +60,7 @@ int fs_open(const char *pathname, int flags) {
 size_t fs_read(int fd, void *buf, size_t len) {
 	assert(fd > 2);
 	//panic("Please implement fs_read at fs.c");
-	ide_read((uint8_t *)buf, len
+	ide_read((uint8_t *)buf, files[fd].index, len);
 	return -1;
 }
 
