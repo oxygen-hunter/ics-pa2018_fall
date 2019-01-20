@@ -104,7 +104,7 @@ off_t fs_lseek(int fd, off_t offset, int whence) {
 						break;
 		default: return -1;
 	}
-	return (files[fd].offset - file_table[fd - 3].disk_offset);
+	return files[fd].offset;
 }
 
 int fs_close(int fd) {
