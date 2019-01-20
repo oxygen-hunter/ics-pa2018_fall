@@ -61,7 +61,7 @@ size_t fs_read(int fd, void *buf, size_t len) {
 	assert(fd > 2);
 	//panic("Please implement fs_read at fs.c");
 	ide_read((uint8_t *)buf, files[fd].index, len);
-	return -1;
+	return len;
 }
 
 size_t fs_write(int fd, void *buf, size_t len) {
