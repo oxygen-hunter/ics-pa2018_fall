@@ -45,7 +45,7 @@ int fs_open(const char *pathname, int flags) {
 	int fd = -1;
 	int i;
 	for(i = 0; i < NR_FILES; i ++) {
-		if(strcmp(pathname, file_table[i] == 0) {
+		if(strcmp(pathname, file_table[i].name) == 0) {
 			fd = i + 3;
 			break;
 		}
