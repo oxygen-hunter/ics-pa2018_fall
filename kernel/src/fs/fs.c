@@ -60,7 +60,7 @@ int fs_open(const char *pathname, int flags) {
 
 size_t fs_read(int fd, void *buf, size_t len) {
 	assert(fd > 2);
-	//panic("Please implement fs_read at fs.c");
+	panic("Please implement fs_read at fs.c");
 	assert(files[fd].used == true);
 	uint32_t size = file_table[fd - 3].size;
 	uint32_t boundary = file_table[fd - 3].disk_offset + size;
@@ -91,7 +91,7 @@ size_t fs_write(int fd, void *buf, size_t len) {
 }
 
 off_t fs_lseek(int fd, off_t offset, int whence) {
-	//panic("Please implement fs_lseek at fs.c");
+	panic("Please implement fs_lseek at fs.c");
 	assert(files[fd].used == true);
 	uint32_t size = file_table[fd - 3].size;
 	uint32_t boundary1 = file_table[fd - 3].disk_offset + size;
@@ -113,7 +113,7 @@ off_t fs_lseek(int fd, off_t offset, int whence) {
 }
 
 int fs_close(int fd) {
-	//panic("Please implement fs_close at fs.c");
+	panic("Please implement fs_close at fs.c");
 	assert(files[fd].used == true);
 	files[fd].used = false;
 	return 0;
