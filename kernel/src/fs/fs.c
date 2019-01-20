@@ -64,7 +64,8 @@ size_t fs_read(int fd, void *buf, size_t len) {
 	assert(files[fd].used == true);
 	uint32_t size = file_table[fd - 3].size;
 	if(files[fd].offset + len <= size) {		//check fp
-		ide_read((uint8_t *)buf, file_table[fd - 3].disk_offset + files[fd].offset, len);
+		uint32_t start = file_table[fd - 3].disk_offset + files[fd].offset;
+		ide_read((uint8_t *)buf, start, len);
 		files[fd].offset += len;
 		return len;
 	}
