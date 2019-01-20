@@ -91,18 +91,13 @@ off_t fs_lseek(int fd, off_t offset, int whence) {
 	//panic("Please implement fs_lseek at fs.c");
 	uint32_t size = file_table[fd - 3].size;
 	uint32_t boundary = file_table[fd - 3].disk_offset + size;
-	if(files[fd].offset + len < boundary) {
-		switch(whence) {
-			case SEEK_SET: files[fd].offset = offset; break;
-			case SEEK_CUR: files[fd].offset += offset; break;
-			case SEEK_END: files[fd].offset = file_table[fd - 3].disk_offset + file_table[fd - 3].size + offset; break;
-			default: return -1;
-		}
-		return files[fd].offset - file_table[fd - 3].disk_offset;
+	switch(whence) {
+		case SEEK_SET: files[fd].offset = offset; break;
+		case SEEK_CUR: files[fd].offset += offset; break;
+		case SEEK_END: files[fd].offset = file_table[fd - 3].disk_offset + file_table[fd - 3].size + offset; break;
+		default: return -1;
 	}
-	else {
-		return -1;
-	}
+	return files[fd].offset - file_table[fd - 3].disk_offset;
 }
 
 int fs_close(int fd) {
