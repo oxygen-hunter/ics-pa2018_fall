@@ -90,14 +90,14 @@ size_t fs_write(int fd, void *buf, size_t len) {
 }
 
 off_t fs_lseek(int fd, off_t offset, int whence) {
-	panic("Please implement fs_lseek at fs.c");
+	//panic("Please implement fs_lseek at fs.c");
 	assert(files[fd].used == true);
 	uint32_t size = file_table[fd - 3].size;
 	uint32_t boundary1 = file_table[fd - 3].disk_offset + size;
 	uint32_t boundary2 = file_table[fd - 3].disk_offset + size;
 	uint32_t boundary3 = file_table[fd - 3].disk_offset + size;
 	switch(whence) {
-		case SEEK_SET:  files[fd].offset = offset;
+		case SEEK_SET:  files[fd].offset = file_table[fd - 3].disk_offset + offset;
 						assert(files[fd].offset < boundary1);
 						break;
 		case SEEK_CUR:  files[fd].offset += offset;
