@@ -54,7 +54,7 @@ int fs_open(const char *pathname, int flags) {
 	assert(files[fd].used == false);
 	files[fd].used = true;
 	files[fd].index = file_table[i].disk_offset;
-	files[fd].offset = file_table[i].disk_offset;
+	files[fd].offset = 0;
 	return fd;
 }
 
@@ -63,8 +63,7 @@ size_t fs_read(int fd, void *buf, size_t len) {
 	//panic("Please implement fs_read at fs.c");
 	assert(files[fd].used == true);
 	uint32_t size = file_table[fd - 3].size;
-	uint32_t boundary = file_table[fd - 3].disk_offset + size;
-	if(files[fd].offset + len <= boundary) {		//check fp
+	if(files[fd].offset + len <= size) {		//check fp
 		ide_read((uint8_t *)buf, files[fd].offset, len);
 		files[fd].offset += len;
 		return len;
