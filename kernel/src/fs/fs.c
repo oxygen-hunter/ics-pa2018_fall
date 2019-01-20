@@ -68,7 +68,7 @@ size_t fs_read(int fd, void *buf, size_t len) {
 		return len;
 	}
 	else {	//file pointer out of boundary, read 0 byte
-		return 0;
+		assert(0);
 	}
 }
 
