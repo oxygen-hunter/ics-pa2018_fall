@@ -35,8 +35,8 @@ static const file_info file_table[] = {
 
 Fstate files[NR_FILES + 3];
 
-void ide_read(uint8_t *, uint32_t, uint32_t);
-void ide_write(uint8_t *, uint32_t, uint32_t);
+void ide_read(uint8_t *buf, uint32_t offset, uint32_t len);
+void ide_write(uint8_t *buf, uint32_t offset, uint32_t len);
 
 /* Please implement a simple file system here */
 
@@ -59,7 +59,8 @@ int fs_open(const char *pathname, int flags) {
 
 size_t fs_read(int fd, void *buf, size_t len) {
 	assert(fd > 2);
-	panic("Please implement fs_read at fs.c");
+	//panic("Please implement fs_read at fs.c");
+	ide_read((uint8_t *)buf, len
 	return -1;
 }
 
