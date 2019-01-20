@@ -31,7 +31,7 @@ void main_loop(void) {
 	Log("Occasional audio playback disorder. Please help me debug :-)");
 	fp=fopen("credits_bgm.wav","rb");
 	// register audio event
-	add_irq_handle(28, audio_event);
+	add_irq_handle(2, audio_event);
 	// start audio playback
 	audio_pause(0);
 	uint32_t tick = 0;
