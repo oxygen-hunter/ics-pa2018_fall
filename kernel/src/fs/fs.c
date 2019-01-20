@@ -70,7 +70,7 @@ size_t fs_read(int fd, void *buf, size_t len) {
 		return len;
 	}
 	else {	//file pointer at or past the end of file, read 0 byte
-		assert(0);
+		//assert(0);
 		return 0;
 	}
 }
