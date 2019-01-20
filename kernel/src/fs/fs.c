@@ -62,12 +62,12 @@ size_t fs_read(int fd, void *buf, size_t len) {
 	//panic("Please implement fs_read at fs.c");
 	uint32_t size = file_table[fd - 3].size;
 	uint32_t boundary = file_table[fd - 3].disk_offset + size;
-	if(files[fd].offset + len < boundary) { 
+	if(files[fd].offset + len < boundary) {		//check fp
 		ide_read((uint8_t *)buf, files[fd].offset, len);
 		files[fd].offset += len;
 		return len;
 	}
-	else {	//file pointer out of boundary
+	else {	//file pointer out of boundary, read 0 byte
 		return 0;
 	}
 }
