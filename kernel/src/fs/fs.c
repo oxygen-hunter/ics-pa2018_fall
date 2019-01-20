@@ -42,7 +42,18 @@ void ide_write(uint8_t *, uint32_t, uint32_t);
 
 int fs_open(const char *pathname, int flags) {
 	panic("Please implement fs_open at fs.c");
-	return -1;
+	int fd = -1;
+	int i;
+	for(i = 0; i < NR_FILES; i ++) {
+		if(strcmp(pathname, file_table[i] == 0) {
+			fd = i + 3;
+			break;
+		}
+	}
+	assert(fd != -1);	//can't find pathname
+	files[fd].used = true;
+	files[fd].offset = file_table[i].disk_offset;
+	return fd;
 }
 
 size_t fs_read(int fd, void *buf, size_t len) {
