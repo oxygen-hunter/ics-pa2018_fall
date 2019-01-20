@@ -100,7 +100,7 @@ off_t fs_lseek(int fd, off_t offset, int whence) {
 						//assert(files[fd].offset < size);
 						break;
 		case SEEK_END:  files[fd].offset = size + offset;
-						//assert(files[fd].offset < boundary3);
+						//assert(files[fd].offset < size);
 						break;
 		default: return -1;
 	}
