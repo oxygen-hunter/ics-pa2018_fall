@@ -60,8 +60,15 @@ int fs_open(const char *pathname, int flags) {
 size_t fs_read(int fd, void *buf, size_t len) {
 	assert(fd > 2);
 	//panic("Please implement fs_read at fs.c");
-	ide_read((uint8_t *)buf, files[fd].offset, len);
-	return len;
+	uint32_t size = file_table[fd - 3].size;
+	uint32_t boundary = file_table[fd - 3].disk_offset + size;
+	if(files[fd].offset + len < boundary) { 
+		ide_read((uint8_t *)buf, files[fd].offset, len);
+		return len;
+	}
+	else {	//file pointer out of boundary
+		return 0;
+	}
 }
 
 size_t fs_write(int fd, void *buf, size_t len) {
