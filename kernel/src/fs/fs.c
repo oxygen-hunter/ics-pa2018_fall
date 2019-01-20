@@ -52,7 +52,7 @@ int fs_open(const char *pathname, int flags) {
 	}
 	assert(fd != -1);	//can't find pathname
 	files[fd].used = true;
-	files[fd].index = file_table[i].disk_offset;
+	files[fd].index = file_table[i].size;
 	files[fd].offset = file_table[i].disk_offset;
 	return fd;
 }
