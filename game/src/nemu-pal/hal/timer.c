@@ -25,8 +25,10 @@ timer_event(void) {
 
 uint32_t SDL_GetTicks() {
 	/* TODO: Return the time in millisecond. */
-	assert(0);
-	return 0;
+	//assert(0);
+	// 1 second has 100 timer event, so 1/100 s(10 ms) per event
+	// jiffy means number of events, so jiffy * 10 ms = Ticks
+	return jiffy * 10;
 }
 
 void SDL_Delay(uint32_t ms) {
