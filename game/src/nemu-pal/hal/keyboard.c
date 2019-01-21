@@ -67,12 +67,14 @@ process_keys(void (*key_press_callback)(int), void (*key_release_callback)(int))
 		if(query_key(i) == KEY_STATE_PRESS) {
 			int keycode = get_keycode(i);
 			key_press_callback(keycode);
+			release_key(i);
 			sti();
 			return true;
 		}
 		else if(query_key(i) == KEY_STATE_RELEASE) {
 			int keycode = get_keycode(i);
 			key_release_callback(keycode);
+			clear_key(i);
 			sti();
 			return true;
 		}
