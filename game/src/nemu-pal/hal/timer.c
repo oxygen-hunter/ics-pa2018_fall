@@ -36,6 +36,6 @@ void SDL_Delay(uint32_t ms) {
 	//assert(0);
 	uint32_t delay_begin = SDL_GetTicks();
 	while(SDL_GetTicks() - delay_begin < ms) {
-			//do nothing but wait delay
+			//do nothing but wait delay end
 	}
 }
