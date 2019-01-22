@@ -42,8 +42,7 @@ void SDL_BlitSurface(SDL_Surface *src, SDL_Rect *srcrect,
     s = (srcrect == NULL ? src->pixels : src->pixels + sy * w + sx);
     d = (dstrect == NULL ? dst->pixels : dst->pixels + dy * w + dx);
     
-    int i = 0;
-    for(; i < h; i++)
+    for(int i = 0; i < h; i ++)
     {
         memcpy(d, s, w);
         s += src->w;
