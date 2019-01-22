@@ -59,7 +59,17 @@ void SDL_FillRect(SDL_Surface *dst, SDL_Rect *dstrect, uint32_t color) {
 	 * NULL, fill the whole surface.
 	 */
 
-	assert(0);
+	//assert(0);
+	if(dstrect != NULL) {
+		uint8_t * d = dst->pixels + dstrect->y * dst ->w + dstrect->x;
+		for(int i = 0; i < dstrect->h; i ++) {
+			memset(d, color, dstrect->w);
+			d += dst->w;
+		}
+	}
+	else {
+		memset(dst->pixels, color, dst->w * dst->h);
+	}
 }
 
 void SDL_SetPalette(SDL_Surface *s, int flags, SDL_Color *colors, 
