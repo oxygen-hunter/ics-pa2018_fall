@@ -39,15 +39,14 @@ void SDL_BlitSurface(SDL_Surface *src, SDL_Rect *srcrect,
 
 	// a better version which use one layer of circulation. a bit quicker
 	uint8_t *s, *d;
-    s = (srcrect == NULL ? src->pixels : src->pixels + sy * w + sx);
-    d = (dstrect == NULL ? dst->pixels : dst->pixels + dy * w + dx);
-    
-    for(int i = 0; i < h; i ++)
-    {
-        memcpy(d, s, w);
-        s += src->w;
-        d += dst->w;
-    }
+	s = (srcrect == NULL ? src->pixels : src->pixels + sy * w + sx);
+	d = (dstrect == NULL ? dst->pixels : dst->pixels + dy * w + dx);
+
+	for(int i = 0; i < h; i ++) {
+		memcpy(d, s, w);
+		s += src->w;
+		d += dst->w;
+	}
 }
 
 void SDL_FillRect(SDL_Surface *dst, SDL_Rect *dstrect, uint32_t color) {
