@@ -65,7 +65,7 @@ size_t fs_read(int fd, void *buf, size_t len) {
 			if (offset + len <= size)
 				read len byte
 			else
-				read (size - len) byte
+				read (size - offset) byte
 		}
 		else {
 			read 0 byte
@@ -75,7 +75,7 @@ size_t fs_read(int fd, void *buf, size_t len) {
 	uint32_t size = file_table[fd - 3].size;
 	if(files[fd].offset < size) { //file pointer in file
 		uint32_t start = file_table[fd - 3].disk_offset + files[fd].offset;
-		if(files[fd].offset + len > size) {
+		if(files[fd].offset + len > size) {	//read (size - offset) byte
 			len = size - files[fd].offset;
 		}
 		ide_read((uint8_t *)buf, start, len);
