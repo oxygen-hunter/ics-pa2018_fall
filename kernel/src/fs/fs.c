@@ -63,14 +63,14 @@ size_t fs_read(int fd, void *buf, size_t len) {
 	//panic("Please implement fs_read at fs.c");
 	assert(files[fd].used == true);
 	uint32_t size = file_table[fd - 3].size;
-	if(files[fd].offset + len <= size) {		//check fp
+	if(files[fd].offset < size) { //file pointer in file
+		if(files[fd].offset + len <= size) {
 		uint32_t start = file_table[fd - 3].disk_offset + files[fd].offset;
 		ide_read((uint8_t *)buf, start, len);
 		files[fd].offset += len;
 		return len;
 	}
-	else {	//file pointer at or past the end of file, read 0 byte
-		//assert(0);
+	else { //file pointer at or past the end of file, read 0 byte
 		return 0;
 	}
 }
