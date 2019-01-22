@@ -30,11 +30,14 @@ void SDL_BlitSurface(SDL_Surface *src, SDL_Rect *srcrect,
 	 */
 
 	//assert(0);
+	// below two layers of circulation is slow! [xcb] error / XIO error / Any other error will happen!
 	/*for(int i = 0; i < w; i ++) {
 		for(int j = 0; j < h; j ++) {
 			dst->pixels[(dx + i) + (dy + j) * dst->w] = src->pixels[(sx + i) + (sy + j) * src->w];
 		}
 	} */
+
+	// a better version which use one layer of circulation. a bit quicker
 	uint8_t *s, *d;
     s = (srcrect == NULL ? src->pixels : src->pixels + sy * w + sx);
     d = (dstrect == NULL ? dst->pixels : dst->pixels + dy * w + dx);
