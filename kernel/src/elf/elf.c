@@ -49,7 +49,9 @@ uint32_t loader() {
 				memset((void*)(mm_paddr+ph->p_filesz), 0, ph->p_memsz - ph->p_filesz);
 #else
 /* pa-3-3 */
+			Log("ph->p_vaddr:%x\n", (uint32_t)ph->p_vaddr);
 			void* mm_paddr = (void*)mm_malloc((uint32_t)ph->p_vaddr, ph->p_memsz);
+			Log("mm_paddr:%x\n", (uint32_t)mm_paddr);
 			memcpy(mm_paddr, (void*)(ph->p_offset), ph->p_filesz);
 			if(ph->p_memsz > ph->p_filesz)
 				memset((void*)(mm_paddr+ph->p_filesz), 0, ph->p_memsz - ph->p_filesz);
